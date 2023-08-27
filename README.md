@@ -1,6 +1,8 @@
 # namaagp
 
-A new Flutter project.
+Effective financial management is essential for success in life. Insufficient financial skills can create numerous obstacles. As students, we faced financial difficulties because we lacked awareness and control over our expenses. Moreover, our limited income made it difficult to save and make wise investments. Extensive research revealed that people from various backgrounds struggle with similar financial management challenges, extending beyond college students.
+
+We're developing an iOS app using Flutter and Dart language, integrated with Supabase for database functionality. Our app will utilize Artificial Intelligence (AI) to simplify expense management, enhance savings, and make investment easier for users. Our aim is to revolutionize finance management and empower individuals to achieve financial well-being.
 
 ## Getting Started
 
