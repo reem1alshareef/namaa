@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class TextInputField extends StatelessWidget {
+class AccountButton extends StatelessWidget {
   final String title;
   final String placeHolder;
 
-  const TextInputField({
+  const AccountButton({
     Key? key,
     required this.title,
     required this.placeHolder,

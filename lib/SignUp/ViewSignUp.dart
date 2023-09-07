@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:namaagp/Components/TextInputField.dart';
+import 'package:namaagp/Identity%20Elements/mainHeader.dart';
 import 'package:namaagp/SignUp/ViewModelSignUp.dart';
 import 'package:stacked/stacked.dart';
 
@@ -33,6 +35,15 @@ class ViewSignUp extends StatelessWidget {
                 // ignore: prefer_const_constructors
                 child: Column(
                   children: [
+                    mainHeader(),
+                    //introPagesHeader(subTitle: 'إنشاء حساب',),
+                    TextInputField(title: 'الاسم', placeHolder: 'اكتب اسمك'),
+                    TextInputField(title: 'رقم الجوال', placeHolder: 'اكتب رقم جوالك'),
+                    TextInputField(title: 'كلمة السر', placeHolder: 'اكتب كلمة السر الخاصة بك'),
+                    TextInputField(title: 'تأكيد كلمة السر', placeHolder: 'اعد كتابة كلمة السر الخاصة بك'),
+                    
+                    //SizedBox(height: 10,),
+                    //AccountButton(title: 'title', placeHolder: 'placeHolder')
                     //header()
                   ],
                 )
