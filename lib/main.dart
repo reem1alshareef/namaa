@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:namaagp/Splash/ViewSplash.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-
+//import 'namaagp/lib/SignUp/ViewModelSignUp.dart';
 main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -76,6 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
         context,
         MaterialPageRoute(
           builder: (BuildContext context) {
+            submitLogin();
             return const ViewSplash();
           },
         ),
@@ -84,4 +85,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return "Logined";
   }
+}
+
+void submitLogin() {
+  print('reem');
 }

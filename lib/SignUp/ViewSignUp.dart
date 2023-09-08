@@ -42,6 +42,22 @@ class ViewSignUp extends StatelessWidget {
                     TextInputField(title: 'كلمة السر', placeHolder: 'اكتب كلمة السر الخاصة بك'),
                     TextInputField(title: 'تأكيد كلمة السر', placeHolder: 'اعد كتابة كلمة السر الخاصة بك'),
                     
+
+                    ElevatedButton(
+                          onPressed: () {
+                            viewmodel.submitLogin(context);
+                          },
+                          style: ElevatedButton.styleFrom(
+                              primary: const Color(0xFF4081EC)),
+                          child: const Text(
+                            'سجل الدخول',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                              fontSize: 18,
+                            ),
+                          ),
+                          ),
+
                     //SizedBox(height: 10,),
                     //AccountButton(title: 'title', placeHolder: 'placeHolder')
                     //header()
