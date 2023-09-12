@@ -50,7 +50,7 @@ class ViewSignUp extends StatelessWidget {
                           style: ElevatedButton.styleFrom(
                               primary: const Color(0xFF4081EC)),
                           child: const Text(
-                            'سجل الدخول',
+                            'سجل الدخول' ,
                             style: TextStyle(
                               fontWeight: FontWeight.w700,
                               fontSize: 18,
