@@ -40,30 +40,9 @@ class ViewOTPPage extends StatelessWidget {
                 child: Column(
                   children: [
                     ReturnToPreviousPage(title: 'الصفحة السابقة'),
-                    //ReturnToPreviousPage(),
-                    //mainHeader(),
                     introPagesHeader(subTitle: 'تم إرسال رمز التحقق على رقم جوالك', title: 'أدخل رمز التحقق',),
-            //         OTPTextField(
-            //           //wi,
-            //           otpFieldStyle: OtpFieldStyle(borderColor: Color(0xE5D0CDEF), ),
-            //           //borderColor: Color(0xFF512DA8),
-            // controller: otpController,
-            // length: 4,
-            // width: MediaQuery.of(context).size.width,
-            // textFieldAlignment: MainAxisAlignment.spaceAround,
-            // fieldWidth: 45,
-            // fieldStyle: FieldStyle.box,
-            // outlineBorderRadius: 0,
-            // style: TextStyle(fontSize: 17),
-            // onChanged: (pin) {
-            //   print("Changed: " + pin);
-            // },
-            // onCompleted: (pin) {
-            //   print("Completed: " + pin);
-            // }),
                     OtpTextField(
                       margin: EdgeInsets.all(12),
-                      //textFieldAlignment: MainAxisAlignment.spaceAround,
         numberOfFields: 4,
         borderColor: Color(0x0C16325F),
         //set to true to show as box or false to show as dash
@@ -85,13 +64,6 @@ class ViewOTPPage extends StatelessWidget {
         }, // end onSubmit
     ),
     CostomizedTextButton(question: 'لم يصلك رمز التحقق؟  ', actionTitle: 'إعادة إرسال', purpose: 'ResendOTP',)
-
-    //TextButton(onPressed: onPressed, child: child)
-    // Container(
-    //   child: ResendOTP(),
-    //   alignment: Alignment.center,
-    //   //alignment:
-    // )
     
 
 
@@ -108,3 +80,20 @@ class ViewOTPPage extends StatelessWidget {
 //   Navigator.pop(context as BuildContext);  
 //    //return verificationCode; 
 // }
+
+
+
+// ElevatedButton(onPressed: () async {
+                      
+//                       await Navigator.push(
+//     context,
+//     MaterialPageRoute(builder: (context) => const ViewOTPPage()),
+//   );
+//   print(hhh);}
+//                     , child: null,),
+//                     Text('hhh', style: TextStyle(fontSize: 20, color: Colors.white),),
+//                     Column(children: [if(hhh!='')...[
+// Text(hhh, style: TextStyle(fontSize: 20, color: Colors.white),)
+//                     ]else...[
+// Text(hhh, style: TextStyle(fontSize: 20, color: Colors.white),)
+//                     ]],)
