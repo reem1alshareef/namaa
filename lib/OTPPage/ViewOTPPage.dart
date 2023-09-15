@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
+import 'package:namaagp/Components/CostomizedTextButton.dart';
 import 'package:namaagp/Components/ReturnToPreviousPage.dart';
 import 'package:namaagp/Identity%20Elements/introPagesHeader.dart';
-import 'package:namaagp/OTPPage/ResendOTP.dart';
 import 'package:namaagp/OTPPage/ViewModelOTPPage.dart';
 import 'package:stacked/stacked.dart';
 
@@ -84,11 +84,14 @@ class ViewOTPPage extends StatelessWidget {
             //returnCode(verificationCode);
         }, // end onSubmit
     ),
-    Container(
-      child: ResendOTP(),
-      alignment: Alignment.center,
-      //alignment:
-    )
+    CostomizedTextButton(question: 'لم يصلك رمز التحقق؟  ', actionTitle: 'إعادة إرسال', purpose: 'ResendOTP',)
+
+    //TextButton(onPressed: onPressed, child: child)
+    // Container(
+    //   child: ResendOTP(),
+    //   alignment: Alignment.center,
+    //   //alignment:
+    // )
     
 
 
