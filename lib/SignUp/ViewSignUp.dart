@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:namaagp/Components/TextInputField.dart';
 import 'package:namaagp/Identity%20Elements/mainHeader.dart';
 import 'package:namaagp/SignUp/ViewModelSignUp.dart';
+import 'package:namaagp/services/authentication_service.dart';
 import 'package:stacked/stacked.dart';
+import 'package:supabase/supabase.dart';
 
 
 class ViewSignUp extends StatelessWidget {
+  
   const ViewSignUp({super.key});
 
   @override
@@ -44,8 +47,16 @@ class ViewSignUp extends StatelessWidget {
                     
 
                     ElevatedButton(
-                          onPressed: () {
-                            viewmodel.submitLogin(context);
+                          onPressed: () async {
+                            AuthenticationService authService = AuthenticationService();
+                            await authService.signUp(
+                              name: 'ree',
+                              password: '456',
+                              phoneNumber: '34567',
+                              passcode: 'bj',
+                              );
+                              
+                            print('reem');
                           },
                           style: ElevatedButton.styleFrom(
                               primary: const Color(0xFF4081EC)),
@@ -67,3 +78,5 @@ class ViewSignUp extends StatelessWidget {
         });
   }
 }
+
+

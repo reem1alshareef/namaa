@@ -8,7 +8,7 @@ class TextInputField extends StatelessWidget {
   const TextInputField({
     Key? key,
     required this.title,
-    required this.placeHolder,
+    required this.placeHolder, required TextEditingController controller,
   }) : super(key: key);
 
   @override
