@@ -39,7 +39,7 @@ class ViewOTPPage extends StatelessWidget {
                 // ignore: prefer_const_constructors
                 child: Column(
                   children: [
-                    ReturnToPreviousPage(title: 'الصفحة السابقة'),
+                    ReturnToPreviousPage(title: 'الصفحة السابقة', tWidth: 400,),
                     introPagesHeader(subTitle: 'تم إرسال رمز التحقق على رقم جوالك', title: 'أدخل رمز التحقق',),
                     OtpTextField(
                       margin: EdgeInsets.all(12),

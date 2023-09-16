@@ -4,11 +4,13 @@ import 'package:google_fonts/google_fonts.dart';
 class TextInputField extends StatelessWidget {
   final String title;
   final String placeHolder;
+  final TextEditingController inputController;
 
   const TextInputField({
     Key? key,
     required this.title,
     required this.placeHolder,
+    required this.inputController,
   }) : super(key: key);
 
   @override
@@ -40,6 +42,8 @@ class TextInputField extends StatelessWidget {
                       width: 0.7, color: Color(0xFFB8BAC2)), //<-- SEE HERE
                 ),
               ),
+              controller: inputController,
+              obscureText: title=='كلمة السر'|| title=='تأكيد كلمة السر'? true:false,
             )),
         SizedBox(
           height: 20,
