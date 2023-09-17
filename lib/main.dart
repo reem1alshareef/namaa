@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:namaagp/Splash/ViewSplash.dart';
 import 'package:namaagp/services/authentication_service.dart';
+import 'package:namaagp/services/supabase_service.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:get_it/get_it.dart';
 
@@ -14,7 +15,6 @@ main() async {
     anonKey:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJwd3F4bmRsaGRpcWtyZWppZ3NlIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTMwNjY4NDQsImV4cCI6MjAwODY0Mjg0NH0.qlIR6KNotfLwl30HsVSUW9M3smblYaYxtk_D7W2L_EU',
   );
   runApp(const MyApp());
-  //runApp(SupabaseService() as Widget);
   
 }
 
