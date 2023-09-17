@@ -69,7 +69,7 @@ class DraggableButton extends StatelessWidget {
                           ,onDragEnd: (details) {
                             Navigator.push(
     context,
-    MaterialPageRoute(builder: (context) => const ViewSignUp()),
+    MaterialPageRoute(builder: (context) =>  ViewSignUp()),
   );
                           },),
                           

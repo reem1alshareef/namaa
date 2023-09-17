@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:namaagp/Components/ReturnToPreviousPage.dart';
 
 class mainHeader extends StatelessWidget {
-  //final String title;
+  final String title;
   //final String subTitle;
 
   const mainHeader({
     Key? key,
-    //required this.title,
+    required this.title,
     //required this.subTitle,
   }) : super(key: key);
 
@@ -15,6 +17,14 @@ class mainHeader extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
+        ReturnToPreviousPage(title: 'البداية', tWidth: 69,),
+        Text(title,
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.getFont("Noto Sans Arabic",
+                      fontSize: 28,
+                      fontWeight: FontWeight.w400,
+                      height: 1.5,
+                      textStyle: const TextStyle(color: Color(0xFFD0CDEF)))),
         Container(
           width: 50,
           height: 36.31,
@@ -28,7 +38,9 @@ class mainHeader extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-        )
+        ),
+
+        
 
         //SizedBox(height: 200,),
 //         SizedBox(

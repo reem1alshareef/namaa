@@ -1,8 +1,7 @@
 import 'package:stacked/stacked.dart';
 
 class ViewModelSignUp extends BaseViewModel {
-  submitLogin(context) {
-    print('reem');
-}
-
+  signUp(String name, String phonenumber, String password){
+    //print(name);
+  }
 }

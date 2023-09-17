@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:namaagp/Components/AccountButton.dart';
+import 'package:namaagp/Components/CostomizedTextButton.dart';
 import 'package:namaagp/Components/TextInputField.dart';
 import 'package:namaagp/Identity%20Elements/mainHeader.dart';
 import 'package:namaagp/SignUp/ViewModelSignUp.dart';
@@ -6,8 +8,11 @@ import 'package:stacked/stacked.dart';
 
 
 class ViewSignUp extends StatelessWidget {
-  const ViewSignUp({super.key});
-
+  final TextEditingController namee=TextEditingController();
+  final TextEditingController phonenumberr=TextEditingController();
+  final TextEditingController password=TextEditingController();
+  final TextEditingController passwordConfirm=TextEditingController();
+   ViewSignUp({super.key});
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<ViewModelSignUp>.reactive(
@@ -35,32 +40,16 @@ class ViewSignUp extends StatelessWidget {
                 // ignore: prefer_const_constructors
                 child: Column(
                   children: [
-                    mainHeader(),
-                    //introPagesHeader(subTitle: 'إنشاء حساب',),
-                    TextInputField(title: 'الاسم', placeHolder: 'اكتب اسمك'),
-                    TextInputField(title: 'رقم الجوال', placeHolder: 'اكتب رقم جوالك'),
-                    TextInputField(title: 'كلمة السر', placeHolder: 'اكتب كلمة السر الخاصة بك'),
-                    TextInputField(title: 'تأكيد كلمة السر', placeHolder: 'اعد كتابة كلمة السر الخاصة بك'),
-                    
-
-                    ElevatedButton(
-                          onPressed: () {
-                            viewmodel.submitLogin(context);
-                          },
-                          style: ElevatedButton.styleFrom(
-                              primary: const Color(0xFF4081EC)),
-                          child: const Text(
-                            'سجل الدخول',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                              fontSize: 18,
-                            ),
-                          ),
-                          ),
-
-                    //SizedBox(height: 10,),
-                    //AccountButton(title: 'title', placeHolder: 'placeHolder')
-                    //header()
+                    SizedBox(height: 5,),
+                    mainHeader(title: 'إنشاء حساب',),
+                    SizedBox(height: 5,),
+                    TextInputField(title: 'الاسم', placeHolder: 'اكتب اسمك', inputController: namee,),
+                    TextInputField(title: 'رقم الجوال', placeHolder: 'اكتب رقم جوالك', inputController: phonenumberr,),
+                    TextInputField(title: 'كلمة السر', placeHolder: 'اكتب كلمة السر الخاصة بك', inputController: password,),
+                    TextInputField(title: 'تأكيد كلمة السر', placeHolder: 'اعد كتابة كلمة السر الخاصة بك', inputController: passwordConfirm,),
+                    AccountButton(title: 'أكمل', type: 'SignUp', name: namee, phonenumber: phonenumberr, pin: password,),
+                    SizedBox(height: 5,),
+                    CostomizedTextButton(question: 'مستخدم سابق؟  ', actionTitle: 'سجل الدخول', purpose: 'SignIn',)
                   ],
                 )
               ));
