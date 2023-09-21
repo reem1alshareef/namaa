@@ -9,7 +9,7 @@ import 'package:stacked/stacked.dart';
 
 class ViewSignIn extends StatelessWidget {
   final TextEditingController namee=TextEditingController();
-  final TextEditingController phonenumberr=TextEditingController();
+  final TextEditingController emailAddress=TextEditingController();
   final TextEditingController password=TextEditingController();
   //final TextEditingController passwordConfirm=TextEditingController();
    ViewSignIn({super.key});
@@ -40,15 +40,15 @@ class ViewSignIn extends StatelessWidget {
                 // ignore: prefer_const_constructors
                 child: Column(
                   children: [
-                    SizedBox(height: 20,),
+                    const SizedBox(height: 20,),
                     //ReturnToPreviousPage(title: 'التسجيل', tWidth: 400),
                     //introPagesHeader(title: 'تسجيل الدخول', subTitle: ''),
-                    mainHeader(title: 'تسجيل الدخول',),
-                    SizedBox(height: 20,),
-                    TextInputField(title: 'رقم الجوال', placeHolder: 'اكتب رقم جوالك', inputController: phonenumberr,),
+                    const mainHeader(title: 'تسجيل الدخول',),
+                    const SizedBox(height: 20,),
+                    TextInputField(title: 'رقم الجوال', placeHolder: 'اكتب رقم جوالك', inputController: emailAddress,),
                     TextInputField(title: 'كلمة السر', placeHolder: 'اكتب كلمة السر الخاصة بك', inputController: password,),
-                    AccountButton(title: 'سجل الدخول', type: 'SignIn', name: namee, phonenumber: phonenumberr, pin: password,),
-                    SizedBox(height: 5,),
+                    AccountButton(title: 'سجل الدخول', type: 'SignIn', name: namee, emailAddress: emailAddress, pin: password,),
+                    const SizedBox(height: 5,),
                     CostomizedTextButton(question: 'نسيت كلمة المرور؟  ', actionTitle: 'إستعادة كلمة المرور', purpose: 'SignUp',)
                   ],
                 )

@@ -1,7 +1,5 @@
 class hi{
-  hi(){
-
-  }
+  hi();
   hiiii(String verificationCode){
     print(verificationCode);
   }

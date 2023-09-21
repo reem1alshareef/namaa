@@ -3,12 +3,15 @@ import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:namaagp/Components/CostomizedTextButton.dart';
 import 'package:namaagp/Components/ReturnToPreviousPage.dart';
 import 'package:namaagp/Identity%20Elements/introPagesHeader.dart';
+import 'package:namaagp/IncomeDetails/ViewIncomeDetails.dart';
 import 'package:namaagp/OTPPage/ViewModelOTPPage.dart';
 import 'package:stacked/stacked.dart';
 
 
 class ViewOTPPage extends StatelessWidget {
-  const ViewOTPPage({super.key});
+  final String emailAddress;
+  const ViewOTPPage({super.key, required this.emailAddress});
+  //final email = emailAddress;
   
   get otpController => null;
 
@@ -39,26 +42,33 @@ class ViewOTPPage extends StatelessWidget {
                 // ignore: prefer_const_constructors
                 child: Column(
                   children: [
-                    ReturnToPreviousPage(title: 'الصفحة السابقة', tWidth: 400,),
-                    introPagesHeader(subTitle: 'تم إرسال رمز التحقق على رقم جوالك', title: 'أدخل رمز التحقق',),
+                    const ReturnToPreviousPage(title: 'الصفحة السابقة', tWidth: 400,),
+                    const introPagesHeader(subTitle: 'تم إرسال رمز التحقق على بريدك الإلكتروني', title: 'أدخل رمز التحقق',),
                     OtpTextField(
-                      margin: EdgeInsets.all(12),
-        numberOfFields: 4,
-        borderColor: Color(0x0C16325F),
+                      margin: const EdgeInsets.all(8),
+        numberOfFields: 6,
+        borderColor: const Color(0x0C16325F),
         //set to true to show as box or false to show as dash
         showFieldAsBox: true, 
-        fieldWidth: 65,
-        borderRadius: BorderRadius.all(Radius.circular(0)),
+        fieldWidth: 45,
+        borderRadius: const BorderRadius.all(Radius.circular(0)),
         borderWidth: 1,
-        textStyle: TextStyle(fontSize: 26, color: Color.fromARGB(255, 255, 255, 255)),
+        textStyle: const TextStyle(fontSize: 26, color: Color.fromARGB(255, 255, 255, 255)),
         
         //runs when a code is typed in
         // onCodeChanged: (String code) {
         //     //handle validation or checks here           
         // },
         //runs when every textfield is filled
-        onSubmit: (String verificationCode){
-          viewmodel.returnOTP(verificationCode);
+        onSubmit: (String verificationCode,) async {
+          //var emailAddress=e;
+          await viewmodel.returnOTP(verificationCode, emailAddress);
+                  Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) =>  ViewIncomeDetails()),
+  );
+            //Navigator.pop(context, (route) =>ViewIncomeDetails());
+          
           //Navigator.pop(context, verificationCode);
             //returnCode(verificationCode);
         }, // end onSubmit

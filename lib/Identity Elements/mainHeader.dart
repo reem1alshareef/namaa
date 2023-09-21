@@ -17,7 +17,7 @@ class mainHeader extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        ReturnToPreviousPage(title: 'البداية', tWidth: 69,),
+        const ReturnToPreviousPage(title: 'البداية', tWidth: 69,),
         Text(title,
                   textAlign: TextAlign.center,
                   style: GoogleFonts.getFont("Noto Sans Arabic",

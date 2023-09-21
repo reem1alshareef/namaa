@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:namaagp/IncomeDetails/ViewModelIncomeDetails.dart';
+import 'package:namaagp/OTPPage/ViewOTPPage.dart';
 import 'package:namaagp/SignIn/ViewModelSignIn.dart';
 import 'package:namaagp/SignUp/ViewModelSignUp.dart';
 
+// ignore: must_be_immutable
 class AccountButton extends StatelessWidget {
   final String title;
   final String type;
-  final signupObj = new ViewModelSignUp();
-  final signinObj = new ViewModelSignIn();
+  final signupObj = ViewModelSignUp();
+  final signinObj = ViewModelSignIn();
   TextEditingController name;
-  TextEditingController phonenumber;
+  TextEditingController emailAddress;
   TextEditingController pin;
 
 
@@ -18,7 +21,7 @@ class AccountButton extends StatelessWidget {
     required this.title,
     required this.type,
     required this.name,
-    required this.phonenumber,
+    required this.emailAddress,
     required this.pin,
 
   }) : super(key: key);
@@ -28,19 +31,39 @@ class AccountButton extends StatelessWidget {
     return Container(
       child: GestureDetector(
       onTap: () {//this if statement changes the purpose or the destination of the button
-buttonAction();
+      switch (type.toLowerCase()) {
+    case 'signup':
+       signupObj.signUp(name.text, emailAddress.text, pin.text);
+      Navigator.push(context,MaterialPageRoute(builder: (context) =>  ViewOTPPage(emailAddress: emailAddress.text,)),);
+      print('reached Sign up!!!!');
+    break;
+
+    case 'signin':
+    signinObj.signIn(emailAddress.text, pin.text);
+      print('reached Sign In!!!!');
+    break;
+
+    case 'continue':
+      ViewModelIncomeDetails().addIncomeDetails(name.text, emailAddress.text, pin.text);
+      print('reached continue!!!!');
+    break;
+      
+    default:
+    print('Eroooorrrrrrrrrrr!!!!');
+  }
+//buttonAction();
               },
       child: Row(
         
       children: [
-        SizedBox(width: 30,),
+        const SizedBox(width: 30,),
 
 
 
 Container(
                     width: 323,
                     height: 55,
-                    padding: EdgeInsets.all(10),
+                    padding: const EdgeInsets.all(10),
                     decoration: ShapeDecoration(
                         color: const Color(0xFF3A3462),
                         shape: RoundedRectangleBorder(
@@ -67,25 +90,27 @@ Container(
       ],
     )
     ,));
+    
   }
-  buttonAction(){
-  switch (type.toLowerCase()) {
-    case 'signup':
-      signupObj.signUp(name.text, phonenumber.text, pin.text);
-      print('reached Sign up!!!!');
-    break;
+//   buttonAction() async {
+//   switch (type.toLowerCase()) {
+//     case 'signup':
+//       signupObj.signUp(name.text, emailAddress.text, pin.text);
+//       print('reached Sign up!!!!');
+//     break;
 
-    case 'signin':
-    signinObj.signIn(phonenumber.text, pin.text);
-      print('reached Sign In!!!!');
-    break;
+//     case 'signin':
+//     await signinObj.signIn(emailAddress.text, pin.text);
+//     Navigator.push(context,MaterialPageRoute(builder: (context) =>  ViewSignUp()),);
+//       print('reached Sign In!!!!');
+//     break;
 
-    case 'continue':
-      print('reached continue!!!!');
-    break;
+//     case 'continue':
+//       print('reached continue!!!!');
+//     break;
       
-    default:
-    print('Eroooorrrrrrrrrrr!!!!');
-  }
-}
+//     default:
+//     print('Eroooorrrrrrrrrrr!!!!');
+//   }
+// }
 }

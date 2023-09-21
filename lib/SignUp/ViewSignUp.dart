@@ -9,9 +9,10 @@ import 'package:stacked/stacked.dart';
 
 class ViewSignUp extends StatelessWidget {
   final TextEditingController namee=TextEditingController();
-  final TextEditingController phonenumberr=TextEditingController();
+  final TextEditingController emailAddress=TextEditingController();
   final TextEditingController password=TextEditingController();
   final TextEditingController passwordConfirm=TextEditingController();
+  
    ViewSignUp({super.key});
   @override
   Widget build(BuildContext context) {
@@ -44,12 +45,46 @@ class ViewSignUp extends StatelessWidget {
                     mainHeader(title: 'إنشاء حساب',),
                     SizedBox(height: 5,),
                     TextInputField(title: 'الاسم', placeHolder: 'اكتب اسمك', inputController: namee,),
-                    TextInputField(title: 'رقم الجوال', placeHolder: 'اكتب رقم جوالك', inputController: phonenumberr,),
+                    TextInputField(title: 'البريد الإلكتروني', placeHolder: 'اكتب عنوان بريدك الإلكتروني', inputController: emailAddress,),
                     TextInputField(title: 'كلمة السر', placeHolder: 'اكتب كلمة السر الخاصة بك', inputController: password,),
                     TextInputField(title: 'تأكيد كلمة السر', placeHolder: 'اعد كتابة كلمة السر الخاصة بك', inputController: passwordConfirm,),
-                    AccountButton(title: 'أكمل', type: 'SignUp', name: namee, phonenumber: phonenumberr, pin: password,),
+                    AccountButton(title: 'أكمل', type: 'SignUp', name: namee, emailAddress: emailAddress, pin: password,),
                     SizedBox(height: 5,),
                     CostomizedTextButton(question: 'مستخدم سابق؟  ', actionTitle: 'سجل الدخول', purpose: 'SignIn',)
+                    // mainHeader(),
+                    // //introPagesHeader(subTitle: 'إنشاء حساب',),
+                    // TextInputField(title: 'الاسم', placeHolder: 'اكتب اسمك'),
+                    // TextInputField(title: 'رقم الجوال', placeHolder: 'اكتب رقم جوالك'),
+                    // TextInputField(title: 'كلمة السر', placeHolder: 'اكتب كلمة السر الخاصة بك'),
+                    // TextInputField(title: 'تأكيد كلمة السر', placeHolder: 'اعد كتابة كلمة السر الخاصة بك'),
+                    
+
+                    // ElevatedButton(
+                    //       onPressed: () async {
+                    //         AuthenticationService authService = AuthenticationService();
+                    //         await authService.signUp(
+                    //           name: 'ree',
+                    //           password: '456',
+                    //           phoneNumber: '34567',
+                    //           passcode: 'bj',
+                    //           );
+                              
+                    //         print('reem');
+                    //       },
+                    //       style: ElevatedButton.styleFrom(
+                    //           primary: const Color(0xFF4081EC)),
+                    //       child: const Text(
+                    //         'سجل الدخول',
+                    //         style: TextStyle(
+                    //           fontWeight: FontWeight.w700,
+                    //           fontSize: 18,
+                    //         ),
+                    //       ),
+                    //       ),
+
+                    //SizedBox(height: 10,),
+                    //AccountButton(title: 'title', placeHolder: 'placeHolder')
+                    //header()
                   ],
                 )
               ));

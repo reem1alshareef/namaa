@@ -33,6 +33,7 @@ class TextInputField extends StatelessWidget {
             height: 35,
             child: TextFormField(
               textAlign: TextAlign.right,
+//keyboardType: title=='الراتب'?TextInputType.number:TextInputType.values,
               decoration: InputDecoration(
                 hintText: placeHolder,
                 hintStyle: TextStyle(

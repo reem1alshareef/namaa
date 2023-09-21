@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:namaagp/Splash/ViewSplash.dart';
-import 'package:namaagp/services/authentication_service.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:get_it/get_it.dart';
 
 //import 'namaagp/lib/SignUp/ViewModelSignUp.dart';
 main() async {

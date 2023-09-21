@@ -51,15 +51,15 @@ class ViewSplash extends StatelessWidget {
                     Align(
                         alignment: Alignment.topRight,
                         child: Row(
-                          // children: [
-                          //   const SizedBox(width: 55),
-                          //   Image.asset(
-                          //     'assets/NamaaLogo.png',
-                          //     width: 310,
-                          //     height: 228.33,
-                          //     fit: BoxFit.fill,
-                          //   ),
-                          // ],
+                          children: [
+                            const SizedBox(width: 55),
+                            Image.asset(
+                              'assets/NamaaLogo.png',
+                              width: 310,
+                              height: 228.33,
+                              fit: BoxFit.fill,
+                            ),
+                          ],
                         )),
                     SizedBox(
                       height: 110,
@@ -104,7 +104,7 @@ class ViewSplash extends StatelessWidget {
                           ],
                         ),
                       ),
-                      DraggableButton(),
+                      const DraggableButton(),
                       // Positioned(
                       //     left: 268,
                       //     top: 5,

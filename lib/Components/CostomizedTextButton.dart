@@ -5,7 +5,7 @@ import 'package:namaagp/SignIn/ViewSignIn.dart';
 import 'package:namaagp/SignUp/ViewSignUp.dart';
 
 class CostomizedTextButton extends StatelessWidget {
-  final resend = new ViewModelOTPPage();
+  final resend = ViewModelOTPPage();
   final String question;
   final String actionTitle;
   final String purpose;
@@ -20,6 +20,7 @@ class CostomizedTextButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      alignment: Alignment.center,
       child: GestureDetector(
       onTap: () {//this if statement changes the purpose or the destination of the button
 
@@ -81,8 +82,6 @@ class CostomizedTextButton extends StatelessWidget {
       ],
     )
     ,),
-      //ResendOTP(),
-      alignment: Alignment.center,
       //alignment:
     )
     

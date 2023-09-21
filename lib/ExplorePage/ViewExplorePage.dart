@@ -33,7 +33,7 @@ class ViewExplorePage extends StatelessWidget {
                 ),
                 // ignore: prefer_const_constructors
                 child: Column(
-                  children: [
+                  children: const [
                     mainHeader(title: '',),
 
                     //Balance Area

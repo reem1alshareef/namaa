@@ -1,7 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:stacked_services/stacked_services.dart';
 //import 'package:gdsc_app/core/services/supabase_service.dart';
-import '../services/authentication_service.dart';
 import 'supabase_service.dart';
 
 final locator = GetIt.instance;
