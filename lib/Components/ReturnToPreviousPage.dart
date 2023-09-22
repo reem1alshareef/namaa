@@ -3,11 +3,17 @@ import 'package:google_fonts/google_fonts.dart';
 
 class ReturnToPreviousPage extends StatelessWidget {
   final String title;
+  
+  final double tWidth;
+  
+  //public var widthh=400;
   //final String placeHolder;
 
   const ReturnToPreviousPage({
     Key? key,
     required this.title,
+    required this.tWidth,
+    //final int widthh=400,
     //required this.placeHolder,
 
   }) : super(key: key);
@@ -19,7 +25,7 @@ class ReturnToPreviousPage extends StatelessWidget {
               Navigator.pop(context);
               },
               child: SizedBox(
-    width: 400,
+    width: tWidth,
     height: 55,
     child: Row(
         children: [

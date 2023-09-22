@@ -1,29 +1,46 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:namaagp/SignIn/ViewModelSignIn.dart';
+import 'package:namaagp/SignUp/ViewModelSignUp.dart';
 
 class AccountButton extends StatelessWidget {
   final String title;
-  final String placeHolder;
+  final String type;
+  final signupObj = new ViewModelSignUp();
+  final signinObj = new ViewModelSignIn();
+  TextEditingController name;
+  TextEditingController phonenumber;
+  TextEditingController pin;
 
-  const AccountButton({
+
+   AccountButton({
     Key? key,
     required this.title,
-    required this.placeHolder,
+    required this.type,
+    required this.name,
+    required this.phonenumber,
+    required this.pin,
 
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-    width: 323,
-    height: 55,
-    child: Stack(
-        children: [
-            Positioned(
-                left: 0,
-                top: 0,
-                child: Container(
+    return Container(
+      child: GestureDetector(
+      onTap: () {//this if statement changes the purpose or the destination of the button
+buttonAction();
+              },
+      child: Row(
+        
+      children: [
+        SizedBox(width: 30,),
+
+
+
+Container(
                     width: 323,
                     height: 55,
+                    padding: EdgeInsets.all(10),
                     decoration: ShapeDecoration(
                         color: const Color(0xFF3A3462),
                         shape: RoundedRectangleBorder(
@@ -38,28 +55,37 @@ class AccountButton extends StatelessWidget {
                             )
                         ],
                     ),
+                    child: Text(title,
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.getFont("Noto Sans Arabic",
+                      fontSize: 28,
+                      fontWeight: FontWeight.w400,
+                      height: 1.5,
+                      textStyle: const TextStyle(color: Color(0xFFD0CDEF)))),
                 ),
-            ),
-            const Positioned(
-                left: 79,
-                top: 5,
-                child: SizedBox(
-                    width: 166,
-                    height: 45,
-                    child: Text(
-                        'إنشاء حساب',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Color(0xFFF8F8FF),
-                            fontSize: 24,
-                            fontFamily: 'Trade Winds',
-                            fontWeight: FontWeight.w400,
-                        ),
-                    ),
-                ),
-            ),
-        ],
-    ),
-);
+        
+      ],
+    )
+    ,));
   }
+  buttonAction(){
+  switch (type.toLowerCase()) {
+    case 'signup':
+      signupObj.signUp(name.text, phonenumber.text, pin.text);
+      print('reached Sign up!!!!');
+    break;
+
+    case 'signin':
+    signinObj.signIn(phonenumber.text, pin.text);
+      print('reached Sign In!!!!');
+    break;
+
+    case 'continue':
+      print('reached continue!!!!');
+    break;
+      
+    default:
+    print('Eroooorrrrrrrrrrr!!!!');
+  }
+}
 }

@@ -27,12 +27,12 @@ class CostomizedTextButton extends StatelessWidget {
 
         case 'SignUp':
         print('reached sign up in navigator');
-        Navigator.push(context,MaterialPageRoute(builder: (context) => const ViewSignUp()),);
+        Navigator.push(context,MaterialPageRoute(builder: (context) =>  ViewSignUp()),);
         break;
 
         case 'SignIn':
         print('reached sign in in navigator');
-        Navigator.push(context,MaterialPageRoute(builder: (context) => const ViewSignIn()),);
+        Navigator.push(context,MaterialPageRoute(builder: (context) =>  ViewSignIn()),);
         break;
 
         case 'retrievePassword':
@@ -58,8 +58,8 @@ class CostomizedTextButton extends StatelessWidget {
       child: Row(
         
       children: [
-          SizedBox(width: 85,),
-          Text('إعادة الإرسال',
+          SizedBox(width: purpose!='SignUp'?85:65,),
+          Text(actionTitle,
               textAlign: TextAlign.right,
               style: GoogleFonts.getFont("Noto Sans Arabic",
                   fontSize: 16,
@@ -69,7 +69,7 @@ class CostomizedTextButton extends StatelessWidget {
                   
                   //textDecoration: ,
                   ),
-                  Text('لم يصلك رمز التحقق؟  ',
+                  Text(question,
               textAlign: TextAlign.right,
               style: GoogleFonts.getFont("Noto Sans Arabic",
                   fontSize: 16,
