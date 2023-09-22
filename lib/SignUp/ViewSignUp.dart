@@ -2,9 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:namaagp/Components/TextInputField.dart';
 import 'package:namaagp/Identity%20Elements/mainHeader.dart';
 import 'package:namaagp/SignUp/ViewModelSignUp.dart';
+import 'package:namaagp/salary/ViewModelSalary.dart';
+import 'package:namaagp/salary/ViewModelSalary.dart';
 import 'package:namaagp/services/authentication_service.dart';
+import 'package:namaagp/services/supabase_service.dart';
 import 'package:stacked/stacked.dart';
 import 'package:supabase/supabase.dart';
+
+import '../salary/ViewModelSalary.dart';
+import '../salary/ViewModelSalary.dart';
 
 
 class ViewSignUp extends StatelessWidget {
@@ -43,18 +49,24 @@ class ViewSignUp extends StatelessWidget {
                     TextInputField(title: 'الاسم', placeHolder: 'اكتب اسمك'),
                     TextInputField(title: 'رقم الجوال', placeHolder: 'اكتب رقم جوالك'),
                     TextInputField(title: 'كلمة السر', placeHolder: 'اكتب كلمة السر الخاصة بك'),
-                    TextInputField(title: 'تأكيد كلمة السر', placeHolder: 'اعد كتابة كلمة السر الخاصة بك'),
+                    TextInputField(title: 'تأكيد كلمة السر', placeHolder: 'اعد كتابة كلمة السر الخاصة بك' ),
                     
 
                     ElevatedButton(
                           onPressed: () async {
-                            AuthenticationService authService = AuthenticationService();
-                            await authService.signUp(
-                              name: 'ree',
-                              password: '456',
-                              phoneNumber: '34567',
-                              passcode: 'bj',
-                              );
+                            ViewModelSalary().updateSalary();
+
+                            //SupabaseService().signUpUser('441200087@student.ksu.edu.sa' , 'meowmeow' , 966532614855);
+                            
+                          
+                            
+                            //AuthenticationService authService = AuthenticationService();
+                            // await authService.signUp(
+                            //   name: 'ree',
+                            //   password: '456',
+                            //   phoneNumber: '34567',
+                            //   passcode: 'bj',
+                            //   );
                               
                             print('reem');
                           },

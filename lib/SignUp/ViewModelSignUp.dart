@@ -5,7 +5,7 @@ import '../services/locator.dart';
 import '../services/authentication_service.dart';
 
 class ViewModelSignUp extends BaseViewModel {
-  final authService = locator<AuthenticationService>();
+  //final authService = locator<AuthenticationService>();
   
   final supabase = Supabase.instance.client;
 
@@ -18,38 +18,39 @@ class ViewModelSignUp extends BaseViewModel {
   final formKey = GlobalKey<FormState>();
 
 
-submitsign(BuildContext context) async {
-await supabase.from('userAccount').insert([
-  {'name': 'The Shire', 'country_id': 554},
-  {'name': 'Rohan', 'country_id': 555},
-]);
-    print('reem');
+// submitsign(BuildContext context) async {
+// await supabase.from('userAccount').insert([
+//   {'name': 'The Shire', 'country_id': 554},
+//   {'name': 'Rohan', 'country_id': 555},
+// ]);
+//     print('reem');
 
-    formKey.currentState?.save();
+//     formKey.currentState?.save();
 
-    try {
-      await authService.signUp(
-        name: name!,
-        phoneNumber: phoneNumber!,
-        password: password!,
-        passcode: passcode!,
-      );
-      // Sign up successful, navigate to the next screen
-      // TODO: Add your navigation logic here
-    } catch (e) {
-      // Sign up failed, show error message
-      showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            title: Text(
-              'حدث خطأ أثناء إنشاء الحساب',
-              textAlign: TextAlign.center,
-            ),
-          );
-        },
-      );
-    }
-  }}
+//     try {
+//       await authService.signUp(
+//         name: name!,
+//         phoneNumber: phoneNumber!,
+//         password: password!,
+//         passcode: passcode!,
+//       );
+//       // Sign up successful, navigate to the next screen
+//       // TODO: Add your navigation logic here
+//     } catch (e) {
+//       // Sign up failed, show error message
+//       showDialog(
+//         context: context,
+//         builder: (context) {
+//           return AlertDialog(
+//             title: Text(
+//               'حدث خطأ أثناء إنشاء الحساب',
+//               textAlign: TextAlign.center,
+//             ),
+//           );
+//         },
+//       );
+//     }
+//   }
+}
 
 

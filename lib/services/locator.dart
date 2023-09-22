@@ -11,5 +11,5 @@ void setupLocator() {
   locator.registerLazySingleton(() => DialogService());
   locator.registerLazySingleton(() => SnackbarService());
   //locator.registerLazySingleton(() => AuthenticationService());
-  locator.registerLazySingleton(() => SupabaseService());
+  //locator.registerLazySingleton(() => SupabaseService());
 }
