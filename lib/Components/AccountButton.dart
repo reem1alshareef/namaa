@@ -30,16 +30,17 @@ class AccountButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: GestureDetector(
-      onTap: () {//this if statement changes the purpose or the destination of the button
+      onTap: () async {//this if statement changes the purpose or the destination of the button
       switch (type.toLowerCase()) {
     case 'signup':
-       signupObj.signUp(name.text, emailAddress.text, pin.text);
-      Navigator.push(context,MaterialPageRoute(builder: (context) =>  ViewOTPPage(emailAddress: emailAddress.text,)),);
+      await signupObj.signUp(name.text, emailAddress.text, pin.text);
+      Navigator.push(context,MaterialPageRoute(builder: (context) =>  ViewOTPPage(emailAddress: emailAddress.text, type: 'SignUp')),);
       print('reached Sign up!!!!');
     break;
 
     case 'signin':
     signinObj.signIn(emailAddress.text, pin.text);
+          Navigator.push(context,MaterialPageRoute(builder: (context) =>  ViewOTPPage(emailAddress: emailAddress.text, type: 'SignIn')),);
       print('reached Sign In!!!!');
     break;
 
