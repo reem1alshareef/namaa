@@ -57,7 +57,7 @@ import 'package:stacked/stacked.dart';
 
 class ViewModelSignUp extends BaseViewModel {
   signUp(String namee, String email, String password){
-    AuthenticationService().signUp( namee: namee, email: email, passwordd: password, );
+    AuthenticationService().signUp( namee: namee, emaill: email, passwordd: password, );
 
     //print(name);
   }

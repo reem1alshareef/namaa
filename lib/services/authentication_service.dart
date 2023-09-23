@@ -11,15 +11,24 @@ class AuthenticationService {
   //   anonKey:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJwd3F4bmRsaGRpcWtyZWppZ3NlIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTMwNjY4NDQsImV4cCI6MjAwODY0Mjg0NH0.qlIR6KNotfLwl30HsVSUW9M3smblYaYxtk_D7W2L_EU',
   // );
 
-  Future<void> signUp({required String namee, required String email, required String passwordd}) async {
+  Future<void> signUp({required String namee, required String emaill, required String passwordd}) async {
     //try {
       //Call the appropriate method from Supabase to sign up the user
       try{
   final supabaseClient = SupabaseClient('https://rpwqxndlhdiqkrejigse.supabase.co', "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJwd3F4bmRsaGRpcWtyZWppZ3NlIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTMwNjY4NDQsImV4cCI6MjAwODY0Mjg0NH0.qlIR6KNotfLwl30HsVSUW9M3smblYaYxtk_D7W2L_EU");
-await supabaseClient.auth.signUp(
-        email: email, // Use the phone number as the email (assuming Supabase requires an email for sign-up)
+  print('$emaill and $passwordd');
+  //supabaseClient.cl
+final res=await supabaseClient.auth.signUp(
+        email: emaill, // Use the phone number as the email (assuming Supabase requires an email for sign-up)
         password: passwordd,
       );
+await supabaseClient.from('userAccount')
+  .insert([
+    { 'Email': emaill, 'name': namee, 'passcode':'0000', 'UserID':res.user?.id},
+  ]);
+      //print(response.user?.id);
+
+      //res.user.
       
       //verifyUserAccount();
   }catch(e){
@@ -59,10 +68,8 @@ await supabaseClient.auth.signUp(
    }
 
   static Future<void> verifyUserAccount(String otp, String email)async{
-    // String otp='';
-    // //await supabase.auth.signInWithOtp(email: 'shadenfalharbi@gmail.com',);
-    // otp = stdin.readLineSync()!;
     try{
+
 await supabase.auth.verifyOTP(token: otp, type: OtpType.email, email: email);
 //return true;
     }catch(e){
@@ -73,18 +80,24 @@ await supabase.auth.verifyOTP(token: otp, type: OtpType.email, email: email);
 
    }
    
-   Future<void> sendOTP(String email) async {
-   await supabase.auth.signInWithOtp(
-    email: email,
-  );
+   static Future<void> signInUser(String email, String password) async {
+      final supabaseClient = SupabaseClient('https://rpwqxndlhdiqkrejigse.supabase.co', "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJwd3F4bmRsaGRpcWtyZWppZ3NlIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTMwNjY4NDQsImV4cCI6MjAwODY0Mjg0NH0.qlIR6KNotfLwl30HsVSUW9M3smblYaYxtk_D7W2L_EU");
+//final supabase = supabaseClient.auth.admin.noSuchMethod(invocation)
+   final response= await supabaseClient.auth.signInWithPassword(password: password, email: email);
+   if (response.session!=null) {
+await supabaseClient.auth.signOut();
 
-  // if (response.toString() != null) {
-  //   throw Exception('Error sending OTP: ${response.error.message}');
-  // }
+await supabase.auth.signInWithOtp(
+  email: email, //emailRedirectTo: 'otp'
+);
+   } else if (response.session==null){
+
+   }
+  //  await supabase.auth.signInWithOtp(
+  //   email: email,
+
+  // );
 }
-
-
-  // Add other authentication methods using Supabase
 }
 
 
