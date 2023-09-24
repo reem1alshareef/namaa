@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:namaagp/AddExpenses/ViewAddExpenses.dart';
 import 'package:namaagp/Splash/ViewSplash.dart';
+import 'package:namaagp/AddExpenses/ViewAddExpenses.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 //import 'namaagp/lib/SignUp/ViewModelSignUp.dart';
 main() async {
@@ -77,7 +79,8 @@ class _MyHomePageState extends State<MyHomePage> {
         MaterialPageRoute(
           builder: (BuildContext context) {
             submitLogin();
-            return const ViewSplash();
+            return ViewAddExpenses();
+            //return const ViewSplash();
           },
         ),
       );
