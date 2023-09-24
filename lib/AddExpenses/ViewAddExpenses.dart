@@ -45,12 +45,7 @@ class ViewAddExpenses extends StatelessWidget {
                     //ReturnToPreviousPage(title: 'البداية', tWidth: 400),
                    // introPagesHeader(title: '',subTitle: ''),
                     mainHeader(title: 'إضافة صرف',),
-                    // SizedBox(height: 20,),
-                    // TextInputField(title: 'رقم الجوال', placeHolder: 'اكتب رقم جوالك', inputController: phonenumberr,),
-                    // TextInputField(title: 'كلمة السر', placeHolder: 'اكتب كلمة السر الخاصة بك', inputController: password,),
-                    // AccountButton(title: 'سجل الدخول', type: 'SignIn', name: namee, phonenumber: phonenumberr, pin: password,),
-                    // SizedBox(height: 5,),
-                    // CostomizedTextButton(question: 'نسيت كلمة المرور؟  ', actionTitle: 'إستعادة كلمة المرور', purpose: 'SignUp',)
+                    
                  Container(
   width: 80,
   height: 80,
