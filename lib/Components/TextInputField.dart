@@ -36,9 +36,9 @@ class TextInputField extends StatelessWidget {
 //keyboardType: title=='الراتب'?TextInputType.number:TextInputType.values,
               decoration: InputDecoration(
                 hintText: placeHolder,
-                hintStyle: TextStyle(
+                hintStyle: const TextStyle(
                     color: Color(0xFF898B99), height: 1, fontSize: 18),
-                enabledBorder: UnderlineInputBorder(
+                enabledBorder: const UnderlineInputBorder(
                   borderSide: BorderSide(
                       width: 0.7, color: Color(0xFFB8BAC2)), //<-- SEE HERE
                 ),
@@ -46,7 +46,7 @@ class TextInputField extends StatelessWidget {
               controller: inputController,
               obscureText: title=='كلمة السر'|| title=='تأكيد كلمة السر'? true:false,
             )),
-        SizedBox(
+        const SizedBox(
           height: 20,
         )
       ],

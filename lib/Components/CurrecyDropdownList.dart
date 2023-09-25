@@ -35,8 +35,8 @@ class CurrencyDropdownListClass extends State<CurrencyDropdownList> {
             width: 350,
             height: 55,
             child: DropdownButtonFormField<String>(
-              dropdownColor: Color(0xFFB8BAC2),
-              decoration: InputDecoration(prefixIcon: Icon(Icons.keyboard_arrow_down_rounded, color: Color(0xFFB8BAC2,)), fillColor: Color(0xFFB8BAC2), enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Color(0xFFB8BAC2)))),
+              dropdownColor: const Color(0xFFB8BAC2),
+              decoration: const InputDecoration(prefixIcon: Icon(Icons.keyboard_arrow_down_rounded, color: Color(0xFFB8BAC2,)), fillColor: Color(0xFFB8BAC2), enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Color(0xFFB8BAC2)))),
               iconSize: 0,
       alignment: AlignmentDirectional.bottomEnd,
       //icon: const Icon(Icons.keyboard_arrow_down_rounded,),
@@ -53,7 +53,7 @@ class CurrencyDropdownListClass extends State<CurrencyDropdownList> {
         // This is called when the user selects an item.
         setState(() {
           dropdownValue=value!;
-          widget.currency.text = value!;
+          widget.currency.text = value;
         });
         //currency.text = value;
       },
@@ -79,7 +79,7 @@ class CurrencyDropdownListClass extends State<CurrencyDropdownList> {
     )
             ),
             // )),
-        SizedBox(
+        const SizedBox(
           height: 20,
         )
       ],

@@ -41,7 +41,7 @@ class DatePickerClass extends State<DatePicker> {
             width: 350,
             height: 55,
             child: CupertinoTheme(
-              data: CupertinoThemeData(//applyThemeToAll: ,
+              data: const CupertinoThemeData(//applyThemeToAll: ,
               brightness: Brightness.dark,
               textTheme: CupertinoTextThemeData(
                 //pickerTextStyle: TextStyle(color: Color(0xffB59CCF))
@@ -63,14 +63,14 @@ class DatePickerClass extends State<DatePicker> {
               mode: CupertinoDatePickerMode.date,
               //minimumDate: DateTime(2023, 12),
               onDateTimeChanged: (DateTime value) {
-                widget.currency.text = value.toString();
+                widget.currency.text = value.day.toString();
                 print(widget.currency.text);
               },
               //mode: CupertinoDatePickerMode.date,
             ))
             ),
         // )),
-        SizedBox(
+        const SizedBox(
           height: 20,
         )
       ],

@@ -41,15 +41,15 @@ class ViewSignUp extends StatelessWidget {
                 // ignore: prefer_const_constructors
                 child: Column(
                   children: [
-                    SizedBox(height: 5,),
-                    mainHeader(title: 'إنشاء حساب',),
-                    SizedBox(height: 5,),
+                    const SizedBox(height: 5,),
+                    const mainHeader(title: 'إنشاء حساب',),
+                    const SizedBox(height: 5,),
                     TextInputField(title: 'الاسم', placeHolder: 'اكتب اسمك', inputController: namee,),
                     TextInputField(title: 'البريد الإلكتروني', placeHolder: 'اكتب عنوان بريدك الإلكتروني', inputController: emailAddress,),
                     TextInputField(title: 'كلمة السر', placeHolder: 'اكتب كلمة السر الخاصة بك', inputController: password,),
                     TextInputField(title: 'تأكيد كلمة السر', placeHolder: 'اعد كتابة كلمة السر الخاصة بك', inputController: passwordConfirm,),
                     AccountButton(title: 'أكمل', type: 'SignUp', name: namee, emailAddress: emailAddress, pin: password,),
-                    SizedBox(height: 5,),
+                    const SizedBox(height: 5,),
                     CostomizedTextButton(question: 'مستخدم سابق؟  ', actionTitle: 'سجل الدخول', purpose: 'SignIn',)
                     // mainHeader(),
                     // //introPagesHeader(subTitle: 'إنشاء حساب',),
