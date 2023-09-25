@@ -46,8 +46,8 @@ class ViewAddExpenses extends StatelessWidget {
                     mainHeader(title: 'إضافة صرف',),
                     
                  Container(
-  // width: 80,
-  // height: 80,
+   width: 80,
+   height: 80,
   
   child: Stack(
     
