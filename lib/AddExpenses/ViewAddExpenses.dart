@@ -9,6 +9,7 @@ import 'package:namaagp/Components/returntopreviouspage.dart';
 
 
 
+
 class ViewAddExpenses extends StatelessWidget {
   TextEditingController mycontroller = TextEditingController();
    ViewAddExpenses({super.key});
@@ -50,22 +51,8 @@ class ViewAddExpenses extends StatelessWidget {
   
   child: Stack(
     
-    children: [
-      SizedBox(
-  width: 210,
-  height: 45,
-  child: Text(
-    '0.00 ر. س',
-    textAlign: TextAlign.center,
-    style: TextStyle(
-      color: Colors.white,
-      fontSize: 48,
-      fontFamily: 'Noto Sans Arabic',
-      fontWeight: FontWeight.w400,
-      height: 0,
-    ),
-  ),
-),
+children:
+[
       Positioned(
         left: 0,
         top: 0,
@@ -111,12 +98,12 @@ class ViewAddExpenses extends StatelessWidget {
           // ),
         ),
       ),
-    ],
+                ]),)],
   ),
 )
-                  ],
-                )
-              ));
+                  ,
+           );
+              
         });
   }
 }
