@@ -75,14 +75,24 @@ class ViewAddExpenses extends StatelessWidget {
         left: 15,
         top: 15,
         child: Container(
+          child: Row(mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Flexible(
+                        child: Image.asset(
+                          "assets/Icons/microphone-8-48.png",
+                          height: 30,
+                          width: 30,
+                          fit: BoxFit.contain,
+                        ),
+                      ),]),
           width: 50,
           height: 50,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/Icons/microphone-8-48.png"),
-              fit: BoxFit.cover,
-            ),
-          ),
+          // decoration: BoxDecoration(
+          //   image: DecorationImage(
+          //     image: AssetImage("assets/Icons/microphone-8-48.png"),
+          //     fit: BoxFit.cover,
+          //   ),
+          // ),
         ),
       ),
     ],
