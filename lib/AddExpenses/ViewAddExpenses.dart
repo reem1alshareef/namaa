@@ -8,11 +8,9 @@ import 'package:stacked/stacked.dart';
 import 'package:namaagp/Components/returntopreviouspage.dart';
 
 
+
 class ViewAddExpenses extends StatelessWidget {
-  final TextEditingController namee=TextEditingController();
-  final TextEditingController phonenumberr=TextEditingController();
-  final TextEditingController password=TextEditingController();
-  //final TextEditingController passwordConfirm=TextEditingController();
+  TextEditingController mycontroller = TextEditingController();
    ViewAddExpenses({super.key});
   @override
   Widget build(BuildContext context) {
@@ -47,14 +45,32 @@ class ViewAddExpenses extends StatelessWidget {
                     mainHeader(title: 'إضافة صرف',),
                     
                  Container(
-  width: 80,
-  height: 80,
+  // width: 80,
+  // height: 80,
+  
   child: Stack(
+    
     children: [
+      SizedBox(
+  width: 210,
+  height: 45,
+  child: Text(
+    '0.00 ر. س',
+    textAlign: TextAlign.center,
+    style: TextStyle(
+      color: Colors.white,
+      fontSize: 48,
+      fontFamily: 'Noto Sans Arabic',
+      fontWeight: FontWeight.w400,
+      height: 0,
+    ),
+  ),
+),
       Positioned(
         left: 0,
         top: 0,
         child: Container(
+          
           width: 80,
           height: 80,
           decoration: ShapeDecoration(
