@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:namaagp/Components/AccountButton.dart';
 import 'package:namaagp/Components/CostomizedTextButton.dart';
@@ -8,8 +6,8 @@ import 'package:namaagp/Components/DatePicker.dart';
 import 'package:namaagp/Components/TextInputField.dart';
 import 'package:namaagp/Identity%20Elements/mainHeader.dart';
 import 'package:namaagp/IncomeDetails/ViewModelIncomeDetails.dart';
+
 import 'package:stacked/stacked.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 
 class ViewIncomeDetails extends StatefulWidget {
@@ -20,28 +18,11 @@ class ViewIncomeDetails extends StatefulWidget {
   final TextEditingController salaryDate=TextEditingController();
   final TextEditingController salary=TextEditingController();
   final TextEditingController currency=TextEditingController();
-  
-   //ViewIncomeDetails({super.key});
+
   class _ViewIncomeDetailsState extends State<ViewIncomeDetails>{
+  
+  final viewModel = ViewModelIncomeDetails();
 
-
-  var targetDay = ViewModelIncomeDetails().salaryDate();
-  @override
-  void initState() {
-    //Timer mytimer = 
-    Timer.periodic(const Duration(days: 1), (timer) {
-        DateTime timenow = DateTime.now();  //get current date and time
-        //time = timenow.hour.toString() + ":" + timenow.minute.toString() + ":" + timenow.second.toString(); 
-        if (timenow.second == targetDay){
-        setState(() {
-          ViewModelIncomeDetails.updateBalance();
-        }
-        );
-        }
-        //mytimer.cancel() //to terminate this timer
-    });
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
