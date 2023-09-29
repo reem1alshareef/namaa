@@ -26,6 +26,9 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
     "عائلة",
     "فواتير",
     "ترفيه",
+    "البيت",
+    "كافيهات",
+    "مطاعم"
   ];
 
   int selectedIndex = -1;
@@ -44,6 +47,9 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
           ),
           PopupMenuItem(
             child: Text("AED"),
+          ),
+          PopupMenuItem(
+            child: Text("GBP"),
           ),
         ],
         elevation: 8.0,
@@ -74,60 +80,72 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
                     ),
                   ),
                   // ignore: prefer_const_constructors
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        height: 20,
-                      ),
-                      //ReturnToPreviousPage(title: 'البداية', tWidth: 400),
-                      // introPagesHeader(title: '',subTitle: ''),
-                      mainHeader(
-                        title: 'إضافة صرف',
-                      ),
+                  child: Column(children: [
+                    SizedBox(
+                      height: 20,
+                    ),
+                    //ReturnToPreviousPage(title: 'البداية', tWidth: 400),
+                    // introPagesHeader(title: '',subTitle: ''),
+                    mainHeader(
+                      title: 'إضافة صرف',
+                    ),
 
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        // mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          TextButton(
-                              onPressed: () async {
-                                _showPopupMenu();
-                              },
-                              child: Image.asset("assets/Icons/down-arrow.png",
-                                  height: 30, width: 30)),
-                          SizedBox(
-                              width: 100,
-                              child: TextField(
-                                  style: TextStyle(
-                                      fontFamily: "Noto Sans Arabic",
-                                      fontSize: 40,
-                                      fontWeight: FontWeight.w500,
-                                      color: Colors.white),
-                                  keyboardType: TextInputType.number,
-                                  inputFormatters: <TextInputFormatter>[
-                                    FilteringTextInputFormatter.digitsOnly
-                                  ])),
-                        ],
-                      ),
-                      ListView.separated(
-                        itemCount: data.length,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) => FilterChip(
-                          label: Text(data[index]),
-                          selected: index == selectedIndex,
-                          onSelected: (value) {
-                            setState(() {
-                              selectedIndex = index;
-                            });
-                          },
-                        ),
-                        separatorBuilder: (BuildContext context, int index) =>
-                            const SizedBox(
-                          width: 10,
-                        ),
-                      )
-                    ],
-                  )));
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      // mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        TextButton(
+                            onPressed: () async {
+                              _showPopupMenu();
+                            },
+                            child: Image.asset("assets/Icons/down-arrow.png",
+                                height: 30, width: 30)),
+                        SizedBox(
+                            width: 100,
+                            child: TextField(
+                                style: TextStyle(
+                                    fontFamily: "Noto Sans Arabic",
+                                    fontSize: 40,
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.white),
+                                keyboardType: TextInputType.number,
+                                inputFormatters: <TextInputFormatter>[
+                                  FilteringTextInputFormatter.digitsOnly
+                                ])),
+                      ],
+                    ),
+                    SingleChildScrollView(
+                        child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        SizedBox(
+                            height: 150,
+                            child: ListView.separated(
+                              itemCount: data.length,
+                              scrollDirection: Axis.horizontal,
+                              itemBuilder: (context, index) => FilterChip(
+                                  label: Text(data[index]),
+                                  labelStyle:
+                                      GoogleFonts.getFont("Noto Sans Arabic", color: const Color.fromARGB(255, 255, 255, 255)),
+                                  selected: index == selectedIndex,
+                                 
+                                  backgroundColor: Color.fromARGB(255, 58, 52, 98),
+                                  onSelected: (value) {
+                                    setState(() {
+                                     selectedIndex = index;
+                                      selectedColor:
+                                      Color.fromARGB(255, 36, 228, 39);
+                                    });
+                                  }),
+                              separatorBuilder:
+                                  (BuildContext context, int index) =>
+                                      const SizedBox(
+                                width: 15,
+                              ),
+                            )),
+                      ],
+                    ))
+                  ])));
         });
   }
 }
