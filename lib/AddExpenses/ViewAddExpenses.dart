@@ -227,7 +227,6 @@ Text(':لإضافة صرف باستخدام الادخال الصوتي',
                padding: const EdgeInsets.fromLTRB(50, 0, 50, 0),
                child: Container(
                  padding: const EdgeInsets.all(0.0),
-                
                  width: 10.0,
                  height: 15.0,
                ), //Container
