@@ -80,7 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
           builder: (BuildContext context) {
             submitLogin();
            
-            return ViewAddExpenses();
+            return ViewMoreExpenses();
             //return const ViewSplash();
           },
         ),
