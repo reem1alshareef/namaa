@@ -3,6 +3,8 @@ import 'package:namaagp/AddExpenses/ViewAddExpenses.dart';
 import 'package:namaagp/Splash/ViewSplash.dart';
 import 'package:namaagp/AddExpenses/ViewAddExpenses.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:namaagp/AddExpenses/DateTimePicker.dart';
+
 //import 'namaagp/lib/SignUp/ViewModelSignUp.dart';
 main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,15 +23,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: MyHomePage(
-      ),
+      home: MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
-
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -39,8 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: const Color(0x00071121),
-        body: buildBody(context)
+        backgroundColor: const Color(0x00071121), body: buildBody(context)
         // Container(
         //   padding: EdgeInsets.only(top: 50.0, left: 10, right: 10),
         //   width: 428,
@@ -53,11 +52,11 @@ class _MyHomePageState extends State<MyHomePage> {
         //       colors: [Color(0xFF342D68), Color(0xFF352D68), Color(0x00352D68)],
         //     ),
         //   ),
-          
+
         //   child: Column(children: const [
         //     header(subTitle: 'a', title: '',),
         //   ],)
-          
+
         //   //child: const header(subTitle: 'a', title: '',),
         // )
         );
@@ -79,6 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
         MaterialPageRoute(
           builder: (BuildContext context) {
             submitLogin();
+           
             return ViewAddExpenses();
             //return const ViewSplash();
           },

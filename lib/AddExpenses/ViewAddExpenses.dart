@@ -9,6 +9,10 @@ import 'package:namaagp/Identity%20Elements/mainHeader.dart';
 import 'package:namaagp/AddExpenses/ViewModelAddExpenses.dart';
 import 'package:stacked/stacked.dart';
 import 'package:namaagp/Components/returntopreviouspage.dart';
+import 'DateTimePicker.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'utils.dart';
 
 class ViewAddExpenses extends StatefulWidget {
   ViewAddExpenses({super.key});
@@ -19,6 +23,8 @@ class ViewAddExpenses extends StatefulWidget {
 
 class _ViewAddExpensesState extends State<ViewAddExpenses> {
   TextEditingController mycontroller = TextEditingController();
+late Future<DateTime?> selectedDate;
+  String date = "تحديد التاريخ";
 
   List data = [
     "شخصي",
@@ -30,6 +36,41 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
     "كافيهات",
     "مطاعم"
   ];
+
+  void showDialogPicker(BuildContext context){
+    selectedDate = showDatePicker(
+      context: context,
+      helpText: 'Your Date of Birth',
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2050),
+      builder: (BuildContext context, Widget? child) {
+        return Theme(
+          data: ThemeData.light().copyWith(
+            colorScheme:  ColorScheme.light(
+             // primary: MyColors.primary,
+              primary: Theme.of(context).colorScheme.primary,
+              onPrimary: Colors.white,
+              surface: Colors.white,
+              onSurface: Colors.black,
+            ),
+            //.dialogBackgroundColor:Colors.blue[900],
+          ),
+          child: child!,
+        );
+      },
+    );
+    selectedDate.then((value) {
+      setState(() {
+        if(value == null) return;
+        date = Utils.getFormattedDateSimple(value.millisecondsSinceEpoch);
+      });
+    }, onError: (error) {
+      if (kDebugMode) {
+        print(error);
+      }
+    });
+  }
 
   int selectedIndex = -1;
 
@@ -114,6 +155,19 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
                                 ])),
                       ],
                     ),
+                    TextButton(
+              style: TextButton.styleFrom(
+                  elevation: 0, backgroundColor: Color.fromARGB(0, 25, 26, 62), textStyle: GoogleFonts.getFont(
+                                      "Noto Sans Arabic"),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                  padding: const EdgeInsets.symmetric(horizontal: 30)
+              ),
+              child:  Text("$date", style: TextStyle(color: const Color.fromARGB(119, 255, 255, 255))),
+              onPressed: (){
+                showDialogPicker(context);
+              },
+            ),
+          
                     SingleChildScrollView(
                         child: Column(
                       mainAxisSize: MainAxisSize.min,
@@ -124,17 +178,23 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
                               itemCount: data.length,
                               scrollDirection: Axis.horizontal,
                               itemBuilder: (context, index) => FilterChip(
+                             
                                   label: Text(data[index]),
-                                  labelStyle:
-                                      GoogleFonts.getFont("Noto Sans Arabic", color: const Color.fromARGB(255, 255, 255, 255)),
+                                  labelStyle: GoogleFonts.getFont(
+                                      "Noto Sans Arabic",
+                                      color: const Color.fromARGB(
+                                          255, 255, 255, 255)),
                                   selected: index == selectedIndex,
-                                 
-                                  backgroundColor: Color.fromARGB(255, 58, 52, 98),
+                                  
+                                   selectedColor: Color.fromARGB(255, 195, 197, 232),
+                                  
+                                  backgroundColor:
+                                      Color.fromARGB(255, 58, 52, 98),
                                   onSelected: (value) {
                                     setState(() {
-                                     selectedIndex = index;
-                                      selectedColor:
-                                      Color.fromARGB(255, 36, 228, 39);
+                                      selectedIndex = index;
+                                      
+                                       
                                     });
                                   }),
                               separatorBuilder:
