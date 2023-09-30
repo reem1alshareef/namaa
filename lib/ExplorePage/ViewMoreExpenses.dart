@@ -1,18 +1,10 @@
-import 'package:meta/dart2js.dart';
-import 'ExplorePageComponents/ExplorePageHeader.dart';
+import 'ViewMoreExpensesHeader.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:namaagp/Components/AccountButton.dart';
-import 'package:namaagp/Components/CostomizedTextButton.dart';
-import 'package:namaagp/Components/TextInputField.dart';
-import 'package:namaagp/Identity%20Elements/mainHeader.dart';
 import 'package:namaagp/AddExpenses/ViewModelAddExpenses.dart';
 import 'package:stacked/stacked.dart';
 import 'package:namaagp/Components/returntopreviouspage.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:namaagp/Identity%20Elements/IntroPagesHeader.dart';
 import 'package:flutter/cupertino.dart';
 
 class ViewMoreExpenses extends StatefulWidget {
@@ -52,7 +44,7 @@ class _ViewMoreExpensesState extends State<ViewMoreExpenses> {
                   SizedBox(
                     height: 20,
                   ),
-                  ExplorePageHeader(),
+                  ViewMoreExpensesHeader(),
                   SizedBox(
                     height: 10,
                   ),
@@ -63,12 +55,9 @@ class _ViewMoreExpensesState extends State<ViewMoreExpenses> {
                   // ),
 
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      ReturnToPreviousPage(
-                        title: 'رجوع',
-                        tWidth: 69,
-                      ),
+                    
                       Text('جميع المصروفات',
                           textAlign: TextAlign.center,
                           style: GoogleFonts.getFont("Noto Sans Arabic",
@@ -77,16 +66,7 @@ class _ViewMoreExpensesState extends State<ViewMoreExpenses> {
                               height: 1.5,
                               textStyle:
                                   const TextStyle(color: Color(0xFFD0CDEF)))),
-                      Container(
-                        width: 50,
-                        height: 36.31,
-                        decoration: const BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage('assets/NamaaLogo.png'),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
+                     
                     ],
                   ),
 //الخط
