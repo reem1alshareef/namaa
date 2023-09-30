@@ -23,7 +23,7 @@ class ViewAddExpenses extends StatefulWidget {
 class _ViewAddExpensesState extends State<ViewAddExpenses> {
   TextEditingController mycontroller = TextEditingController();
 late Future<DateTime?> selectedDate;
-  String date = "تحديد التاريخ";
+  String date = "انقر لتحديد التاريخ";
 
   List data = [
     "شخصي",
@@ -206,11 +206,52 @@ late Future<DateTime?> selectedDate;
                               ),
                             )),
                             Container(
+           margin: EdgeInsets.only(bottom: 20),               
   width: 401,
   height: 0.5,
   decoration: BoxDecoration(
     color: Color.fromARGB(132, 217, 217, 217),
   ),
+),
+
+Text(':لإضافة صرف باستخدام الادخال الصوتي',
+
+              style: GoogleFonts.getFont("Noto Sans Arabic",
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                  height: 1.5,
+                
+                  textStyle: const TextStyle(color: Color(0xFFC5C5CD)))),
+
+                  Padding(
+               padding: const EdgeInsets.fromLTRB(50, 0, 50, 0),
+               child: Container(
+                 padding: const EdgeInsets.all(0.0),
+                
+                 width: 10.0,
+                 height: 15.0,
+               ), //Container
+             ), //Padding
+SizedBox(
+  
+  height:100,width: 100,
+  child:ElevatedButton(
+    onPressed: (){}, 
+    child: Image.asset(
+                            "assets/Icons/microphone-8-48.png",
+                            height: 50,
+                            width: 45,
+                            fit: BoxFit.contain),
+    style: ElevatedButton.styleFrom(
+      
+      backgroundColor: Color.fromARGB(255, 176, 172, 213),
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(50), 
+              
+            //border radius equal to or more than 50% of width
+          )
+    ),
+  )
 )
                       ],
                     ))
