@@ -9,7 +9,6 @@ import 'package:namaagp/Identity%20Elements/mainHeader.dart';
 import 'package:namaagp/AddExpenses/ViewModelAddExpenses.dart';
 import 'package:stacked/stacked.dart';
 import 'package:namaagp/Components/returntopreviouspage.dart';
-import 'DateTimePicker.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'utils.dart';
@@ -40,7 +39,7 @@ late Future<DateTime?> selectedDate;
   void showDialogPicker(BuildContext context){
     selectedDate = showDatePicker(
       context: context,
-      helpText: 'Your Date of Birth',
+      
       initialDate: DateTime.now(),
       firstDate: DateTime(2000),
       lastDate: DateTime(2050),
@@ -49,12 +48,12 @@ late Future<DateTime?> selectedDate;
           data: ThemeData.light().copyWith(
             colorScheme:  ColorScheme.light(
              // primary: MyColors.primary,
-              primary: Theme.of(context).colorScheme.primary,
-              onPrimary: Colors.white,
-              surface: Colors.white,
+              primary: Color.fromARGB(255, 26, 28, 62),
+              onPrimary: Color.fromARGB(255, 195, 197, 232),
+              surface: Color.fromARGB(255, 195, 197, 232),
               onSurface: Colors.black,
             ),
-            //.dialogBackgroundColor:Colors.blue[900],
+            
           ),
           child: child!,
         );
@@ -142,8 +141,11 @@ late Future<DateTime?> selectedDate;
                             child: Image.asset("assets/Icons/down-arrow.png",
                                 height: 30, width: 30)),
                         SizedBox(
-                            width: 100,
+                            width: 105,
                             child: TextField(
+                              decoration: InputDecoration(
+    
+    border: InputBorder.none,),
                                 style: TextStyle(
                                     fontFamily: "Noto Sans Arabic",
                                     fontSize: 40,
@@ -158,7 +160,7 @@ late Future<DateTime?> selectedDate;
                     TextButton(
               style: TextButton.styleFrom(
                   elevation: 0, backgroundColor: Color.fromARGB(0, 25, 26, 62), textStyle: GoogleFonts.getFont(
-                                      "Noto Sans Arabic"),
+                                      "Noto Sans Arabic", fontSize: 20),
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
                   padding: const EdgeInsets.symmetric(horizontal: 30)
               ),
@@ -186,7 +188,7 @@ late Future<DateTime?> selectedDate;
                                           255, 255, 255, 255)),
                                   selected: index == selectedIndex,
                                   
-                                   selectedColor: Color.fromARGB(255, 195, 197, 232),
+                                   selectedColor: Color.fromARGB(255, 208, 205, 239),
                                   
                                   backgroundColor:
                                       Color.fromARGB(255, 58, 52, 98),
@@ -203,6 +205,13 @@ late Future<DateTime?> selectedDate;
                                 width: 15,
                               ),
                             )),
+                            Container(
+  width: 401,
+  height: 0.5,
+  decoration: BoxDecoration(
+    color: Color.fromARGB(132, 217, 217, 217),
+  ),
+)
                       ],
                     ))
                   ])));
