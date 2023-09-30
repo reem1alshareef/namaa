@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:namaagp/AddExpenses/ViewAddExpenses.dart';
 import 'package:namaagp/ExplorePage/ViewMoreExpenses.dart';
-import 'package:namaagp/Splash/ViewSplash.dart';
-import 'package:namaagp/AddExpenses/ViewAddExpenses.dart';
+// import 'package:namaagp/Splash/ViewSplash.dart';
+// import 'package:namaagp/AddExpenses/ViewAddExpenses.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:namaagp/AddExpenses/DateTimePicker.dart';
 
 //import 'namaagp/lib/SignUp/ViewModelSignUp.dart';
 main() async {
