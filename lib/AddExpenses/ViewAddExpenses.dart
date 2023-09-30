@@ -22,7 +22,7 @@ class ViewAddExpenses extends StatefulWidget {
 
 class _ViewAddExpensesState extends State<ViewAddExpenses> {
   TextEditingController mycontroller = TextEditingController();
-late Future<DateTime?> selectedDate;
+  late Future<DateTime?> selectedDate;
   String date = "انقر لتحديد التاريخ";
 
   List data = [
@@ -36,24 +36,22 @@ late Future<DateTime?> selectedDate;
     "مطاعم"
   ];
 
-  void showDialogPicker(BuildContext context){
+  void showDialogPicker(BuildContext context) {
     selectedDate = showDatePicker(
       context: context,
-      
       initialDate: DateTime.now(),
       firstDate: DateTime(2000),
       lastDate: DateTime(2050),
       builder: (BuildContext context, Widget? child) {
         return Theme(
           data: ThemeData.light().copyWith(
-            colorScheme:  ColorScheme.light(
-             // primary: MyColors.primary,
+            colorScheme: ColorScheme.light(
+              // primary: MyColors.primary,
               primary: Color.fromARGB(255, 26, 28, 62),
               onPrimary: Color.fromARGB(255, 195, 197, 232),
               surface: Color.fromARGB(255, 195, 197, 232),
               onSurface: Colors.black,
             ),
-            
           ),
           child: child!,
         );
@@ -61,7 +59,7 @@ late Future<DateTime?> selectedDate;
     );
     selectedDate.then((value) {
       setState(() {
-        if(value == null) return;
+        if (value == null) return;
         date = Utils.getFormattedDateSimple(value.millisecondsSinceEpoch);
       });
     }, onError: (error) {
@@ -143,9 +141,9 @@ late Future<DateTime?> selectedDate;
                         SizedBox(
                             width: 105,
                             child: TextField(
-                              decoration: InputDecoration(
-    
-    border: InputBorder.none,),
+                                decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                ),
                                 style: TextStyle(
                                     fontFamily: "Noto Sans Arabic",
                                     fontSize: 40,
@@ -158,18 +156,22 @@ late Future<DateTime?> selectedDate;
                       ],
                     ),
                     TextButton(
-              style: TextButton.styleFrom(
-                  elevation: 0, backgroundColor: Color.fromARGB(0, 25, 26, 62), textStyle: GoogleFonts.getFont(
-                                      "Noto Sans Arabic", fontSize: 20),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-                  padding: const EdgeInsets.symmetric(horizontal: 30)
-              ),
-              child:  Text("$date", style: TextStyle(color: const Color.fromARGB(119, 255, 255, 255))),
-              onPressed: (){
-                showDialogPicker(context);
-              },
-            ),
-          
+                      style: TextButton.styleFrom(
+                          elevation: 0,
+                          backgroundColor: Color.fromARGB(0, 25, 26, 62),
+                          textStyle: GoogleFonts.getFont("Noto Sans Arabic",
+                              fontSize: 20),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20)),
+                          padding: const EdgeInsets.symmetric(horizontal: 30)),
+                      child: Text("$date",
+                          style: TextStyle(
+                              color: const Color.fromARGB(119, 255, 255, 255))),
+                      onPressed: () {
+                        showDialogPicker(context);
+                      },
+                    ),
+
                     SingleChildScrollView(
                         child: Column(
                       mainAxisSize: MainAxisSize.min,
@@ -180,23 +182,19 @@ late Future<DateTime?> selectedDate;
                               itemCount: data.length,
                               scrollDirection: Axis.horizontal,
                               itemBuilder: (context, index) => FilterChip(
-                             
                                   label: Text(data[index]),
                                   labelStyle: GoogleFonts.getFont(
                                       "Noto Sans Arabic",
                                       color: const Color.fromARGB(
                                           255, 255, 255, 255)),
                                   selected: index == selectedIndex,
-                                  
-                                   selectedColor: Color.fromARGB(255, 208, 205, 239),
-                                  
+                                  selectedColor:
+                                      Color.fromARGB(255, 208, 205, 239),
                                   backgroundColor:
                                       Color.fromARGB(255, 58, 52, 98),
                                   onSelected: (value) {
                                     setState(() {
                                       selectedIndex = index;
-                                      
-                                       
                                     });
                                   }),
                               separatorBuilder:
@@ -205,53 +203,77 @@ late Future<DateTime?> selectedDate;
                                 width: 15,
                               ),
                             )),
-                            Container(
-           margin: EdgeInsets.only(bottom: 20),               
-  width: 401,
-  height: 0.5,
-  decoration: BoxDecoration(
-    color: Color.fromARGB(132, 217, 217, 217),
-  ),
-),
+                        Container(
+                          margin: EdgeInsets.only(bottom: 20),
+                          width: 401,
+                          height: 0.5,
+                          decoration: BoxDecoration(
+                            color: Color.fromARGB(132, 217, 217, 217),
+                          ),
+                        ),
 
-Text(':لإضافة صرف باستخدام الادخال الصوتي',
+                        Text(':لإضافة صرف باستخدام الادخال الصوتي',
+                            style: GoogleFonts.getFont("Noto Sans Arabic",
+                                fontSize: 16,
+                                fontWeight: FontWeight.w400,
+                                height: 1.5,
+                                textStyle:
+                                    const TextStyle(color: Color(0xFFC5C5CD)))),
 
-              style: GoogleFonts.getFont("Noto Sans Arabic",
-                  fontSize: 16,
-                  fontWeight: FontWeight.w400,
-                  height: 1.5,
-                
-                  textStyle: const TextStyle(color: Color(0xFFC5C5CD)))),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(50, 0, 50, 0),
+                          child: Container(
+                            padding: const EdgeInsets.all(0.0),
+                            width: 10.0,
+                            height: 15.0,
+                          ), //Container
+                        ), //Padding
+                        SizedBox(
+                            height: 100,
+                            width: 100,
+                            child: ElevatedButton(
+                              onPressed: () {
+                                showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      return Dialog(
+                                        shape: RoundedRectangleBorder(
+                                          
+                                            borderRadius:
+                                                BorderRadius.circular(15)),
+                                        elevation: 15,
+                                        backgroundColor:Color.fromARGB(255, 176, 172, 213) ,
+                                        child: Container(
+                                          height: 200,
+                                          width: 50,
+                                          child: Text(' استخدم الصيغة التالية:',textAlign: TextAlign.center,
+                                          
+                                          style:  GoogleFonts.getFont("Noto Sans Arabic",
+                                          fontSize: 20, color: Color.fromARGB(255, 255, 255, 255),
+                                         ),
+                                          ),
+                                          
+                                          ),
+                                          
+                                        
+                                      )
+                                      ;
+                                    });
+                              },
+                              child: Image.asset(
+                                  "assets/Icons/microphone-8-48.png",
+                                  height: 50,
+                                  width: 45,
+                                  fit: BoxFit.contain),
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor:
+                                      Color.fromARGB(255, 176, 172, 213),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(50),
 
-                  Padding(
-               padding: const EdgeInsets.fromLTRB(50, 0, 50, 0),
-               child: Container(
-                 padding: const EdgeInsets.all(0.0),
-                 width: 10.0,
-                 height: 15.0,
-               ), //Container
-             ), //Padding
-SizedBox(
-  
-  height:100,width: 100,
-  child:ElevatedButton(
-    onPressed: (){}, 
-    child: Image.asset(
-                            "assets/Icons/microphone-8-48.png",
-                            height: 50,
-                            width: 45,
-                            fit: BoxFit.contain),
-    style: ElevatedButton.styleFrom(
-      
-      backgroundColor: Color.fromARGB(255, 176, 172, 213),
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(50), 
-              
-            //border radius equal to or more than 50% of width
-          )
-    ),
-  )
-)
+                                    //border radius equal to or more than 50% of width
+                                  )),
+                            ))
                       ],
                     ))
                   ])));
