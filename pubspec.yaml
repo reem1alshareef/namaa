@@ -72,6 +72,7 @@ flutter:
    - assets/Icons/microphone-8-48.png
    - assets/Icons/down-arrow.png
    - assets/Icons/settingsIcon.png
+   - assets/Icons/filter-4.png
    
 
   # An image asset can refer to one or more resolution-specific "variants", see
