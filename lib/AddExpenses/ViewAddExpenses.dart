@@ -75,7 +75,7 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
     void _showPopupMenu() async {
       await showMenu(
         context: context,
-        position: RelativeRect.fromLTRB(100, 100, 100, 100),
+        position: RelativeRect.fromLTRB(100, 200, 100, 100),
         items: [
           PopupMenuItem(
             child: Text("SR"),
@@ -245,11 +245,11 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
                                         backgroundColor:Color.fromARGB(255, 176, 172, 213) ,
                                         child: Container(
                                           height: 200,
-                                          width: 50,
-                                          child: Text(' استخدم الصيغة التالية:',textAlign: TextAlign.center,
+                                          width: 500,
+                                          child: Text(' :استخدم الصيغة التالية',textAlign: TextAlign.center,
                                           
                                           style:  GoogleFonts.getFont("Noto Sans Arabic",
-                                          fontSize: 20, color: Color.fromARGB(255, 255, 255, 255),
+                                          fontSize: 20, color: Color.fromARGB(255, 58, 52, 98),
                                          ),
                                           ),
                                           
