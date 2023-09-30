@@ -81,7 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
         MaterialPageRoute(
           builder: (BuildContext context) {
             //submitLogin();
-            return const ViewSplash();
+            return const ViewSplash();//ViewExplorePage();
           },
         ),
       );
