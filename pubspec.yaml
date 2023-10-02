@@ -49,6 +49,8 @@ dependencies:
   syncfusion_flutter_datepicker: ^21.2.3
   supabase_flutter: ^1.10.19
   cron: ^0.5.1
+  dart_openai: ^4.0.0
+  
 
 dev_dependencies:
   flutter_test:
