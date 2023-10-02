@@ -49,7 +49,9 @@ dependencies:
   syncfusion_flutter_datepicker: ^21.2.3
   supabase_flutter: ^1.10.19
   cron: ^0.5.1
-  dart_openai: ^4.0.0
+  fl_chart: ^0.63.0
+  mrx_charts: ^0.1.3
+  syncfusion_flutter_charts: ^21.2.4
   
 
 dev_dependencies:
@@ -79,6 +81,7 @@ flutter:
     - assets\NamaaLogo.png
     - assets/Icons/WhiteArrow.png
     - assets/Icons/LightPurpleArrow.png
+    - assets\Icons\settingsIcon.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
