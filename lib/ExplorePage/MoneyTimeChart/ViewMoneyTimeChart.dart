@@ -115,118 +115,148 @@ Widget bottomTitleWidgets(double value, TitleMeta meta) {
   }
 
 class _ViewMoneyTimeChartState extends State<ViewMoneyTimeChart> {
+@override
+Widget build(BuildContext context) {
+  return ViewModelBuilder<ViewModelMoneyTimeChart>.reactive(
+    viewModelBuilder: () => ViewModelMoneyTimeChart(),
+    builder: (context, viewmodel, _) {
+      return FutureBuilder<List<double>>(
+        future: Future.wait([
+          ViewModelMoneyTimeChart.getSaturdayAverage(),
+          ViewModelMoneyTimeChart.getFridayAverage(),
+          ViewModelMoneyTimeChart.getThursdayAverage(),
+          ViewModelMoneyTimeChart.getWednesdayAverage(),
+          ViewModelMoneyTimeChart.getTuesdayAverage(),
+          ViewModelMoneyTimeChart.getMondayAverage(),
+          ViewModelMoneyTimeChart.getSundayAverage(),
+        ]),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return CircularProgressIndicator();
+          }
 
-  @override
-  Widget build(BuildContext context) {
-    return ViewModelBuilder<ViewModelMoneyTimeChart>.reactive(
-        viewModelBuilder: () => ViewModelMoneyTimeChart(),
-        builder: (context, viewmodel, _) {
-    return BarChart(
-        //AxisTitles(),
-        BarChartData(
-            alignment: BarChartAlignment.spaceBetween,
-            borderData: FlBorderData(border: Border.all(width: 0)),
-            titlesData: FlTitlesData(
+          if (snapshot.hasError) {
+            return Text('Error: ${snapshot.error}');
+          }
+
+          List<double> averages = snapshot.data!;
+
+          return BarChart(
+            BarChartData(
+              alignment: BarChartAlignment.spaceBetween,
+              borderData: FlBorderData(border: Border.all(width: 0)),
+              titlesData: FlTitlesData(
                 bottomTitles: AxisTitles(
-              sideTitles: SideTitles(
-                showTitles: true,
-                reservedSize: 30,
-                interval: 1,
-                getTitlesWidget: bottomTitleWidgets,
+                  sideTitles: SideTitles(
+                    showTitles: true,
+                    reservedSize: 30,
+                    interval: 1,
+                    getTitlesWidget: bottomTitleWidgets,
+                  ),
+                ),
+                rightTitles: AxisTitles(
+                  sideTitles: SideTitles(
+                    showTitles: true,
+                    reservedSize: 30,
+                    getTitlesWidget: rightTitleWidgets,
+                  ),
+                ),
+                topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
               ),
+              barGroups: [
+                BarChartGroupData(x: 1, barRods: [
+                  BarChartRodData(
+                    fromY: 0,
+                    toY: averages[0],
+                    width: 6,
+                    gradient: LinearGradient(
+                      begin: Alignment(0.00, -1.00),
+                      end: Alignment(0, 1),
+                      colors: [Color(0xB2567BB6), Color(0x3516325F)],
+                    ),
+                  ),
+                ]),
+                BarChartGroupData(x: 2, barRods: [
+                  BarChartRodData(
+                    fromY: 0,
+                    toY: averages[1],
+                    width: 6,
+                    gradient: LinearGradient(
+                      begin: Alignment(0.00, -1.00),
+                      end: Alignment(0, 1),
+                      colors: [Color(0xB2567BB6), Color(0x3516325F)],
+                    ),
+                  ),
+                ]),
+                BarChartGroupData(x: 3, barRods: [
+                  BarChartRodData(
+                    fromY: 0,
+                    toY: averages[2],
+                    width: 6,
+                    gradient: LinearGradient(
+                      begin: Alignment(0.00, -1.00),
+                      end: Alignment(0, 1),
+                      colors: [Color(0xB2567BB6), Color(0x3516325F)],
+                    ),
+                  ),
+                ]),
+                BarChartGroupData(x: 4, barRods: [
+                  BarChartRodData(
+                    fromY: 0,
+                    toY: averages[3],
+                    width: 6,
+                    gradient: LinearGradient(
+                      begin: Alignment(0.00, -1.00),
+                      end: Alignment(0, 1),
+                      colors: [Color(0xB2567BB6), Color(0x3516325F)],
+                    ),
+                  ),
+                ]),
+                BarChartGroupData(x: 5, barRods: [
+                  BarChartRodData(
+                    fromY: 0,
+                    toY: averages[4],
+                    width: 6,
+                    gradient: LinearGradient(
+                      begin: Alignment(0.00, -1.00),
+                      end: Alignment(0, 1),
+                      colors: [Color(0xB2567BB6), Color(0x3516325F)],
+                    ),
+                  ),
+                ]),
+                BarChartGroupData(x: 6, barRods: [
+                  BarChartRodData(
+                    fromY: 0,
+                    toY: averages[5],
+                    width: 6,
+                    gradient: LinearGradient(
+                      begin: Alignment(0.00, -1.00),
+                      end: Alignment(0, 1),
+                      colors: [Color(0xB2567BB6), Color(0x3516325F)],
+                    ),
+                  ),
+                ]),
+                BarChartGroupData(x: 7, barRods: [
+                  BarChartRodData(
+                    fromY: 0,
+                    toY: averages[6],
+                    width: 6,
+                    gradient: LinearGradient(
+                      begin: Alignment(0.00, -1.00),
+                      end: Alignment(0,1),
+                      colors: [Color(0xB2567BB6), Color(0x3516325F)],
+                    ),
+                  ),
+                ]),
+              ],
             ),
-            rightTitles: AxisTitles(
-              sideTitles: SideTitles(
-                showTitles: true,
-                reservedSize: 30,
-                //interval: 50,
-                getTitlesWidget: rightTitleWidgets,
-              ),
-            ),
-            topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
-            leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: false))
-            ),
-            barGroups: [
-          BarChartGroupData(x: 1, barRods: [
-            BarChartRodData(//saturday
-                fromY: 0,
-                toY: ViewModelMoneyTimeChart.getSaturdayAverage(),
-                width: 6,
-                gradient: LinearGradient(
-                  begin: Alignment(0.00, -1.00),
-                  end: Alignment(0, 1),
-                  colors: [Color(0xB2567BB6), Color(0x3516325F)],
-                ))
-          ]),
-          BarChartGroupData(x: 2, barRods: [
-            BarChartRodData(//friday
-                fromY: 0,
-                toY: ViewModelMoneyTimeChart.getFridayAverage(),
-                width: 6,
-                gradient: LinearGradient(
-                  begin: Alignment(0.00, -1.00),
-                  end: Alignment(0, 1),
-                  colors: [Color(0xB2567BB6), Color(0x3516325F)],
-                ))
-          ]),
-          BarChartGroupData(x: 3, barRods: [
-            BarChartRodData(
-                fromY: 0,
-                toY: ViewModelMoneyTimeChart.getThursdayAverage(),
-                width: 6,
-                gradient: LinearGradient(
-                  begin: Alignment(0.00, -1.00),
-                  end: Alignment(0, 1),
-                  colors: [Color(0xB2567BB6), Color(0x3516325F)],
-                ))
-          ]),
-          BarChartGroupData(x: 4, barRods: [
-            BarChartRodData(
-                fromY: 0,
-                toY: ViewModelMoneyTimeChart.getWednesdayAverage(),
-                width: 6,
-                gradient: LinearGradient(
-                  begin: Alignment(0.00, -1.00),
-                  end: Alignment(0, 1),
-                  colors: [Color(0xB2567BB6), Color(0x3516325F)],
-                ))
-          ]),
-          BarChartGroupData(x: 5, barRods: [
-            BarChartRodData(
-                fromY: 0,
-                toY: ViewModelMoneyTimeChart.getTuesdayAverage(),
-                width: 6,
-                gradient: LinearGradient(
-                  begin: Alignment(0.00, -1.00),
-                  end: Alignment(0, 1),
-                  colors: [Color(0xB2567BB6), Color(0x3516325F)],
-                ))
-          ]),
-          BarChartGroupData(x: 6, barRods: [
-            BarChartRodData(
-                fromY: 0,
-                toY: ViewModelMoneyTimeChart.getMondayAverage(),
-                width: 6,
-                gradient: LinearGradient(
-                  begin: Alignment(0.00, -1.00),
-                  end: Alignment(0, 1),
-                  colors: [Color(0xB2567BB6), Color(0x3516325F)],
-                ))
-          ]),
-          BarChartGroupData(x: 7, barRods: [
-            BarChartRodData(
-                fromY: 0,
-                toY: ViewModelMoneyTimeChart.getSundayAverage(),
-                width: 6,
-                gradient: LinearGradient(
-                  begin: Alignment(0.00, -1.00),
-                  end: Alignment(0, 1),
-                  colors: [Color(0xB2567BB6), Color(0x3516325F)],
-                ))
-          ])
-        ]));
-  });
-  }
+          );
+        },
+      );
+    },
+  );
+}
 
   FlTitlesData get titlesData => FlTitlesData(
         show: true,
@@ -249,10 +279,28 @@ class _ViewMoneyTimeChartState extends State<ViewMoneyTimeChart> {
       );
 }
 
-// getSaturdayAverage() {
+
+// getSaturdayAverageAsDouble() async {
+//   return await ViewModelMoneyTimeChart.getSaturdayAverage();
 // }
-
-
+// getFridayAverageAsDouble() async {
+//   return await ViewModelMoneyTimeChart.getFridayAverage();
+// }
+// getThursdayAverageAsDouble() async {
+//   return await ViewModelMoneyTimeChart.getThursdayAverage();
+// }
+// getWednesdayAverageAsDouble() async {
+//     return await ViewModelMoneyTimeChart.getWednesdayAverage();
+// }
+// getTuesdayAverageAsDouble() async {
+//   return await ViewModelMoneyTimeChart.getTuesdayAverage();
+// }
+// getMondayAverageAsDouble() async {
+//   return await ViewModelMoneyTimeChart.getMondayAverage();
+// }
+// getSundayAverageAsDouble() async {
+//   return await ViewModelMoneyTimeChart.getSundayAverage();
+// }
 
 
 

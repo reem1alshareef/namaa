@@ -4,6 +4,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 final supabaseClient = SupabaseClient('https://rpwqxndlhdiqkrejigse.supabase.co', "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJwd3F4bmRsaGRpcWtyZWppZ3NlIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTMwNjY4NDQsImV4cCI6MjAwODY0Mjg0NH0.qlIR6KNotfLwl30HsVSUW9M3smblYaYxtk_D7W2L_EU");
 final supabase = Supabase.instance.client;
 class AuthenticationService {
+  static User? currentUser;
   
   //AuthenticationService authService = GetIt.instance<AuthenticationService>();
   // await Supabase.initialize(
@@ -22,6 +23,9 @@ final res=await supabaseClient.auth.signUp(
         email: emaill, // Use the phone number as the email (assuming Supabase requires an email for sign-up)
         password: passwordd,
       );
+      final Session? session = res.session;
+      final User? user = res.user;
+
 await supabaseClient.from('userAccount')
   .insert([
     { 'Email': emaill, 'name': namee, 'passcode':'0000', 'UserID':res.user?.id},
@@ -79,25 +83,38 @@ await supabase.auth.verifyOTP(token: otp, type: OtpType.email, email: email);
     
 
    }
-   
+
    static Future<void> signInUser(String email, String password) async {
       final supabaseClient = SupabaseClient('https://rpwqxndlhdiqkrejigse.supabase.co', "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJwd3F4bmRsaGRpcWtyZWppZ3NlIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTMwNjY4NDQsImV4cCI6MjAwODY0Mjg0NH0.qlIR6KNotfLwl30HsVSUW9M3smblYaYxtk_D7W2L_EU");
 //final supabase = supabaseClient.auth.admin.noSuchMethod(invocation)
    final response= await supabaseClient.auth.signInWithPassword(password: password, email: email);
    if (response.session!=null) {
-await supabaseClient.auth.signOut();
-
+//await supabaseClient.auth.signOut();
+final Session? session = response.session;
+// final User? user = response.user;
+currentUser = response.user;
+//currentEmail(user);
+// print('in log in');
+// print(user?.email);
+// String? currentEmail() {
+//     return user?.email;
+//   }
 await supabase.auth.signInWithOtp(
   email: email, //emailRedirectTo: 'otp'
 );
    } else if (response.session==null){
-
    }
   //  await supabase.auth.signInWithOtp(
   //   email: email,
-
   // );
 }
+
+
+// static String? currentEmail(User? user) {
+//   return user?.email;
+// }
+
+// String? currentEmail() {
+//     return user?.email;
+//   }
 }
-
-
