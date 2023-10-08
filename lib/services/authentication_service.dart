@@ -82,7 +82,7 @@ await supabase.auth.verifyOTP(token: otp, type: OtpType.email, email: email);
     }
     
 
-   }
+}
 
    static Future<void> signInUser(String email, String password) async {
       final supabaseClient = SupabaseClient('https://rpwqxndlhdiqkrejigse.supabase.co', "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJwd3F4bmRsaGRpcWtyZWppZ3NlIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTMwNjY4NDQsImV4cCI6MjAwODY0Mjg0NH0.qlIR6KNotfLwl30HsVSUW9M3smblYaYxtk_D7W2L_EU");
@@ -102,8 +102,8 @@ currentUser = response.user;
 await supabase.auth.signInWithOtp(
   email: email, //emailRedirectTo: 'otp'
 );
-   } else if (response.session==null){
-   }
+  } else if (response.session==null){
+}
   //  await supabase.auth.signInWithOtp(
   //   email: email,
   // );
