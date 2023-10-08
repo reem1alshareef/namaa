@@ -70,52 +70,26 @@ class _ViewMoreExpensesState extends State<ViewMoreExpenses> {
                   //     color: Color.fromARGB(132, 217, 217, 217),
                   //   ),
                   // ),
-                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                    Container(
-                        width: 260,
-                        height: 40,
-                        margin: EdgeInsets.all(7),
-                        child: TextField(
-                            style: GoogleFonts.getFont("Noto Sans Arabic"),
-                            controller: _searchController,
-                            decoration: InputDecoration(
-                              hintStyle: TextStyle(
-                                color: Color.fromARGB(80, 255, 255, 255),
-                                fontSize: 15,
-                              ),
-                              filled: true,
-                              fillColor: Color.fromARGB(10, 255, 255, 255),
-                              hintText: 'بحث',
-                              // Add a clear button to the search bar
-                              suffixIcon: IconButton(
-                                icon: Icon(
-                                  Icons.search,
-                                  color: Color.fromARGB(110, 255, 255, 255),
-                                ),
-                                onPressed: () => _searchController.clear(),
-                              ),
-                              // Add a search icon or button to the search bar
-                              prefixIcon: IconButton(
-                                icon: Icon(Icons.clear,
-                                    color: Color.fromARGB(110, 255, 255, 255)),
-                                onPressed: () {
-                                  // Perform the search here
-                                },
-                              ),
-                              contentPadding: EdgeInsets.symmetric(vertical: 7),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(200.0),
-                                borderSide: BorderSide(
-                                    color: Color.fromARGB(255, 255, 255, 255)),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(28.0),
-                                borderSide: BorderSide(
-                                    color: Color.fromARGB(255, 255, 255, 255)),
-                              ),
-                            ))),
+                  Row(children: [
                     TextButton(
-                        onPressed: () async {},
+                        onPressed: () async {
+                          showModalBottomSheet(
+                            context: context,
+                            builder: (context) {
+                              return Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: <Widget>[
+                                    ListTile(
+                                      //leading: new Icon(Icons.photo),
+                                      title: new Text(''),
+                                      onTap: () {
+                                        Navigator.pop(context);
+                                      },
+                                    ),
+                                  ]);
+                            },
+                          );
+                        },
                         child: Image.asset("assets/Icons/filter-4.png",
                             height: 20, width: 20)),
                     Text('تخصيص',
