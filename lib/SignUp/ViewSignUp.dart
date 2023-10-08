@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:namaagp/Components/AccountButton.dart';
 import 'package:namaagp/Components/CostomizedTextButton.dart';
 import 'package:namaagp/Components/TextInputField.dart';
 import 'package:namaagp/Identity%20Elements/mainHeader.dart';
@@ -48,7 +47,7 @@ class ViewSignUp extends StatelessWidget {
                     TextInputField(title: 'البريد الإلكتروني', placeHolder: 'اكتب عنوان بريدك الإلكتروني', inputController: emailAddress,),
                     TextInputField(title: 'كلمة السر', placeHolder: 'اكتب كلمة السر الخاصة بك', inputController: password,),
                     TextInputField(title: 'تأكيد كلمة السر', placeHolder: 'اعد كتابة كلمة السر الخاصة بك', inputController: passwordConfirm,),
-                    AccountButton(title: 'أكمل', type: 'SignUp', name: namee, emailAddress: emailAddress, pin: password,),
+                    //AccountButton(title: 'أكمل', type: 'SignUp', name: namee, emailAddress: emailAddress, pin: password,),
                     SizedBox(height: 5,),
                     CostomizedTextButton(question: 'مستخدم سابق؟  ', actionTitle: 'سجل الدخول', purpose: 'SignIn',)
                     // mainHeader(),

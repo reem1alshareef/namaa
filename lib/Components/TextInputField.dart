@@ -45,6 +45,12 @@ class TextInputField extends StatelessWidget {
               ),
               controller: inputController,
               obscureText: title=='كلمة السر'|| title=='تأكيد كلمة السر'? true:false,
+              validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'يرجى تعبئة الخانة';
+              }
+              return null;
+            }
             )),
         SizedBox(
           height: 20,

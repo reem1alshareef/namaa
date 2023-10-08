@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:namaagp/Components/AccountButton.dart';
 import 'package:namaagp/Components/CostomizedTextButton.dart';
 import 'package:namaagp/Components/CurrecyDropdownList.dart';
 import 'package:namaagp/Components/DatePicker.dart';
@@ -53,7 +52,7 @@ class ViewIncomeDetails extends StatelessWidget {
 
                     //TextInputField(title: 'العملة', placeHolder: 'اختر عملتك', inputController: currency,),
                     SizedBox(height: 5,),
-                    AccountButton(title: 'أكمل', type: 'continue', name: salaryDate, emailAddress: salary, pin: currency,),
+                    //AccountButton(title: 'أكمل', type: 'continue', name: salaryDate, emailAddress: salary, pin: currency, validationKey: null,),
                     CostomizedTextButton(question: '', actionTitle: 'لا أملك دخل ثابت', purpose: 'SignIn',)
                    
                   ],
