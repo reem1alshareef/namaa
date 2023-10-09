@@ -55,8 +55,13 @@ class ViewSplash extends StatelessWidget {
                             const SizedBox(width: 55),
                             Image.asset(
                               'assets/NamaaLogo.png',
+<<<<<<< HEAD
                               width: 250,
                               height: 184.14,
+=======
+                              width: 310,
+                              height: 228.33,
+>>>>>>> main
                               fit: BoxFit.fill,
                             ),
                           ],
@@ -121,8 +126,6 @@ class ViewSplash extends StatelessWidget {
                       //             //fit: BoxFit.cover
                       //           )),
                       //     ))
-
-                      
                     ])
                   ],
                 ),
