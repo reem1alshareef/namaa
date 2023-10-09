@@ -2,7 +2,7 @@ import 'package:namaagp/services/authentication_service.dart';
 import 'package:stacked/stacked.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-class ViewModelMoneyTimeChart extends BaseViewModel {
+class ViewModelMoneyTimezChart extends BaseViewModel {
   static Future<double> calculateAverageByDayOfWeek(int dayOfWeek) async {
     final supabaseClient = SupabaseClient(
       'https://rpwqxndlhdiqkrejigse.supabase.co',
