@@ -16,7 +16,7 @@ class AccountButton extends StatelessWidget {
   TextEditingController pin;
   
 
-   AccountButton({
+  AccountButton({
     Key? key,
     required this.title,
     required this.type,
