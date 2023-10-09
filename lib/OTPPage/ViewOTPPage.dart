@@ -47,14 +47,14 @@ class ViewOTPPage extends StatelessWidget {
                     children: [
                       const ReturnToPreviousPage(
                         title: 'الصفحة السابقة',
-                        tWidth: 400,
+                        tWidth: 700,
                       ),
                       const introPagesHeader(
                         subTitle: 'تم إرسال رمز التحقق على بريدك الإلكتروني',
                         title: 'أدخل رمز التحقق',
                       ),
                       OtpTextField(
-                        margin: const EdgeInsets.all(8),
+                        margin: const EdgeInsets.all(5),
                         numberOfFields: 6,
                         borderColor: const Color(0x0C16325F),
                         //set to true to show as box or false to show as dash
@@ -64,7 +64,7 @@ class ViewOTPPage extends StatelessWidget {
                             const BorderRadius.all(Radius.circular(0)),
                         borderWidth: 1,
                         textStyle: const TextStyle(
-                            fontSize: 26,
+                            fontSize: 20,
                             color: Color.fromARGB(255, 255, 255, 255)),
 
                         //runs when a code is typed in

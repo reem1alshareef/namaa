@@ -20,7 +20,23 @@ class ViewExplorePage extends StatelessWidget {
         ]),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            //return CircularProgressIndicator();
+            return  Container(
+                  padding: EdgeInsets.only(top: 50.0, left: 10, right: 10),
+                  width: 428,
+                  height: 926,
+                  clipBehavior: Clip.antiAlias,
+                  decoration: const BoxDecoration(
+                    //maybe delete const
+                    gradient: LinearGradient(
+                      begin: Alignment(-0.00, -6.00),
+                      end: Alignment(0, 1.5),
+                      colors: [
+                        Color(0xFF342D68),
+                        Color(0xFF352D68),
+                        Color(0x00352D68)
+                      ],
+                    ),
+                  ),);
           }
 
           if (snapshot.hasError) {
@@ -110,12 +126,20 @@ class ViewExplorePage extends StatelessWidget {
 
                       //End of Choose Chart Area
 
-                      //Expenses Over Time Chart
-
-                      //End of Expenses over Time Chart
-
                       //Expenses Title
 
+                      Row(
+                        children: [
+                          SizedBox(width: 240,),
+                          Text('المصروفات',
+              textAlign: TextAlign.right,
+              style: GoogleFonts.getFont("Noto Sans Arabic",
+                  fontSize: 18,
+                  fontWeight: FontWeight.w400,
+                  //height: 1,
+                  textStyle: const TextStyle(color: Colors.white))),
+                        ],
+                      ),
                       //End of Expenses Title
 
                       //Expenses
@@ -127,7 +151,11 @@ class ViewExplorePage extends StatelessWidget {
                       //End of View more expenses
 
                       //Chatbot button
-
+      //                 FloatingActionButton(
+      //   onPressed: addExpenses,
+      //   tooltip: 'Increment',
+      //   child: new Icon(Icons.add),
+      // ),
                       //End of Chatbot button
 
                       //Navbar
@@ -138,3 +166,5 @@ class ViewExplorePage extends StatelessWidget {
   });});
   }
 }
+
+void addExpenses(){}

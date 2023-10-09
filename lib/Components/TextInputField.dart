@@ -30,8 +30,9 @@ class TextInputField extends StatelessWidget {
         ),
         SizedBox(
             width: 350,
-            height: 35,
+            height: 35,//35
             child: TextFormField(
+              style: TextStyle(color: Colors.white),
               textAlign: TextAlign.right,
 //keyboardType: title=='الراتب'?TextInputType.number:TextInputType.values,
               decoration: InputDecoration(
@@ -42,6 +43,7 @@ class TextInputField extends StatelessWidget {
                   borderSide: BorderSide(
                       width: 0.7, color: Color(0xFFB8BAC2)), //<-- SEE HERE
                 ),
+                
               ),
               controller: inputController,
               obscureText: title=='كلمة السر'|| title=='تأكيد كلمة السر'? true:false,

@@ -20,11 +20,11 @@ class introPagesHeader extends StatelessWidget {
             alignment: Alignment.topRight,
             child: Row(
               children: [
-                const SizedBox(width: 105),
+                const SizedBox(width: 100),
                 Image.asset(
                   'assets/NamaaLogo.png',
-                  width: 207.46, //310,
-                  height: 152.8, //228.33,
+                  width: 180, //310,
+                  height: 132.57, //228.33,
                   fit: BoxFit.fill,
                 ),
               ],
@@ -42,7 +42,7 @@ class introPagesHeader extends StatelessWidget {
         Row(
           children: [
             SizedBox(
-              width: 390,
+              width: 330,
               //height: 90,
               child: Text(title,
                   textAlign: TextAlign.center,
@@ -73,7 +73,7 @@ class introPagesHeader extends StatelessWidget {
         Row(
           children: [
             SizedBox(
-              width: 390,
+              width: 330,
               //height: 90,
               child: Text(subTitle,
                   textAlign: TextAlign.center,

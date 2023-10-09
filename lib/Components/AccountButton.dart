@@ -15,6 +15,10 @@ class AccountButton extends StatelessWidget {
   TextEditingController emailAddress;
   TextEditingController pin;
   
+  GlobalKey<FormState> validationKey;
+  //final GlobalKey<FormState>() validationKey;
+
+  
 
    AccountButton({
     Key? key,
@@ -23,6 +27,7 @@ class AccountButton extends StatelessWidget {
     required this.name,
     required this.emailAddress,
     required this.pin,
+    required this.validationKey
 
   }) : super(key: key);
 
@@ -39,7 +44,8 @@ class AccountButton extends StatelessWidget {
     break;
 
     case 'signin':
-    signinObj.signIn(emailAddress.text, pin.text);
+    bool completed = await signinObj.signIn(emailAddress.text, pin.text, validationKey);
+    if (completed)
           Navigator.push(context,MaterialPageRoute(builder: (context) =>  ViewOTPPage(emailAddress: emailAddress.text, type: 'SignIn')),);
       print('reached Sign In!!!!');
     break;
