@@ -41,7 +41,7 @@ class ViewSignUp extends StatelessWidget {
                 // ignore: prefer_const_constructors
                 child: Column(
                   children: [
-                    const SizedBox(height: 5,),
+                    //const SizedBox(height: 5,),
                     const mainHeader(title: 'إنشاء حساب',),
                     const SizedBox(height: 5,),
                     TextInputField(title: 'الاسم', placeHolder: 'اكتب اسمك', inputController: namee,),

@@ -16,7 +16,7 @@ class ViewModelMoneyTimeChart extends BaseViewModel {
     }
 
     final data = response.data as List<dynamic>;
-    final pricesByDay = <int, List<double>>{}; // Map to store prices by day of the week
+    final pricesByDay = <int, List<int>>{}; // Map to store prices by day of the week
 
     for (var item in data) {
       final email = item['emailAddress'] as String;
@@ -25,7 +25,9 @@ class ViewModelMoneyTimeChart extends BaseViewModel {
       final itemDayOfWeek = itemDate.weekday;
         final adjustedDayOfWeek = (itemDayOfWeek == 7) ? 0 : itemDayOfWeek;
         pricesByDay[adjustedDayOfWeek] ??= [];
-        pricesByDay[adjustedDayOfWeek]!.add(item['price'] as double);
+        //print(item['price'].toString());
+        //print(pricesByDay[adjustedDayOfWeek].toString());
+        pricesByDay[adjustedDayOfWeek]!.add(item['price']);//item['price'] as double
       }
     }
 

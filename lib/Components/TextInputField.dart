@@ -47,7 +47,7 @@ class TextInputField extends StatelessWidget {
               obscureText: title=='كلمة السر'|| title=='تأكيد كلمة السر'? true:false,
             )),
         const SizedBox(
-          height: 20,
+          height: 10,
         )
       ],
     );
