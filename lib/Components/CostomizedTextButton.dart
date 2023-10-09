@@ -15,6 +15,8 @@ class CostomizedTextButton extends StatelessWidget {
     required this.question,
     required this.actionTitle,
     required this.purpose,
+    //required this.formKey, 
+    //required GlobalKey<FormState> validationKey
   }) : super(key: key);
 
   @override

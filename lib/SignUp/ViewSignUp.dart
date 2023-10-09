@@ -8,6 +8,8 @@ import 'package:stacked/stacked.dart';
 
 
 class ViewSignUp extends StatelessWidget {
+    final _formKey = GlobalKey<FormState>();
+
   final TextEditingController namee=TextEditingController();
   final TextEditingController emailAddress=TextEditingController();
   final TextEditingController password=TextEditingController();
@@ -39,6 +41,8 @@ class ViewSignUp extends StatelessWidget {
                   ),
                 ),
                 // ignore: prefer_const_constructors
+                child: Form(
+                  key: _formKey,
                 child: Column(
                   children: [
                     //const SizedBox(height: 5,),
@@ -48,7 +52,7 @@ class ViewSignUp extends StatelessWidget {
                     TextInputField(title: 'البريد الإلكتروني', placeHolder: 'اكتب عنوان بريدك الإلكتروني', inputController: emailAddress,),
                     TextInputField(title: 'كلمة السر', placeHolder: 'اكتب كلمة السر الخاصة بك', inputController: password,),
                     TextInputField(title: 'تأكيد كلمة السر', placeHolder: 'اعد كتابة كلمة السر الخاصة بك', inputController: passwordConfirm,),
-                    AccountButton(title: 'أكمل', type: 'SignUp', name: namee, emailAddress: emailAddress, pin: password,),
+                    AccountButton(title: 'أكمل', type: 'SignUp', name: namee, emailAddress: emailAddress, pin: password, validationKey: _formKey,),
                     const SizedBox(height: 5,),
                     CostomizedTextButton(question: 'مستخدم سابق؟  ', actionTitle: 'سجل الدخول', purpose: 'SignIn',)
                     // mainHeader(),
@@ -86,7 +90,7 @@ class ViewSignUp extends StatelessWidget {
                     //AccountButton(title: 'title', placeHolder: 'placeHolder')
                     //header()
                   ],
-                )
+                ))
               ));
         });
   }

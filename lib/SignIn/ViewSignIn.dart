@@ -8,6 +8,7 @@ import 'package:stacked/stacked.dart';
 
 
 class ViewSignIn extends StatelessWidget {
+  final _formKey = GlobalKey<FormState>();
   final TextEditingController namee=TextEditingController();
   final TextEditingController emailAddress=TextEditingController();
   final TextEditingController password=TextEditingController();
@@ -38,6 +39,22 @@ class ViewSignIn extends StatelessWidget {
                   ),
                 ),
                 // ignore: prefer_const_constructors
+                child: Form(
+                  key: _formKey,//viewmodel.formKey,
+                  // child: Column(
+                  //   children: [
+                  //     const SizedBox(height: 20,),
+                  //     //ReturnToPreviousPage(title: 'التسجيل', tWidth: 400),
+                  //     //introPagesHeader(title: 'تسجيل الدخول', subTitle: ''),
+                  //     const mainHeader(title: 'تسجيل الدخول',),
+                  //     const SizedBox(height: 20,),
+                  //     TextInputField(title: 'رقم الجوال', placeHolder: 'اكتب رقم جوالك', inputController: emailAddress,),
+                  //     TextInputField(title: 'كلمة السر', placeHolder: 'اكتب كلمة السر الخاصة بك', inputController: password,),
+                  //     AccountButton(title: 'سجل الدخول', type: 'SignIn', name: namee, emailAddress: emailAddress, pin: password, validationKey:_formKey),
+                  //     const SizedBox(height: 5,),
+                  //     CostomizedTextButton(question: 'نسيت كلمة المرور؟  ', actionTitle: 'إستعادة كلمة المرور', purpose: 'SignUp', )//validationKey:_formKey)
+                  //   ],
+                  // ),
                 child: Column(
                   children: [
                     const SizedBox(height: 20,),
@@ -48,12 +65,12 @@ class ViewSignIn extends StatelessWidget {
                     TextInputField(title: 'البريد الإلكتروني', placeHolder: 'اكتب عنوان بريدك الإلكتروني', inputController: emailAddress,),
                     //TextInputField(title: 'رقم الجوال', placeHolder: 'اكتب رقم جوالك', inputController: emailAddress,),
                     TextInputField(title: 'كلمة السر', placeHolder: 'اكتب كلمة السر الخاصة بك', inputController: password,),
-                    AccountButton(title: 'سجل الدخول', type: 'SignIn', name: namee, emailAddress: emailAddress, pin: password,),
+                    AccountButton(title: 'سجل الدخول', type: 'SignIn', name: namee, emailAddress: emailAddress, pin: password,validationKey:_formKey),
                     const SizedBox(height: 5,),
                     CostomizedTextButton(question: 'نسيت كلمة المرور؟  ', actionTitle: 'إستعادة كلمة المرور', purpose: 'SignUp',)
                   ],
                 )
-              ));
+              )));
         });
   }
 }

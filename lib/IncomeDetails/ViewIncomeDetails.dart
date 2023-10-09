@@ -6,7 +6,6 @@ import 'package:namaagp/Components/DatePicker.dart';
 import 'package:namaagp/Components/TextInputField.dart';
 import 'package:namaagp/Identity%20Elements/mainHeader.dart';
 import 'package:namaagp/IncomeDetails/ViewModelIncomeDetails.dart';
-
 import 'package:stacked/stacked.dart';
 
 
@@ -14,7 +13,8 @@ class ViewIncomeDetails extends StatefulWidget {
     @override
     _ViewIncomeDetailsState createState() => _ViewIncomeDetailsState();
 }
-  
+    final _formKey = GlobalKey<FormState>();
+
   final TextEditingController salaryDate=TextEditingController();
   final TextEditingController salary=TextEditingController();
   final TextEditingController currency=TextEditingController();
@@ -49,6 +49,8 @@ class ViewIncomeDetails extends StatefulWidget {
                   ),
                 ),
                 // ignore: prefer_const_constructors
+                child: Form(
+                  key: _formKey,
                 child: Column(
                   children: [
                     const SizedBox(height: 5,),
@@ -63,11 +65,11 @@ class ViewIncomeDetails extends StatefulWidget {
                     //TextInputField(title: 'العملة', placeHolder: 'اختر عملتك', inputController: currency,),
 
                     const SizedBox(height: 5,),
-                    AccountButton(title: 'أكمل', type: 'continue', name: salaryDate, emailAddress: salary, pin: currency,),
+                    AccountButton(title: 'أكمل', type: 'continue', name: salaryDate, emailAddress: salary, pin: currency, validationKey: _formKey,),
                     CostomizedTextButton(question: '', actionTitle: 'لا أملك دخل ثابت', purpose: 'SignIn',)
                   
                   ],
-                )
+                ))
               ));
         });
   }
