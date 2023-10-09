@@ -61,7 +61,7 @@ class CostomizedTextButton extends StatelessWidget {
       child: Row(
         
       children: [
-          SizedBox(width: purpose!='SignUp'?85:65,),
+          SizedBox(width: purpose!='SignUp'?85:50,),
           Text(actionTitle,
               textAlign: TextAlign.right,
               style: GoogleFonts.getFont("Noto Sans Arabic",

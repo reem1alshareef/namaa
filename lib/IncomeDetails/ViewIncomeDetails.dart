@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:namaagp/Components/AccountButton.dart';
 import 'package:namaagp/Components/CostomizedTextButton.dart';
 import 'package:namaagp/Components/CurrecyDropdownList.dart';
 import 'package:namaagp/Components/DatePicker.dart';
@@ -8,12 +9,21 @@ import 'package:namaagp/IncomeDetails/ViewModelIncomeDetails.dart';
 import 'package:stacked/stacked.dart';
 
 
-class ViewIncomeDetails extends StatelessWidget {
+class ViewIncomeDetails extends StatefulWidget {
+    @override
+    _ViewIncomeDetailsState createState() => _ViewIncomeDetailsState();
+}
+    final _formKey = GlobalKey<FormState>();
+
   final TextEditingController salaryDate=TextEditingController();
   final TextEditingController salary=TextEditingController();
   final TextEditingController currency=TextEditingController();
+
+  class _ViewIncomeDetailsState extends State<ViewIncomeDetails>{
   
-   ViewIncomeDetails({super.key});
+  final viewModel = ViewModelIncomeDetails();
+
+
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<ViewModelIncomeDetails>.reactive(
@@ -39,25 +49,29 @@ class ViewIncomeDetails extends StatelessWidget {
                   ),
                 ),
                 // ignore: prefer_const_constructors
+                child: Form(
+                  key: _formKey,
                 child: Column(
                   children: [
-                    SizedBox(height: 5,),
-                    mainHeader(title: 'إنشاء حساب',),
-                    SizedBox(height: 5,),
+                    const SizedBox(height: 5,),
+                    const mainHeader(title: 'إنشاء حساب',),
+                    const SizedBox(height: 5,),
                     DatePicker(currency: salaryDate,),
                     //TextInputField(title: 'تاريخ الراتب', placeHolder: 'يوم الراتب', inputController: salaryDate,),
                     TextInputField(title: 'الراتب', placeHolder: 'اكتب راتبك', inputController: salary,),
                     CurrencyDropdownList(currency: currency),
+                    //CurrencyDropdownList(currency: salary),
                     
-
                     //TextInputField(title: 'العملة', placeHolder: 'اختر عملتك', inputController: currency,),
-                    SizedBox(height: 5,),
-                    //AccountButton(title: 'أكمل', type: 'continue', name: salaryDate, emailAddress: salary, pin: currency, validationKey: null,),
+
+                    const SizedBox(height: 5,),
+                    AccountButton(title: 'أكمل', type: 'continue', name: salaryDate, emailAddress: salary, pin: currency, validationKey: _formKey,),
                     CostomizedTextButton(question: '', actionTitle: 'لا أملك دخل ثابت', purpose: 'SignIn',)
-                   
+                  
                   ],
-                )
+                ))
               ));
         });
   }
+  
 }

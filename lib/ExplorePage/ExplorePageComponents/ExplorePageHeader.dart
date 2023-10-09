@@ -21,8 +21,8 @@ class ExplorePageHeader extends StatelessWidget {
         GestureDetector(
           child: Image.asset(
                     'assets/Icons/settingsIcon.png',
-                    width: 35,
-          height: 25.42, //228.33,
+                    width: 40,
+          height: 29, //228.33,
                     fit: BoxFit.cover,
                   ),
           onTap: () {
@@ -30,7 +30,7 @@ class ExplorePageHeader extends StatelessWidget {
           },
         ),
         //const ReturnToPreviousPage(title: 'البداية', tWidth: 69,),
-        SizedBox(width: 30,),
+        SizedBox(width: 35,),
         Column(
           children: [
             //Expanded(
@@ -42,7 +42,7 @@ class ExplorePageHeader extends StatelessWidget {
                 
                 Row(
                   children: [
-                    SizedBox(width: 170,),
+                    SizedBox(width: 155,),
                     Text('نماء',
                               textAlign: TextAlign.right,
                               style: GoogleFonts.getFont("Noto Sans Arabic",
@@ -58,15 +58,15 @@ class ExplorePageHeader extends StatelessWidget {
             Text('امتلك زمام التحكم بمعاملاتك المالية',
                       textAlign: TextAlign.center,
                       style: GoogleFonts.getFont("Noto Sans Arabic",
-                          fontSize: 9,
+                          fontSize: 13,
                           fontWeight: FontWeight.w400,
                           height: 1,
                           textStyle: const TextStyle(color: Color(0xFFC5C5D0)))),
           ],
         ),
         Container(
-          width: 35,
-          height: 25.42,
+          width: 40,
+          height: 29,
           decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage('assets/NamaaLogo.png'),

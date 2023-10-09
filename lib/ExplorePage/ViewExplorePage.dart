@@ -7,12 +7,28 @@ import 'package:stacked/stacked.dart';
 
 class ViewExplorePage extends StatelessWidget {
   const ViewExplorePage({super.key});
-
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<ViewModelExplorePage>.reactive(
         viewModelBuilder: () => ViewModelExplorePage(),
         builder: (context, viewmodel, _) {
+          //Future <String> currency;
+          return FutureBuilder<List<String>>(
+        future: Future.wait([
+          viewmodel.getCurrency(),
+          viewmodel.getBalance()
+        ]),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            //return CircularProgressIndicator();
+          }
+
+          if (snapshot.hasError) {
+            return Text('Error: ${snapshot.error}');
+          }
+
+          List<String> userData = snapshot.data!;
+          
           return Scaffold(
               backgroundColor: Color(0x00071121),
               body: Container(
@@ -35,35 +51,35 @@ class ViewExplorePage extends StatelessWidget {
                   // ignore: prefer_const_constructors
                   child: Column(
                     children: [
-                      SizedBox(
-                        height: 20,
-                      ),
+                      // SizedBox(
+                      //   height: 20,
+                      // ),
                       ExplorePageHeader(),
                       SizedBox(
-                        height: 10,
+                        height: 2,
                       ),
 
                       //Balance Area
                       SizedBox(
                         width: 175,
-                        height: 60,
+                        height: 50,
                         child: Text.rich(
                           TextSpan(
                             children: [
                               TextSpan(
-                                text: '٨٠٠',
+                                text: userData[1],
                                 style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 44,
+                                  fontSize: 35,
                                   fontFamily: 'Trade Winds',
                                   fontWeight: FontWeight.w400,
                                   height: 0,
                                 ),
                               ),
                               TextSpan(
-                                  text: ' ر. س',
+                                  text: userData[0],//' ر. س',
                                   style: GoogleFonts.getFont("Noto Sans Arabic",
-                                      fontSize: 30,
+                                      fontSize: 22,
                                       fontWeight: FontWeight.w400,
                                       height: 1.1,
                                       textStyle: const TextStyle(
@@ -76,11 +92,11 @@ class ViewExplorePage extends StatelessWidget {
 
                       SizedBox(
                         width: 175,
-                        height: 30,
+                        height: 20,
                         child: Text('الرصيد الكلي',
                             textAlign: TextAlign.center,
                             style: GoogleFonts.getFont("Noto Sans Arabic",
-                                fontSize: 18,
+                                fontSize: 15,
                                 fontWeight: FontWeight.w400,
                                 height: 1.1,
                                 textStyle:
@@ -90,7 +106,7 @@ class ViewExplorePage extends StatelessWidget {
 
                       //Choose Chart Area
                       SizedBox(
-                          height: 290, width: 375, child: ChartsArea()),
+                          height: 280, width: 375, child: ChartsArea()),
 
                       //End of Choose Chart Area
 
@@ -119,6 +135,6 @@ class ViewExplorePage extends StatelessWidget {
                       //End of navbar
                     ],
                   )));
-        });
+  });});
   }
 }

@@ -88,7 +88,7 @@ class ViewOTPPage extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => ViewExplorePage()),
+                                  builder: (context) => const ViewExplorePage()),
                             );
                           }
 

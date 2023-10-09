@@ -14,7 +14,7 @@ class AccountButton extends StatelessWidget {
   TextEditingController name;
   TextEditingController emailAddress;
   TextEditingController pin;
-  GlobalKey<FormState> validationKey;
+  
 
    AccountButton({
     Key? key,
@@ -22,8 +22,7 @@ class AccountButton extends StatelessWidget {
     required this.type,
     required this.name,
     required this.emailAddress,
-    required this.pin, 
-    required this.validationKey,
+    required this.pin,
 
   }) : super(key: key);
 
@@ -40,8 +39,8 @@ class AccountButton extends StatelessWidget {
     break;
 
     case 'signin':
-    signinObj.signIn(emailAddress.text, pin.text, validationKey);
-          //Navigator.push(context,MaterialPageRoute(builder: (context) =>  ViewOTPPage(emailAddress: emailAddress.text, type: 'SignIn')),);
+    signinObj.signIn(emailAddress.text, pin.text);
+          Navigator.push(context,MaterialPageRoute(builder: (context) =>  ViewOTPPage(emailAddress: emailAddress.text, type: 'SignIn')),);
       print('reached Sign In!!!!');
     break;
 
@@ -58,13 +57,13 @@ class AccountButton extends StatelessWidget {
       child: Row(
         
       children: [
-        const SizedBox(width: 30,),
+        const SizedBox(width: 50,),
 
 
 
 Container(
-                    width: 323,
-                    height: 55,
+                    width: 250,//323,
+                    height: 50,
                     padding: const EdgeInsets.all(10),
                     decoration: ShapeDecoration(
                         color: const Color(0xFF3A3462),
@@ -83,7 +82,7 @@ Container(
                     child: Text(title,
                   textAlign: TextAlign.center,
                   style: GoogleFonts.getFont("Noto Sans Arabic",
-                      fontSize: 28,
+                      fontSize: 24,
                       fontWeight: FontWeight.w400,
                       height: 1.5,
                       textStyle: const TextStyle(color: Color(0xFFD0CDEF)))),
@@ -94,25 +93,4 @@ Container(
     ,));
     
   }
-//   buttonAction() async {
-//   switch (type.toLowerCase()) {
-//     case 'signup':
-//       signupObj.signUp(name.text, emailAddress.text, pin.text);
-//       print('reached Sign up!!!!');
-//     break;
-
-//     case 'signin':
-//     await signinObj.signIn(emailAddress.text, pin.text);
-//     Navigator.push(context,MaterialPageRoute(builder: (context) =>  ViewSignUp()),);
-//       print('reached Sign In!!!!');
-//     break;
-
-//     case 'continue':
-//       print('reached continue!!!!');
-//     break;
-      
-//     default:
-//     print('Eroooorrrrrrrrrrr!!!!');
-//   }
-// }
 }
