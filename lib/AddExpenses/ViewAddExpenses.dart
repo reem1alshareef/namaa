@@ -1,4 +1,3 @@
-
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -69,21 +68,33 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
   Widget build(BuildContext context) {
     void _showPopupMenu() async {
       await showMenu(
-          color:   Color.fromARGB(255, 25, 26, 62),
+        color: Color.fromARGB(255, 25, 26, 62),
         context: context,
         position: RelativeRect.fromLTRB(100, 200, 100, 100),
         items: [
           PopupMenuItem(
-            child: Text(" ريال سعودي", style: TextStyle(color: Color.fromARGB(255, 203, 204, 234),)),
+            child: Text(" ريال سعودي",
+                style: TextStyle(
+                  color: Color.fromARGB(255, 203, 204, 234),
+                )),
           ),
           PopupMenuItem(
-            child: Text("دولار أمريكي",style: TextStyle(color: Color.fromARGB(255, 203, 204, 234),)),
+            child: Text("دولار أمريكي",
+                style: TextStyle(
+                  color: Color.fromARGB(255, 203, 204, 234),
+                )),
           ),
           PopupMenuItem(
-            child: Text("درهم إماراتي",style: TextStyle(color: Color.fromARGB(255, 203, 204, 234),)),
+            child: Text("درهم إماراتي",
+                style: TextStyle(
+                  color: Color.fromARGB(255, 203, 204, 234),
+                )),
           ),
           PopupMenuItem(
-            child: Text("جنيه إسترليني",style: TextStyle(color: Color.fromARGB(255, 203, 204, 234),)),
+            child: Text("جنيه إسترليني",
+                style: TextStyle(
+                  color: Color.fromARGB(255, 203, 204, 234),
+                )),
           ),
         ],
         elevation: 8.0,
@@ -137,6 +148,15 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
                         SizedBox(
                             width: 105,
                             child: TextField(
+                                onSubmitted: (value) {
+                                  setState(() {
+                                    var expense = value;
+                                    print("$expense");
+                                  });
+                                  //value is entered text after ENTER press
+                                  //you can also call any function here or make setState() to assign value to other variable
+                                },
+                                textInputAction: TextInputAction.done,
                                 decoration: InputDecoration(
                                   border: InputBorder.none,
                                 ),
@@ -234,26 +254,26 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
                                     builder: (context) {
                                       return Dialog(
                                         shape: RoundedRectangleBorder(
-                                          
                                             borderRadius:
                                                 BorderRadius.circular(15)),
                                         elevation: 15,
-                                        backgroundColor:Color.fromARGB(255, 176, 172, 213) ,
+                                        backgroundColor:
+                                            Color.fromARGB(255, 176, 172, 213),
                                         child: Container(
                                           height: 200,
                                           width: 500,
-                                          child: Text(' :استخدم الصيغة التالية',textAlign: TextAlign.center,
-                                          
-                                          style:  GoogleFonts.getFont("Noto Sans Arabic",
-                                          fontSize: 20, color: Color.fromARGB(255, 58, 52, 98),
-                                         ),
+                                          child: Text(
+                                            ' :استخدم الصيغة التالية',
+                                            textAlign: TextAlign.center,
+                                            style: GoogleFonts.getFont(
+                                              "Noto Sans Arabic",
+                                              fontSize: 20,
+                                              color: Color.fromARGB(
+                                                  255, 58, 52, 98),
+                                            ),
                                           ),
-                                          
-                                          ),
-                                          
-                                        
-                                      )
-                                      ;
+                                        ),
+                                      );
                                     });
                               },
                               child: Image.asset(
