@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:namaagp/ExplorePage/ViewModelExplorePage.dart';
 import 'package:namaagp/Splash/ViewSplash.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 //import 'package:postgres/postgres.dart';
@@ -16,6 +17,7 @@ main() async {
   authCallbackUrlHostname: 'login-callback',
   );
   runApp(const MyApp());
+  
   //runApp(SupabaseService() as Widget);
   
 }

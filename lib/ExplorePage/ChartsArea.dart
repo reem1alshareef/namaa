@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:namaagp/ExplorePage/MoneyTimeChart/ViewMoneyTimeChart.dart';
+import 'categoryChart/viewCategoryChart.dart';
 
 class ChartsArea extends StatefulWidget {
   const ChartsArea({
@@ -106,14 +107,11 @@ class ChartsAreaClass extends State<ChartsArea> {
                     color: Color(0xff292E45),
                     border: Border.all(color: Colors.white, width: 2),
                     borderRadius: BorderRadius.circular(28)),
-                width: 200,
+                width: 260,//200
                 child: const Center(
                     child:
                     // MyHomePage()
-                    Text(
-                  'Item 1',
-                  style: TextStyle(fontSize: 18, color: Colors.white),
-                )
+                    ViewCategoryChart(),
                 ),
               ),
               Container(

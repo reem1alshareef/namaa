@@ -25,8 +25,7 @@ class ViewModelMoneyTimeChart extends BaseViewModel {
       final itemDayOfWeek = itemDate.weekday;
         final adjustedDayOfWeek = (itemDayOfWeek == 7) ? 0 : itemDayOfWeek;
         pricesByDay[adjustedDayOfWeek] ??= [];
-        //print(item['price'].toString());
-        //print(pricesByDay[adjustedDayOfWeek].toString());
+
         pricesByDay[adjustedDayOfWeek]!.add(item['price']);//item['price'] as double
       }
     }
@@ -44,43 +43,43 @@ class ViewModelMoneyTimeChart extends BaseViewModel {
 
   static Future<double> getSundayAverage() async {
     final averageS = await calculateAverageByDayOfWeek(0);
-    print('Sunday: $averageS');
+    //print('Sunday: $averageS');
     return averageS;
   }
 
   static Future<double> getMondayAverage() async {
     final averageM = await calculateAverageByDayOfWeek(1);
-    print('Monday: $averageM');
+    //print('Monday: $averageM');
     return averageM;
   }
 
   static Future<double> getTuesdayAverage() async {
     final averageT = await calculateAverageByDayOfWeek(2);
-    print('Tuesday: $averageT');
+    //print('Tuesday: $averageT');
     return averageT;
   }
 
   static Future<double> getWednesdayAverage() async {
     final averageW = await calculateAverageByDayOfWeek(3);
-    print('Wednesday: $averageW');
+    //print('Wednesday: $averageW');
     return averageW;
   }
 
   static Future<double> getThursdayAverage() async {
     final averageTh = await calculateAverageByDayOfWeek(4);
-    print('Thursday: $averageTh');
+    //print('Thursday: $averageTh');
     return averageTh;
   }
 
   static Future<double> getFridayAverage() async {
     final averageF = await calculateAverageByDayOfWeek(5);
-    print('Friday: $averageF');
+    //print('Friday: $averageF');
     return averageF;
   }
 
   static Future<double> getSaturdayAverage() async {
     final averageSa = await calculateAverageByDayOfWeek(6);
-    print('Saturday: $averageSa');
+    //print('Saturday: $averageSa');
     return averageSa;
   }
 }

@@ -44,7 +44,7 @@ class AccountButton extends StatelessWidget {
     break;
 
     case 'signin':
-    bool completed = await signinObj.signIn(emailAddress.text, pin.text, validationKey);
+    bool completed = signinObj.signIn(emailAddress.text, pin.text, validationKey);
     if (completed)
           Navigator.push(context,MaterialPageRoute(builder: (context) =>  ViewOTPPage(emailAddress: emailAddress.text, type: 'SignIn')),);
       print('reached Sign In!!!!');
