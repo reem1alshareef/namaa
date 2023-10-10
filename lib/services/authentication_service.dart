@@ -12,7 +12,7 @@ class AuthenticationService {
   //   anonKey:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJwd3F4bmRsaGRpcWtyZWppZ3NlIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTMwNjY4NDQsImV4cCI6MjAwODY0Mjg0NH0.qlIR6KNotfLwl30HsVSUW9M3smblYaYxtk_D7W2L_EU',
   // );
 
-  Future<void> signUp({required String namee, required String emaill, required String passwordd}) async {
+  Future<int> signUp({required String namee, required String emaill, required String passwordd}) async {
     //try {
       //Call the appropriate method from Supabase to sign up the user
       try{
@@ -30,14 +30,17 @@ await supabaseClient.from('userAccount')
   .insert([
     { 'Email': emaill, 'name': namee, 'passcode':'0000', 'UserID':res.user?.id},
   ]);
+  return 0;
       //print(response.user?.id);
 
       //res.user.
       
       //verifyUserAccount();
   }catch(e){
-
+return 2;
   }
+
+  //return 0;
       
 
 
@@ -84,29 +87,39 @@ await supabase.auth.verifyOTP(token: otp, type: OtpType.email, email: email);
 
 }
 
-   static Future<void> signInUser(String email, String password) async {
+   static Future<int> signInUser(String email, String password,) async {
+     late AuthResponse response;
+    //try{
       final supabaseClient = SupabaseClient('https://rpwqxndlhdiqkrejigse.supabase.co', "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJwd3F4bmRsaGRpcWtyZWppZ3NlIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTMwNjY4NDQsImV4cCI6MjAwODY0Mjg0NH0.qlIR6KNotfLwl30HsVSUW9M3smblYaYxtk_D7W2L_EU");
 //final supabase = supabaseClient.auth.admin.noSuchMethod(invocation)
-   final response= await supabaseClient.auth.signInWithPassword(password: password, email: email);
+try{
+      response= await supabaseClient.auth.signInWithPassword(password: password, email: email);
+
+}on Exception catch(e){
+  print('An error occurred: $e');
+  return 2;
+//throw e;
+
+}
+  //  .catchError((error){
+  //   // print('Error signing in: $error');
+  //   // throw Exception(error);
+  //   return Exception(error);
+
+  //  });
    if (response.session!=null) {
-//await supabaseClient.auth.signOut();
 final Session? session = response.session;
-// final User? user = response.user;
 currentUser = response.user;
-//currentEmail(user);
-// print('in log in');
-// print(user?.email);
-// String? currentEmail() {
-//     return user?.email;
-//   }
 await supabase.auth.signInWithOtp(
-  email: email, //emailRedirectTo: 'otp'
+  email: email,
 );
   } else if (response.session==null){
 }
-  //  await supabase.auth.signInWithOtp(
-  //   email: email,
-  // );
+return 0;
+    // }catch(e){
+    //   print(e.toString());
+    //   return e;
+    //   }
 }
 
 
