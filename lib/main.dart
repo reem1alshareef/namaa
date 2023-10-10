@@ -1,9 +1,10 @@
+//import 'package:postgres/postgres.dart';
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:namaagp/ExplorePage/ViewModelExplorePage.dart';
 import 'package:namaagp/Splash/ViewSplash.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-//import 'package:postgres/postgres.dart';
-import 'dart:async';
 
 //import 'namaagp/lib/SignUp/ViewModelSignUp.dart';
 main() async {

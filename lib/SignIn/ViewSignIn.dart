@@ -73,4 +73,98 @@ class ViewSignIn extends StatelessWidget {
               )));
         });
   }
+//   static Future<void> showMyDialog(BuildContext context) async {
+//   return showDialog<void>(
+//     context: context,
+//     barrierDismissible: false, // user must tap button!
+//     builder: (BuildContext context) {
+//       return AlertDialog(
+//         title: const Text('AlertDialog Title'),
+//         content: const SingleChildScrollView(
+//           child: ListBody(
+//             children: <Widget>[
+//               Text('This is a demo alert dialog.'),
+//               Text('Would you like to approve of this message?'),
+//             ],
+//           ),
+//         ),
+//         actions: <Widget>[
+//           TextButton(
+//             child: const Text('Approve'),
+//             onPressed: () {
+//               Navigator.of(context).pop();
+//             },
+//           ),
+//         ],
+//       );
+//     },
+//   );
+// }
+//   Widget invalidLoginData(){
+    
+// return AlertDialog(
+//               title: Text("فشلت عملية تسجيل الدخول"),
+//               content: Container(
+//     width: 387,
+//     height: 236,
+//     decoration: ShapeDecoration(
+//         color: Color(0xE5383838),
+//         shape: RoundedRectangleBorder(
+//             side: BorderSide(width: 1, color: Color(0xFFC05454)),
+//             borderRadius: BorderRadius.circular(20),
+//         ),
+//     ),
+// ),//Text(".البريد الإلكتروني المدخل أو كلمة المرور خاطئين، أعد كتابتهم"),
+//               actions: [
+//                 ElevatedButton(
+//                   child: Text("jjkjk"),
+//                   onPressed: () {
+//                     Navigator.of(context).pop();
+//                   },
+//                 )
+//               ],
+//             );              
+//   }
 }
+
+
+// class invalidLogin extends StatelessWidget {
+//   // final String title;
+//   // final String placeHolder;
+//   // final TextEditingController inputController;
+
+//   const invalidLogin({
+//     Key? key,
+//     // required this.title,
+//     // required this.placeHolder,
+//     // required this.inputController,
+//   }) : super(key: key);
+
+  @override
+  Future<void> loginerror(BuildContext context) {
+    return showDialog(
+    context: context,
+    barrierDismissible: false, // user must tap button!
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: const Text('AlertDialog Title'),
+        content: const SingleChildScrollView(
+          child: ListBody(
+            children: <Widget>[
+              Text('This is a demo alert dialog.'),
+              Text('Would you like to approve of this message?'),
+            ],
+          ),
+        ),
+        actions: <Widget>[
+          TextButton(
+            child: const Text('Approve'),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        ],
+      );
+    }
+  );
+  }

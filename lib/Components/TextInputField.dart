@@ -1,3 +1,4 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -50,6 +51,15 @@ class TextInputField extends StatelessWidget {
               validator: (value) {
               if (value == null || value.isEmpty) {
                 return 'يرجى تعبئة الخانة';
+              }
+              if(title=='البريد الإلكتروني' && !EmailValidator.validate(value)){
+                return 'يرجى إدخال بريد إلكتروني صحيح';
+              }
+              if(title=='الاسم' && value.length<3 || value.length>40){
+                return 'يرجى إدخال اسم صحيح';
+              }
+              if(title=='كلمة السر' && value.length<6 || value.length>40){
+                return 'كلمة السر يجب أن تتكون من ست خانات على الأقل';
               }
               return null;
             }

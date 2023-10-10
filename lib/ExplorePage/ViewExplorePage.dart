@@ -15,8 +15,8 @@ class ViewExplorePage extends StatelessWidget {
           //Future <String> currency;
           return FutureBuilder<List<String>>(
         future: Future.wait([
-          viewmodel.getCurrency(),
-          viewmodel.getBalance()
+          // viewmodel.getCurrency(),
+          // viewmodel.getBalance()
         ]),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
@@ -83,7 +83,7 @@ class ViewExplorePage extends StatelessWidget {
                           TextSpan(
                             children: [
                               TextSpan(
-                                text: userData[1],
+                                text: '',//userData[1],
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 35,
@@ -93,7 +93,7 @@ class ViewExplorePage extends StatelessWidget {
                                 ),
                               ),
                               TextSpan(
-                                  text: userData[0],//' ر. س',
+                                  text: '',//userData[0],//' ر. س',
                                   style: GoogleFonts.getFont("Noto Sans Arabic",
                                       fontSize: 22,
                                       fontWeight: FontWeight.w400,
@@ -127,10 +127,10 @@ class ViewExplorePage extends StatelessWidget {
                       //End of Choose Chart Area
 
                       //Expenses Title
-
+                      SizedBox(height: 5,),
                       Row(
                         children: [
-                          SizedBox(width: 240,),
+                          SizedBox(width: 220,),
                           Text('المصروفات',
               textAlign: TextAlign.right,
               style: GoogleFonts.getFont("Noto Sans Arabic",
@@ -162,7 +162,29 @@ class ViewExplorePage extends StatelessWidget {
 
                       //End of navbar
                     ],
-                  )));
+                  )),
+                  floatingActionButton: FloatingActionButton(
+        onPressed: addExpenses,
+        tooltip: 'Increment',
+        child: Container(
+          child: Icon(Icons.add, size: 40,),
+        decoration: BoxDecoration(
+          color: Colors.transparent,
+          borderRadius: BorderRadius.all(
+            Radius.circular(100),
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: Color(0xFFB0ACD5),
+              spreadRadius: 0,
+              blurRadius: 25,
+              offset: Offset(0, 0),
+            ),
+          ],
+        ),
+      ),//new Icon(Icons.add),
+        backgroundColor: Color(0xFFC9C2FF), //splashColor: Color(0xFFC9C2FF),//decoration: sha
+          ));
   });});
   }
 }
