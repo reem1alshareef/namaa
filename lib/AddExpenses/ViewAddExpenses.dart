@@ -69,20 +69,21 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
   Widget build(BuildContext context) {
     void _showPopupMenu() async {
       await showMenu(
+          color:   Color.fromARGB(255, 25, 26, 62),
         context: context,
         position: RelativeRect.fromLTRB(100, 200, 100, 100),
         items: [
           PopupMenuItem(
-            child: Text("SR"),
+            child: Text(" ريال سعودي", style: TextStyle(color: Color.fromARGB(255, 203, 204, 234),)),
           ),
           PopupMenuItem(
-            child: Text("USD"),
+            child: Text("دولار أمريكي",style: TextStyle(color: Color.fromARGB(255, 203, 204, 234),)),
           ),
           PopupMenuItem(
-            child: Text("AED"),
+            child: Text("درهم إماراتي",style: TextStyle(color: Color.fromARGB(255, 203, 204, 234),)),
           ),
           PopupMenuItem(
-            child: Text("GBP"),
+            child: Text("جنيه إسترليني",style: TextStyle(color: Color.fromARGB(255, 203, 204, 234),)),
           ),
         ],
         elevation: 8.0,

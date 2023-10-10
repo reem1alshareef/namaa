@@ -73,6 +73,11 @@ flutter:
    - assets/Icons/down-arrow.png
    - assets/Icons/settingsIcon.png
    - assets/Icons/filter-4.png
+   - assets/saudi-arabia.png
+   - assets/european-union.png
+   - assets/united-arab-emirates.png
+   - assets/united-states.png
+   - assets/united-kingdom.png
    
 
   # An image asset can refer to one or more resolution-specific "variants", see
