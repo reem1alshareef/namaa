@@ -43,7 +43,7 @@ class ViewExplorePage extends StatelessWidget {
             return Text('Error: ${snapshot.error}');
           }
 
-          List<String> userData = snapshot.data!;
+          //List<String> userData = snapshot.data!;
           
           return Scaffold(
               backgroundColor: Color(0x00071121),
