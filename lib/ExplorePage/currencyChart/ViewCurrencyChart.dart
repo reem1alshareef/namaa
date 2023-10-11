@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:namaagp/ExplorePage/categoryChart/viewModelCategoryChart.dart';
 import 'package:pie_chart/pie_chart.dart';
+import '../currencyChart/ViewModelCurrencyChart.dart';
 
-class ViewCategoryChart extends StatelessWidget {
-  const ViewCategoryChart({Key? key}) : super(key: key);
+class ViewCurrencyChart extends StatelessWidget {
+  const ViewCurrencyChart({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,13 +35,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future<Map<String, double>> getDataMap() async {
     return {
-      "المنزل": await ViewModelCategoryChart.calculateHomePercentage(),
-      "غذاء": await ViewModelCategoryChart.calculateFoodPercentage(),
-      "صحة": await ViewModelCategoryChart.calculateHelthPercentage(),
-      "شخصي": await ViewModelCategoryChart.calculatePersonalPercentage(),
-      "ترفيه": await ViewModelCategoryChart.calculateEntertainmentPercentage(),
-      "مواصلات": await ViewModelCategoryChart.calculateTransportationPercentage(),
-      "أخرى": await ViewModelCategoryChart.calculateOtherPercentage(),
+      "ريال": await ViewModelCurrencyChart.calculateRPercentage(),
+      "درهم": await ViewModelCurrencyChart.calculateDePercentage(),
+      "دولار": await ViewModelCurrencyChart.calculateDoPercentage(),
+      "جنيه": await ViewModelCurrencyChart.calculateJPercentage(),
+      "يورو": await ViewModelCurrencyChart.calculateUPercentage(),
     };
   }
 
@@ -52,9 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
     Color.fromARGB(255, 91, 91, 91), 
     Color.fromARGB(255, 137, 170, 201), 
     Color.fromARGB(255, 4, 160, 181), 
-    Color.fromARGB(255, 215, 184, 204) ,
-    Color.fromARGB(255, 235, 244, 144) ,
-    Color.fromARGB(255, 171, 239, 170) 
+    Color.fromARGB(255, 215, 184, 204) 
   ];
 
   @override
@@ -112,8 +108,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   legendTextStyle: TextStyle(fontSize: 10 , color: Colors.white),
                   legendPosition: LegendPosition.right,
                   showLegendsInRow: false,
-                
-                  
                 ),
                 // Set the list of gradients for the background of the pie chart
                 //gradientList: gradientList,

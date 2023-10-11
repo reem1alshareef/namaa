@@ -2,7 +2,7 @@ import 'package:namaagp/services/authentication_service.dart';
 import 'package:stacked/stacked.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-class ViewModelMoneyTimeChart extends BaseViewModel {
+class ViewModelCategoryChart extends BaseViewModel {
   static Future<double> calculateCategoryPercentage(String categoryName) async {
     final supabaseClient = SupabaseClient(
       'https://rpwqxndlhdiqkrejigse.supabase.co',
@@ -37,23 +37,31 @@ class ViewModelMoneyTimeChart extends BaseViewModel {
     return percentage;
   }
 
+  static Future<double> calculateHomePercentage() async {
+    return await calculateCategoryPercentage('المنزل');
+  }
+
   static Future<double> calculateFoodPercentage() async {
-    return await calculateCategoryPercentage('أكل');
+    return await calculateCategoryPercentage('غذاء');
   }
 
-  static Future<double> calculateClothesPercentage() async {
-    return await calculateCategoryPercentage('ملابس');
+  static Future<double> calculateHelthPercentage() async {
+    return await calculateCategoryPercentage('صحة');
   }
 
-  static Future<double> calculateMedicinePercentage() async {
-    return await calculateCategoryPercentage('أدوية');
+  static Future<double> calculatePersonalPercentage() async {
+    return await calculateCategoryPercentage('شخصي');
   }
 
-  static Future<double> calculateBooksPercentage() async {
-    return await calculateCategoryPercentage('كتب');
+  static Future<double> calculateEntertainmentPercentage() async {
+    return await calculateCategoryPercentage('ترفيه');
   }
 
-  static Future<double> calculateDevicesPercentage() async {
-    return await calculateCategoryPercentage('أجهزة');
+  static Future<double> calculateOtherPercentage() async {
+    return await calculateCategoryPercentage('أخرى');
+  }
+
+  static Future<double> calculateTransportationPercentage() async {
+    return await calculateCategoryPercentage('مواصلات');
   }
 }
