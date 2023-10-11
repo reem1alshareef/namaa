@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:namaagp/ExplorePage/ViewMoreExpenses.dart';
-import 'package:namaagp/Splash/ViewSplash.dart';
+import 'package:namaagp/MoreExpenses/ViewMoreExpenses.dart';
+// import 'package:namaagp/Splash/ViewSplash.dart';
 import 'package:namaagp/AddExpenses/ViewAddExpenses.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -79,8 +79,9 @@ class _MyHomePageState extends State<MyHomePage> {
           builder: (BuildContext context) {
             submitLogin();
            
-            //return ViewAddExpenses();
-            return const ViewSplash();
+            return ViewMoreExpenses();
+            
+            //return const ViewSplash();
           },
         ),
       );
