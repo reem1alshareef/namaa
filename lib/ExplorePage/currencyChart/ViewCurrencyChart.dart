@@ -47,10 +47,10 @@ class _MyHomePageState extends State<MyHomePage> {
   // of the pie chart
   List<Color> colorList = [
     Color.fromARGB(255, 242, 239, 242), 
-    Color.fromARGB(255, 91, 91, 91), 
-    Color.fromARGB(255, 137, 170, 201), 
-    Color.fromARGB(255, 4, 160, 181), 
-    Color.fromARGB(255, 215, 184, 204) 
+    Color.fromARGB(255, 98, 98, 98), 
+    Color.fromARGB(255, 160, 204, 246), 
+    Color.fromARGB(255, 101, 242, 171), 
+    Color.fromARGB(255, 215, 241, 155) ,
   ];
 
   @override
