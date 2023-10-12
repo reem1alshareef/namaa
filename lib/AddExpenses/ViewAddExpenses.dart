@@ -7,6 +7,7 @@ import 'package:stacked/stacked.dart';
 import 'package:flutter/foundation.dart';
 import 'utils.dart';
 import 'package:namaagp/Components/CurrencyDropdownList.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class ViewAddExpenses extends StatefulWidget {
   ViewAddExpenses({super.key});
@@ -23,7 +24,7 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
   late int data = 0;
   String date = "انقر لتحديد التاريخ";
   String? _chosenCurrency = 'العملة';
-  //String chosenategory = categoryName;
+  late String categoryName ;
 
   //String? dynamic _category = category[categoryIndex];
 
@@ -232,11 +233,7 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
                                       onSelected: (value) {
                                         setState(() {
                                           selectedIndex = categoryIndex;
-                                          String categoryName = category[categoryIndex];
-                                        
- supabaseClient
-    .from('expenses')
-    .insert({'category': categoryName,});
+                                          categoryName = category[categoryIndex];
                                           print(categoryName.runtimeType);
                                         });
                                       }),
@@ -392,7 +389,6 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
 
 //         });
 //   }
- 
- 
+
 
   
