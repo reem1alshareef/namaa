@@ -6,6 +6,7 @@ import 'package:namaagp/AddExpenses/ViewModelAddExpenses.dart';
 import 'package:stacked/stacked.dart';
 import 'package:flutter/foundation.dart';
 import 'utils.dart';
+import 'package:namaagp/Components/CurrencyDropdownList.dart';
 
 class ViewAddExpenses extends StatefulWidget {
   ViewAddExpenses({super.key});
@@ -15,19 +16,25 @@ class ViewAddExpenses extends StatefulWidget {
 }
 
 class _ViewAddExpensesState extends State<ViewAddExpenses> {
-  TextEditingController mycontroller = TextEditingController();
+  late TextEditingController mycontroller = TextEditingController();
   late Future<DateTime?> selectedDate;
-  String date = "انقر لتحديد التاريخ";
 
-  List data = [
+  //DATAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+  late int data = 0;
+  String date = "انقر لتحديد التاريخ";
+  String? _chosenCurrency = 'العملة';
+  //String chosenategory = categoryName;
+
+  //String? dynamic _category = category[categoryIndex];
+
+  List category = [
     "شخصي",
-    "بقالة",
-    "عائلة",
-    "فواتير",
+    "مواصلات",
+    "المنزل",
+    "غذاء",
+    "صحة",
     "ترفيه",
-    "البيت",
-    "كافيهات",
-    "مطاعم"
+    "أخرى",
   ];
 
   void showDialogPicker(BuildContext context) {
@@ -66,41 +73,6 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
   int selectedIndex = -1;
 
   Widget build(BuildContext context) {
-    void _showPopupMenu() async {
-      await showMenu(
-        color: Color.fromARGB(255, 25, 26, 62),
-        context: context,
-        position: RelativeRect.fromLTRB(100, 200, 100, 100),
-        items: [
-          PopupMenuItem(
-            child: Text(" ريال سعودي",
-                style: TextStyle(
-                  color: Color.fromARGB(255, 203, 204, 234),
-                )),
-          ),
-          PopupMenuItem(
-            child: Text("دولار أمريكي",
-                style: TextStyle(
-                  color: Color.fromARGB(255, 203, 204, 234),
-                )),
-          ),
-          PopupMenuItem(
-            child: Text("درهم إماراتي",
-                style: TextStyle(
-                  color: Color.fromARGB(255, 203, 204, 234),
-                )),
-          ),
-          PopupMenuItem(
-            child: Text("جنيه إسترليني",
-                style: TextStyle(
-                  color: Color.fromARGB(255, 203, 204, 234),
-                )),
-          ),
-        ],
-        elevation: 8.0,
-      );
-    }
-
     return ViewModelBuilder<ViewModelAddExpenses>.reactive(
         viewModelBuilder: () => ViewModelAddExpenses(),
         builder: (context, viewmodel, _) {
@@ -139,12 +111,59 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       // mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        TextButton(
-                            onPressed: () async {
-                              _showPopupMenu();
+                        Container(
+                          child: DropdownButton<String>(
+                            underline: Container(
+                              decoration: const BoxDecoration(
+                                  border: Border(
+                                      bottom: BorderSide(
+                                          color: Colors.transparent,
+                                          width: 0.0))),
+                            ),
+
+                            focusColor: Color.fromARGB(255, 195, 197, 232),
+                            dropdownColor: Color.fromARGB(255, 26, 28, 62),
+
+                            //elevation: 5,
+                            style: TextStyle(
+                                color:
+                                    const Color.fromARGB(255, 195, 197, 232)),
+                            iconEnabledColor: Colors.black,
+                            items: <String>[
+                              'ريال',
+                              'درهم',
+                              'دولار',
+                              'جنية',
+                              'يورو',
+                            ].map<DropdownMenuItem<String>>((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(
+                                  value,
+                                  style: GoogleFonts.getFont("Noto Sans Arabic",
+                                      color: const Color.fromARGB(
+                                          255, 195, 197, 232),
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                              );
+                            }).toList(),
+                            hint: Text(
+                              '$_chosenCurrency',
+                              style: GoogleFonts.getFont("Noto Sans Arabic",
+                                  color: Color.fromARGB(185, 195, 197, 232),
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            onChanged: (String? value) {
+                              setState(() {
+                                _chosenCurrency = value;
+                                print('$_chosenCurrency');
+                              });
                             },
-                            child: Image.asset("assets/Icons/down-arrow.png",
-                                height: 30, width: 30)),
+                            //icon: Image.asset("assets/Icons/down-arrow.png",height: 15,width: 15,),
+                          ),
+                        ),
                         SizedBox(
                             width: 105,
                             child: TextField(
@@ -185,6 +204,7 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
                               color: const Color.fromARGB(119, 255, 255, 255))),
                       onPressed: () {
                         showDialogPicker(context);
+                        print("$date");
                       },
                     ),
 
@@ -195,24 +215,31 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
                         SizedBox(
                             height: 150,
                             child: ListView.separated(
-                              itemCount: data.length,
+                              itemCount: category.length,
                               scrollDirection: Axis.horizontal,
-                              itemBuilder: (context, index) => FilterChip(
-                                  label: Text(data[index]),
-                                  labelStyle: GoogleFonts.getFont(
-                                      "Noto Sans Arabic",
-                                      color: const Color.fromARGB(
-                                          255, 255, 255, 255)),
-                                  selected: index == selectedIndex,
-                                  selectedColor:
-                                      Color.fromARGB(255, 208, 205, 239),
-                                  backgroundColor:
-                                      Color.fromARGB(255, 58, 52, 98),
-                                  onSelected: (value) {
-                                    setState(() {
-                                      selectedIndex = index;
-                                    });
-                                  }),
+                              itemBuilder: (context, categoryIndex) =>
+                                  FilterChip(
+                                      label: Text(category[categoryIndex]),
+                                      labelStyle: GoogleFonts.getFont(
+                                          "Noto Sans Arabic",
+                                          color: const Color.fromARGB(
+                                              255, 255, 255, 255)),
+                                      selected: categoryIndex == selectedIndex,
+                                      selectedColor:
+                                          Color.fromARGB(255, 208, 205, 239),
+                                      backgroundColor:
+                                          Color.fromARGB(255, 58, 52, 98),
+                                      onSelected: (value) {
+                                        setState(() {
+                                          selectedIndex = categoryIndex;
+                                          String categoryName = category[categoryIndex];
+                                        
+ supabaseClient
+    .from('expenses')
+    .insert({'category': categoryName,});
+                                          print(categoryName.runtimeType);
+                                        });
+                                      }),
                               separatorBuilder:
                                   (BuildContext context, int index) =>
                                       const SizedBox(
