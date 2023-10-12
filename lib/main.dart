@@ -1,19 +1,29 @@
+//import 'package:postgres/postgres.dart';
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:namaagp/MoreExpenses/ViewMoreExpenses.dart';
 // import 'package:namaagp/Splash/ViewSplash.dart';
 import 'package:namaagp/AddExpenses/ViewAddExpenses.dart';
+import 'package:namaagp/ExplorePage/ViewModelExplorePage.dart';
+import 'package:namaagp/Splash/ViewSplash.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 //import 'namaagp/lib/SignUp/ViewModelSignUp.dart';
 main() async {
+
+  //GetIt.instance.registerSingleton<AuthenticationService>(AuthenticationService());
   WidgetsFlutterBinding.ensureInitialized();
 
   await Supabase.initialize(
-    url: 'https://rpwqxndlhdiqkrejigse.supabase.co',
-    anonKey:
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJwd3F4bmRsaGRpcWtyZWppZ3NlIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTMwNjY4NDQsImV4cCI6MjAwODY0Mjg0NH0.qlIR6KNotfLwl30HsVSUW9M3smblYaYxtk_D7W2L_EU',
+    url:'https://rpwqxndlhdiqkrejigse.supabase.co',
+    anonKey:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJwd3F4bmRsaGRpcWtyZWppZ3NlIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTMwNjY4NDQsImV4cCI6MjAwODY0Mjg0NH0.qlIR6KNotfLwl30HsVSUW9M3smblYaYxtk_D7W2L_EU',
+  authCallbackUrlHostname: 'login-callback',
   );
   runApp(const MyApp());
+  
+  //runApp(SupabaseService() as Widget);
+  
 }
 
 class MyApp extends StatelessWidget {
@@ -21,6 +31,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return const MaterialApp(
       
       home: MyHomePage(),
@@ -77,11 +88,8 @@ class _MyHomePageState extends State<MyHomePage> {
         context,
         MaterialPageRoute(
           builder: (BuildContext context) {
-            submitLogin();
-           
-            return ViewAddExpenses();
-            
-            //return const ViewSplash();
+            //submitLogin();
+            return const ViewSplash();//ViewExplorePage();
           },
         ),
       );
@@ -89,8 +97,4 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return "Logined";
   }
-}
-
-void submitLogin() {
-  print('reem');
 }

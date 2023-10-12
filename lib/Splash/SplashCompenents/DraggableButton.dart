@@ -30,7 +30,7 @@ class DraggableButton extends StatelessWidget {
                             decoration: const ShapeDecoration(
                                 color: Color(0xFF414472),
                                 shape: OvalBorder(),
-                                image: const DecorationImage(
+                                image: DecorationImage(
                                   image: AssetImage(
                                     'assets/Icons/WhiteArrow.png',
                                   ),
@@ -55,7 +55,7 @@ class DraggableButton extends StatelessWidget {
                             decoration: const ShapeDecoration(
                                 color: Color(0xFF414472),
                                 shape: OvalBorder(),
-                                image: const DecorationImage(
+                                image: DecorationImage(
                                   image: AssetImage(
                                     'assets/Icons/WhiteArrow.png',
                                   ),
@@ -67,6 +67,8 @@ class DraggableButton extends StatelessWidget {
                                 //child: GestureDetector(onHorizontalDragUpdate: function(),),
                           )
                           ,onDragEnd: (details) {
+                            print('ffffffffffffffffffffffffffffffffffffffffffffffffffff');
+                            //Navigator.pop(context, (route) =>ViewIncomeDetails());
                             Navigator.push(
     context,
     MaterialPageRoute(builder: (context) =>  ViewSignUp()),
@@ -102,6 +104,15 @@ class DraggableButton extends StatelessWidget {
                           
                           ]),);
   }
+
+  function(){
+
+  }
   
-  function() {}
+  // function(BuildContext context) {
+  //   Navigator.push(
+  //   context,
+  //   MaterialPageRoute(builder: (context) =>  ViewSignUp()),
+  // );
+  // }
 }

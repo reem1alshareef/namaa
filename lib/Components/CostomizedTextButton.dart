@@ -5,7 +5,7 @@ import 'package:namaagp/SignIn/ViewSignIn.dart';
 import 'package:namaagp/SignUp/ViewSignUp.dart';
 
 class CostomizedTextButton extends StatelessWidget {
-  final resend = new ViewModelOTPPage();
+  final resend = ViewModelOTPPage();
   final String question;
   final String actionTitle;
   final String purpose;
@@ -15,11 +15,14 @@ class CostomizedTextButton extends StatelessWidget {
     required this.question,
     required this.actionTitle,
     required this.purpose,
+    //required this.formKey, 
+    //required GlobalKey<FormState> validationKey
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      alignment: Alignment.center,
       child: GestureDetector(
       onTap: () {//this if statement changes the purpose or the destination of the button
 
@@ -58,7 +61,7 @@ class CostomizedTextButton extends StatelessWidget {
       child: Row(
         
       children: [
-          SizedBox(width: purpose!='SignUp'?85:65,),
+          SizedBox(width: purpose != 'ResendOTP'? purpose!='SignUp'?85:50:60,),
           Text(actionTitle,
               textAlign: TextAlign.right,
               style: GoogleFonts.getFont("Noto Sans Arabic",
@@ -81,8 +84,6 @@ class CostomizedTextButton extends StatelessWidget {
       ],
     )
     ,),
-      //ResendOTP(),
-      alignment: Alignment.center,
       //alignment:
     )
     

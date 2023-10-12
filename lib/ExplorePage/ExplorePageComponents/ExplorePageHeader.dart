@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+import 'package:namaagp/Settings/ViewSettings.dart';
 
 class ExplorePageHeader extends StatelessWidget {
   //final String title;
@@ -21,16 +21,16 @@ class ExplorePageHeader extends StatelessWidget {
         GestureDetector(
           child: Image.asset(
                     'assets/Icons/settingsIcon.png',
-                    width: 50,
-          height: 36.31, //228.33,
+                    width: 40,
+          height: 29, //228.33,
                     fit: BoxFit.cover,
                   ),
-          // onTap: () {
-          //             Navigator.push(context,MaterialPageRoute(builder: (context) =>  ViewSettings()),);
-          // },
+          onTap: () {
+                      Navigator.push(context,MaterialPageRoute(builder: (context) =>  ViewSettings()),);
+          },
         ),
         //const ReturnToPreviousPage(title: 'البداية', tWidth: 69,),
-        SizedBox(width: 30,),
+        SizedBox(width: 35,),
         Column(
           children: [
             //Expanded(
@@ -42,11 +42,11 @@ class ExplorePageHeader extends StatelessWidget {
                 
                 Row(
                   children: [
-                    SizedBox(width: 170,),
+                    SizedBox(width: 155,),
                     Text('نماء',
                               textAlign: TextAlign.right,
                               style: GoogleFonts.getFont("Noto Sans Arabic",
-                                  fontSize: 24,
+                                  fontSize: 18,
                                   fontWeight: FontWeight.w400,
                                   height: 1.1,
                                   textStyle: const TextStyle(color: Color(0xFFD0CDEF)))
@@ -58,15 +58,15 @@ class ExplorePageHeader extends StatelessWidget {
             Text('امتلك زمام التحكم بمعاملاتك المالية',
                       textAlign: TextAlign.center,
                       style: GoogleFonts.getFont("Noto Sans Arabic",
-                          fontSize: 15,
+                          fontSize: 13,
                           fontWeight: FontWeight.w400,
                           height: 1,
                           textStyle: const TextStyle(color: Color(0xFFC5C5D0)))),
           ],
         ),
         Container(
-          width: 50,
-          height: 36.31,
+          width: 40,
+          height: 29,
           decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage('assets/NamaaLogo.png'),
