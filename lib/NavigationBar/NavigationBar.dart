@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:namaagp/AddExpenses/ViewAddExpenses.dart';
 import 'package:namaagp/ExplorePage/ViewExplorePage.dart';
 import 'package:namaagp/ViewExpenses/ViewViewExpenses.dart';
 //import 'package:namaagp/a';
@@ -179,7 +180,11 @@ class _NavigationExampleState extends State<NavigationExample> {
               right: 20,
               height: 60,
               child: GestureDetector(
-                onTap: addExpenses,
+                onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => ViewAddExpenses()),
+              ),
                 child: Container(
                 //margin: EdgeInsets.only(right: 30),
                 child: Icon(

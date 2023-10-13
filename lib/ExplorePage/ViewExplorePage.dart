@@ -170,9 +170,9 @@ class ViewExplorePage extends StatelessWidget {
                               Padding(
                           padding: const EdgeInsets.only(left: 13, right: 13),
                           child: Expense(
-                              category: expenses[index]['category'],
-                              date: expenses[index]['date'],
-                              price: expenses[index]['price'].toString()),
+                              category: expenses[snapshot.data!.length-index-1]['category'],
+                              date: expenses[snapshot.data!.length-index-1]['date'],
+                              price: expenses[snapshot.data!.length-index-1]['price'].toString()),
                         ),
                         
                             ]),
