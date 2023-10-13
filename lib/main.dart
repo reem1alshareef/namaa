@@ -17,6 +17,7 @@ main() async {
   authCallbackUrlHostname: 'login-callback',
   );
   runApp(const MyApp());
+  
   //runApp(SupabaseService() as Widget);
   
 }
