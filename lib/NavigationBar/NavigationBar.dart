@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:namaagp/ExplorePage/ViewExplorePage.dart';
 //import 'package:namaagp/a';
 
@@ -24,124 +25,200 @@ class NavigationExample extends StatefulWidget {
 
 class _NavigationExampleState extends State<NavigationExample> {
   int currentPageIndex = 0;
+  double navbarWidth=200;
+  
+
+  double returnImageIconSize(){
+    return navbarWidth*35/221;
+  }
+
+  double returnImageContainerSize(){
+    return navbarWidth*51/221;
+  }
+  
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
       backgroundColor: Color(0x00071121),
-      floatingActionButton: FloatingActionButton(
-        //floatingActionL,
-        onPressed: addExpenses,
-        tooltip: 'Increment',
-        child: Container(
-          //margin: EdgeInsets.only(right: 30),
-          child: Icon(
-            Icons.add,
-            size: 40,
-          ),
-          width: 60,
-          height: 60,
-          decoration: ShapeDecoration(
-            color: Color(0xFFC9C2FF),
-            shape: OvalBorder(),
-            shadows: [
-              BoxShadow(
-                color: Color(0xFFB0ACD5),
-                blurRadius: 4,
-                offset: Offset(0, 0),
-                spreadRadius: 0,
-              )
-            ],
-          ),
-        ),
-        backgroundColor: Colors
-            .transparent, //splashColor: Color(0xFFC9C2FF),//decoration: sha
-      ), //floatingActionButtonLocation: f,
+      // floatingActionButton: FloatingActionButton(
+      //   //floatingActionL,
+      //   onPressed: addExpenses,
+      //   tooltip: 'Increment',
+      //   child: Container(
+      //     //margin: EdgeInsets.only(right: 30),
+      //     child: Icon(
+      //       Icons.add,
+      //       size: 40,
+      //     ),
+      //     width: 60,
+      //     height: 60,
+      //     decoration: ShapeDecoration(
+      //       color: Color(0xFFC9C2FF),
+      //       shape: OvalBorder(),
+      //       shadows: [
+      //         BoxShadow(
+      //           color: Color(0xFFB0ACD5),
+      //           blurRadius: 4,
+      //           offset: Offset(0, 0),
+      //           spreadRadius: 0,
+      //         )
+      //       ],
+      //     ),
+      //   ),
+      //   backgroundColor: Colors
+      //       .transparent, //splashColor: Color(0xFFC9C2FF),//decoration: sha
+      // ), //floatingActionButtonLocation: f,
       bottomNavigationBar: Container(
-        margin: EdgeInsets.only(bottom: 30, left: 90, right: 90),
-        width: 221,
-        height: 83,
-        decoration: ShapeDecoration(
-          color: Color(0xFF313947),
-          shape: RoundedRectangleBorder(
-            side: BorderSide(
-              width: 1,
-              color: Colors.white.withOpacity(0.15000000596046448),
-            ),
-            borderRadius: BorderRadius.circular(60),
-          ),
-        ),
-        child: BottomNavigationBar(
-            backgroundColor: Colors.transparent,
-            showSelectedLabels: false,
-            showUnselectedLabels: false,
-            type: BottomNavigationBarType.fixed,
-            currentIndex: currentPageIndex,
-            onTap: onDestinationSelected,
-            elevation: 0,
-            items: [
-              BottomNavigationBarItem(
-                icon: new Image.asset('assets/NavBarIcons/Explore.png'),
-                activeIcon: Container(
-                  child: new Image.asset('assets/NavBarIcons/Explore.png'),
-                  width: 51,
-                  height: 51,
-                  decoration: ShapeDecoration(
-                    color: Color(0xFF93B2E4),
-                    shape: OvalBorder(),
-                    shadows: [
-                      BoxShadow(
-                        color: Color(0xFF93B2E4),
-                        blurRadius: 4,
-                        offset: Offset(0, 0),
-                        spreadRadius: 0,
-                      )
-                    ],
+        color: Colors.transparent,
+        height: currentPageIndex==0?130:100,
+        child: Stack(
+          fit: StackFit.loose,
+          children: [
+            
+            Positioned(
+              right: -7,
+              //alignment:Alignment.center,
+              bottom: 5,
+              child: Container(
+                margin: EdgeInsets.only(bottom: 0, left: 90, right: 90),
+                width: navbarWidth,//221,
+                height: 78.2,
+                decoration: ShapeDecoration(
+                  color: Color(0xFF313947),
+                  shape: RoundedRectangleBorder(
+                    side: BorderSide(
+                      width: 1,
+                      color: Colors.white.withOpacity(0.15000000596046448),
+                    ),
+                    borderRadius: BorderRadius.circular(60),
                   ),
-                ), //,
-                label: 'Home',
+                ),
+                child: BottomNavigationBar(
+                  //height:,
+                    backgroundColor: Colors.transparent,
+                    showSelectedLabels: false,
+                    showUnselectedLabels: false,
+                    type: BottomNavigationBarType.fixed,
+                    currentIndex: currentPageIndex,
+                    onTap: onDestinationSelected,
+                    elevation: 0,
+                    items: [
+                      BottomNavigationBarItem(
+                        icon: new Image.asset('assets/NavBarIcons/Explore.png', fit: BoxFit.fill, width: returnImageIconSize(), height: returnImageIconSize(),),
+                        activeIcon: Container(
+                                                    padding: EdgeInsets.all(8),
+                                            margin: EdgeInsets.only(left: 7),
+                          child: new Image.asset('assets/NavBarIcons/Explore.png', fit: BoxFit.fill, width: returnImageIconSize(), height: returnImageIconSize(),),
+                          width: returnImageContainerSize(),//51,
+                          height: returnImageContainerSize(),
+                          decoration: ShapeDecoration(
+                            color: Color(0xFF93B2E4),
+                            shape: OvalBorder(),
+                            shadows: [
+                              BoxShadow(
+                                color: Color(0xFF93B2E4),
+                                blurRadius: 4,
+                                offset: Offset(0, 0),
+                                spreadRadius: 0,
+                              )
+                            ],
+                          ),
+                        ), //,
+                        label: 'Home',
+                      ),
+                      BottomNavigationBarItem(icon: new Image.asset('assets/NavBarIcons/SavingPlan.png', fit: BoxFit.fill, width: returnImageIconSize(), height: returnImageIconSize(),),
+                        activeIcon: Container(
+                          padding: EdgeInsets.all(8),
+                          child: new Image.asset('assets/NavBarIcons/SavingPlan.png', fit: BoxFit.fill, width: returnImageIconSize(), height: returnImageIconSize(),),
+                          width: returnImageContainerSize(),
+                          height: returnImageContainerSize(),
+                          decoration: ShapeDecoration(
+                            color: Color(0xFF93B2E4),
+                            shape: OvalBorder(),
+                            shadows: [
+                              BoxShadow(
+                                color: Color(0xFF93B2E4),
+                                blurRadius: 4,
+                                offset: Offset(0, 0),
+                                spreadRadius: 0,
+                              )
+                            ],
+                          ),
+                        ), //,
+                        label: 'Saving Plan',),
+                      BottomNavigationBarItem(icon: new Image.asset('assets/NavBarIcons/Chatbot.png', fit: BoxFit.fill, width: returnImageIconSize(), height: returnImageIconSize(),),
+                        activeIcon: Container(
+                          padding: EdgeInsets.all(8),
+                          margin: EdgeInsets.only(right: 7),
+                          child: new Image.asset('assets/NavBarIcons/Chatbot.png', fit: BoxFit.fill, width: returnImageIconSize(), height: returnImageIconSize(),),
+                          width: returnImageContainerSize(),
+                          height: returnImageContainerSize(),
+                          decoration: ShapeDecoration(
+                            color: Color(0xFF93B2E4),
+                            shape: OvalBorder(),
+                            shadows: [
+                              BoxShadow(
+                                color: Color(0xFF93B2E4),
+                                blurRadius: 4,
+                                offset: Offset(0, 0),
+                                spreadRadius: 0,
+                              )
+                            ],
+                          ),
+                        ), //,
+                        label: 'Chatbot',)
+                    ]),
               ),
-              BottomNavigationBarItem(icon: new Image.asset('assets/NavBarIcons/SavingPlan.png', fit: BoxFit.fill, width: 35, height: 35,),
-                activeIcon: Container(
-                  padding: EdgeInsets.all(5),
-                  child: new Image.asset('assets/NavBarIcons/SavingPlan.png', fit: BoxFit.fill, width: 35, height: 35,),
-                  width: 51,
-                  height: 51,
-                  decoration: ShapeDecoration(
-                    color: Color(0xFF93B2E4),
-                    shape: OvalBorder(),
-                    shadows: [
-                      BoxShadow(
-                        color: Color(0xFF93B2E4),
-                        blurRadius: 4,
-                        offset: Offset(0, 0),
-                        spreadRadius: 0,
-                      )
-                    ],
-                  ),
-                ), //,
-                label: 'inbox',),
-              BottomNavigationBarItem(icon: new Image.asset('assets/NavBarIcons/Chatbot.png', fit: BoxFit.fill, width: 35, height: 35,),
-                activeIcon: Container(
-                  padding: EdgeInsets.all(5),
-                  child: new Image.asset('assets/NavBarIcons/Chatbot.png', fit: BoxFit.fill, width: 35, height: 35,),
-                  width: 51,
-                  height: 51,
-                  decoration: ShapeDecoration(
-                    color: Color(0xFF93B2E4),
-                    shape: OvalBorder(),
-                    shadows: [
-                      BoxShadow(
-                        color: Color(0xFF93B2E4),
-                        blurRadius: 4,
-                        offset: Offset(0, 0),
-                        spreadRadius: 0,
-                      )
-                    ],
-                  ),
-                ), //,
-                label: 'Profile',)
-            ]),
+            ),
+            currentPageIndex==0?
+            Positioned(
+              bottom: 60,
+              right: 20,
+              height: 60,
+              child: GestureDetector(
+                onTap: addExpenses,
+                child: Container(
+                //margin: EdgeInsets.only(right: 30),
+                child: Icon(
+                  Icons.add,
+                  size: 50,
+                  color: Colors.white,
+                ),
+                width: 60,
+                height: 60,
+                decoration: ShapeDecoration(
+                  color: Color(0xFFC9C2FF),
+                  shape: OvalBorder(),
+                  shadows: [
+                    BoxShadow(
+                      color: Color(0xFFB0ACD5),
+                      blurRadius: 4,
+                      offset: Offset(0, 0),
+                      spreadRadius: 0,
+                    )
+                  ],
+                ),
+                      ),
+              ),
+            ):SizedBox(width: 0,height: 0,),
+            currentPageIndex==0?
+            Positioned(
+              left: 140,
+              bottom: 90,
+              child: Text(
+              'عرض المزيد',
+              textAlign: TextAlign.right,
+              style: GoogleFonts.getFont("Noto Sans Arabic",
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                  height: 1.5,
+                  textStyle: const TextStyle(color: Color(0xFF6FA8FF), decoration: TextDecoration.underline)),
+                  
+            )):SizedBox(width: 0,height: 0,)
+          ],
+        ),
       ),
       body: <Widget>[
         Container(

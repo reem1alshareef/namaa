@@ -89,6 +89,13 @@ flutter:
     - assets\NavBarIcons\SavingPlan.png
     - assets/NavBarIcons/Explore.png
     - assets\NavBarIcons\Chatbot.png
+    - assets\CategoryICons\entertaiment.png
+    - assets\CategoryICons\foodAndDrinks.png
+    - assets\CategoryICons\house.png
+    - assets\CategoryICons\health.png
+    - assets\CategoryICons\other.png
+    - assets\CategoryICons\personal.png
+    - assets\CategoryICons\transportation.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
