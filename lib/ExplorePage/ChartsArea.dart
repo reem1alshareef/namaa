@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:namaagp/ExplorePage/MoneyTimeChart/ViewMoneyTimeChart.dart';
 import 'package:namaagp/ExplorePage/currencyChart/ViewCurrencyChart.dart';
+
 import 'categoryChart/viewCategoryChart.dart';
 
 class ChartsArea extends StatefulWidget {
@@ -111,7 +112,7 @@ class ChartsAreaClass extends State<ChartsArea> {
         ),
         Expanded(
           child: SizedBox(
-            height: 180.0,
+            height: 175.0,
             child: PageView(
               onPageChanged: (index) {
                 pageChanged(index);

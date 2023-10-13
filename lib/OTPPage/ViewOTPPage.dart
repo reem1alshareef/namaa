@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:namaagp/Components/CostomizedTextButton.dart';
 import 'package:namaagp/Components/ReturnToPreviousPage.dart';
-import 'package:namaagp/ExplorePage/ViewExplorePage.dart';
 import 'package:namaagp/Identity%20Elements/introPagesHeader.dart';
 import 'package:namaagp/IncomeDetails/ViewIncomeDetails.dart';
+import 'package:namaagp/NavigationBar/NavigationBar.dart';
 import 'package:namaagp/OTPPage/ViewModelOTPPage.dart';
 import 'package:stacked/stacked.dart';
 
@@ -88,7 +88,7 @@ class ViewOTPPage extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const ViewExplorePage()),
+                                  builder: (context) => const NavigationBarApp()),
                             );
                           }
 

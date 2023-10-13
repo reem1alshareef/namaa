@@ -57,6 +57,8 @@ dependencies:
   
   pie_chart: ^5.3.2
   email_validator: ^2.1.17
+  floating_navbar: ^2.0.2
+  
 
 dev_dependencies:
   flutter_test:
@@ -82,19 +84,21 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-   - assets/NamaaLogo.png
-   - assets/Icons/WhiteArrow.png
-   - assets/Icons/LightPurpleArrow.png
-   - assets/Icons/microphone-8-48.png
-   - assets/Icons/down-arrow.png
-   - assets/Icons/settingsIcon.png
-   - assets/Icons/filter-4.png
-   - assets/saudi-arabia.png
-   - assets/european-union.png
-   - assets/united-arab-emirates.png
-   - assets/united-states.png
-   - assets/united-kingdom.png
-   
+    - assets\NamaaLogo.png
+    - assets/Icons/WhiteArrow.png
+    - assets/Icons/LightPurpleArrow.png
+    - assets\Icons\settingsIcon.png
+    - assets\NavBarIcons\SavingPlan.png
+    - assets/NavBarIcons/Explore.png
+    - assets\NavBarIcons\Chatbot.png
+    - assets\CategoryICons\entertaiment.png
+    - assets\CategoryICons\foodAndDrinks.png
+    - assets\CategoryICons\house.png
+    - assets\CategoryICons\health.png
+    - assets\CategoryICons\other.png
+    - assets\CategoryICons\personal.png
+    - assets\CategoryICons\transportation.png
+    - assets\Icons\filter.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
