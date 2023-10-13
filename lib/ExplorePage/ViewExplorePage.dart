@@ -4,6 +4,7 @@ import 'package:namaagp/ExplorePage/ChartsArea.dart';
 import 'package:namaagp/ExplorePage/ExplorePageComponents/ExplorePageHeader.dart';
 import 'package:namaagp/ExplorePage/ViewModelExplorePage.dart';
 import 'package:namaagp/ViewExpenses/ExpenseComponent.dart';
+import 'package:namaagp/ViewExpenses/ViewModelViewExpenses.dart';
 import 'package:stacked/stacked.dart';
 
 class ViewExplorePage extends StatelessWidget {
@@ -16,8 +17,8 @@ class ViewExplorePage extends StatelessWidget {
           //Future <String> currency;
           return FutureBuilder<List<String>>(
               future: Future.wait([
-                // viewmodel.getCurrency(),
-                // viewmodel.getBalance()
+                viewmodel.getCurrency(),
+                viewmodel.getBalance()
               ]),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
@@ -65,7 +66,7 @@ class ViewExplorePage extends StatelessWidget {
                         TextSpan(
                           children: [
                             TextSpan(
-                              text: '', //userData[1],
+                              text: userData[1],
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 35,
@@ -75,7 +76,7 @@ class ViewExplorePage extends StatelessWidget {
                               ),
                             ),
                             TextSpan(
-                                text: '', //userData[0],//' ر. س',
+                                text: userData[0],//' ر. س',
                                 style: GoogleFonts.getFont("Noto Sans Arabic",
                                     fontSize: 22,
                                     fontWeight: FontWeight.w400,
@@ -129,53 +130,117 @@ class ViewExplorePage extends StatelessWidget {
                     //End of Expenses Title
 
                     //Expenses
-                    Padding(
-                      padding: const EdgeInsets.only(left: 13, right: 13),
-                      child: Expense(
-                          category: 'شخصي',
-                          date: '12 جولاي . 12:43',
-                          price: '13 ريال سعودي'),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.all(5),
-                      width: 310,
-                      decoration: ShapeDecoration(
-                        shape: RoundedRectangleBorder(
-                          side: BorderSide(
-                            width: 0.25,
-                            strokeAlign: BorderSide.strokeAlignCenter,
-                            color: Color(0xFF9D9AC2),
+
+                    FutureBuilder<List<dynamic>>(future: ViewModelViewExpenses.getExpenses(), builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return CircularProgressIndicator();
+                      }
+         else if (snapshot.hasError) {
+                  return Text('Error: ${snapshot.error}');
+                } 
+
+                    List<dynamic> expenses = snapshot.data!;
+
+                   
+                    //height: 50,
+                     
+                       return ListView.builder(
+                        padding: EdgeInsets.all(0),
+                        //ali:,
+                        scrollDirection: Axis.vertical,
+                             shrinkWrap: true,
+                        itemCount: 3,//snapshot.data!.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Container(
+                            child: Column(children: [
+                              index!=0?
+                              Container(
+                          margin: const EdgeInsets.all(5),
+                          width: 310,
+                          decoration: ShapeDecoration(
+                            shape: RoundedRectangleBorder(
+                              side: BorderSide(
+                                width: 0.25,
+                                strokeAlign: BorderSide.strokeAlignCenter,
+                                color: Color(0xFF9D9AC2),
+                              ),
+                            ),
                           ),
+                        ):SizedBox(),
+                              Padding(
+                          padding: const EdgeInsets.only(left: 13, right: 13),
+                          child: Expense(
+                              category: expenses[index]['category'],
+                              date: expenses[index]['date'],
+                              price: expenses[index]['price'].toString()),
                         ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 13, right: 13),
-                      child: Expense(
-                          category: 'شخصي',
-                          date: '12 جولاي . 12:43',
-                          price: '13 ريال سعودي'),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.all(5),
-                      width: 310,
-                      decoration: ShapeDecoration(
-                        shape: RoundedRectangleBorder(
-                          side: BorderSide(
-                            width: 0.25,
-                            strokeAlign: BorderSide.strokeAlignCenter,
-                            color: Color(0xFF9D9AC2),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 13, right: 13),
-                      child: Expense(
-                          category: 'شخصي',
-                          date: '12 جولاي . 12:43',
-                          price: '13 ريال سعودي'),
-                    ),
+                        
+                            ]),
+                          );
+                       },);
+                   
+
+
+
+                }),
+
+
+
+
+
+
+
+                    // Padding(
+                    //   padding: const EdgeInsets.only(left: 13, right: 13),
+                    //   child: Expense(
+                    //       category: 'شخصي',
+                    //       date: '12 جولاي . 12:43',
+                    //       price: '13 ريال سعودي'),
+                    // ),
+                    // Container(
+                    //   margin: const EdgeInsets.all(5),
+                    //   width: 310,
+                    //   decoration: ShapeDecoration(
+                    //     shape: RoundedRectangleBorder(
+                    //       side: BorderSide(
+                    //         width: 0.25,
+                    //         strokeAlign: BorderSide.strokeAlignCenter,
+                    //         color: Color(0xFF9D9AC2),
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
+                    // Padding(
+                    //   padding: const EdgeInsets.only(left: 13, right: 13),
+                    //   child: Expense(
+                    //       category: 'شخصي',
+                    //       date: '12 جولاي . 12:43',
+                    //       price: '13 ريال سعودي'),
+                    // ),
+                    // Container(
+                    //   margin: const EdgeInsets.all(5),
+                    //   width: 310,
+                    //   decoration: ShapeDecoration(
+                    //     shape: RoundedRectangleBorder(
+                    //       side: BorderSide(
+                    //         width: 0.25,
+                    //         strokeAlign: BorderSide.strokeAlignCenter,
+                    //         color: Color(0xFF9D9AC2),
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
+                    // Padding(
+                    //   padding: const EdgeInsets.only(left: 13, right: 13),
+                    //   child: Expense(
+                    //       category: 'شخصي',
+                    //       date: '12 جولاي . 12:43',
+                    //       price: '13 ريال سعودي'),
+                    // ),
+
+
+
+
                   ],
                 );
               });

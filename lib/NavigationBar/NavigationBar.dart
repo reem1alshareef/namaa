@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:namaagp/ExplorePage/ViewExplorePage.dart';
+import 'package:namaagp/ViewExpenses/ViewViewExpenses.dart';
 //import 'package:namaagp/a';
 
 /// Flutter code sample for [NavigationBar].
@@ -207,16 +208,23 @@ class _NavigationExampleState extends State<NavigationExample> {
             Positioned(
               left: 140,
               bottom: 90,
-              child: Text(
-              'عرض المزيد',
-              textAlign: TextAlign.right,
-              style: GoogleFonts.getFont("Noto Sans Arabic",
-                  fontSize: 16,
-                  fontWeight: FontWeight.w400,
-                  height: 1.5,
-                  textStyle: const TextStyle(color: Color(0xFF6FA8FF), decoration: TextDecoration.underline)),
-                  
-            )):SizedBox(width: 0,height: 0,)
+              child: GestureDetector(
+                onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const ViewViewExpenses()),
+              ),
+                child: Text(
+                'عرض المزيد',
+                textAlign: TextAlign.right,
+                style: GoogleFonts.getFont("Noto Sans Arabic",
+                    fontSize: 16,
+                    fontWeight: FontWeight.w400,
+                    height: 1.5,
+                    textStyle: const TextStyle(color: Color(0xFF6FA8FF), decoration: TextDecoration.underline)),
+                    
+                          ),
+              )):SizedBox(width: 0,height: 0,)
           ],
         ),
       ),

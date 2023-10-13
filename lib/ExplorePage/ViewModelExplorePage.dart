@@ -4,7 +4,6 @@ import 'package:stacked/stacked.dart';
 class ViewModelExplorePage extends BaseViewModel {
   Future<String> getCurrency() async {
     String currency='';
-    
     String? currentEmail() {
       final String? cemail = AuthenticationService.currentUser?.email;
       //print(cemail);
