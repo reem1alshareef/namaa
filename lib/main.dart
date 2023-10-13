@@ -2,7 +2,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:namaagp/Splash/ViewSplash.dart';
+import 'package:namaagp/NavigationBar/NavigationBar.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 //import 'namaagp/lib/SignUp/ViewModelSignUp.dart';
@@ -86,7 +86,7 @@ class _MyHomePageState extends State<MyHomePage> {
         MaterialPageRoute(
           builder: (BuildContext context) {
             //submitLogin();
-            return const ViewSplash();//ViewExplorePage();
+            return const NavigationBarApp();//ViewExplorePage();//ViewSplash();
           },
         ),
       );
