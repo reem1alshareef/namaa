@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:namaagp/AddExpenses/ViewAddExpenses.dart';
 import 'package:namaagp/OTPPage/ViewModelOTPPage.dart';
 import 'package:namaagp/SignIn/ViewSignIn.dart';
 import 'package:namaagp/SignUp/ViewSignUp.dart';
@@ -40,11 +41,13 @@ class CostomizedTextButton extends StatelessWidget {
 
         case 'retrievePassword':
         print('reached retrieve password in navigator');
-        //Navigator.push(context,MaterialPageRoute(builder: (context) => const ViewSignIn()),);
+        // Navigator.push(context,MaterialPageRoute(builder: (context) =>  ViewAddExpenses()),);
+        
         break;
 
         case 'ResendOTP':
         print('reached Resend OTP in navigator');
+        Navigator.push(context,MaterialPageRoute(builder: (context) =>  ViewSignIn()),);
         resend.Resend_OTP();
         break;
 

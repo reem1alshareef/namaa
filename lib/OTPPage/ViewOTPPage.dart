@@ -102,6 +102,7 @@ class ViewOTPPage extends StatelessWidget {
                         question: 'لم يصلك رمز التحقق؟  ',
                         actionTitle: 'إعادة إرسال',
                         purpose: 'ResendOTP',
+                        
                       )
                     ],
                   )));

@@ -1,32 +1,29 @@
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:namaagp/Components/CustomButton.dart';
 import 'package:namaagp/Identity%20Elements/mainHeader.dart';
 import 'package:namaagp/AddExpenses/ViewModelAddExpenses.dart';
 import 'package:stacked/stacked.dart';
 import 'package:flutter/foundation.dart';
 import 'utils.dart';
-import 'package:namaagp/Components/CurrencyDropdownList.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 class ViewAddExpenses extends StatefulWidget {
   ViewAddExpenses({super.key});
-
   @override
   State<ViewAddExpenses> createState() => _ViewAddExpensesState();
 }
-
 class _ViewAddExpensesState extends State<ViewAddExpenses> {
   late TextEditingController mycontroller = TextEditingController();
   late Future<DateTime?> selectedDate;
 
-  //DATAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-  late int data = 0;
-  String date = "انقر لتحديد التاريخ";
-  String? _chosenCurrency = 'العملة';
-  late String categoryName ;
+  final TextEditingController expenseController = TextEditingController();
 
-  //String? dynamic _category = category[categoryIndex];
+  late int data = 0;
+  late String date = "انقر لتحديد التاريخ";
+  late String? chosenCurrency = 'العملة';
+  late String categoryName ='';
+  late String expense = ''  ;
 
   List category = [
     "شخصي",
@@ -53,16 +50,16 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
               onPrimary: Color.fromARGB(255, 195, 197, 232),
               surface: Color.fromARGB(255, 195, 197, 232),
               onSurface: Colors.black,
-            ),
-          ),
+            ),),
           child: child!,
-        );
-      },
-    );
+        );},);
     selectedDate.then((value) {
       setState(() {
         if (value == null) return;
         date = Utils.getFormattedDateSimple(value.millisecondsSinceEpoch);
+        sendDate(){
+          return date ;
+          };
       });
     }, onError: (error) {
       if (kDebugMode) {
@@ -70,9 +67,7 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
       }
     });
   }
-
   int selectedIndex = -1;
-
   Widget build(BuildContext context) {
     return ViewModelBuilder<ViewModelAddExpenses>.reactive(
         viewModelBuilder: () => ViewModelAddExpenses(),
@@ -107,7 +102,6 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
                     mainHeader(
                       title: 'إضافة صرف',
                     ),
-
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       // mainAxisAlignment: MainAxisAlignment.center,
@@ -121,7 +115,6 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
                                           color: Colors.transparent,
                                           width: 0.0))),
                             ),
-
                             focusColor: Color.fromARGB(255, 195, 197, 232),
                             dropdownColor: Color.fromARGB(255, 26, 28, 62),
 
@@ -150,7 +143,7 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
                               );
                             }).toList(),
                             hint: Text(
-                              '$_chosenCurrency',
+                              '$chosenCurrency',
                               style: GoogleFonts.getFont("Noto Sans Arabic",
                                   color: Color.fromARGB(185, 195, 197, 232),
                                   fontSize: 20,
@@ -158,8 +151,8 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
                             ),
                             onChanged: (String? value) {
                               setState(() {
-                                _chosenCurrency = value;
-                                print('$_chosenCurrency');
+                                chosenCurrency = value;
+                                print('$chosenCurrency');
                               });
                             },
                             //icon: Image.asset("assets/Icons/down-arrow.png",height: 15,width: 15,),
@@ -168,9 +161,10 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
                         SizedBox(
                             width: 105,
                             child: TextField(
-                                onSubmitted: (value) {
+                              controller: expenseController,
+                                onChanged: (value) {
                                   setState(() {
-                                    var expense = value;
+                                    expense = value;
                                     print("$expense");
                                   });
                                   //value is entered text after ENTER press
@@ -216,6 +210,7 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
                         SizedBox(
                             height: 150,
                             child: ListView.separated(
+                              
                               itemCount: category.length,
                               scrollDirection: Axis.horizontal,
                               itemBuilder: (context, categoryIndex) =>
@@ -232,10 +227,18 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
                                           Color.fromARGB(255, 58, 52, 98),
                                       onSelected: (value) {
                                         setState(() {
-                                          selectedIndex = categoryIndex;
-                                          categoryName = category[categoryIndex];
-                                          print(categoryName.runtimeType);
+                                          if (value) {
+            selectedIndex = categoryIndex;
+            categoryName = category[categoryIndex];
+          } else {
+            selectedIndex = -1; // Reset the selectedIndex
+            categoryName = ''; // Reset the categoryName
+          }
+                                          // selectedIndex = categoryIndex;
+                                          // categoryName = category[categoryIndex];
+                                          // print(categoryName.runtimeType);
                                         });
+                                        
                                       }),
                               separatorBuilder:
                                   (BuildContext context, int index) =>
@@ -251,7 +254,6 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
                             color: Color.fromARGB(132, 217, 217, 217),
                           ),
                         ),
-
                         Text(':لإضافة صرف باستخدام الادخال الصوتي',
                             style: GoogleFonts.getFont("Noto Sans Arabic",
                                 fontSize: 16,
@@ -259,7 +261,6 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
                                 height: 1.5,
                                 textStyle:
                                     const TextStyle(color: Color(0xFFC5C5CD)))),
-
                         Padding(
                           padding: const EdgeInsets.fromLTRB(50, 0, 50, 0),
                           child: Container(
@@ -310,85 +311,124 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
                                       Color.fromARGB(255, 176, 172, 213),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(50),
-
                                     //border radius equal to or more than 50% of width
-                                  )),
-                            ))
+                                  )
+                                  ),
+                            ),
+                            ),
                       ],
-                    ))
-                  ])));
+                    ),
+                    ),
+SizedBox(height: 50),
+Align(
+  alignment: Alignment.bottomCenter,
+  child: CustomButton(
+    title: 'تأكيد الإضافة',
+    onPressed: () {
+      if (date == "انقر لتحديد التاريخ" ) {
+        showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: Text('تنبيه'),
+              content: Text('الرجاء تحديد التاريخ' ),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text('موافق'),
+                ),
+              ],
+            );
+          },
+        );
+      }
+      if ( chosenCurrency == 'العملة' ) {
+        showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: Text('تنبيه'),
+              content: Text(' الرجاء اختيار العملة'),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text('موافق'),
+                ),
+              ],
+            );
+          },
+        );
+      }
+      if ( categoryName.isEmpty ) {
+        showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: Text('تنبيه'),
+              content: Text(' الرجاء تحديد فئة الصرف'),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text('موافق'),
+                ),
+              ],
+            );
+          },
+        );
+      }
+      if (expense.isEmpty) {
+        showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: Text('تنبيه'),
+              content: Text('الرجاء إدحال مبلغ الصرف'),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text('موافق'),
+                ),
+              ],
+            );
+          },
+        );
+      }
+      else {
+        ViewModelAddExpenses().addExpenses(date, chosenCurrency!, categoryName, expense);
+        showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              content: Text('تم حفظ البيانات بنجاح'),
+            );
+          },
+        ).then((value) {
+          setState(() {
+            // Reset the widget values to their initial values
+            date = "انقر لتحديد التاريخ";
+            chosenCurrency = 'العملة';
+            selectedIndex = -1; // Reset the selectedIndex
+            categoryName = '';
+            expenseController.clear();
+          });
+          
         });
+      }
+    },
+  ),
+),
+],
+    ),
+        ),
+          );
+  });
   }
 }
-    
-    
-        // child: Text("العملة"))
-
-//                  Container(
-//    width: 80,
-//    height: 80,
-
-//   child: Stack(
-
-// children:
-// [
-//       Positioned(
-//         left: 0,
-//         top: 0,
-//         child: Container(
-
-//           width: 80,
-//           height: 80,
-//           decoration: ShapeDecoration(
-//             color: Color(0xFFB0ACD5),
-//             shape: OvalBorder(),
-//             shadows: [
-//               BoxShadow(
-//                 color: Color(0xFFB0ACD5),
-//                 blurRadius: 4,
-//                 offset: Offset(0, 0),
-//                 spreadRadius: 0,
-//               )
-//             ],
-//           ),
-//         ),
-//       ),
-        // mic button
-        // Positioned(
-        //   left: 15,
-        //   top: 15,
-        //   child: Container(
-        //     child: Row(mainAxisAlignment: MainAxisAlignment.center,
-        //               children: [
-        //                 Flexible(
-        //                   child: Image.asset(
-        //                     "assets/Icons/microphone-8-48.png",
-        //                     height: 30,
-        //                     width: 30,
-        //                     fit: BoxFit.contain,
-
-        // ]
-        // ),
-        //     width: 50,
-        //     height: 50,
-        // decoration: BoxDecoration(
-        //   image: DecorationImage(
-        //     image: AssetImage("assets/Icons/microphone-8-48.png"),
-        //     fit: BoxFit.cover,
-      
-    
-
-//            ),
-//         ),
-//       ),
-//                 ]),)],
-//   ),
-// )
-//                   ,
-//            );
-
-//         });
-//   }
-
-
-  
