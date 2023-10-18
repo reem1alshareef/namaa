@@ -4,6 +4,7 @@ import 'package:namaagp/AddExpenses/ViewAddExpenses.dart';
 import 'package:namaagp/OTPPage/ViewModelOTPPage.dart';
 import 'package:namaagp/SignIn/ViewSignIn.dart';
 import 'package:namaagp/SignUp/ViewSignUp.dart';
+import 'package:namaagp/addToBalance/ViewAddToBalance.dart';
 
 class CostomizedTextButton extends StatelessWidget {
   final resend = ViewModelOTPPage();
@@ -47,7 +48,7 @@ class CostomizedTextButton extends StatelessWidget {
 
         case 'ResendOTP':
         print('reached Resend OTP in navigator');
-        Navigator.push(context,MaterialPageRoute(builder: (context) =>  ViewSignIn()),);
+        Navigator.push(context,MaterialPageRoute(builder: (context) =>  ViewAddToBalance()),);
         resend.Resend_OTP();
         break;
 
