@@ -8,15 +8,15 @@ final supabaseClient = SupabaseClient('https://rpwqxndlhdiqkrejigse.supabase.co'
 
 String? currentEmail() {
   final String? cemail = AuthenticationService.currentUser?.email;
-  //return cemail;
-  return 'reem.shareef21@hotmail.com';
+  return cemail;
+  
 }
 class ViewModelAddToBalance extends BaseViewModel {
   Future<void> addToBalance(String chosenCurrency, String money) async {
     final response = await supabaseClient
         .from('balance')
         .select()
-        .eq('emailAddress', currentEmail())
+        .eq('emailAddress', currentEmail().toString())
         .execute();
 
     final data = response.data as List<dynamic>;
