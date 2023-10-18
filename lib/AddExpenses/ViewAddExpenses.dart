@@ -319,68 +319,70 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
                           height: 100,
                           width: 100,
                           child: ElevatedButton(
-                            onPressed: () async {
-                              showModalBottomSheet(
-                                context: context,
-                                builder: (context) {
-                                  return Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: <Widget>[
-                                      ListTile(
-                                        //   leading: new Icon(Icons.photo),
-                                        title: Center(
-                                            child: new Text('الادخال الصوتي',
-                                                style: GoogleFonts.getFont(
-                                                  "Noto Sans Arabic",
-                                                  fontSize: 16,
-                                                ))),
-                                        onTap: () {
-                                          Navigator.pop(context);
-                                        },
-                                      ),
-                                      Container(
-                                        height: 200,
-                                        width: 500,
-                                        child: Center(
-                                          child: Text(
-                                            _speechToText.isListening
-                                                ? "الرجاء التحدث بالصيغة التالية: \n صرفت عشرة ريال في يوم واحد ديسمبر فئة شخصي "
-                                                : _speechEnabled
-                                                    ? "انقر الأيقونة لبدء الادخال الصوتي"
-                                                    : "لايمكن الوصول للادخال الصوتي",
-                                            style: GoogleFonts.getFont(
-                                              "Noto Sans Arabic",
-                                              fontSize: 20,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                        padding: EdgeInsets.all(16),
-                                        child: Text(_wordsSpoken,
-                                            style: GoogleFonts.getFont(
-                                                "Noto Sans Arabic",
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.w400)),
-                                      ),
-                                      ElevatedButton(
-                                          onPressed: _speechToText.isListening
-                                              ? _stopListening
-                                              : _startListening,
-                                          child: Icon(
-                                            _speechToText.isNotListening
-                                                ? Icons.mic_off
-                                                : Icons.mic,
-                                            color: Color(0xFFC5C5CD),
-                                          ),
-                                          style: ElevatedButton.styleFrom(
-                                              primary: Color.fromARGB(
-                                                  255, 37, 37, 123)))
-                                    ],
-                                  );
-                                },
-                              );
-                            },
+                            onPressed: ()
+                            {},
+                            // async {
+                            //   showModalBottomSheet(
+                            //     context: context,
+                            //     builder: (context) {
+                            //       return Column(
+                            //         mainAxisSize: MainAxisSize.max,
+                            //         children: <Widget>[
+                            //           ListTile(
+                            //             //   leading: new Icon(Icons.photo),
+                            //             title: Center(
+                            //                 child: new Text('الادخال الصوتي',
+                            //                     style: GoogleFonts.getFont(
+                            //                       "Noto Sans Arabic",
+                            //                       fontSize: 16,
+                            //                     ))),
+                            //             onTap: () {
+                            //               Navigator.pop(context);
+                            //             },
+                            //           ),
+                            //           Container(
+                            //             height: 200,
+                            //             width: 500,
+                            //             child: Center(
+                            //               child: Text(
+                            //                 _speechToText.isListening
+                            //                     ? "الرجاء التحدث بالصيغة التالية: \n صرفت عشرة ريال في يوم واحد ديسمبر فئة شخصي "
+                            //                     : _speechEnabled
+                            //                         ? "انقر الأيقونة لبدء الادخال الصوتي"
+                            //                         : "لايمكن الوصول للادخال الصوتي",
+                            //                 style: GoogleFonts.getFont(
+                            //                   "Noto Sans Arabic",
+                            //                   fontSize: 20,
+                            //                 ),
+                            //               ),
+                            //             ),
+                            //           ),
+                            //           Container(
+                            //             padding: EdgeInsets.all(16),
+                            //             child: Text(_wordsSpoken,
+                            //                 style: GoogleFonts.getFont(
+                            //                     "Noto Sans Arabic",
+                            //                     fontSize: 20,
+                            //                     fontWeight: FontWeight.w400)),
+                            //           ),
+                            //           ElevatedButton(
+                            //               onPressed: _speechToText.isListening
+                            //                   ? _stopListening
+                            //                   : _startListening,
+                            //               child: Icon(
+                            //                 _speechToText.isNotListening
+                            //                     ? Icons.mic_off
+                            //                     : Icons.mic,
+                            //                 color: Color(0xFFC5C5CD),
+                            //               ),
+                            //               style: ElevatedButton.styleFrom(
+                            //                   primary: Color.fromARGB(
+                            //                       255, 37, 37, 123)))
+                            //         ],
+                            //       );
+                            //     },
+                            //   );
+                            // },
 
                             // {
                             //                           showDialog(
