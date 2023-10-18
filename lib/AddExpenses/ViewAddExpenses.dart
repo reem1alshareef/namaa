@@ -6,6 +6,7 @@ import 'package:namaagp/AddExpenses/ViewModelAddExpenses.dart';
 import 'package:namaagp/Components/CustomButton.dart';
 import 'package:namaagp/Identity%20Elements/mainHeader.dart';
 import 'package:stacked/stacked.dart';
+import 'package:speech_to_text/speech_to_text.dart';
 
 import 'utils.dart';
 
@@ -69,6 +70,47 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
     });
   }
   int selectedIndex = -1;
+
+
+final SpeechToText _speechToText = SpeechToText();
+
+  bool _speechEnabled = false;
+  String _wordsSpoken = "";
+  double _confidenceLevel = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    initSpeech();
+  }
+
+  void initSpeech() async {
+    _speechEnabled = await _speechToText.initialize();
+    setState(() {});
+  }
+
+  void _startListening() async {
+    await _speechToText.listen(onResult: _onSpeechResult);
+    setState(() {
+      _confidenceLevel = 0;
+    });
+  }
+
+  void _stopListening() async {
+    await _speechToText.stop();
+    setState(() {});
+  }
+
+  void _onSpeechResult(result) {
+    setState(() {
+      _wordsSpoken = "${result.recognizedWords}";
+      _confidenceLevel = result.confidence;
+    });
+  }
+
+
+
+
   Widget build(BuildContext context) {
     return ViewModelBuilder<ViewModelAddExpenses>.reactive(
         viewModelBuilder: () => ViewModelAddExpenses(),
@@ -285,20 +327,44 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
                                         elevation: 15,
                                         backgroundColor:
                                             Color.fromARGB(255, 176, 172, 213),
-                                        child: Container(
-                                          height: 200,
-                                          width: 500,
-                                          child: Text(
-                                            ' :استخدم الصيغة التالية',
-                                            textAlign: TextAlign.center,
-                                            style: GoogleFonts.getFont(
-                                              "Noto Sans Arabic",
-                                              fontSize: 20,
-                                              color: Color.fromARGB(
-                                                  255, 58, 52, 98),
+                                        child: Column(
+                                          children: [
+                                            Container(
+                                              height: 200,
+                                              width: 500,
+                                              child:  Text(
+                _speechToText.isListening
+                    ? "الرجاء التحدث بالصيغة التالية: \n صرفت عشرة ريال في يوم واحد ديسمبر فئة شخصي "
+                    : _speechEnabled
+                        ? "انقر الأيقونة لبدء التعرف الصوتي"
+                        : "لايمكن الوصول للتعرف الصوتي",
+                style: TextStyle(fontSize: 20.0),
+              ),
+              
                                             ),
-                                          ),
+                                             Container(
+                padding: EdgeInsets.all(16),
+                child: Text(
+                  _wordsSpoken,
+                  style: const TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.w300,
+                  ),
+                ),
+              
+            ),
+            ElevatedButton( onPressed: _speechToText.isListening ? _stopListening : _startListening,
+     
+        child: Icon(
+          _speechToText.isNotListening ? Icons.mic_off : Icons.mic,
+          color: Color(0xFFC5C5CD),
+        ),
+       style:ElevatedButton.styleFrom( primary: Color.fromARGB(255, 37, 37, 123))
+       )
+                                          ],
                                         ),
+                                        
+                                        
                                       );
                                     });
                               },
