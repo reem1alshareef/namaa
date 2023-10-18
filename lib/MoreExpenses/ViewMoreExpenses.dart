@@ -77,7 +77,7 @@ class _ViewMoreExpensesState extends State<ViewMoreExpenses> {
                             context: context,
                             builder: (context) {
                               return Column(
-                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisSize: MainAxisSize.max,
                                   children: <Widget>[
                                     ListTile(
                                       //leading: new Icon(Icons.photo),
