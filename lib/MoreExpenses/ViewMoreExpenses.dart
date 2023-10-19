@@ -1,4 +1,4 @@
-import 'MoreExpensesComponents/ViewMoreExpensesHeader.dart';
+import '../AddExpenses/speech_header.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -43,7 +43,7 @@ class _ViewMoreExpensesState extends State<ViewMoreExpenses> {
                   SizedBox(
                     height: 20,
                   ),
-                  ViewMoreExpensesHeader(),
+                  Speech_header(),
                   SizedBox(
                     height: 10,
                   ),

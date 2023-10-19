@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:namaagp/AddExpenses/ViewModelAddExpenses.dart';
+import 'package:namaagp/AddExpenses/speech.dart';
 import 'package:namaagp/Components/CustomButton.dart';
 import 'package:namaagp/Identity%20Elements/mainHeader.dart';
 import 'package:stacked/stacked.dart';
@@ -320,7 +321,9 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
                           width: 100,
                           child: ElevatedButton(
                             onPressed: ()
-                            {},
+                           {
+                      Navigator.push(context,MaterialPageRoute(builder: (context) =>  Speech()),);
+          },
                             // async {
                             //   showModalBottomSheet(
                             //     context: context,

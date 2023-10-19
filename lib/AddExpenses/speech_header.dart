@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:namaagp/AddExpenses/ViewAddExpenses.dart';
 import 'package:namaagp/Components/ReturnToPreviousPage.dart';
 
-
-class ViewMoreExpensesHeader extends StatelessWidget {
+class Speech_header extends StatelessWidget {
   //final String title;
   //final String subTitle;
 
-  const ViewMoreExpensesHeader({
+  const Speech_header({
     Key? key,
     //required this.title,
     //required this.subTitle,
@@ -18,46 +18,57 @@ class ViewMoreExpensesHeader extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        SizedBox(width: 5,),
+        SizedBox(
+          width: 5,
+        ),
         GestureDetector(
-          child:  ReturnToPreviousPage(title: 'رحوع', tWidth: 69,),
-          // onTap: () {
-          //             Navigator.push(context,MaterialPageRoute(builder: (context) =>  ViewSettings()),);
-          // },
+          child: ReturnToPreviousPage(
+            title: 'رحوع',
+            tWidth: 69,
+          ),
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ViewAddExpenses()),
+            );
+          },
         ),
         //const ReturnToPreviousPage(title: 'البداية', tWidth: 69,),
-        SizedBox(width: 30,),
+        SizedBox(
+          width: 30,
+        ),
         Column(
           children: [
             //Expanded(
-              //child: 
-             // SizedBox(
-                //height: 40,
-                //width: 50,
-                //child: 
-                
-                Row(
-                  children: [
-                    SizedBox(width: 170,),
-                    Text('نماء',
-                              textAlign: TextAlign.right,
-                              style: GoogleFonts.getFont("Noto Sans Arabic",
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.w400,
-                                  height: 1.1,
-                                  textStyle: const TextStyle(color: Color(0xFFD0CDEF)))
-                                  ),
-                  ],
+            //child:
+            // SizedBox(
+            //height: 40,
+            //width: 50,
+            //child:
+
+            Row(
+              children: [
+                SizedBox(
+                  width: 170,
                 ),
-              //),
+                Text('نماء',
+                    textAlign: TextAlign.right,
+                    style: GoogleFonts.getFont("Noto Sans Arabic",
+                        fontSize: 24,
+                        fontWeight: FontWeight.w400,
+                        height: 1.1,
+                        textStyle: const TextStyle(color: Color(0xFFD0CDEF)))),
+              ],
+            ),
+            //),
             //),
             Text('امتلك زمام التحكم بمعاملاتك المالية',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.getFont("Noto Sans Arabic",
-                          fontSize: 15,
-                          fontWeight: FontWeight.w400,
-                          height: 1,
-                          textStyle: const TextStyle(color: Color(0xFFC5C5D0)))),
+                textAlign: TextAlign.center,
+                style: GoogleFonts.getFont("Noto Sans Arabic",
+                    fontSize: 15,
+                    fontWeight: FontWeight.w400,
+                    height: 1,
+                    textStyle: const TextStyle(color: Color(0xFFC5C5D0)))),
           ],
         ),
         Container(
@@ -70,9 +81,9 @@ class ViewMoreExpensesHeader extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(width: 5,),
-
-        
+        SizedBox(
+          width: 5,
+        ),
 
         //SizedBox(height: 200,),
 //         SizedBox(
