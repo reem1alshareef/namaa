@@ -155,6 +155,7 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
                     children: <Widget>[
                       Container(
                         child: DropdownButton<String>(
+                          alignment: Alignment.bottomCenter,
                           underline: Container(
                             decoration: const BoxDecoration(
                                 border: Border(
@@ -164,11 +165,17 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
                           ),
                           focusColor: Color.fromARGB(255, 195, 197, 232),
                           dropdownColor: Color.fromARGB(255, 26, 28, 62),
-
+                          icon: Image.asset(
+                            'assets/Icons/down-arrow.png',
+                            height: 20,
+                            width: 20,
+                          ),
+                          padding: EdgeInsets.all(16),
                           //elevation: 5,
                           style: TextStyle(
-                              color: const Color.fromARGB(255, 195, 197, 232)),
-                          iconEnabledColor: Colors.black,
+                            color: const Color.fromARGB(255, 195, 197, 232),
+                          ),
+                          iconEnabledColor: const Color.fromARGB(0, 0, 0, 0),
                           items: <String>[
                             'ريال',
                             'درهم',
@@ -179,6 +186,7 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
                             return DropdownMenuItem<String>(
                               value: value,
                               child: Text(
+                                textAlign: TextAlign.right,
                                 value,
                                 style: GoogleFonts.getFont("Noto Sans Arabic",
                                     color: const Color.fromARGB(
@@ -189,6 +197,7 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
                             );
                           }).toList(),
                           hint: Text(
+                            textAlign: TextAlign.right,
                             '$chosenCurrency',
                             style: GoogleFonts.getFont("Noto Sans Arabic",
                                 color: Color.fromARGB(185, 195, 197, 232),
@@ -207,6 +216,7 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
                       SizedBox(
                           width: 105,
                           child: TextField(
+                              //  textAlign: TextAlign.right,
                               controller: expenseController,
                               onChanged: (value) {
                                 setState(() {
@@ -320,10 +330,13 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
                           height: 100,
                           width: 100,
                           child: ElevatedButton(
-                            onPressed: ()
-                           {
-                      Navigator.push(context,MaterialPageRoute(builder: (context) =>  Speech()),);
-          },
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Speech()),
+                              );
+                            },
                             // async {
                             //   showModalBottomSheet(
                             //     context: context,
