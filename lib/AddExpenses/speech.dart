@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:namaagp/AddExpenses/speech_header.dart';
 import 'package:speech_to_text/speech_to_text.dart';
+import 'package:avatar_glow/avatar_glow.dart';
+import 'package:highlight_text/highlight_text.dart';
 
 class Speech extends StatefulWidget {
   const Speech({super.key});
@@ -15,7 +17,47 @@ class _SpeechState extends State<Speech> {
 
   bool _speechEnabled = false;
   String _wordsSpoken = "";
-  double _confidenceLevel = 0;
+   final Map<String, HighlightedWord> _highlights = {
+    'شخصي': HighlightedWord(
+      onTap: () => print('flutter'),
+      textStyle:  GoogleFonts.getFont("Noto Sans Arabic",
+                          color: Color.fromARGB(255, 247, 160, 140),
+                          fontSize: 25,
+                          fontWeight: FontWeight.w500),
+                          
+                          
+    ),
+    'ديسمبر': HighlightedWord(
+      onTap: () => print('voice'),
+      textStyle: GoogleFonts.getFont("Noto Sans Arabic",
+                          color: Color.fromARGB(255, 242, 209, 91),
+                          fontSize: 25,
+                          fontWeight: FontWeight.w500)
+    ),
+    '10': HighlightedWord(
+      onTap: () => print('subscribe'),
+      textStyle:  GoogleFonts.getFont("Noto Sans Arabic",
+                          color: Color.fromRGBO(244, 123, 90, 1),
+                          fontSize: 25,
+                          fontWeight: FontWeight.w500
+      ),
+    ),
+    '1': HighlightedWord(
+      onTap: () => print('like'),
+      textStyle:  GoogleFonts.getFont("Noto Sans Arabic",
+                          color: Color.fromARGB(255, 86, 71, 251),
+                          fontSize: 25,
+                          fontWeight: FontWeight.w500
+      ),
+    ),
+    'comment': HighlightedWord(
+      onTap: () => print('comment'),
+      textStyle: const TextStyle(
+        color: Colors.green,
+        fontWeight: FontWeight.bold,
+      ),
+    ),
+  };
 
   @override
   void initState() {
@@ -31,7 +73,7 @@ class _SpeechState extends State<Speech> {
   void _startListening() async {
     await _speechToText.listen(onResult: _onSpeechResult);
     setState(() {
-      _confidenceLevel = 0;
+     
     });
   }
 
@@ -43,7 +85,7 @@ class _SpeechState extends State<Speech> {
   void _onSpeechResult(result) {
     setState(() {
       _wordsSpoken = "${result.recognizedWords}";
-      _confidenceLevel = result.confidence;
+      
     });
   }
 
@@ -100,55 +142,83 @@ class _SpeechState extends State<Speech> {
                   color: Color.fromARGB(132, 217, 217, 217),
                 ),
               ),
-              Column(children: [
-                Container(
-                  padding: EdgeInsets.all(16),
-                  child: Text(
-                    _speechToText.isListening
-                        ? "الرجاء التحدث بالصيغة التالية: \n صرفت عشرة ريال في يوم واحد ديسمبر فئة شخصي "
-                        : _speechEnabled
-                            ? "انقر الأيقونة لبدء التعرف الصوتي"
-                            : "لايمكن الوصول للتعرف الصوتي",
-                    style: TextStyle(fontSize: 20.0),
-                  ),
-                ),
-                Expanded(
-                  child: Container(
-                    padding: EdgeInsets.all(20),
+              Expanded(
+                child: Column(children: [
+                  Container(
+                    padding: EdgeInsets.all(16),
                     child: Text(
-                      _wordsSpoken,
-                      style: const TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.w300,
+                      _speechToText.isListening
+                          ? ":الرجاء التحدث بالصيغة التالية \n صرفت عشرة ريال في يوم واحد ديسمبر فئة شخصي"
+                          : _speechEnabled
+                              ? "انقر الأيقونة لبدء التعرف الصوتي"
+                              : "لايمكن الوصول للتعرف الصوتي",
+                              softWrap: true,
+                            textAlign: TextAlign.center,
+                      style:  GoogleFonts.getFont("Noto Sans Arabic",fontSize: 20.0, color: Color(0xFFD0CDEF)),
+                    ),
+                  ),
+                  AvatarGlow(
+                    animate: _speechToText.isListening,
+                    glowColor: Color(0xFFD0CDEF),
+                    endRadius: 75.0,
+                    duration: const Duration(microseconds: 2000),
+                    repeatPauseDuration: const Duration(milliseconds: 100),
+                    repeat: true,
+                    child: FloatingActionButton(
+                        backgroundColor: Color(0xFFD0CDEF),
+                          onPressed: _speechToText.isListening
+                              ? _stopListening
+                              : _startListening,
+                          child: Icon(
+                            _speechToText.isNotListening ? Icons.mic_off : Icons.mic,
+                            color: Color(0xFF342D68),
+                          ),
+                          ),
+                  ),
+                   Container(child: TextHighlight(
+                   text: _wordsSpoken,
+                   words: _highlights,
+                   textAlign: TextAlign.center,
+                   textStyle:  GoogleFonts.getFont("Noto Sans Arabic",
+                          color: Color(0xFFD0CDEF),
+                          fontSize: 25,
+                          fontWeight: FontWeight.w500,
+                   
+                   ),
+                   
+                   )),
+                   
+                  Expanded(
+                    child: Container(
+                      padding: EdgeInsets.all(20),
+                      child: Text(
+                        _wordsSpoken,
+                        textAlign: TextAlign.center,
+                        style:  GoogleFonts.getFont("Noto Sans Arabic",
+                          color: Color(0xFFD0CDEF),
+                          fontSize: 25,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
                     ),
                   ),
-                ),
-                //if (_speechToText.isNotListening && _confidenceLevel > 0)
-                // Padding(
-                //   padding: const EdgeInsets.only(
-                //     bottom: 0,
-                //   ),
-                //   // child: Text(
-                //   //   "Confidence: ${(_confidenceLevel * 100).toStringAsFixed(1)}%",
-                //   //   style: TextStyle(
-                //   //     fontSize: 30,
-                //   //     fontWeight: FontWeight.w200,
-                //   //   ),
-                //   // ),
-                // ),
-
-                ElevatedButton(
-                    onPressed: _speechToText.isListening
-                        ? _stopListening
-                        : _startListening,
-                    child: Icon(
-                      _speechToText.isNotListening ? Icons.mic_off : Icons.mic,
-                      color: Color(0xFFC5C5CD),
-                    ),
-                    style: ElevatedButton.styleFrom(
-                        primary: Color.fromARGB(255, 37, 37, 123)))
-              ]),
+                  //if (_speechToText.isNotListening && _confidenceLevel > 0)
+                  // Padding(
+                  //   padding: const EdgeInsets.only(
+                  //     bottom: 0,
+                  //   ),
+                  //   // child: Text(
+                  //   //   "Confidence: ${(_confidenceLevel * 100).toStringAsFixed(1)}%",
+                  //   //   style: TextStyle(
+                  //   //     fontSize: 30,
+                  //   //     fontWeight: FontWeight.w200,
+                  //   //   ),
+                  //   // ),
+                  // ),
+              
+                 
+                ]),
+              ),
 
               //Padding
               //              Positioned(
