@@ -24,11 +24,10 @@ class _SpeechState extends State<Speech> {
   int amount = 0;
 
   isAmount() {
-    for (var i = 0; i < _wordsSpoken.length; i++) {
-      bool found = _wordsSpoken[i].contains(new RegExp(r'[0-9]'));
-      print(_wordsSpoken[i] + " -> " + found.toString());
-      return found;
-    }
+    if (_wordsSpoken.contains(RegExp(r'[0-9]'))) {
+      return true;
+    } else
+      return false;
   }
 
   isCategoryPersonal() {
@@ -152,7 +151,7 @@ class _SpeechState extends State<Speech> {
   }
 
   isMonth4() {
-    if (_wordsSpoken.contains(('أبريل'))|| _wordsSpoken.contains('ابريل')) {
+    if (_wordsSpoken.contains(('أبريل')) || _wordsSpoken.contains('ابريل')) {
       date = 'April';
       return true;
     } else
@@ -184,7 +183,7 @@ class _SpeechState extends State<Speech> {
   }
 
   isMonth8() {
-    if (_wordsSpoken.contains(('أغسطس'))|| _wordsSpoken.contains('اغسطس')) {
+    if (_wordsSpoken.contains(('أغسطس')) || _wordsSpoken.contains('اغسطس')) {
       date = 'August';
       return true;
     } else
@@ -200,7 +199,7 @@ class _SpeechState extends State<Speech> {
   }
 
   isMonth10() {
-    if (_wordsSpoken.contains(('أكتوبر'))|| _wordsSpoken.contains('اكتوبر')) {
+    if (_wordsSpoken.contains(('أكتوبر')) || _wordsSpoken.contains('اكتوبر')) {
       date = 'October';
       return true;
     } else
@@ -375,7 +374,7 @@ class _SpeechState extends State<Speech> {
                         fontSize: 25,
                         fontWeight: FontWeight.w500,
                       )),
-                  Text(':المبلغ',
+                  Text(isAmount() ? ' $amount : المبلغ' : '',
                       textAlign: TextAlign.center,
                       style: GoogleFonts.getFont(
                         "Noto Sans Arabic",
@@ -412,7 +411,7 @@ class _SpeechState extends State<Speech> {
                               isMonth10() ||
                               isMonth11() ||
                               isMonth12()
-                          ? ' التاريخ : $date '
+                          ? '  $date : التاريخ '
                           : '',
                       textAlign: TextAlign.center,
                       style: GoogleFonts.getFont(
