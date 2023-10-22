@@ -21,6 +21,16 @@ class _SpeechState extends State<Speech> {
   String category = '';
   String currency = '';
   String date = '';
+  int amount = 0;
+
+  isAmount() {
+    for (var i = 0; i < _wordsSpoken.length; i++) {
+      bool found = _wordsSpoken[i].contains(new RegExp(r'[0-9]'));
+      print(_wordsSpoken[i] + " -> " + found.toString());
+      return found;
+    }
+  }
+
   isCategoryPersonal() {
     if (_wordsSpoken.contains('شخصي')) {
       category = 'شخصي';
@@ -72,6 +82,142 @@ class _SpeechState extends State<Speech> {
   isCategoryOther() {
     if (_wordsSpoken.contains(('أخرى'))) {
       category = 'أخرى';
+      return true;
+    } else
+      return false;
+  }
+
+  isCurrencySR() {
+    if (_wordsSpoken.contains('ريال')) {
+      currency = 'ريال';
+      return true;
+    } else
+      return false;
+  }
+
+  isCurrencyUS() {
+    if (_wordsSpoken.contains('دولار')) {
+      currency = 'دولار';
+      return true;
+    } else
+      return false;
+  }
+
+  isCurrencyAED() {
+    if (_wordsSpoken.contains('درهم')) {
+      currency = 'درهم';
+      return true;
+    } else
+      return false;
+  }
+
+  isCurrencyEUO() {
+    if (_wordsSpoken.contains('يورو')) {
+      currency = 'يورو';
+      return true;
+    } else
+      return false;
+  }
+
+  isCurrencyGBP() {
+    if (_wordsSpoken.contains('جنية')) {
+      currency = 'جنية';
+      return true;
+    } else
+      return false;
+  }
+
+  isMonth1() {
+    if (_wordsSpoken.contains(('يناير'))) {
+      date = 'January';
+      return true;
+    } else
+      return false;
+  }
+
+  isMonth2() {
+    if (_wordsSpoken.contains(('فبراير'))) {
+      date = 'February';
+      return true;
+    } else
+      return false;
+  }
+
+  isMonth3() {
+    if (_wordsSpoken.contains(('مارس'))) {
+      date = 'March';
+      return true;
+    } else
+      return false;
+  }
+
+  isMonth4() {
+    if (_wordsSpoken.contains(('أبريل'))|| _wordsSpoken.contains('ابريل')) {
+      date = 'April';
+      return true;
+    } else
+      return false;
+  }
+
+  isMonth5() {
+    if (_wordsSpoken.contains(('مايو'))) {
+      date = 'May';
+      return true;
+    } else
+      return false;
+  }
+
+  isMonth6() {
+    if (_wordsSpoken.contains(('يونيو'))) {
+      date = 'June';
+      return true;
+    } else
+      return false;
+  }
+
+  isMonth7() {
+    if (_wordsSpoken.contains(('يوليو'))) {
+      date = 'July';
+      return true;
+    } else
+      return false;
+  }
+
+  isMonth8() {
+    if (_wordsSpoken.contains(('أغسطس'))|| _wordsSpoken.contains('اغسطس')) {
+      date = 'August';
+      return true;
+    } else
+      return false;
+  }
+
+  isMonth9() {
+    if (_wordsSpoken.contains(('سبتمبر'))) {
+      date = 'September';
+      return true;
+    } else
+      return false;
+  }
+
+  isMonth10() {
+    if (_wordsSpoken.contains(('أكتوبر'))|| _wordsSpoken.contains('اكتوبر')) {
+      date = 'October';
+      return true;
+    } else
+      return false;
+  }
+
+  isMonth11() {
+    if (_wordsSpoken.contains(('نوفمبر'))) {
+      date = 'November';
+      return true;
+    } else
+      return false;
+  }
+
+  isMonth12() {
+    if (_wordsSpoken.contains(('ديسمبر'))) {
+      date = 'December';
       return true;
     } else
       return false;
@@ -229,7 +375,6 @@ class _SpeechState extends State<Speech> {
                         fontSize: 25,
                         fontWeight: FontWeight.w500,
                       )),
-
                   Text(':المبلغ',
                       textAlign: TextAlign.center,
                       style: GoogleFonts.getFont(
@@ -238,16 +383,14 @@ class _SpeechState extends State<Speech> {
                         fontSize: 25,
                         fontWeight: FontWeight.w500,
                       )),
-
-                  Text(':العملة',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.getFont(
-                        "Noto Sans Arabic",
-                        color: Color(0xFFD0CDEF),
-                        fontSize: 25,
-                        fontWeight: FontWeight.w500,
-                      )),
-                  Text(':التاريخ',
+                  Text(
+                      isCurrencyAED() ||
+                              isCurrencyEUO() ||
+                              isCurrencyGBP() ||
+                              isCurrencySR() ||
+                              isCurrencyUS()
+                          ? ' العملة : $currency '
+                          : '',
                       textAlign: TextAlign.center,
                       style: GoogleFonts.getFont(
                         "Noto Sans Arabic",
@@ -256,7 +399,32 @@ class _SpeechState extends State<Speech> {
                         fontWeight: FontWeight.w500,
                       )),
 
-                  SizedBox(height: 50,),
+                  Text(
+                      isMonth1() ||
+                              isMonth2() ||
+                              isMonth3() ||
+                              isMonth4() ||
+                              isMonth5() ||
+                              isMonth6() ||
+                              isMonth7() ||
+                              isMonth8() ||
+                              isMonth9() ||
+                              isMonth10() ||
+                              isMonth11() ||
+                              isMonth12()
+                          ? ' التاريخ : $date '
+                          : '',
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.getFont(
+                        "Noto Sans Arabic",
+                        color: Color(0xFFD0CDEF),
+                        fontSize: 25,
+                        fontWeight: FontWeight.w500,
+                      )),
+
+                  SizedBox(
+                    height: 50,
+                  ),
                   Align(
                       alignment: Alignment.bottomCenter,
                       child: CustomButton(
