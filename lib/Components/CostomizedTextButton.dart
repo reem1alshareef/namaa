@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:namaagp/AddExpenses/ViewAddExpenses.dart';
 import 'package:namaagp/OTPPage/ViewModelOTPPage.dart';
 import 'package:namaagp/SignIn/ViewSignIn.dart';
+import 'package:namaagp/updatePassword/ViewupdateSupabasePassword.dart';
 import 'package:namaagp/SignUp/ViewSignUp.dart';
-import 'package:namaagp/addToBalance/ViewAddToBalance.dart';
+import 'package:namaagp/services/authentication_service.dart';
+
 
 class CostomizedTextButton extends StatelessWidget {
   final resend = ViewModelOTPPage();
@@ -12,7 +13,7 @@ class CostomizedTextButton extends StatelessWidget {
   final String actionTitle;
   final String purpose;
   
-   CostomizedTextButton({
+  CostomizedTextButton({
     Key? key,
     required this.question,
     required this.actionTitle,
@@ -21,12 +22,19 @@ class CostomizedTextButton extends StatelessWidget {
     //required GlobalKey<FormState> validationKey
   }) : super(key: key);
 
+String? get emailAddress => ViewSignIn.emailAddress.text;
+
+String? currentEmail() {
+  final String? cemail = AuthenticationService.currentUser?.email;
+  return cemail;
+}
+
   @override
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
       child: GestureDetector(
-      onTap: () {//this if statement changes the purpose or the destination of the button
+      onTap: () async {//this if statement changes the purpose or the destination of the button
 
       switch(purpose){
 
@@ -41,15 +49,21 @@ class CostomizedTextButton extends StatelessWidget {
         break;
 
         case 'retrievePassword':
-        print('reached retrieve password in navigator');
+      //await supabase.auth.resetPasswordForEmail('reem.shareef21@hotmail.com');
+
+        // await supabase.auth.resetPasswordForEmail(emailAddress!,);
+        Navigator.push(context,MaterialPageRoute(builder: (context) =>  ViewupdateSupabasePassword()),);
+                      print('reached retrieve password in navigator');
         // Navigator.push(context,MaterialPageRoute(builder: (context) =>  ViewAddExpenses()),);
-        
         break;
 
         case 'ResendOTP':
         print('reached Resend OTP in navigator');
-        Navigator.push(context,MaterialPageRoute(builder: (context) =>  ViewAddToBalance()),);
-        resend.Resend_OTP();
+        // Navigator.push(context,MaterialPageRoute(builder: (context) =>  ViewAddToBalance()),);
+        // resend.Resend_OTP();
+        ViewModelOTPPage viewModel = ViewModelOTPPage();
+        await viewModel.resendOTP();
+
         break;
 
         default:

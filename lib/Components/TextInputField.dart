@@ -2,6 +2,7 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+
 class TextInputField extends StatelessWidget {
   final String title;
   final String placeHolder;
@@ -16,8 +17,10 @@ class TextInputField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return Column(
       children: [
+        
         SizedBox(
           width: 350,
           height: 25,
@@ -47,22 +50,23 @@ class TextInputField extends StatelessWidget {
                 
               ),
               controller: inputController,
-              obscureText: title=='كلمة السر'|| title=='تأكيد كلمة السر'? true:false,
+              obscureText: title=='كلمة السر'|| title=='تأكيد كلمة السر' || title=='كلمة السر الجديدة'? true:false,
               validator: (value) {
               if (value == null || value.isEmpty) {
                 return 'يرجى تعبئة الخانة';
               }
-              if(title=='البريد الإلكتروني' && !EmailValidator.validate(value)){
+              if( (title=='البريد الإلكتروني' || title=='البريد الالكتروني') && !EmailValidator.validate(value)){
                 return 'يرجى إدخال بريد إلكتروني صحيح';
               }
               if(title=='الاسم' && value.length<3 || value.length>40){
                 return 'يرجى إدخال اسم صحيح';
               }
-              if(title=='كلمة السر' && value.length<6 || value.length>40){
+              if((title=='كلمة السر' || title =='كلمة السر الجديدة' )&& (value.length<6 || value.length>40)){
                 return 'كلمة السر يجب أن تتكون من ست خانات على الأقل';
               }
               return null;
             }
+
             )),
         const SizedBox(
           height: 10,

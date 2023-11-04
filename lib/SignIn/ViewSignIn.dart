@@ -8,12 +8,14 @@ import 'package:stacked/stacked.dart';
 
 
 class ViewSignIn extends StatelessWidget {
+  
   final _formKey = GlobalKey<FormState>();
   final TextEditingController namee=TextEditingController();
-  final TextEditingController emailAddress=TextEditingController();
+  static final  TextEditingController emailAddress=TextEditingController();
+  
   final TextEditingController password=TextEditingController();
   //final TextEditingController passwordConfirm=TextEditingController();
-   ViewSignIn({super.key});
+  ViewSignIn({super.key});
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<ViewModelSignIn>.reactive(
@@ -63,16 +65,19 @@ class ViewSignIn extends StatelessWidget {
                     const mainHeader(title: 'تسجيل الدخول',),
                     const SizedBox(height: 20,),
                     TextInputField(title: 'البريد الإلكتروني', placeHolder: 'اكتب عنوان بريدك الإلكتروني', inputController: emailAddress,),
+                    
                     //TextInputField(title: 'رقم الجوال', placeHolder: 'اكتب رقم جوالك', inputController: emailAddress,),
                     TextInputField(title: 'كلمة السر', placeHolder: 'اكتب كلمة السر الخاصة بك', inputController: password,),
                     AccountButton(title: 'سجل الدخول', type: 'SignIn', name: namee, emailAddress: emailAddress, pin: password,validationKey:_formKey),
                     const SizedBox(height: 5,),
-                    CostomizedTextButton(question: 'نسيت كلمة المرور؟  ', actionTitle: 'إستعادة كلمة المرور', purpose: 'SignUp',)
+                    CostomizedTextButton(question: 'نسيت كلمة المرور؟  ', actionTitle: 'إستعادة كلمة المرور', purpose: 'retrievePassword',)
                   ],
                 )
               )));
         });
+        
   }
+
 //   static Future<void> showMyDialog(BuildContext context) async {
 //   return showDialog<void>(
 //     context: context,
