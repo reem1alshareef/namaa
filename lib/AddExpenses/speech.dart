@@ -308,7 +308,7 @@ class _SpeechState extends State<Speech> {
                     padding: EdgeInsets.all(16),
                     child: Text(
                       _speechToText.isListening
-                          ? ":الرجاء التحدث بالصيغة التالية \n صرفت عشرة ريال في يوم واحد ديسمبر فئة شخصي"
+                          ? ":الرجاء التحدث بالصيغة التالية \n صرفت عشرة ريال في يوم واحد ديسمبر فئة مواصلات"
                           : _speechEnabled
                               ? "انقر الأيقونة لبدء الادخال الصوتي"
                               : "لايمكن الوصول للتعرف الصوتي",
