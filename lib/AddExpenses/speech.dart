@@ -22,20 +22,41 @@ class _SpeechState extends State<Speech> {
   String currency = '';
   String date = '';
   int amount = 0;
+  String day = '';
+
+  Date() {
+  String str = _wordsSpoken;
+  String start = "يوم";
+  String  end = date;
+
+    final startIndex = str.indexOf(start);
+    final endIndex = str.indexOf(end, startIndex + start.length);
+
+    day = str.substring(startIndex + start.length, endIndex);
+  }
 
   isAmount() {
     if (_wordsSpoken.contains(RegExp(r'[0-9]'))) {
       return true;
-    } else
+    } else {
       return false;
+    }
+  }
+
+  isPrice() {
+    if (isAmount() == true) {
+      String aStr = _wordsSpoken.replaceAll(RegExp(r'[^0-9]'), '');
+      amount = int.parse(aStr);
+    }
   }
 
   isCategoryPersonal() {
     if (_wordsSpoken.contains('شخصي')) {
       category = 'شخصي';
       return true;
-    } else
+    } else {
       return false;
+    }
   }
 
   isCategoryTranspotation() {
@@ -411,7 +432,7 @@ class _SpeechState extends State<Speech> {
                               isMonth10() ||
                               isMonth11() ||
                               isMonth12()
-                          ? '  $date : التاريخ '
+                          ? '  $day : التاريخ '
                           : '',
                       textAlign: TextAlign.center,
                       style: GoogleFonts.getFont(
