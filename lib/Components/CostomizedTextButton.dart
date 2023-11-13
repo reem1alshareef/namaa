@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:namaagp/OTPPage/ViewModelOTPPage.dart';
 import 'package:namaagp/SignIn/ViewSignIn.dart';
+import 'package:namaagp/chat/viewChat.dart';
 import 'package:namaagp/updatePassword/ViewupdateSupabasePassword.dart';
 import 'package:namaagp/SignUp/ViewSignUp.dart';
 import 'package:namaagp/services/authentication_service.dart';
@@ -49,12 +50,12 @@ String? currentEmail() {
         break;
 
         case 'retrievePassword':
-      //await supabase.auth.resetPasswordForEmail('reem.shareef21@hotmail.com');
 
-        // await supabase.auth.resetPasswordForEmail(emailAddress!,);
+        
         Navigator.push(context,MaterialPageRoute(builder: (context) =>  ViewupdateSupabasePassword()),);
                       print('reached retrieve password in navigator');
-        // Navigator.push(context,MaterialPageRoute(builder: (context) =>  ViewAddExpenses()),);
+
+                      
         break;
 
         case 'ResendOTP':

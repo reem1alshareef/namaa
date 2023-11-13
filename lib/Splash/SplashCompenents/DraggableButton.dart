@@ -51,7 +51,7 @@ class DraggableButton extends StatelessWidget {
                           ),
                           child: Container(
                             width: 49,
-                            height: 49,
+                            height: 30,
                             decoration: const ShapeDecoration(
                                 color: Color(0xFF414472),
                                 shape: OvalBorder(),
