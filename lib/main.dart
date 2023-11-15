@@ -9,7 +9,6 @@ main() async {
 
   //GetIt.instance.registerSingleton<AuthenticationService>(AuthenticationService());
   WidgetsFlutterBinding.ensureInitialized();
-
   await Supabase.initialize(
     url:'https://rpwqxndlhdiqkrejigse.supabase.co',
     anonKey:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJwd3F4bmRsaGRpcWtyZWppZ3NlIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTMwNjY4NDQsImV4cCI6MjAwODY0Mjg0NH0.qlIR6KNotfLwl30HsVSUW9M3smblYaYxtk_D7W2L_EU',
@@ -29,7 +28,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     
     return const MaterialApp(
-      
+      debugShowCheckedModeBanner: false,
       home: MyHomePage(),
     );
   }

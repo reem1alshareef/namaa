@@ -1,15 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:namaagp/Identity%20Elements/mainHeader.dart';
 
-// class MyApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       home: viewChat(),
-//     );
-//   }
-// }
-
 class viewChat extends StatefulWidget {
   @override
   _viewChatState createState() => _viewChatState();
@@ -26,97 +17,51 @@ class _viewChatState extends State<viewChat> {
   ];
 
   final TextEditingController _messageController = TextEditingController();
-  final List<String> choices = ['4', '3', '2', '1']; // Add more choices as needed
+  final List<String> choices = ['4', '3', '2', '1'];
 
   DateTime? lastDisplayedDate;
 
   @override
   Widget build(BuildContext context) {
-    return 
-    // Scaffold(
-    //   backgroundColor: const Color(0xFF352D68),
-    //   appBar: AppBar(
-    //     backgroundColor: Colors.transparent,
-    //     elevation: 0,
-    //     title: 
-    //     Row(
-    //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    //       children: [
-    //         Row(),
-    //         Column(
-    //           crossAxisAlignment: CrossAxisAlignment.end,
-    //           children: [
-    //             Text(
-    //               'نماء',
-    //               style: TextStyle(
-    //                 fontSize: 16,
-    //                 fontWeight: FontWeight.bold,
-    //                 color: Colors.white,
-    //               ),
-    //             ),
-    //             Text(
-    //               'امتلك زمام التحكم بمعاملاتك المالية',
-    //               style: TextStyle(
-    //                 fontSize: 12,
-    //                 color: Colors.grey,
-    //               ),
-    //             ),
-    //           ],
-    //         ),
-    //       ],
-    //     ),
-    //     actions: [
-    //       Padding(
-    //         padding: const EdgeInsets.all(10.0),
-    //         child: Image.asset(
-    //           'assets/NamaaLogo.png',
-    //           height: 50,
-    //           width: 50,
-    //         ),
-    //       ),
-    //     ],
-    //   ),
-    //   body: 
-      Column(
-        children: [
-          mainHeader(title: 'تحدث مع نمى',),
-          Expanded(
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              decoration: BoxDecoration(
-                color: const Color(0xFF352D68),
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(30),
-                  topRight: Radius.circular(30),
-                ),
-              ),
-              child: ListView.builder(
-                itemCount: messages.length,
-                reverse: true,
-                itemBuilder: (context, index) {
-                  final message = messages[index];
-                  bool displayDate = shouldDisplayDate(message.time);
-                  return Column(
-                    children: [
-                      if (displayDate) _DateHeader(message.time),
-                      _MessageBubble(
-                        text: message.text,
-                        isUser: message.isUser,
-                        time: message.time,
-                      ),
-                    ],
-                  );
-                },
+    return Column(
+      children: [
+        mainHeader(title: 'تحدث مع نمى'),
+        Expanded(
+          child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            decoration: BoxDecoration(
+              color: const Color(0xFF352D68),
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(30),
+                topRight: Radius.circular(30),
               ),
             ),
+            child: ListView.builder(
+              itemCount: messages.length,
+              reverse: true,
+              itemBuilder: (context, index) {
+                final message = messages[index];
+                bool displayDate = shouldDisplayDate(message.time);
+                return Column(
+                  children: [
+                    if (displayDate) _DateHeader(message.time),
+                    _MessageBubble(
+                      text: message.text,
+                      isUser: message.isUser,
+                      time: message.time,
+                    ),
+                  ],
+                );
+              },
+            ),
           ),
-          _MessageInput(
-            controller: _messageController,
-            onSend: _sendMessage,
-          ),
-        ],
-      );
-    //);
+        ),
+        _MessageInput(
+          controller: _messageController,
+          onSend: _sendMessage,
+        ),
+      ],
+    );
   }
 
   bool shouldDisplayDate(DateTime dateTime) {
@@ -223,28 +168,31 @@ class _MessageBubble extends StatelessWidget {
                   width: 40,
                 ),
               ),
-            Container(
-              margin: EdgeInsets.all(8),
-              padding: EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: isUser ? Color.fromARGB(255, 157, 151, 196) : Color.fromARGB(255, 198, 167, 193),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    text,
-                    style: TextStyle(color: Colors.white),
-                    textAlign: TextAlign.right,
-                    textDirection: TextDirection.rtl,
-                  ),
-                  SizedBox(height: 4),
-                  Text(
-                    formattedTime,
-                    style: TextStyle(color: Colors.grey),
-                  ),
-                ],
+            Flexible(
+              fit: FlexFit.loose,
+              child: Container(
+                margin: EdgeInsets.all(8),
+                padding: EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: isUser ? Color.fromARGB(255, 157, 151, 196) : Color.fromARGB(255, 198, 167, 193),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      text,
+                      style: TextStyle(color: Colors.white),
+                      textAlign: TextAlign.right,
+                      textDirection: TextDirection.rtl,
+                    ),
+                    SizedBox(height: 4),
+                    Text(
+                      formattedTime,
+                      style: TextStyle(color: Colors.grey),
+                    ),
+                  ],
+                ),
               ),
             ),
           ],
