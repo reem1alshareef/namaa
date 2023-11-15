@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:namaagp/AddExpenses/speech.dart';
+import 'package:namaagp/AddPlan/ViewAddPlan.dart';
 import 'package:namaagp/MoreExpenses/ViewMoreExpenses.dart';
 // import 'package:namaagp/Splash/ViewSplash.dart';
 import 'package:namaagp/AddExpenses/ViewAddExpenses.dart';
@@ -80,7 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
           builder: (BuildContext context) {
             submitLogin();
            
-            return ViewAddExpenses();
+            return ViewAddPlan();
             
             //return const ViewSplash();
           },
