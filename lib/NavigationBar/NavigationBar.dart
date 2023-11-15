@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:namaagp/AddExpenses/ViewAddExpenses.dart';
 import 'package:namaagp/ExplorePage/ViewExplorePage.dart';
 import 'package:namaagp/ViewExpenses/ViewViewExpenses.dart';
+import 'package:namaagp/chat/viewChat.dart';
 //import 'package:namaagp/a';
 
 /// Flutter code sample for [NavigationBar].
@@ -253,15 +254,41 @@ class _NavigationExampleState extends State<NavigationExample> {
             ),
             child: ViewExplorePage()),
         Container(
-          color: Colors.green,
-          alignment: Alignment.center,
-          child: const Text('Page 2'),
-        ),
+            padding: EdgeInsets.only(top: 50.0, left: 10, right: 10),
+            width: 428,
+            height: 926,
+            clipBehavior: Clip.antiAlias,
+            decoration: const BoxDecoration(
+              //maybe delete const
+              gradient: LinearGradient(
+                begin: Alignment(-0.00, -6.00),
+                end: Alignment(0, 1.5),
+                colors: [
+                  Color(0xFF342D68),
+                  Color(0xFF352D68),
+                  Color(0x00352D68)
+                ],
+              ),
+            ),
+            child: ViewExplorePage()),//saving plan page
         Container(
-          color: Colors.blue,
-          alignment: Alignment.center,
-          child: const Text('Page 3'),
-        ),
+            padding: EdgeInsets.only(top: 50.0, left: 10, right: 10),
+            width: 428,
+            height: 926,
+            clipBehavior: Clip.antiAlias,
+            decoration: const BoxDecoration(
+              //maybe delete const
+              gradient: LinearGradient(
+                begin: Alignment(-0.00, -6.00),
+                end: Alignment(0, 1.5),
+                colors: [
+                  Color(0xFF342D68),
+                  Color(0xFF352D68),
+                  Color(0x00352D68)
+                ],
+              ),
+            ),
+            child: viewChat()),
       ][currentPageIndex],
     );
   }

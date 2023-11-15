@@ -2,12 +2,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:namaagp/OTPPage/ViewOTPPage.dart';
-import 'package:namaagp/SignIn/ViewSignIn.dart';
-import 'package:namaagp/Splash/ViewSplash.dart';
-import 'package:namaagp/chat/viewChat.dart';
+import 'package:namaagp/NavigationBar/NavigationBar.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-
 //import 'namaagp/lib/SignUp/ViewModelSignUp.dart';
 main() async {
 
@@ -21,6 +17,7 @@ main() async {
   );
   runApp(const MyApp());
   
+  
   //runApp(SupabaseService() as Widget);
   
 }
@@ -32,7 +29,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     
     return const MaterialApp(
-      debugShowCheckedModeBanner: false,
       
       home: MyHomePage(),
     );
@@ -88,8 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
         context,
         MaterialPageRoute(
           builder: (BuildContext context) {
-            //submitLogin();
-            return const ViewSplash();//NavigationBarApp();//ViewExplorePage();
+            return NavigationBarApp();//ViewSplash();//viewChat();//ViewExplorePage();
           },
         ),
       );
@@ -98,72 +93,3 @@ class _MyHomePageState extends State<MyHomePage> {
     return "Logined";
   }
 }
-
-// import 'package:flutter/material.dart';
-// import 'package:namaagp/Splash/ViewSplash.dart';
-// import 'package:namaagp/chat/viewChat.dart';
-// import 'package:provider/provider.dart';
-
-
-// void main() {
-//   runApp(const MyApp());
-// }
-
-// class MyApp extends StatelessWidget {
-//   const MyApp({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return MultiProvider(
-//       providers: [
-//         ChangeNotifierProvider(create: (context) => ChatController()),
-//         // Add other providers if needed
-//       ],
-//       child: MaterialApp(
-//         home: MyHomePage(),
-//       ),
-//     );
-//   }
-// }
-
-// class MyHomePage extends StatefulWidget {
-//   const MyHomePage({super.key});
-
-//   @override
-//   State<MyHomePage> createState() => _MyHomePageState();
-// }
-
-// class _MyHomePageState extends State<MyHomePage> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       backgroundColor: const Color(0x00071121),
-//       body: buildBody(context),
-//     );
-//   }
-
-//   Widget buildBody(BuildContext context) {
-//     return FutureBuilder(
-//       future: splashNavigate(),
-//       builder: (context, snapshot) {
-//         return const Center(child: CircularProgressIndicator());
-//       },
-//     );
-//   }
-
-//   Future<String> splashNavigate() async {
-//     await Future.delayed(const Duration(milliseconds: 5)).then((value) {
-//       Navigator.pushReplacement(
-//         context,
-//         MaterialPageRoute(
-//           builder: (BuildContext context) {
-//             return const ViewSplash(); //NavigationBarApp();//ViewExplorePage();
-//           },
-//         ),
-//       );
-//     });
-
-//     return "Logined";
-//   }
-// }
-

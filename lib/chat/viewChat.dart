@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:namaagp/Identity%20Elements/mainHeader.dart';
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: viewChat(),
-    );
-  }
-}
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: viewChat(),
+//     );
+//   }
+// }
 
 class viewChat extends StatefulWidget {
   @override
@@ -31,50 +32,54 @@ class _viewChatState extends State<viewChat> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFF352D68),
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Text(
-                  'نماء',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-                Text(
-                  'امتلك زمام التحكم بمعاملاتك المالية',
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: Colors.grey,
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Image.asset(
-              'assets/NamaaLogo.png',
-              height: 50,
-              width: 50,
-            ),
-          ),
-        ],
-      ),
-      body: Column(
+    return 
+    // Scaffold(
+    //   backgroundColor: const Color(0xFF352D68),
+    //   appBar: AppBar(
+    //     backgroundColor: Colors.transparent,
+    //     elevation: 0,
+    //     title: 
+    //     Row(
+    //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    //       children: [
+    //         Row(),
+    //         Column(
+    //           crossAxisAlignment: CrossAxisAlignment.end,
+    //           children: [
+    //             Text(
+    //               'نماء',
+    //               style: TextStyle(
+    //                 fontSize: 16,
+    //                 fontWeight: FontWeight.bold,
+    //                 color: Colors.white,
+    //               ),
+    //             ),
+    //             Text(
+    //               'امتلك زمام التحكم بمعاملاتك المالية',
+    //               style: TextStyle(
+    //                 fontSize: 12,
+    //                 color: Colors.grey,
+    //               ),
+    //             ),
+    //           ],
+    //         ),
+    //       ],
+    //     ),
+    //     actions: [
+    //       Padding(
+    //         padding: const EdgeInsets.all(10.0),
+    //         child: Image.asset(
+    //           'assets/NamaaLogo.png',
+    //           height: 50,
+    //           width: 50,
+    //         ),
+    //       ),
+    //     ],
+    //   ),
+    //   body: 
+      Column(
         children: [
+          mainHeader(title: 'تحدث مع نمى',),
           Expanded(
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
@@ -110,8 +115,8 @@ class _viewChatState extends State<viewChat> {
             onSend: _sendMessage,
           ),
         ],
-      ),
-    );
+      );
+    //);
   }
 
   bool shouldDisplayDate(DateTime dateTime) {

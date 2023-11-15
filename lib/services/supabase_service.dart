@@ -79,4 +79,15 @@ await supabase.auth.resend(
   phone: phoneNumber,
   );}
 
+
+  Future<String?> getAnswer(String question) async {
+    
+final data = await supabase
+  .from('ChatbotAnswers')
+  .select('answer')
+  .eq('question', question);
+
+  return data.toString();
+  }
+
 }
