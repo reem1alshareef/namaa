@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:namaagp/AddExpenses/speech.dart';
 import 'package:namaagp/AddPlan/ViewAddPlan.dart';
-import 'package:namaagp/MoreExpenses/ViewMoreExpenses.dart';
 // import 'package:namaagp/Splash/ViewSplash.dart';
 import 'package:namaagp/AddExpenses/ViewAddExpenses.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+// import 'package:flutter_localizations/flutter_localizations.dart';
 
 //import 'namaagp/lib/SignUp/ViewModelSignUp.dart';
 main() async {
@@ -24,7 +24,19 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      
+   
+  // localizationsDelegates: GlobalMaterialLocalizations.delegates,
+  // supportedLocales: const [
+  //   Locale('en', 'US'),
+  //   Locale('en', 'GB'),
+  //   Locale('ar'),
+  //   Locale('zh'),
+  //   Locale('ru'),
+  //   Locale('es'),
+  //   Locale('hi'),
+  // ],
+  
+
       home: MyHomePage(),
     );
   }
