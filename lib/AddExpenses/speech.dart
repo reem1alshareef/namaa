@@ -441,10 +441,9 @@ class _SpeechState extends State<Speech> {
                         fontSize: 25,
                         fontWeight: FontWeight.w500,
                       )),
-
-                  SizedBox(
-                    height: 50,
-                  ),
+ ]),
+              ),
+                  
                   Align(
                       alignment: Alignment.bottomCenter,
                       child: CustomButton(
@@ -459,8 +458,9 @@ class _SpeechState extends State<Speech> {
                               },
                             );
                           })),
-                ]),
-              ),
+               SizedBox(
+                    height: 50,
+                  ),
             ])));
   }
 }
