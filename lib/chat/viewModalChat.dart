@@ -28,7 +28,7 @@ class viewModalChat extends BaseViewModel {
     // You may need to initialize your ChatGPT connection or setup here
     // ...
     // For demonstration purposes, let's simulate a response after initiating the chat
-    onReceiveResponse('ChatGPT response for: 4');
+    onReceiveResponse('اطرح سؤالك لنماء');
   }
 
   void _receiveChatGPTResponse(String answer) {

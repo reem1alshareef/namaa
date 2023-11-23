@@ -266,7 +266,6 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:chat_gpt_sdk/chat_gpt_sdk.dart';
 import 'package:namaagp/Identity%20Elements/mainHeader.dart';
 import 'package:namaagp/chat/viewModalChat.dart';
 
@@ -279,14 +278,14 @@ class _viewChatState extends State<viewChat> {
   final List<Message> messages = [
     Message(
       text:
-          'أهلا \nأنا نماء متواجد لمساعدتك \n أدخل رقم السؤال المراد الإجابة عنه : \n 1- لاستفسار عن الخدمات المقدمة من نماء\n 2-  للاستفسار عن الرصيد الحالي \n 3- للإستفسار عن مصاريفك \n 4- للمزيد',
+          'أهلا \nأنا نماء متواجد لمساعدتك \n أدخل رقم السؤال المراد الإجابة عنه : \n 1- ماهو نماء؟\n 2-  هل استطيع اضافة خطط إدخارية؟ \n 3- ماهي الرسوم البيانية بنماء؟ \n 4- كيف استطيع إضافة مصروفاتي؟\n 5- كيف استطيع التواصل مع فريق المطورين؟ \n 6- كيف استطيع الوصول لمعلوماتي؟\n 7- غير ذلك',
       isUser: false,
       time: DateTime.now().add(Duration(minutes: 1)),
     ),
   ];
 
   final TextEditingController _messageController = TextEditingController();
-  final List<String> choices = ['4', '3', '2', '1'];
+  final List<String> choices = ['7','6','5','4', '3', '2', '1'];
 
   DateTime? lastDisplayedDate;
 
@@ -296,7 +295,7 @@ class _viewChatState extends State<viewChat> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        mainHeader(title: 'تحدث مع نمى'),
+        mainHeader(title: 'تحدث مع نماء'),
         Expanded(
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
@@ -362,7 +361,7 @@ class _viewChatState extends State<viewChat> {
 
     _messageController.clear();
 
-    if (text == '4') {
+    if (text == '7') {
       // User entered '4', start the viewModelChat
       await _viewModelChat.startChat(_receiveChatGPTResponse);
     } else if (choices.contains(text)) {
@@ -380,11 +379,17 @@ class _viewChatState extends State<viewChat> {
     // Customize responses based on the user's choice
     switch (choice) {
       case '1':
-        return 'إجابة 1';
+        return 'نماء هو تطبيق متاح للجوالات الذكية، يمكنك من تتبع مصاريفك ويساعدك بإدارتها';
       case '2':
-        return 'إجابة 2';
+        return 'يمكنك إضافة خططك الإدخارية عبر أيقونة الحصالة المتواجدة بالشريط السفلي';
       case '3':
-        return 'إجابة 3';
+        return 'تستطيع استكشاف مصاريفك عبر الصفحة الرئيسية من تطبيق نماء، الرسوم البيانية عبارة عن ثلاث رسومات: \n قيمة المصروفات، يمثل هذا الرسم مصروفاتك عبر أيام الأسبوع \n فئة المصروفات، يمثل هذا الرسم البياني نسبة مصروفاتك من كل فئة \n العملات، يمثل هذا الرسم البياني نسبة أموالك من كل عملة';
+      case '4':
+        return 'تستطيع إضافة مصروفاتك من خلال أيقونة الإضافة الظاهرة بالشاشة الرئيسية';
+      case '5':
+        return 'تستطيع التواصل مع فريق المطورين عبر البريد الإلكتروني التالي: \n NamaaAppTeam@gmail.com';
+      case '6':
+        return 'تستطيع الوصول لمعلوماتك عبر أيقونة الإعدادات بأعلى الصفحة الرئيسية';
       default:
         return 'شكرًا على رسالتك!';
     }
