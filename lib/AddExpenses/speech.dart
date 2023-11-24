@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:namaagp/AddExpenses/speech_header.dart';
 import 'package:speech_to_text/speech_to_text.dart';
-// import 'package:avatar_glow/avatar_glow.dart';
+import 'package:avatar_glow/avatar_glow.dart';
 // import 'package:highlight_text/highlight_text.dart';
 import 'package:namaagp/Components/CustomButton.dart';
 
@@ -461,6 +461,21 @@ class _SpeechState extends State<Speech> {
                SizedBox(
                     height: 50,
                   ),
-            ])));
+            ])),
+            floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: AvatarGlow(
+          glowColor: Colors.blue,
+          endRadius: 90.0,
+          duration: Duration(milliseconds: 2000),
+          repeat: true,
+          showTwoGlows: true,
+          repeatPauseDuration: Duration(milliseconds: 100),        
+          child: FloatingActionButton(
+                 onPressed: (){},
+                 tooltip: 'Floating',
+                 child: const Icon(Icons.mic),
+        ),
+            
+    ));
   }
 }
