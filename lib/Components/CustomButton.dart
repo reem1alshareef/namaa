@@ -15,7 +15,7 @@ class CustomButton extends StatelessWidget {
         child: Row(
           children: [
             SizedBox(
-              width: 75,
+              width: 45,
             ),
             Container(
               width: 250,

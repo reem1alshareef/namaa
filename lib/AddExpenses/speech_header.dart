@@ -49,9 +49,9 @@ class Speech_header extends StatelessWidget {
             Row(
               children: [
                 SizedBox(
-                  width: 170,
+                  width: 120,
                 ),
-                Text('نماء',
+                Text('نماء  ',
                     textAlign: TextAlign.right,
                     style: GoogleFonts.getFont("Noto Sans Arabic",
                         fontSize: 24,

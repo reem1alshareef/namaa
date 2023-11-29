@@ -316,7 +316,7 @@ class _SpeechState extends State<Speech> {
               ),
 // الخط
               Container(
-                margin: EdgeInsets.only(top: 15),
+                margin: EdgeInsets.only(top: 7),
                 width: 401,
                 height: 0.5,
                 decoration: BoxDecoration(
@@ -331,24 +331,29 @@ class _SpeechState extends State<Speech> {
                       _speechToText.isListening
                           ? ":الرجاء التحدث بالصيغة التالية \n صرفت عشرة ريال في يوم واحد ديسمبر فئة مواصلات"
                           : _speechEnabled
-                              ? "انقر الأيقونة لبدء الادخال الصوتي"
-                              : "لايمكن الوصول للتعرف الصوتي",
+                              ? " انقر الأيقونة لبدء الادخال الصوتي \n \n "
+                              : "لايمكن الوصول للتعرف الصوتي الرجاءالسماح للوصول",
                       softWrap: true,
                       textAlign: TextAlign.center,
                       style: GoogleFonts.getFont("Noto Sans Arabic",
                           fontSize: 20.0, color: Color(0xFFD0CDEF)),
                     ),
                   ),
-                  // AvatarGlow(
-                  //   animate: _speechToText.isListening,
-                  //   glowColor: Color(0xFFD0CDEF),
-                  //   endRadius: 75.0,
-                  //   duration: const Duration(microseconds: 2000),
-                  //   repeatPauseDuration: const Duration(milliseconds: 100),
-                  //   repeat: true,
-                  //   child:
-                  FloatingActionButton(
-                    backgroundColor: Color(0xFFD0CDEF),
+
+AvatarGlow(
+          glowColor: Color(0xFFD0CDEF),
+          endRadius: 50.0,
+          duration: Duration(milliseconds: 2000),
+          repeat: true,
+          showTwoGlows: true,
+          repeatPauseDuration: Duration(milliseconds: 100),        
+          child: FloatingActionButton(
+            shape:RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(
+                Radius.circular(40.0),
+              ),
+            ),
+                   backgroundColor: Color(0xFFD0CDEF),
                     onPressed: _speechToText.isListening
                         ? _stopListening
                         : _startListening,
@@ -357,10 +362,8 @@ class _SpeechState extends State<Speech> {
                       color: Color(0xFF342D68),
                     ),
                   ),
-                  // ),
-
-                  // Expanded(
-                  //   child:
+            
+          ),
 
                   Container(
                     padding: EdgeInsets.all(8.0),
@@ -370,7 +373,7 @@ class _SpeechState extends State<Speech> {
                       style: GoogleFonts.getFont(
                         "Noto Sans Arabic",
                         color: const Color.fromARGB(119, 255, 255, 255),
-                        fontSize: 25,
+                        fontSize: 20,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
@@ -392,7 +395,7 @@ class _SpeechState extends State<Speech> {
                       style: GoogleFonts.getFont(
                         "Noto Sans Arabic",
                         color: Color(0xFFD0CDEF),
-                        fontSize: 25,
+                        fontSize: 20,
                         fontWeight: FontWeight.w500,
                       )),
                   Text(isAmount() ? ' $amount : المبلغ' : '',
@@ -400,7 +403,7 @@ class _SpeechState extends State<Speech> {
                       style: GoogleFonts.getFont(
                         "Noto Sans Arabic",
                         color: Color(0xFFD0CDEF),
-                        fontSize: 25,
+                        fontSize: 20,
                         fontWeight: FontWeight.w500,
                       )),
                   Text(
@@ -415,7 +418,7 @@ class _SpeechState extends State<Speech> {
                       style: GoogleFonts.getFont(
                         "Noto Sans Arabic",
                         color: Color(0xFFD0CDEF),
-                        fontSize: 25,
+                        fontSize: 20,
                         fontWeight: FontWeight.w500,
                       )),
 
@@ -438,7 +441,7 @@ class _SpeechState extends State<Speech> {
                       style: GoogleFonts.getFont(
                         "Noto Sans Arabic",
                         color: Color(0xFFD0CDEF),
-                        fontSize: 25,
+                        fontSize: 20,
                         fontWeight: FontWeight.w500,
                       )),
  ]),
@@ -461,21 +464,42 @@ class _SpeechState extends State<Speech> {
                SizedBox(
                     height: 50,
                   ),
-            ])),
-            floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: AvatarGlow(
-          glowColor: Colors.blue,
-          endRadius: 90.0,
-          duration: Duration(milliseconds: 2000),
-          repeat: true,
-          showTwoGlows: true,
-          repeatPauseDuration: Duration(milliseconds: 100),        
-          child: FloatingActionButton(
-                 onPressed: (){},
-                 tooltip: 'Floating',
-                 child: const Icon(Icons.mic),
-        ),
+
+
+
+
+                 
+
+            ],
+
             
-    ));
+            
+            
+            
+            
+            ),
+            
+            ),
+      //      floatingActionButtonLocation: FloatingActionButtonLocation.miniCenterTop,
+      // floatingActionButton: AvatarGlow(
+      //     glowColor: Color(0xFFD0CDEF),
+      //     endRadius: 90.0,
+      //     duration: Duration(milliseconds: 2000),
+      //     repeat: true,
+      //     showTwoGlows: true,
+      //     repeatPauseDuration: Duration(milliseconds: 100),        
+      //     child: FloatingActionButton(
+      //              backgroundColor: Color(0xFFD0CDEF),
+      //               onPressed: _speechToText.isListening
+      //                   ? _stopListening
+      //                   : _startListening,
+      //               child: Icon(
+      //                 _speechToText.isNotListening ? Icons.mic_off : Icons.mic,
+      //                 color: Color(0xFF342D68),
+      //               ),
+      //             ),
+            
+      //     )
+          );
   }
 }

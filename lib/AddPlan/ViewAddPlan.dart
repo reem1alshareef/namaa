@@ -674,27 +674,7 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                                       color:
                                                           Color(0xFFD0CDEF)))),
                                           onPressed: () async {
-                                            // if (date == "انقر لتحديد التاريخ") {
-                                            //   showDialog(
-                                            //     context: context,
-                                            //     builder: (context) {
-                                            //       return AlertDialog(
-                                            //         title: Text('تنبيه'),
-                                            //         content: Text(
-                                            //             'الرجاء تحديد التاريخ'),
-                                            //         actions: [
-                                            //           TextButton(
-                                            //             onPressed: () {
-                                            //               Navigator.of(context)
-                                            //                   .pop();
-                                            //             },
-                                            //             child: Text('موافق'),
-                                            //           ),
-                                            //         ],
-                                            //       );
-                                            //     },
-                                            //   );
-                                            // } else {
+                                          
 
                                             await supabaseClient
                                                 .from('savingPlan')
