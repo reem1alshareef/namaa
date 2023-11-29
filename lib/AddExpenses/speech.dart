@@ -341,8 +341,9 @@ class _SpeechState extends State<Speech> {
                   ),
 
 AvatarGlow(
+  animate: _speechToText.isListening,
           glowColor: Color(0xFFD0CDEF),
-          endRadius: 50.0,
+          endRadius: 55.0,
           duration: Duration(milliseconds: 2000),
           repeat: true,
           showTwoGlows: true,
