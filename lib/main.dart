@@ -93,7 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
           builder: (BuildContext context) {
             submitLogin();
            
-            return ViewAddExpenses();
+            return ViewAddPlan();
             
             //return const ViewSplash();
           },
