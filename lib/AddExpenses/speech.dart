@@ -3,7 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:namaagp/AddExpenses/speech_header.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 import 'package:avatar_glow/avatar_glow.dart';
-// import 'package:highlight_text/highlight_text.dart';
 import 'package:namaagp/Components/CustomButton.dart';
 
 class Speech extends StatefulWidget {
@@ -25,9 +24,9 @@ class _SpeechState extends State<Speech> {
   String day = '';
 
   Date() {
-  String str = _wordsSpoken;
-  String start = "يوم";
-  String  end = date;
+    String str = _wordsSpoken;
+    String start = "يوم";
+    String end = date;
 
     final startIndex = str.indexOf(start);
     final endIndex = str.indexOf(end, startIndex + start.length);
@@ -44,7 +43,7 @@ class _SpeechState extends State<Speech> {
   }
 
   isPrice() {
-    if (isAmount() == true) {
+     if (isAmount() == true) {
       String aStr = _wordsSpoken.replaceAll(RegExp(r'[^0-9]'), '');
       amount = int.parse(aStr);
     }
@@ -273,88 +272,84 @@ class _SpeechState extends State<Speech> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: const Color(0x00071121),
-        body: Container(
-            padding: const EdgeInsets.only(top: 50.0, left: 10, right: 10),
-            width: 428,
-            height: 926,
-            clipBehavior: Clip.antiAlias,
-            decoration: const BoxDecoration(
-              //maybe delete const
-              gradient: LinearGradient(
-                begin: Alignment(-0.00, -6.00),
-                end: Alignment(0, 1.5),
-                colors: [
-                  Color(0xFF342D68),
-                  Color(0xFF352D68),
-                  Color(0x00352D68)
-                ],
-              ),
+      backgroundColor: const Color(0x00071121),
+      body: Container(
+        padding: const EdgeInsets.only(top: 50.0, left: 10, right: 10),
+        width: 428,
+        height: 926,
+        clipBehavior: Clip.antiAlias,
+        decoration: const BoxDecoration(
+          //maybe delete const
+          gradient: LinearGradient(
+            begin: Alignment(-0.00, -6.00),
+            end: Alignment(0, 1.5),
+            colors: [Color(0xFF342D68), Color(0xFF352D68), Color(0x00352D68)],
+          ),
+        ),
+        // ignore: prefer_const_constructors
+        child: Column(
+          children: [
+            SizedBox(
+              height: 20,
             ),
-            // ignore: prefer_const_constructors
-            child: Column(children: [
-              SizedBox(
-                height: 20,
-              ),
-              Speech_header(),
-              SizedBox(
-                height: 10,
-              ),
+            Speech_header(),
+            SizedBox(
+              height: 10,
+            ),
 
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text('الادخال الصوتي ',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.getFont("Noto Sans Arabic",
-                          fontSize: 28,
-                          fontWeight: FontWeight.w400,
-                          height: 1.5,
-                          textStyle:
-                              const TextStyle(color: Color(0xFFD0CDEF)))),
-                ],
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text('الادخال الصوتي ',
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.getFont("Noto Sans Arabic",
+                        fontSize: 28,
+                        fontWeight: FontWeight.w400,
+                        height: 1.5,
+                        textStyle: const TextStyle(color: Color(0xFFD0CDEF)))),
+              ],
+            ),
 // الخط
-              Container(
-                margin: EdgeInsets.only(top: 7),
-                width: 401,
-                height: 0.5,
-                decoration: BoxDecoration(
-                  color: Color.fromARGB(132, 217, 217, 217),
-                ),
-              ),
-              Expanded(
-                child: Column(children: [
-                  Container(
-                    padding: EdgeInsets.all(16),
-                    child: Text(
-                      _speechToText.isListening
-                          ? ":الرجاء التحدث بالصيغة التالية \n صرفت عشرة ريال في يوم واحد ديسمبر فئة مواصلات"
-                          : _speechEnabled
-                              ? " انقر الأيقونة لبدء الادخال الصوتي \n \n "
-                              : "لايمكن الوصول للتعرف الصوتي الرجاءالسماح للوصول",
-                      softWrap: true,
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.getFont("Noto Sans Arabic",
-                          fontSize: 20.0, color: Color(0xFFD0CDEF)),
-                    ),
-                  ),
-
-AvatarGlow(
-  animate: _speechToText.isListening,
-          glowColor: Color(0xFFD0CDEF),
-          endRadius: 55.0,
-          duration: Duration(milliseconds: 2000),
-          repeat: true,
-          showTwoGlows: true,
-          repeatPauseDuration: Duration(milliseconds: 100),        
-          child: FloatingActionButton(
-            shape:RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(
-                Radius.circular(40.0),
+            Container(
+              margin: EdgeInsets.only(top: 7),
+              width: 401,
+              height: 0.5,
+              decoration: BoxDecoration(
+                color: Color.fromARGB(132, 217, 217, 217),
               ),
             ),
-                   backgroundColor: Color(0xFFD0CDEF),
+            Expanded(
+              child: Column(children: [
+                Container(
+                  padding: EdgeInsets.all(16),
+                  child: Text(
+                    _speechToText.isListening
+                        ? ":الرجاء التحدث بالصيغة التالية \n صرفت عشرة ريال في يوم واحد ديسمبر فئة مواصلات"
+                        : _speechEnabled
+                            ? " انقر الأيقونة لبدء الادخال الصوتي \n \n "
+                            : "لايمكن الوصول للتعرف الصوتي الرجاءالسماح للوصول",
+                    softWrap: true,
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.getFont("Noto Sans Arabic",
+                        fontSize: 20.0, color: Color(0xFFD0CDEF)),
+                  ),
+                ),
+
+                AvatarGlow(
+                  animate: _speechToText.isListening,
+                  glowColor: Color(0xFFD0CDEF),
+                  endRadius: 55.0,
+                  duration: Duration(milliseconds: 2000),
+                  repeat: true,
+                  showTwoGlows: true,
+                  repeatPauseDuration: Duration(milliseconds: 100),
+                  child: FloatingActionButton(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(40.0),
+                      ),
+                    ),
+                    backgroundColor: Color(0xFFD0CDEF),
                     onPressed: _speechToText.isListening
                         ? _stopListening
                         : _startListening,
@@ -363,124 +358,225 @@ AvatarGlow(
                       color: Color(0xFF342D68),
                     ),
                   ),
-            
-          ),
+                ),
 
-                  Container(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text(
-                      _wordsSpoken,
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.getFont(
-                        "Noto Sans Arabic",
-                        color: const Color.fromARGB(119, 255, 255, 255),
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500,
-                      ),
+// SPOKEN WORDS HERE
+                Container(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text(
+                    _wordsSpoken,
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.getFont(
+                      "Noto Sans Arabic",
+                      color: const Color.fromARGB(119, 255, 255, 255),
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
+                ),
 
-                  // ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                        isCategoryPersonal() ||
+                                isCategoryTranspotation() ||
+                                isCategoryOther() ||
+                                isCategoryEntertainment() ||
+                                isCategoryFood() ||
+                                isCategoryHealth() ||
+                                isCategoryHome()
+                            ? ' $category '
+                            : '',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.getFont(
+                          "Noto Sans Arabic",
+                          color: Color(0xFFD0CDEF),
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                        )),
+                    Text(': الفئة',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.getFont(
+                          "Noto Sans Arabic",
+                          color: Color(0xFFD0CDEF),
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                        ))
+                  ],
+                ),
+                // Text(
+                //     isCategoryPersonal() ||
+                //             isCategoryTranspotation() ||
+                //             isCategoryOther() ||
+                //             isCategoryEntertainment() ||
+                //             isCategoryFood() ||
+                //             isCategoryHealth() ||
+                //             isCategoryHome()
+                //         ? ' الفئة : $category '
+                //         : '',
+                //     textAlign: TextAlign.center,
+                //     style: GoogleFonts.getFont(
+                //       "Noto Sans Arabic",
+                //       color: Color(0xFFD0CDEF),
+                //       fontSize: 20,
+                //       fontWeight: FontWeight.w500,
+                //
+                //
+                //    )),
 
-                  Text(
-                      isCategoryPersonal() ||
-                              isCategoryTranspotation() ||
-                              isCategoryOther() ||
-                              isCategoryEntertainment() ||
-                              isCategoryFood() ||
-                              isCategoryHealth() ||
-                              isCategoryHome()
-                          ? ' الفئة : $category '
-                          : '',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.getFont(
-                        "Noto Sans Arabic",
-                        color: Color(0xFFD0CDEF),
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500,
-                      )),
-                  Text(isAmount() ? ' $amount : المبلغ' : '',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.getFont(
-                        "Noto Sans Arabic",
-                        color: Color(0xFFD0CDEF),
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500,
-                      )),
-                  Text(
-                      isCurrencyAED() ||
-                              isCurrencyEUO() ||
-                              isCurrencyGBP() ||
-                              isCurrencySR() ||
-                              isCurrencyUS()
-                          ? ' العملة : $currency '
-                          : '',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.getFont(
-                        "Noto Sans Arabic",
-                        color: Color(0xFFD0CDEF),
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500,
-                      )),
-
-                  Text(
-                      isMonth1() ||
-                              isMonth2() ||
-                              isMonth3() ||
-                              isMonth4() ||
-                              isMonth5() ||
-                              isMonth6() ||
-                              isMonth7() ||
-                              isMonth8() ||
-                              isMonth9() ||
-                              isMonth10() ||
-                              isMonth11() ||
-                              isMonth12()
-                          ? '  $day : التاريخ '
-                          : '',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.getFont(
-                        "Noto Sans Arabic",
-                        color: Color(0xFFD0CDEF),
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500,
-                      )),
- ]),
-              ),
-                  
-                  Align(
-                      alignment: Alignment.bottomCenter,
-                      child: CustomButton(
-                          title: 'اضافة',
-                          onPressed: () {
-                            showDialog(
-                              context: context,
-                              builder: (context) {
-                                return AlertDialog(
-                                  content: Text('تم حفظ البيانات بنجاح'),
-                                );
-                              },
-                            );
-                          })),
-               SizedBox(
-                    height: 50,
-                  ),
-
-
-
-
-                 
-
-            ],
-
-            
-            
-            
-            
-            
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(isAmount() ? ' $amount ' : '',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.getFont(
+                          "Noto Sans Arabic",
+                          color: Color(0xFFD0CDEF),
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                        )),
+                    Text(': المبلغ',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.getFont(
+                          "Noto Sans Arabic",
+                          color: Color(0xFFD0CDEF),
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                        ))
+                  ],
+                ),
+                // Text(isAmount() ? ' $amount : المبلغ' : '',
+                //     textAlign: TextAlign.center,
+                //     style: GoogleFonts.getFont(
+                //       "Noto Sans Arabic",
+                //       color: Color(0xFFD0CDEF),
+                //       fontSize: 20,
+                //       fontWeight: FontWeight.w500,
+                //     )),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                        isCurrencyAED() ||
+                                isCurrencyEUO() ||
+                                isCurrencyGBP() ||
+                                isCurrencySR() ||
+                                isCurrencyUS()
+                            ? '  $currency '
+                            : '',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.getFont(
+                          "Noto Sans Arabic",
+                          color: Color(0xFFD0CDEF),
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                        )),
+                    Text(': العملة ',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.getFont(
+                          "Noto Sans Arabic",
+                          color: Color(0xFFD0CDEF),
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                        ))
+                  ],
+                ),
+                // Text(
+                //     isCurrencyAED() ||
+                //             isCurrencyEUO() ||
+                //             isCurrencyGBP() ||
+                //             isCurrencySR() ||
+                //             isCurrencyUS()
+                //         ? ' العملة : $currency '
+                //         : '',
+                //     textAlign: TextAlign.center,
+                //     style: GoogleFonts.getFont(
+                //       "Noto Sans Arabic",
+                //       color: Color(0xFFD0CDEF),
+                //       fontSize: 20,
+                //       fontWeight: FontWeight.w500,
+                //     )),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                        isMonth1() ||
+                                isMonth2() ||
+                                isMonth3() ||
+                                isMonth4() ||
+                                isMonth5() ||
+                                isMonth6() ||
+                                isMonth7() ||
+                                isMonth8() ||
+                                isMonth9() ||
+                                isMonth10() ||
+                                isMonth11() ||
+                                isMonth12()
+                            ? '  $day '
+                            : '',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.getFont(
+                          "Noto Sans Arabic",
+                          color: Color(0xFFD0CDEF),
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                        )),
+                    Text(': التاريخ ',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.getFont(
+                          "Noto Sans Arabic",
+                          color: Color(0xFFD0CDEF),
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                        ))
+                  ],
+                ),
+                // Text(
+                //     isMonth1() ||
+                //             isMonth2() ||
+                //             isMonth3() ||
+                //             isMonth4() ||
+                //             isMonth5() ||
+                //             isMonth6() ||
+                //             isMonth7() ||
+                //             isMonth8() ||
+                //             isMonth9() ||
+                //             isMonth10() ||
+                //             isMonth11() ||
+                //             isMonth12()
+                //         ? '  $day : التاريخ '
+                //         : '',
+                //     textAlign: TextAlign.center,
+                //     style: GoogleFonts.getFont(
+                //       "Noto Sans Arabic",
+                //       color: Color(0xFFD0CDEF),
+                //       fontSize: 20,
+                //       fontWeight: FontWeight.w500,
+                //     )),
+              ]),
             ),
-            
+
+            Align(
+                alignment: Alignment.bottomCenter,
+                child: CustomButton(
+                    title: 'اضافة',
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            content: Text('تم حفظ البيانات بنجاح'),
+                          );
+                        },
+                      );
+                    })),
+            SizedBox(
+              height: 50,
             ),
+          ],
+        ),
+      ),
       //      floatingActionButtonLocation: FloatingActionButtonLocation.miniCenterTop,
       // floatingActionButton: AvatarGlow(
       //     glowColor: Color(0xFFD0CDEF),
@@ -488,7 +584,7 @@ AvatarGlow(
       //     duration: Duration(milliseconds: 2000),
       //     repeat: true,
       //     showTwoGlows: true,
-      //     repeatPauseDuration: Duration(milliseconds: 100),        
+      //     repeatPauseDuration: Duration(milliseconds: 100),
       //     child: FloatingActionButton(
       //              backgroundColor: Color(0xFFD0CDEF),
       //               onPressed: _speechToText.isListening
@@ -499,8 +595,8 @@ AvatarGlow(
       //                 color: Color(0xFF342D68),
       //               ),
       //             ),
-            
+
       //     )
-          );
+    );
   }
 }
