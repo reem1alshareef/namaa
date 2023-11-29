@@ -43,7 +43,7 @@ class _SpeechState extends State<Speech> {
   }
 
   isPrice() {
-     if (isAmount() == true) {
+    if (isAmount() == true) {
       String aStr = _wordsSpoken.replaceAll(RegExp(r'[^0-9]'), '');
       amount = int.parse(aStr);
     }
@@ -361,19 +361,19 @@ class _SpeechState extends State<Speech> {
                 ),
 
 // SPOKEN WORDS HERE
-                Container(
-                  padding: EdgeInsets.all(8.0),
-                  child: Text(
-                    _wordsSpoken,
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.getFont(
-                      "Noto Sans Arabic",
-                      color: const Color.fromARGB(119, 255, 255, 255),
-                      fontSize: 20,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ),
+                // Container(
+                //   padding: EdgeInsets.all(8.0),
+                //   child: Text(
+                //     _wordsSpoken,
+                //     textAlign: TextAlign.center,
+                //     style: GoogleFonts.getFont(
+                //       "Noto Sans Arabic",
+                //       color: const Color.fromARGB(119, 255, 255, 255),
+                //       fontSize: 20,
+                //       fontWeight: FontWeight.w500,
+                //     ),
+                //   ),
+                // ),
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
