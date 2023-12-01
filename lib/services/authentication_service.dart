@@ -37,6 +37,7 @@ await supabaseClient.from('userAccount')
       
       //verifyUserAccount();
   }catch(e){
+    print(e.toString());
 return 2;
   }
 

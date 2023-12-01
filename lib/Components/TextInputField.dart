@@ -23,7 +23,7 @@ class TextInputField extends StatelessWidget {
         
         SizedBox(
           width: 350,
-          height: 25,
+          //height: 25,
           child: Text(title,
               textAlign: TextAlign.right,
               style: GoogleFonts.getFont("Noto Sans Arabic",
@@ -34,7 +34,7 @@ class TextInputField extends StatelessWidget {
         ),
         SizedBox(
             width: 350,
-            height: 35,//35
+            //height: 35,//35
             child: TextFormField(
               style: TextStyle(color: Colors.white),
               textAlign: TextAlign.right,
@@ -61,8 +61,17 @@ class TextInputField extends StatelessWidget {
               if(title=='الاسم' && value.length<3 || value.length>40){
                 return 'يرجى إدخال اسم صحيح';
               }
-              if((title=='كلمة السر' || title =='كلمة السر الجديدة' )&& (value.length<6 || value.length>40)){
-                return 'كلمة السر يجب أن تتكون من ست خانات على الأقل';
+              if((title=='كلمة السر' || title =='كلمة السر الجديدة' )&& (value.length<10 || value.length>40)){
+                return 'كلمة السر يجب أن تتكون من عشر خانات على الأقل';
+              }
+              if((title=='كلمة السر' || title =='كلمة السر الجديدة' )&& (!value.contains(new RegExp(r'[!@#$%^&*(),.?":{}|<>]')))){
+                return 'كلمة السر يجب أن تحوي رمز مميز مثل *';
+              }
+              if((title=='كلمة السر' || title =='كلمة السر الجديدة' )&& (!value.contains(new RegExp(r'[A-Z]')) )){
+                return 'كلمة السر يجب أن تحوي حروف من الحالتين الكبيرة والصغيرة ';
+              }
+              if((title=='كلمة السر' || title =='كلمة السر الجديدة' )&& (!value.contains(new RegExp(r'[0-9]')))){
+                return 'كلمة السر يجب أن تحوي رقم ';
               }
               return null;
             }
@@ -73,5 +82,26 @@ class TextInputField extends StatelessWidget {
         )
       ],
     );
+  }
+
+  bool hasUpperAndLowerCases(String password){
+    bool hasUpper=false;
+    bool hasLower=false;
+    int i=0;
+    var character='';
+    while (i < password.length){
+               character = password.substring(i,i+1);
+               print(character);
+                  if (character == character.toUpperCase()) {
+                      hasUpper=true;
+                  }
+                  if (character == character.toLowerCase()){
+                      hasLower=true;
+                  }
+              
+              i++;
+            }
+
+    return hasUpper & hasLower;
   }
 }

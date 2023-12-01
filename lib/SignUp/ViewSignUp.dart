@@ -59,7 +59,7 @@ class ViewSignUp extends StatelessWidget {
       children: [
         SizedBox(
           width: 350,
-          height: 25,
+          //height: 25,
           child: Text('تأكيد كلمة السر',
               textAlign: TextAlign.right,
               style: GoogleFonts.getFont("Noto Sans Arabic",
@@ -70,7 +70,7 @@ class ViewSignUp extends StatelessWidget {
         ),
         SizedBox(
             width: 350,
-            height: 35,//35
+            //height: 35,//35
             child: TextFormField(
               style: TextStyle(color: Colors.white),
               textAlign: TextAlign.right,
