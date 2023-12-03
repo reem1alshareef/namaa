@@ -24,18 +24,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-   
-  // localizationsDelegates: GlobalMaterialLocalizations.delegates,
-  // supportedLocales: const [
-  //   Locale('en', 'US'),
-  //   Locale('en', 'GB'),
-  //   Locale('ar'),
-  //   Locale('zh'),
-  //   Locale('ru'),
-  //   Locale('es'),
-  //   Locale('hi'),
-  // ],
-  
+      // localizationsDelegates: GlobalMaterialLocalizations.delegates,
+      // supportedLocales: const [
+      //   Locale('en', 'US'),
+      //   Locale('en', 'GB'),
+      //   Locale('ar'),
+      //   Locale('zh'),
+      //   Locale('ru'),
+      //   Locale('es'),
+      //   Locale('hi'),
+      // ],
 
       home: MyHomePage(),
     );
@@ -92,9 +90,9 @@ class _MyHomePageState extends State<MyHomePage> {
         MaterialPageRoute(
           builder: (BuildContext context) {
             submitLogin();
-           
-            return ViewAddExpenses();
-            
+
+            return ViewAddPlan();
+
             //return const ViewSplash();
           },
         ),
