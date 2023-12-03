@@ -22,30 +22,41 @@ class _SpeechState extends State<Speech> {
   String date = '';
   int amount = 0;
   String day = '';
+  String dateM = '';
 
-  Date() {
-    String str = _wordsSpoken;
-    String start = "يوم";
-    String end = date;
 
-    final startIndex = str.indexOf(start);
-    final endIndex = str.indexOf(end, startIndex + start.length);
-
-    day = str.substring(startIndex + start.length, endIndex);
-  }
-
-  isAmount() {
+  isDay() {
     if (_wordsSpoken.contains(RegExp(r'[0-9]'))) {
+      String str = _wordsSpoken;
+      String start = "يوم";
+      String end = dateM;
+
+      final startIndex = str.indexOf(start);
+      final endIndex = str.indexOf(end, startIndex + start.length);
+
+      day = str.substring(startIndex + start.length, endIndex);
+      print(day);
       return true;
     } else {
       return false;
     }
   }
 
-  isPrice() {
-    if (isAmount() == true) {
-      String aStr = _wordsSpoken.replaceAll(RegExp(r'[^0-9]'), '');
-      amount = int.parse(aStr);
+  isAmount() {
+    if (_wordsSpoken.contains(RegExp(r'[0-9]'))) {
+      String str = _wordsSpoken;
+      const start = "صرفت";
+      String end = currency;
+
+      final startIndex = str.indexOf(start);
+      final endIndex = str.indexOf(end, startIndex + start.length);
+
+      String t = str.substring(startIndex + start.length, endIndex);
+      amount = int.parse(t);
+      print(t);
+      return true;
+    } else {
+      return false;
     }
   }
 
@@ -148,7 +159,7 @@ class _SpeechState extends State<Speech> {
 
   isMonth1() {
     if (_wordsSpoken.contains(('يناير'))) {
-      date = 'January';
+      date = '1';
       return true;
     } else
       return false;
@@ -156,7 +167,7 @@ class _SpeechState extends State<Speech> {
 
   isMonth2() {
     if (_wordsSpoken.contains(('فبراير'))) {
-      date = 'February';
+      date = '2';
       return true;
     } else
       return false;
@@ -164,7 +175,7 @@ class _SpeechState extends State<Speech> {
 
   isMonth3() {
     if (_wordsSpoken.contains(('مارس'))) {
-      date = 'March';
+      date = '3';
       return true;
     } else
       return false;
@@ -172,7 +183,7 @@ class _SpeechState extends State<Speech> {
 
   isMonth4() {
     if (_wordsSpoken.contains(('أبريل')) || _wordsSpoken.contains('ابريل')) {
-      date = 'April';
+      date = '4';
       return true;
     } else
       return false;
@@ -180,7 +191,8 @@ class _SpeechState extends State<Speech> {
 
   isMonth5() {
     if (_wordsSpoken.contains(('مايو'))) {
-      date = 'May';
+      dateM = 'مايو';
+      date = '5';
       return true;
     } else
       return false;
@@ -188,7 +200,7 @@ class _SpeechState extends State<Speech> {
 
   isMonth6() {
     if (_wordsSpoken.contains(('يونيو'))) {
-      date = 'June';
+      date = '6';
       return true;
     } else
       return false;
@@ -196,7 +208,7 @@ class _SpeechState extends State<Speech> {
 
   isMonth7() {
     if (_wordsSpoken.contains(('يوليو'))) {
-      date = 'July';
+      date = '7';
       return true;
     } else
       return false;
@@ -204,7 +216,7 @@ class _SpeechState extends State<Speech> {
 
   isMonth8() {
     if (_wordsSpoken.contains(('أغسطس')) || _wordsSpoken.contains('اغسطس')) {
-      date = 'August';
+      date = '8';
       return true;
     } else
       return false;
@@ -212,7 +224,7 @@ class _SpeechState extends State<Speech> {
 
   isMonth9() {
     if (_wordsSpoken.contains(('سبتمبر'))) {
-      date = 'September';
+      date = '9';
       return true;
     } else
       return false;
@@ -220,7 +232,7 @@ class _SpeechState extends State<Speech> {
 
   isMonth10() {
     if (_wordsSpoken.contains(('أكتوبر')) || _wordsSpoken.contains('اكتوبر')) {
-      date = 'October';
+      date = '10';
       return true;
     } else
       return false;
@@ -228,7 +240,7 @@ class _SpeechState extends State<Speech> {
 
   isMonth11() {
     if (_wordsSpoken.contains(('نوفمبر'))) {
-      date = 'November';
+      date = '11';
       return true;
     } else
       return false;
@@ -236,7 +248,8 @@ class _SpeechState extends State<Speech> {
 
   isMonth12() {
     if (_wordsSpoken.contains(('ديسمبر'))) {
-      date = 'December';
+       dateM = 'ديسمبر';
+      date = '12';
       return true;
     } else
       return false;
@@ -342,7 +355,7 @@ class _SpeechState extends State<Speech> {
                   duration: Duration(milliseconds: 2000),
                   repeat: true,
                   showTwoGlows: true,
-                  repeatPauseDuration: Duration(milliseconds: 100),
+                  repeatPauseDuration: Duration(milliseconds: 200),
                   child: FloatingActionButton(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(
@@ -361,19 +374,19 @@ class _SpeechState extends State<Speech> {
                 ),
 
 // SPOKEN WORDS HERE
-                // Container(
-                //   padding: EdgeInsets.all(8.0),
-                //   child: Text(
-                //     _wordsSpoken,
-                //     textAlign: TextAlign.center,
-                //     style: GoogleFonts.getFont(
-                //       "Noto Sans Arabic",
-                //       color: const Color.fromARGB(119, 255, 255, 255),
-                //       fontSize: 20,
-                //       fontWeight: FontWeight.w500,
-                //     ),
-                //   ),
-                // ),
+                Container(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text(
+                    _wordsSpoken,
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.getFont(
+                      "Noto Sans Arabic",
+                      color: const Color.fromARGB(119, 255, 255, 255),
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -501,19 +514,19 @@ class _SpeechState extends State<Speech> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                        isMonth1() ||
-                                isMonth2() ||
-                                isMonth3() ||
-                                isMonth4() ||
-                                isMonth5() ||
-                                isMonth6() ||
-                                isMonth7() ||
-                                isMonth8() ||
-                                isMonth9() ||
-                                isMonth10() ||
-                                isMonth11() ||
-                                isMonth12()
-                            ? '  $day '
+                        isMonth1() && isDay() ||
+                                isMonth2() && isDay() ||
+                                isMonth3() && isDay() ||
+                                isMonth4() && isDay() ||
+                                isMonth5() && isDay() ||
+                                isMonth6() && isDay() ||
+                                isMonth7() && isDay() ||
+                                isMonth8() && isDay() ||
+                                isMonth9() && isDay() ||
+                                isMonth10() && isDay() ||
+                                isMonth11() && isDay() ||
+                                isMonth12() && isDay()
+                            ? '  2023 - $date - $day '
                             : '',
                         textAlign: TextAlign.center,
                         style: GoogleFonts.getFont(

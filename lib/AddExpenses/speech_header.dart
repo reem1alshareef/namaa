@@ -23,7 +23,7 @@ class Speech_header extends StatelessWidget {
         ),
         GestureDetector(
           child: ReturnToPreviousPage(
-            title: 'رحوع',
+            title: 'رجوع',
             tWidth: 69,
           ),
           onTap: () {
