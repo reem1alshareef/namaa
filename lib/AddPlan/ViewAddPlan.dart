@@ -101,8 +101,8 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
               return Container(
                 padding: const EdgeInsets.only(top: 50.0, left: 10, right: 10),
                 width: 428,
-                height: 926,
-                clipBehavior: Clip.antiAlias,
+               height: 926,
+               clipBehavior: Clip.antiAlias,
                 decoration: const BoxDecoration(
                   //maybe delete const
                   gradient: LinearGradient(
@@ -156,7 +156,7 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                       itemBuilder: (context, index) {
                         final item = savingPlan[index];
                         return Container(
-                          height: 130,
+                          height: 100,
                           child: Card(
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10),
@@ -165,13 +165,43 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                             elevation: 10,
                             child: Row(children: <Widget>[
                               Padding(
-                                padding: EdgeInsets.all(20.0),
+                                padding: EdgeInsets.all(15.0),
                                 child: GestureDetector(
                                   onTap: () {},
-                                  child: Container(
-                                    width: 150.0,
-                                    height: 50.0,
+                                  child: 
+                                  Text('رس' , style: GoogleFonts.getFont(
+                                        "Noto Sans Arabic",
+                                        fontSize: 22,
+                                        
+                                        fontWeight: FontWeight.w400,
+                                        height: 1.5,
+                                        textStyle: const TextStyle(
+                                            color: Color(0xFFC5C5CD)))),
+
+                                  
+                                  
+                                  
+                                ),
+                              ),
+                              Container(
+                                    width: 100,
+                               // padding: EdgeInsets.all(5.0),
+                                child: Text(item['goal'].toString(),
+                               
+                                    style: GoogleFonts.getFont(
+                                        "Noto Sans Arabic",
+                                        fontSize: 22,
+                                        
+                                        fontWeight: FontWeight.w400,
+                                        height: 1.5,
+                                        textStyle: const TextStyle(
+                                            color: Color(0xFFC5C5CD)))),
+                              ),
+                             Container(
+                                    width: 130.0,
+                                   
                                     child: Text(item['goalName'],
+                                     textAlign: TextAlign.right,
                                         style: GoogleFonts.getFont(
                                             "Noto Sans Arabic",
                                             fontSize: 20,
@@ -180,46 +210,8 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                             textStyle: const TextStyle(
                                                 color: Color(0xFFC5C5CD)))),
                                   ),
-                                ),
-                              ),
-                              Text(' رس',
-                                  style: GoogleFonts.getFont("Noto Sans Arabic",
-                                      fontSize: 22,
-                                      fontWeight: FontWeight.w400,
-                                      height: 1.5,
-                                      textStyle: const TextStyle(
-                                          color: Color.fromARGB(
-                                              255, 197, 197, 205)))),
-                              Container(
-                                padding: EdgeInsets.all(10.0),
-                                child: Text('$intV',
-                                    style: GoogleFonts.getFont(
-                                        "Noto Sans Arabic",
-                                        fontSize: 22,
-                                        fontWeight: FontWeight.w400,
-                                        height: 1.5,
-                                        textStyle: const TextStyle(
-                                            color: Color(0xFFC5C5CD)))),
-                              ),
-                              Text('/ ',
-                                  style: GoogleFonts.getFont("Noto Sans Arabic",
-                                      fontSize: 22,
-                                      fontWeight: FontWeight.w400,
-                                      height: 1.5,
-                                      textStyle: const TextStyle(
-                                          color: Color.fromARGB(
-                                              145, 197, 197, 205)))),
-                              Container(
-                                  //padding: EdgeInsets.all(10.0),
-                                  child: Text(item['goal'].toString(),
-                                      style: GoogleFonts.getFont(
-                                          "Noto Sans Arabic",
-                                          fontSize: 22,
-                                          fontWeight: FontWeight.w400,
-                                          height: 1.5,
-                                          textStyle: const TextStyle(
-                                              color: Color.fromARGB(
-                                                  145, 197, 197, 205))))),
+                             
+                             
                             ]),
                           ),
                         );
@@ -381,7 +373,7 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                                         width: 75,
                                                       ),
                                                       Container(
-                                                        width: 178,
+                                                        width: 200,
                                                         height: 45,
                                                         padding:
                                                             const EdgeInsets
@@ -447,7 +439,7 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                                           )
                                                     ],
                                                   ),
-                                                  Text(' : المبلغ الإدخاري',
+                                                  Text(' : مبلغ الإدخار',
                                                       textAlign:
                                                           TextAlign.center,
                                                       style: GoogleFonts.getFont(
