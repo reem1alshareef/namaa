@@ -81,8 +81,6 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
     return diff.inDays.toString();
   }
 
-  
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -148,11 +146,15 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                   ),
                   Expanded(
                     child: ListView.builder(
+                       
                       padding: const EdgeInsets.all(16),
                       itemCount: savingPlan.length,
                       itemBuilder: (context, index) {
                         final item = savingPlan[index];
+                       
                         return Container(
+                           key:
+                        UniqueKey(),
                             height: 100,
                             child: Card(
                                 shape: RoundedRectangleBorder(
