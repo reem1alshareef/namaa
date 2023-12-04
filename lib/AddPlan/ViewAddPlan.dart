@@ -146,15 +146,13 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                   ),
                   Expanded(
                     child: ListView.builder(
-                       
                       padding: const EdgeInsets.all(16),
                       itemCount: savingPlan.length,
                       itemBuilder: (context, index) {
                         final item = savingPlan[index];
-                       
+
                         return Container(
-                           key:
-                        UniqueKey(),
+                            key: UniqueKey(),
                             height: 120,
                             child: Card(
                                 shape: RoundedRectangleBorder(
@@ -214,32 +212,104 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                             textStyle: const TextStyle(
                                                 color: Color.fromARGB(
                                                     143, 197, 197, 205)))),
-                                  Container(width: 25,
-                                       child: Text(calc(
-                                            item['startDate'], item['endDate']),
-                                        textAlign: TextAlign.left,
-                                        style: GoogleFonts.getFont(
-                                            "Noto Sans Arabic",
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w400,
-                                            height: 1.5,
-                                            textStyle: const TextStyle(
-                                                color: Color.fromARGB(
-                                                    143, 197, 197, 205))))),
-                                                    Container(width: 174,
-                                                    child:
-                                    Text(' :الفترة'        ,
-                                        textAlign: TextAlign.left,
-                                        style: GoogleFonts.getFont(
-                                            "Noto Sans Arabic",
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w400,
-                                            height: 1.5,
-                                            textStyle: const TextStyle(
-                                                color: Color.fromARGB(
-                                                    143, 197, 197, 205))))),
-                                                    
-                                                    TextButton(onPressed:() {}, child:  Icon(Icons.delete)),
+                                    Container(
+                                        width: 25,
+                                        child: Text(
+                                            calc(item['startDate'],
+                                                item['endDate']),
+                                            textAlign: TextAlign.left,
+                                            style: GoogleFonts.getFont(
+                                                "Noto Sans Arabic",
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w400,
+                                                height: 1.5,
+                                                textStyle: const TextStyle(
+                                                    color: Color.fromARGB(
+                                                        143, 197, 197, 205))))),
+                                    Container(
+                                        width: 174,
+                                        child: Text(' :الفترة',
+                                            textAlign: TextAlign.left,
+                                            style: GoogleFonts.getFont(
+                                                "Noto Sans Arabic",
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w400,
+                                                height: 1.5,
+                                                textStyle: const TextStyle(
+                                                    color: Color.fromARGB(
+                                                        143, 197, 197, 205))))),
+                                    TextButton(
+                                        onPressed: () {
+                                          showDialog(
+                                              context: context,
+                                              builder: (BuildContext context) {
+                                                return AlertDialog(
+                                                    title: Text(
+                                                        'حذف خطة الإدخار',
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style:
+                                                            GoogleFonts.getFont(
+                                                          "Noto Sans Arabic",
+                                                          fontSize: 16,
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                        )),
+                                                    content: Text(
+                                                        'هل أنت متأكد من حذف خطة الإدخار؟',
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style:
+                                                            GoogleFonts.getFont(
+                                                          "Noto Sans Arabic",
+                                                          fontSize: 16,
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                        )),
+                                                    actions: [
+                                                      ElevatedButton(
+                                                        child: Text("إلغاء",
+                                                            textAlign: TextAlign
+                                                                .center,
+                                                            style: GoogleFonts
+                                                                .getFont(
+                                                              "Noto Sans Arabic",
+                                                              fontSize: 16,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w400,
+                                                            )),
+                                                        onPressed: () {
+                                                          Navigator.of(context)
+                                                              .pop();
+                                                        },
+                                                      ),
+                                                      ElevatedButton(
+                                                        child: Text("حذف",
+                                                            textAlign: TextAlign
+                                                                .center,
+                                                            style: GoogleFonts
+                                                                .getFont(
+                                                              "Noto Sans Arabic",
+                                                              fontSize: 16,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w400,
+                                                            )),
+                                                        onPressed: () {
+                                                          ViewModelAddPlan()
+                                                              .deletePlan();
+                                                          Navigator.of(context)
+                                                              .pop();
+                                                        },
+                                                      )
+                                                    ],
+                                                    actionsAlignment:
+                                                        MainAxisAlignment
+                                                            .center);
+                                              });
+                                        },
+                                        child: Icon(Icons.delete)),
                                   ]),
                                 ])));
                       },
