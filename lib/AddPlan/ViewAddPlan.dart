@@ -155,7 +155,7 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                         return Container(
                            key:
                         UniqueKey(),
-                            height: 100,
+                            height: 120,
                             child: Card(
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10),
@@ -214,10 +214,10 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                             textStyle: const TextStyle(
                                                 color: Color.fromARGB(
                                                     143, 197, 197, 205)))),
-                                    Text(
-                                        calc(
+                                  Container(width: 25,
+                                       child: Text(calc(
                                             item['startDate'], item['endDate']),
-                                        textAlign: TextAlign.right,
+                                        textAlign: TextAlign.left,
                                         style: GoogleFonts.getFont(
                                             "Noto Sans Arabic",
                                             fontSize: 16,
@@ -225,9 +225,11 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                             height: 1.5,
                                             textStyle: const TextStyle(
                                                 color: Color.fromARGB(
-                                                    143, 197, 197, 205)))),
-                                    Text(' :الفترة',
-                                        textAlign: TextAlign.right,
+                                                    143, 197, 197, 205))))),
+                                                    Container(width: 174,
+                                                    child:
+                                    Text(' :الفترة'        ,
+                                        textAlign: TextAlign.left,
                                         style: GoogleFonts.getFont(
                                             "Noto Sans Arabic",
                                             fontSize: 16,
@@ -235,7 +237,9 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                             height: 1.5,
                                             textStyle: const TextStyle(
                                                 color: Color.fromARGB(
-                                                    143, 197, 197, 205)))),
+                                                    143, 197, 197, 205))))),
+                                                    
+                                                    TextButton(onPressed:() {}, child:  Icon(Icons.delete)),
                                   ]),
                                 ])));
                       },
