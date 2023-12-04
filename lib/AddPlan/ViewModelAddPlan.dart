@@ -24,17 +24,20 @@ Future<List<Map<String, dynamic>>> fetchData() async {
 }
 
 class ViewModelAddPlan extends BaseViewModel {
-  Future<void> addExpenses(
-    String date,
-    String chosenCurrency,
-    String categoryName,
-    String expense,
+  Future<void> addPlan(
+    String startdate,
+    String enddate,
+    String goal,
+    String goalName,
   ) async {
-    await supabaseClient.from('expenses').insert({
-      'category': categoryName, 'date': date, 'price': expense,
-      'currency': chosenCurrency,
-
-      // 'emailAddress' : currentEmail()?.toString()
+    await supabaseClient.from('savingPlan').insert({
+      'startDate': startdate,
+      'endDate': enddate,
+      'goal': goal,
+      'goalName': goalName
     });
   }
-}
+      // 'emailAddress' : currentEmail()?.toString()
+    }
+  
+

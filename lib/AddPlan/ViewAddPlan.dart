@@ -1,9 +1,11 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:namaagp/AddExpenses/speech_header.dart';
-
+import 'ViewModelAddPlan.dart';
 import 'package:supabase/supabase.dart';
 import 'package:date_picker_plus/date_picker_plus.dart';
 import 'package:namaagp/AddExpenses/utils.dart';
@@ -22,6 +24,7 @@ String goalName = '';
 String goal = '';
 String date = '';
 String date2 = '';
+
 late Future<DateTime?> selected_startdate;
 late Future<DateTime?> selected_enddate;
 
@@ -71,20 +74,14 @@ final supabaseClient = SupabaseClient(
 class _ViewAddPlanState extends State<ViewAddPlan> {
   final _future =
       supabaseClient.from('savingPlan').select<List<Map<String, dynamic>>>();
-
-  Future<void> addPlan(
-    String startdate,
-    String enddate,
-    String goal,
-    String goalName,
-  ) async {
-    await supabaseClient.from('savingPlan').insert({
-      'startDate': startdate,
-      'endDate': enddate,
-      'goal': goal,
-      'goalName': goalName
-    });
+  String calc(String startDate_, String endDate_) {
+    DateTime Date1 = DateTime.parse(startDate_);
+    DateTime Date2 = DateTime.parse(endDate_);
+    Duration diff = Date2.difference(Date1);
+    return diff.inDays.toString();
   }
+
+  
 
   @override
   Widget build(BuildContext context) {
@@ -101,8 +98,8 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
               return Container(
                 padding: const EdgeInsets.only(top: 50.0, left: 10, right: 10),
                 width: 428,
-               height: 926,
-               clipBehavior: Clip.antiAlias,
+                height: 926,
+                clipBehavior: Clip.antiAlias,
                 decoration: const BoxDecoration(
                   //maybe delete const
                   gradient: LinearGradient(
@@ -156,65 +153,89 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                       itemBuilder: (context, index) {
                         final item = savingPlan[index];
                         return Container(
-                          height: 100,
-                          child: Card(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            color: Color.fromARGB(151, 53, 45, 104),
-                            elevation: 10,
-                            child: Row(children: <Widget>[
-                              Padding(
-                                padding: EdgeInsets.all(15.0),
-                                child: GestureDetector(
-                                  onTap: () {},
-                                  child: 
-                                  Text('رس' , style: GoogleFonts.getFont(
-                                        "Noto Sans Arabic",
-                                        fontSize: 22,
-                                        
-                                        fontWeight: FontWeight.w400,
-                                        height: 1.5,
-                                        textStyle: const TextStyle(
-                                            color: Color(0xFFC5C5CD)))),
-
-                                  
-                                  
-                                  
+                            height: 100,
+                            child: Card(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
                                 ),
-                              ),
-                              Container(
-                                    width: 100,
-                               // padding: EdgeInsets.all(5.0),
-                                child: Text(item['goal'].toString(),
-                               
-                                    style: GoogleFonts.getFont(
-                                        "Noto Sans Arabic",
-                                        fontSize: 22,
-                                        
-                                        fontWeight: FontWeight.w400,
-                                        height: 1.5,
-                                        textStyle: const TextStyle(
-                                            color: Color(0xFFC5C5CD)))),
-                              ),
-                             Container(
-                                    width: 130.0,
-                                   
-                                    child: Text(item['goalName'],
-                                     textAlign: TextAlign.right,
+                                color: Color.fromARGB(151, 53, 45, 104),
+                                elevation: 10,
+                                child: Column(children: <Widget>[
+                                  Row(children: [
+                                    Padding(
+                                      padding: EdgeInsets.all(15.0),
+                                      child: GestureDetector(
+                                        onTap: () {},
+                                        child: Text('رس',
+                                            style: GoogleFonts.getFont(
+                                                "Noto Sans Arabic",
+                                                fontSize: 22,
+                                                fontWeight: FontWeight.w400,
+                                                height: 1.5,
+                                                textStyle: const TextStyle(
+                                                    color: Color(0xFFC5C5CD)))),
+                                      ),
+                                    ),
+                                    Container(
+                                      width: 100,
+                                      // padding: EdgeInsets.all(5.0),
+                                      child: Text(item['goal'].toString(),
+                                          style: GoogleFonts.getFont(
+                                              "Noto Sans Arabic",
+                                              fontSize: 22,
+                                              fontWeight: FontWeight.w400,
+                                              height: 1.5,
+                                              textStyle: const TextStyle(
+                                                  color: Color(0xFFC5C5CD)))),
+                                    ),
+                                    Container(
+                                      width: 130.0,
+                                      child: Text(item['goalName'],
+                                          textAlign: TextAlign.right,
+                                          style: GoogleFonts.getFont(
+                                              "Noto Sans Arabic",
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w400,
+                                              height: 1.5,
+                                              textStyle: const TextStyle(
+                                                  color: Color(0xFFC5C5CD)))),
+                                    ),
+                                  ]),
+                                  Row(children: [
+                                    Text('    يوم ',
+                                        textAlign: TextAlign.left,
                                         style: GoogleFonts.getFont(
                                             "Noto Sans Arabic",
-                                            fontSize: 20,
+                                            fontSize: 16,
                                             fontWeight: FontWeight.w400,
                                             height: 1.5,
                                             textStyle: const TextStyle(
-                                                color: Color(0xFFC5C5CD)))),
-                                  ),
-                             
-                             
-                            ]),
-                          ),
-                        );
+                                                color: Color.fromARGB(
+                                                    143, 197, 197, 205)))),
+                                    Text(
+                                        calc(
+                                            item['startDate'], item['endDate']),
+                                        textAlign: TextAlign.right,
+                                        style: GoogleFonts.getFont(
+                                            "Noto Sans Arabic",
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w400,
+                                            height: 1.5,
+                                            textStyle: const TextStyle(
+                                                color: Color.fromARGB(
+                                                    143, 197, 197, 205)))),
+                                    Text(' :الفترة',
+                                        textAlign: TextAlign.right,
+                                        style: GoogleFonts.getFont(
+                                            "Noto Sans Arabic",
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w400,
+                                            height: 1.5,
+                                            textStyle: const TextStyle(
+                                                color: Color.fromARGB(
+                                                    143, 197, 197, 205)))),
+                                  ]),
+                                ])));
                       },
                     ),
                   ),
@@ -227,6 +248,8 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                             ),
                           ),
                           backgroundColor: Color(0xFF3A3462),
+
+                          //child: const Icon(Icons.add),
                           label: Text(' إضافة خطة جديدة',
                               textAlign: TextAlign.center,
                               style: GoogleFonts.getFont("Noto Sans Arabic",
@@ -277,10 +300,6 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                                       textStyle: const TextStyle(
                                                           color: Color(
                                                               0xFFD0CDEF)))),
-
-                                              onTap: () {
-                                                Navigator.pop(context);
-                                              },
                                             ),
                                             Row(
                                                 mainAxisAlignment:
@@ -512,8 +531,7 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                                                               255,
                                                                               255)))),
                                                               onPressed: () {
-                                                                setState(
-                                                                    () {
+                                                                setState(() {
                                                                   showdatepicker(
                                                                       context)(
                                                                     initialDate:
@@ -531,12 +549,11 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                                                             31),
                                                                     onDateChanged:
                                                                         (value) {
-                                                                     
                                                                       // Handle selected date
                                                                     },
                                                                   );
                                                                 });
-                                                          }),
+                                                              }),
                                                         )
                                                       ]),
                                                   Text(' :بداية الإدخار ',
@@ -667,21 +684,23 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                                         textStyle: const TextStyle(
                                                             color: Color(
                                                                 0xFFD0CDEF)))),
-                                                onPressed: () async {
-                                                  await supabaseClient
-                                                      .from('savingPlan')
-                                                      .insert({
-                                                    'startDate': date,
-                                                    'endDate': date2,
-                                                    'goal': goal,
-                                                    'goalName': goalName
-                                                  });
+                                                onPressed: () {
+                                                  ViewModelAddPlan().addPlan(
+                                                    date,
+                                                    date2,
+                                                    goal,
+                                                    goalName,
+                                                  );
+                                                  Navigator.pop(context);
                                                 })
                                           ]);
                                     },
                                   );
                                 });
-                          })
+                          }),
+                      SizedBox(
+                        height: 8,
+                      ),
                     ],
                   ),
                 ]),
