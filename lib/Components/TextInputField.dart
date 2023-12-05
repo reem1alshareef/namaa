@@ -2,6 +2,7 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+
 class TextInputField extends StatelessWidget {
   final String title;
   final String placeHolder;
@@ -16,11 +17,13 @@ class TextInputField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return Column(
       children: [
+        
         SizedBox(
           width: 350,
-          height: 25,
+          //height: 25,
           child: Text(title,
               textAlign: TextAlign.right,
               style: GoogleFonts.getFont("Noto Sans Arabic",
@@ -31,7 +34,7 @@ class TextInputField extends StatelessWidget {
         ),
         SizedBox(
             width: 350,
-            height: 35,//35
+            //height: 35,//35
             child: TextFormField(
               style: TextStyle(color: Colors.white),
               textAlign: TextAlign.right,
@@ -47,27 +50,58 @@ class TextInputField extends StatelessWidget {
                 
               ),
               controller: inputController,
-              obscureText: title=='كلمة السر'|| title=='تأكيد كلمة السر'? true:false,
+              obscureText: title=='كلمة السر'|| title=='تأكيد كلمة السر' || title=='كلمة السر الجديدة'? true:false,
               validator: (value) {
               if (value == null || value.isEmpty) {
                 return 'يرجى تعبئة الخانة';
               }
-              if(title=='البريد الإلكتروني' && !EmailValidator.validate(value)){
+              if( (title=='البريد الإلكتروني' || title=='البريد الالكتروني') && !EmailValidator.validate(value)){
                 return 'يرجى إدخال بريد إلكتروني صحيح';
               }
               if(title=='الاسم' && value.length<3 || value.length>40){
                 return 'يرجى إدخال اسم صحيح';
               }
-              if(title=='كلمة السر' && value.length<6 || value.length>40){
-                return 'كلمة السر يجب أن تتكون من ست خانات على الأقل';
+              if((title=='كلمة السر' || title =='كلمة السر الجديدة' )&& (value.length<10 || value.length>40)){
+                return 'كلمة السر يجب أن تتكون من عشر خانات على الأقل';
+              }
+              if((title=='كلمة السر' || title =='كلمة السر الجديدة' )&& (!value.contains(new RegExp(r'[!@#$%^&*(),.?":{}|<>]')))){
+                return 'كلمة السر يجب أن تحوي رمز مميز مثل *';
+              }
+              if((title=='كلمة السر' || title =='كلمة السر الجديدة' )&& (!value.contains(new RegExp(r'[A-Z]')) )){
+                return 'كلمة السر يجب أن تحوي حروف من الحالتين الكبيرة والصغيرة ';
+              }
+              if((title=='كلمة السر' || title =='كلمة السر الجديدة' )&& (!value.contains(new RegExp(r'[0-9]')))){
+                return 'كلمة السر يجب أن تحوي رقم ';
               }
               return null;
             }
+
             )),
         const SizedBox(
           height: 10,
         )
       ],
     );
+  }
+
+  bool hasUpperAndLowerCases(String password){
+    bool hasUpper=false;
+    bool hasLower=false;
+    int i=0;
+    var character='';
+    while (i < password.length){
+               character = password.substring(i,i+1);
+               print(character);
+                  if (character == character.toUpperCase()) {
+                      hasUpper=true;
+                  }
+                  if (character == character.toLowerCase()){
+                      hasLower=true;
+                  }
+              
+              i++;
+            }
+
+    return hasUpper & hasLower;
   }
 }

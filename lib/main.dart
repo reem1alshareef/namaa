@@ -4,19 +4,18 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:namaagp/Splash/ViewSplash.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-
 //import 'namaagp/lib/SignUp/ViewModelSignUp.dart';
 main() async {
 
   //GetIt.instance.registerSingleton<AuthenticationService>(AuthenticationService());
   WidgetsFlutterBinding.ensureInitialized();
-
   await Supabase.initialize(
     url:'https://rpwqxndlhdiqkrejigse.supabase.co',
     anonKey:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJwd3F4bmRsaGRpcWtyZWppZ3NlIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTMwNjY4NDQsImV4cCI6MjAwODY0Mjg0NH0.qlIR6KNotfLwl30HsVSUW9M3smblYaYxtk_D7W2L_EU',
   authCallbackUrlHostname: 'login-callback',
   );
   runApp(const MyApp());
+  
   
   //runApp(SupabaseService() as Widget);
   
@@ -29,15 +28,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     
     return const MaterialApp(
-      home: MyHomePage(
-      ),
+      debugShowCheckedModeBanner: false,
+      home: MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
-
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -47,8 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: const Color(0x00071121),
-        body: buildBody(context)
+        backgroundColor: const Color(0x00071121), body: buildBody(context)
         // Container(
         //   padding: EdgeInsets.only(top: 50.0, left: 10, right: 10),
         //   width: 428,
@@ -61,11 +58,11 @@ class _MyHomePageState extends State<MyHomePage> {
         //       colors: [Color(0xFF342D68), Color(0xFF352D68), Color(0x00352D68)],
         //     ),
         //   ),
-          
+
         //   child: Column(children: const [
         //     header(subTitle: 'a', title: '',),
         //   ],)
-          
+
         //   //child: const header(subTitle: 'a', title: '',),
         // )
         );
@@ -86,8 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
         context,
         MaterialPageRoute(
           builder: (BuildContext context) {
-            //submitLogin();
-            return const ViewSplash();//NavigationBarApp();//ViewExplorePage();
+            return ViewSplash();//NavigationBarApp();//viewChat();//ViewExplorePage();
           },
         ),
       );

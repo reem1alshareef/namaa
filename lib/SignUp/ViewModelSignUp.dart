@@ -68,6 +68,7 @@ class ViewModelSignUp extends BaseViewModel {
 
       }on Exception catch(e){
         //showDialog(context: context, builder: builder)
+        print(e.toString());
         return 2;
       }
       //return 1;

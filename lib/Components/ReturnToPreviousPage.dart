@@ -29,7 +29,7 @@ class ReturnToPreviousPage extends StatelessWidget {
     height: 55,
     child: Row(
         children: [
-             Image.asset(
+            Image.asset(
                   'assets/Icons/LightPurpleArrow.png',
                   width: 30, //310,
                   height: 30, //228.33,

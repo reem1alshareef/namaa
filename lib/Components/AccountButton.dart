@@ -74,29 +74,7 @@ class AccountButton extends StatelessWidget {
               );
             } else if (completed == 2) {
               loginerror(context);
-//               showDialog(context: context, builder: (BuildContext context) {
-// return AlertDialog(
-//               title: Text("فشلت عملية تسجيل الدخول"),
-//               content: Container(
-//     width: 387,
-//     height: 236,
-//     decoration: ShapeDecoration(
-//         color: Color(0xE5383838),
-//         shape: RoundedRectangleBorder(
-//             side: BorderSide(width: 1, color: Color(0xFFC05454)),
-//             borderRadius: BorderRadius.circular(20),
-//         ),
-//     ),
-// ),//Text(".البريد الإلكتروني المدخل أو كلمة المرور خاطئين، أعد كتابتهم"),
-//               actions: [
-//                 ElevatedButton(
-//                   child: Text("jjkjk"),
-//                   onPressed: () {
-//                     Navigator.of(context).pop();
-//                   },
-//                 )
-//               ],
-//             );              });
+
             }
 
             print('reached Sign In!!!!');

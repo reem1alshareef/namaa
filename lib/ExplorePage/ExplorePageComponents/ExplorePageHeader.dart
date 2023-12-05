@@ -168,4 +168,3 @@ class ExplorePageHeader extends StatelessWidget {
     );
   }
 }
-

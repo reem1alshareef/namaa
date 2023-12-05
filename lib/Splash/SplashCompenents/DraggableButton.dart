@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:namaagp/SignUp/ViewSignUp.dart';
+import 'package:namaagp/services/ChatGPTServices.dart';
 
 class DraggableButton extends StatelessWidget {
   // final String title;
@@ -68,11 +69,16 @@ class DraggableButton extends StatelessWidget {
                           )
                           ,onDragEnd: (details) {
                             print('ffffffffffffffffffffffffffffffffffffffffffffffffffff');
+                            ChatGPTServices.askQuestion;
                             //Navigator.pop(context, (route) =>ViewIncomeDetails());
                             Navigator.push(
     context,
     MaterialPageRoute(builder: (context) =>  ViewSignUp()),
   );
+  //                           Navigator.push(
+  //   context,
+  //   MaterialPageRoute(builder: (context) =>  ViewSignUp()),
+  // );
                           },),
                           
         // DragTarget<int>(

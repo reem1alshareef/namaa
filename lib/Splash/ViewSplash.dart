@@ -62,7 +62,8 @@ class ViewSplash extends StatelessWidget {
                           ],
                         )),
                     SizedBox(
-                      height: 110,
+                      //////////////////////////////////////
+                      height: 80,
                       child: Text('نماء',
                           textAlign: TextAlign.center,
                           style: GoogleFonts.getFont("Noto Sans Arabic",
@@ -121,8 +122,6 @@ class ViewSplash extends StatelessWidget {
                       //             //fit: BoxFit.cover
                       //           )),
                       //     ))
-
-                      
                     ])
                   ],
                 ),
