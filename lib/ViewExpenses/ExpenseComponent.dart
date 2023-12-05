@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 
 // ignore: must_be_immutable
 class Expense extends StatelessWidget {
   final String category;
-  final String date;
+  final DateTime date;
   final String price;
+  //final String dateString=parse(date.day);
+  
 
   Expense(
       {Key? key,
@@ -16,6 +19,7 @@ class Expense extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+final String formattedDate = DateFormat('yyyy-MM-dd – kk:mm').format(date);
     return // Generated code for this Row Widget...
         Row(
       mainAxisSize: MainAxisSize.max,
@@ -47,7 +51,7 @@ class Expense extends StatelessWidget {
                           height: 1.5,
                           textStyle:
                               const TextStyle(color: Color.fromARGB(255, 219, 219, 231)))),
-                  Text(date,
+                  Text(formattedDate,
                       textAlign: TextAlign.right,
                       style: GoogleFonts.getFont("Noto Sans Arabic",
                           fontSize: 11,
