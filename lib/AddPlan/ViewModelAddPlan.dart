@@ -35,17 +35,12 @@ class ViewModelAddPlan extends BaseViewModel {
       'endDate': enddate,
       'goal': goal,
       'goalName': goalName
+      // ,'emailAddress' : currentEmail()?.toString()
     });
-  
   }
-  
-  Future<void> deletePlan()
-  async {
-                                                          await supabaseClient
-                                                              .from(
-                                                                  'savingPlan')
-                                                              .delete();
-      // 'emailAddress' : currentEmail()?.toString()
+
+  Future<void> deletePlan() async {
+    await supabaseClient.from('savingPlan').delete();
+    // .match({ 'emailAddress': currentEmail()?.toString() });
   }
-  
 }
