@@ -228,7 +228,7 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                                         143, 197, 197, 205))))),
                                     Container(
                                         width: 174,
-                                        child: Text(' :الفترة',
+                                        child: Text(' :فترة الإدخار',
                                             textAlign: TextAlign.left,
                                             style: GoogleFonts.getFont(
                                                 "Noto Sans Arabic",
