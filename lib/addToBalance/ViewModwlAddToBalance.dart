@@ -11,7 +11,9 @@ String? currentEmail() {
   return cemail;
   
 }
+
 class ViewModelAddToBalance extends BaseViewModel {
+
   Future<void> addToBalance(String chosenCurrency, String money) async {
     final response = await supabaseClient
         .from('balance')
@@ -33,7 +35,7 @@ class ViewModelAddToBalance extends BaseViewModel {
         'balance': calculateTotalBalance(chosenCurrency, money, data),
       };
 
-      await supabaseClient.from('balance').insert(insertData);
+      await supabaseClient.from('balance').upsert(insertData);
       print(insertData);
     } else {
       // Update the existing row with the new values
@@ -98,4 +100,5 @@ class ViewModelAddToBalance extends BaseViewModel {
 
     return convertedValue;
   }
+  
 }
