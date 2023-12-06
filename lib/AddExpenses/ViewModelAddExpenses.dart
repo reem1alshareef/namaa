@@ -1,4 +1,4 @@
-//import 'package:namaagp/services/authentication_service.dart';
+// import 'package:namaagp/services/authentication_service.dart';
 import 'package:stacked/stacked.dart';
 import 'dart:async';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -20,7 +20,7 @@ await supabaseClient
     .from('expenses')
     .insert({'category': categoryName, 'date': date , 'price' : expense , 'currency' : chosenCurrency
     
-    // ,'emailAddress' : currentEmail()?.toString() 
+   // ,'emailAddress' : currentEmail()?.toString() 
     
     });
     

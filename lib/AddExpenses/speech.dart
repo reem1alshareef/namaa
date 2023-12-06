@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:namaagp/AddExpenses/ViewModelAddExpenses.dart';
 import 'package:namaagp/AddExpenses/speech_header.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 import 'package:avatar_glow/avatar_glow.dart';
@@ -23,7 +24,6 @@ class _SpeechState extends State<Speech> {
   int amount = 0;
   String day = '';
   String dateM = '';
-
 
   isDay() {
     if (_wordsSpoken.contains(RegExp(r'[0-9]'))) {
@@ -248,7 +248,7 @@ class _SpeechState extends State<Speech> {
 
   isMonth12() {
     if (_wordsSpoken.contains(('ديسمبر'))) {
-       dateM = 'ديسمبر';
+      dateM = 'ديسمبر';
       date = '12';
       return true;
     } else
@@ -459,14 +459,7 @@ class _SpeechState extends State<Speech> {
                         ))
                   ],
                 ),
-                // Text(isAmount() ? ' $amount : المبلغ' : '',
-                //     textAlign: TextAlign.center,
-                //     style: GoogleFonts.getFont(
-                //       "Noto Sans Arabic",
-                //       color: Color(0xFFD0CDEF),
-                //       fontSize: 20,
-                //       fontWeight: FontWeight.w500,
-                //     )),
+               
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -545,28 +538,6 @@ class _SpeechState extends State<Speech> {
                         ))
                   ],
                 ),
-                // Text(
-                //     isMonth1() ||
-                //             isMonth2() ||
-                //             isMonth3() ||
-                //             isMonth4() ||
-                //             isMonth5() ||
-                //             isMonth6() ||
-                //             isMonth7() ||
-                //             isMonth8() ||
-                //             isMonth9() ||
-                //             isMonth10() ||
-                //             isMonth11() ||
-                //             isMonth12()
-                //         ? '  $day : التاريخ '
-                //         : '',
-                //     textAlign: TextAlign.center,
-                //     style: GoogleFonts.getFont(
-                //       "Noto Sans Arabic",
-                //       color: Color(0xFFD0CDEF),
-                //       fontSize: 20,
-                //       fontWeight: FontWeight.w500,
-                //     )),
               ]),
             ),
 
@@ -575,14 +546,102 @@ class _SpeechState extends State<Speech> {
                 child: CustomButton(
                     title: 'اضافة',
                     onPressed: () {
-                      showDialog(
-                        context: context,
-                        builder: (context) {
-                          return AlertDialog(
-                            content: Text('تم حفظ البيانات بنجاح'),
-                          );
-                        },
-                      );
+                      if (date == '' && day == '') {
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(
+                              title: Text('تنبيه'),
+                              content: Text('الرجاء تحديد التاريخ'),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: Text('موافق'),
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      }
+                      if (currency == '') {
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(
+                              title: Text('تنبيه'),
+                              content: Text(' الرجاء اختيار العملة'),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: Text('موافق'),
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      }
+                      if (category == '') {
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(
+                              title: Text('تنبيه'),
+                              content: Text(' الرجاء تحديد فئة الصرف'),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: Text('موافق'),
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      }
+                      if (amount == 0) {
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(
+                              title: Text('تنبيه'),
+                              content: Text('الرجاء تحديد مبلغ الصرف'),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: Text('موافق'),
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      } else {
+                        ViewModelAddExpenses().addExpenses('2023-$date-$day',
+                            currency, category, amount.toString());
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(
+                              content: Text('تم حفظ البيانات بنجاح'),
+                            );
+                          },
+                        ).then((value) {
+                          setState(() {
+                            // Reset the widget values to their initial values
+                            date = '';
+                            currency = 'العملة';
+
+                            category = '';
+                            amount = 0;
+                          });
+                        });
+                      }
                     })),
             SizedBox(
               height: 50,
@@ -590,26 +649,7 @@ class _SpeechState extends State<Speech> {
           ],
         ),
       ),
-      //      floatingActionButtonLocation: FloatingActionButtonLocation.miniCenterTop,
-      // floatingActionButton: AvatarGlow(
-      //     glowColor: Color(0xFFD0CDEF),
-      //     endRadius: 90.0,
-      //     duration: Duration(milliseconds: 2000),
-      //     repeat: true,
-      //     showTwoGlows: true,
-      //     repeatPauseDuration: Duration(milliseconds: 100),
-      //     child: FloatingActionButton(
-      //              backgroundColor: Color(0xFFD0CDEF),
-      //               onPressed: _speechToText.isListening
-      //                   ? _stopListening
-      //                   : _startListening,
-      //               child: Icon(
-      //                 _speechToText.isNotListening ? Icons.mic_off : Icons.mic,
-      //                 color: Color(0xFF342D68),
-      //               ),
-      //             ),
-
-      //     )
+      
     );
   }
 }
