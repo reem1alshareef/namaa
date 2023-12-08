@@ -44,7 +44,7 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
       context: context,
       initialDate: DateTime.now(),
       firstDate: DateTime(2000),
-      lastDate: DateTime(2050),
+      lastDate: DateTime.now(),
       builder: (BuildContext context, Widget? child) {
         return Theme(
           data: ThemeData.light().copyWith(
@@ -523,7 +523,7 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
                                                             )),
                                     onPressed: () {
                                       Navigator.of(context).pop();
-                                    },
+                                    }
                                     
                                     
                                   ),
@@ -532,9 +532,11 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
                                                         MainAxisAlignment
                                                             .center
                               );
-                            },
+                            }
                           );
-                        }
+                        }else if(date==DateTime.now().toString()){
+
+                        }else
                         if (chosenCurrency == 'العملة') {
                           showDialog(
                             context: context,
