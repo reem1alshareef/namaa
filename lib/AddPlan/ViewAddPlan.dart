@@ -246,12 +246,14 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                                 return AlertDialog(
                                                     title: Text(
                                                         'حذف خطة الإدخار',
+                                                        
                                                         textAlign:
                                                             TextAlign.center,
                                                         style:
                                                             GoogleFonts.getFont(
                                                           "Noto Sans Arabic",
-                                                          fontSize: 16,
+                                                          fontSize: 25,
+                                                          color: Color.fromARGB(255, 192, 84, 84),
                                                           fontWeight:
                                                               FontWeight.w400,
                                                         )),
@@ -262,12 +264,23 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                                         style:
                                                             GoogleFonts.getFont(
                                                           "Noto Sans Arabic",
-                                                          fontSize: 16,
+                                                          fontSize: 17,
+                                                          color: Color.fromARGB(255, 201, 138, 138),
                                                           fontWeight:
                                                               FontWeight.w400,
                                                         )),
+                                                        
+   backgroundColor: Color.fromARGB(174, 56, 56, 56),
+       
+        shape: RoundedRectangleBorder(
+            side: BorderSide(width: 1, color: Color(0xFFC05454)),
+            borderRadius: BorderRadius.circular(20),
+        ),
                                                     actions: [
                                                       ElevatedButton(
+                                                        style: ElevatedButton.styleFrom(
+            backgroundColor: Color.fromARGB(195, 255, 255, 255),
+          ),
                                                         child: Text("إلغاء",
                                                             textAlign: TextAlign
                                                                 .center,
@@ -285,6 +298,9 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                                         },
                                                       ),
                                                       ElevatedButton(
+                                                            style: ElevatedButton.styleFrom(
+            backgroundColor: Color.fromARGB(195, 255, 255, 255),
+          ),
                                                         child: Text("حذف",
                                                             textAlign: TextAlign
                                                                 .center,
