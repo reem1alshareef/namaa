@@ -479,16 +479,58 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
                             context: context,
                             builder: (context) {
                               return AlertDialog(
-                                title: Text('تنبيه'),
-                                content: Text('الرجاء تحديد التاريخ'),
+                                                                                
+   backgroundColor: Color.fromARGB(174, 56, 56, 56),
+       
+        shape: RoundedRectangleBorder(
+            side: BorderSide(width: 1, color: Color(0xFFC05454)),
+            borderRadius: BorderRadius.circular(20),),
+                                title: Text('تنبيه',
+                                textAlign:
+                                                            TextAlign.center,style:
+                                                            GoogleFonts.getFont(
+                                                          "Noto Sans Arabic",
+                                                          fontSize: 25,
+                                                          color: Color.fromARGB(255, 192, 84, 84),
+                                                          fontWeight:
+                                                              FontWeight.w400,),),
+                               
+                                content: Text('الرجاء تحديد التاريخ', textAlign:
+                                                            TextAlign.center,
+                                                        style:
+                                                            GoogleFonts.getFont(
+                                                          "Noto Sans Arabic",
+                                                          fontSize: 17,
+                                                          color: Color.fromARGB(255, 201, 138, 138),
+                                                          fontWeight:
+                                                              FontWeight.w400,)),
                                 actions: [
-                                  TextButton(
+                                  ElevatedButton(
+                                                        style: ElevatedButton.styleFrom(
+            backgroundColor: Color.fromARGB(255, 157, 77, 86),
+          ),
+                                                        child: Text('موافق',
+                                                            textAlign: TextAlign
+                                                                .center,
+                                                            style: GoogleFonts
+                                                                .getFont(
+                                                              "Noto Sans Arabic",
+                                                              fontSize: 16,
+                                                              color: Colors.white,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w400,
+                                                            )),
                                     onPressed: () {
                                       Navigator.of(context).pop();
                                     },
-                                    child: Text('موافق'),
+                                    
+                                    
                                   ),
                                 ],
+                                 actionsAlignment:
+                                                        MainAxisAlignment
+                                                            .center
                               );
                             },
                           );
@@ -498,16 +540,56 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
                             context: context,
                             builder: (context) {
                               return AlertDialog(
-                                title: Text('تنبيه'),
-                                content: Text(' الرجاء اختيار العملة'),
+                                                                                
+   backgroundColor: Color.fromARGB(174, 56, 56, 56),
+       
+        shape: RoundedRectangleBorder(
+            side: BorderSide(width: 1, color: Color(0xFFC05454)),
+            borderRadius: BorderRadius.circular(20),),
+                                title: Text('تنبيه',textAlign:
+                                                            TextAlign.center,style:
+                                                            GoogleFonts.getFont(
+                                                          "Noto Sans Arabic",
+                                                          fontSize: 25,
+                                                          color: Color.fromARGB(255, 192, 84, 84),
+                                                          fontWeight:
+                                                              FontWeight.w400,),),
+                                content: Text(' الرجاء اختيار العملة', textAlign:
+                                                            TextAlign.center,
+                                                        style:
+                                                            GoogleFonts.getFont(
+                                                          "Noto Sans Arabic",
+                                                          fontSize: 17,
+                                                          color: Color.fromARGB(255, 201, 138, 138),
+                                                          fontWeight:
+                                                              FontWeight.w400,)),
                                 actions: [
-                                  TextButton(
+                                   ElevatedButton(
+                                                        style: ElevatedButton.styleFrom(
+            backgroundColor: Color.fromARGB(255, 157, 77, 86),
+          ),
+                                                        child: Text('موافق',
+                                                            textAlign: TextAlign
+                                                                .center,
+                                                            style: GoogleFonts
+                                                                .getFont(
+                                                              "Noto Sans Arabic",
+                                                              fontSize: 16,
+                                                              color: Colors.white,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w400,
+                                                            )),
                                     onPressed: () {
                                       Navigator.of(context).pop();
                                     },
-                                    child: Text('موافق'),
+                                    
+                                    
                                   ),
                                 ],
+                                 actionsAlignment:
+                                                        MainAxisAlignment
+                                                            .center
                               );
                             },
                           );
@@ -517,35 +599,117 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
                             context: context,
                             builder: (context) {
                               return AlertDialog(
-                                title: Text('تنبيه'),
-                                content: Text(' الرجاء تحديد فئة الصرف'),
+                                                                                
+   backgroundColor: Color.fromARGB(174, 56, 56, 56),
+       
+        shape: RoundedRectangleBorder(
+            side: BorderSide(width: 1, color: Color(0xFFC05454)),
+            borderRadius: BorderRadius.circular(20),),
+                                title: Text('تنبيه',textAlign:
+                                                            TextAlign.center,style:
+                                                            GoogleFonts.getFont(
+                                                          "Noto Sans Arabic",
+                                                          fontSize: 25,
+                                                          color: Color.fromARGB(255, 192, 84, 84),
+                                                          fontWeight:
+                                                              FontWeight.w400,)),
+                                content: Text(' الرجاء تحديد فئة الصرف', textAlign:
+                                                            TextAlign.center,
+                                                        style:
+                                                            GoogleFonts.getFont(
+                                                          "Noto Sans Arabic",
+                                                          fontSize: 17,
+                                                          color: Color.fromARGB(255, 201, 138, 138),
+                                                          fontWeight:
+                                                              FontWeight.w400,)),
                                 actions: [
-                                  TextButton(
+                                   ElevatedButton(
+                                                        style: ElevatedButton.styleFrom(
+            backgroundColor: Color.fromARGB(255, 157, 77, 86),
+          ),
+                                                        child: Text('موافق',
+                                                            textAlign: TextAlign
+                                                                .center,
+                                                            style: GoogleFonts
+                                                                .getFont(
+                                                              "Noto Sans Arabic",
+                                                              fontSize: 16,
+                                                              color: Colors.white,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w400,
+                                                            )),
                                     onPressed: () {
                                       Navigator.of(context).pop();
                                     },
-                                    child: Text('موافق'),
+                                    
+                                    
                                   ),
                                 ],
+                                 actionsAlignment:
+                                                        MainAxisAlignment
+                                                            .center
                               );
                             },
                           );
                         }
                         if (expense.isEmpty) {
                           showDialog(
+                            
                             context: context,
                             builder: (context) {
                               return AlertDialog(
-                                title: Text('تنبيه'),
-                                content: Text('الرجاء إدحال مبلغ الصرف'),
+                                                                                
+   backgroundColor: Color.fromARGB(174, 56, 56, 56),
+       
+        shape: RoundedRectangleBorder(
+            side: BorderSide(width: 1, color: Color(0xFFC05454)),
+            borderRadius: BorderRadius.circular(20),),
+                                title: Text('تنبيه',textAlign:
+                                                            TextAlign.center,style:
+                                                            GoogleFonts.getFont(
+                                                          "Noto Sans Arabic",
+                                                          fontSize: 25,
+                                                          color: Color.fromARGB(255, 192, 84, 84),
+                                                          fontWeight:
+                                                              FontWeight.w400,)),
+                                content: Text('الرجاء إدخال مبلغ الصرف',
+                                textAlign:
+                                                            TextAlign.center,
+                                                        style:
+                                                            GoogleFonts.getFont(
+                                                          "Noto Sans Arabic",
+                                                          fontSize: 17,
+                                                          color: Color.fromARGB(255, 201, 138, 138),
+                                                          fontWeight:
+                                                              FontWeight.w400,)),
                                 actions: [
-                                  TextButton(
+                                  ElevatedButton(
+                                                        style: ElevatedButton.styleFrom(
+            backgroundColor: Color.fromARGB(255, 157, 77, 86),
+          ),
+                                                        child: Text('موافق',
+                                                            textAlign: TextAlign
+                                                                .center,
+                                                            style: GoogleFonts
+                                                                .getFont(
+                                                              "Noto Sans Arabic",
+                                                              fontSize: 16,
+                                                              color: Colors.white,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w400,
+                                                            )),
                                     onPressed: () {
                                       Navigator.of(context).pop();
                                     },
-                                    child: Text('موافق'),
+                                    
+                                    
                                   ),
                                 ],
+                                actionsAlignment:
+                                                        MainAxisAlignment
+                                                            .center
                               );
                             },
                           );
@@ -556,7 +720,23 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
                             context: context,
                             builder: (context) {
                               return AlertDialog(
-                                content: Text('تم حفظ البيانات بنجاح'),
+                                
+                                 backgroundColor: Color.fromARGB(174, 56, 56, 56),
+       
+        shape: RoundedRectangleBorder(
+          
+            side: BorderSide(width: 1, color: Color.fromARGB(255, 195, 197, 232)),
+            borderRadius: BorderRadius.circular(20),
+        ),
+                                content: Text('تم حفظ البيانات بنجاح', textAlign:
+                                                            TextAlign.center,
+                                                        style:
+                                                            GoogleFonts.getFont(
+                                                          "Noto Sans Arabic",
+                                                          fontSize: 20,
+                                                          color: Color.fromARGB(255, 195, 197, 232),
+                                                          fontWeight:
+                                                              FontWeight.w400,)),
                               );
                             },
                           ).then((value) {
