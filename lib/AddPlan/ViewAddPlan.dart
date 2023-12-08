@@ -19,7 +19,6 @@ class ViewAddPlan extends StatefulWidget {
 
 var intV = Random().nextInt(10);
 
-String balance = '15000';
 String goalName = '';
 String goal = '';
 String date = '';
@@ -32,8 +31,8 @@ showdatepicker(BuildContext context) {
   selected_startdate = showDatePickerDialog(
     context: context,
     initialDate: DateTime.now(),
-    minDate: DateTime(2021, 1, 1),
-    maxDate: DateTime(2023, 12, 31),
+    minDate: DateTime(2023, 12, 01),
+    maxDate: DateTime(2050, 12, 31),
   );
   selected_startdate.then((value) {
     if (value == null) return;
@@ -50,9 +49,10 @@ showdatepicker(BuildContext context) {
 showdatepicker2(BuildContext context) {
   selected_enddate = showDatePickerDialog(
     context: context,
+    enabledCellColor: Color(0xFF342D68),
     initialDate: DateTime.now(),
-    minDate: DateTime(2021, 1, 1),
-    maxDate: DateTime(2023, 12, 31),
+    minDate: DateTime(2023, 12, 01),
+    maxDate: DateTime(2050, 12, 31),
   );
   selected_enddate.then((value) {
     if (value == null) return;
@@ -246,14 +246,14 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                                 return AlertDialog(
                                                     title: Text(
                                                         'حذف خطة الإدخار',
-                                                        
                                                         textAlign:
                                                             TextAlign.center,
                                                         style:
                                                             GoogleFonts.getFont(
                                                           "Noto Sans Arabic",
                                                           fontSize: 25,
-                                                          color: Color.fromARGB(255, 192, 84, 84),
+                                                          color: Color.fromARGB(
+                                                              255, 192, 84, 84),
                                                           fontWeight:
                                                               FontWeight.w400,
                                                         )),
@@ -265,22 +265,38 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                                             GoogleFonts.getFont(
                                                           "Noto Sans Arabic",
                                                           fontSize: 17,
-                                                          color: Color.fromARGB(255, 201, 138, 138),
+                                                          color: Color.fromARGB(
+                                                              255,
+                                                              201,
+                                                              138,
+                                                              138),
                                                           fontWeight:
                                                               FontWeight.w400,
                                                         )),
-                                                        
-   backgroundColor: Color.fromARGB(174, 56, 56, 56),
-       
-        shape: RoundedRectangleBorder(
-            side: BorderSide(width: 1, color: Color(0xFFC05454)),
-            borderRadius: BorderRadius.circular(20),
-        ),
+                                                    backgroundColor:
+                                                        Color.fromARGB(
+                                                            174, 56, 56, 56),
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                      side: BorderSide(
+                                                          width: 1,
+                                                          color: Color(
+                                                              0xFFC05454)),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              20),
+                                                    ),
                                                     actions: [
                                                       ElevatedButton(
-                                                        style: ElevatedButton.styleFrom(
-            backgroundColor: Color.fromARGB(195, 255, 255, 255),
-          ),
+                                                        style: ElevatedButton
+                                                            .styleFrom(
+                                                          backgroundColor:
+                                                              Color.fromARGB(
+                                                                  195,
+                                                                  255,
+                                                                  255,
+                                                                  255),
+                                                        ),
                                                         child: Text("إلغاء",
                                                             textAlign: TextAlign
                                                                 .center,
@@ -298,9 +314,15 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                                         },
                                                       ),
                                                       ElevatedButton(
-                                                            style: ElevatedButton.styleFrom(
-            backgroundColor: Color.fromARGB(195, 255, 255, 255),
-          ),
+                                                        style: ElevatedButton
+                                                            .styleFrom(
+                                                          backgroundColor:
+                                                              Color.fromARGB(
+                                                                  195,
+                                                                  255,
+                                                                  255,
+                                                                  255),
+                                                        ),
                                                         child: Text("حذف",
                                                             textAlign: TextAlign
                                                                 .center,
@@ -625,23 +647,12 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                                               onPressed: () {
                                                                 setState(() {
                                                                   showdatepicker(
-                                                                      context)(
-                                                                    initialDate:
-                                                                        DateTime
-                                                                            .now(),
-                                                                    minDate:
-                                                                        DateTime(
-                                                                            2021,
-                                                                            1,
-                                                                            1),
-                                                                    maxDate:
-                                                                        DateTime(
-                                                                            2023,
-                                                                            12,
-                                                                            31),
+                                                                    context,
+                                                                  )(
                                                                     onDateChanged:
                                                                         (value) {
-                                                                      // Handle selected date
+                                                                      date =
+                                                                          value;
                                                                     },
                                                                   );
                                                                 });
@@ -717,22 +728,9 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                                             onPressed: () {
                                                               showdatepicker2(
                                                                   context)(
-                                                                initialDate:
-                                                                    DateTime
-                                                                        .now(),
-                                                                minDate:
-                                                                    DateTime(
-                                                                        2021,
-                                                                        1,
-                                                                        1),
-                                                                maxDate:
-                                                                    DateTime(
-                                                                        2023,
-                                                                        12,
-                                                                        31),
                                                                 onDateChanged:
                                                                     (value) {
-                                                                  // Handle selected date
+                                                                  date2 = value;
                                                                 },
                                                               );
                                                             }),
@@ -777,13 +775,420 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                                             color: Color(
                                                                 0xFFD0CDEF)))),
                                                 onPressed: () {
-                                                  ViewModelAddPlan().addPlan(
-                                                    date,
-                                                    date2,
-                                                    goal,
-                                                    goalName,
-                                                  );
-                                                  Navigator.pop(context);
+                                                  if (date == '') {
+                                                    showDialog(
+                                                        context: context,
+                                                        builder: (context) {
+                                                          return AlertDialog(
+                                                              backgroundColor: Color
+                                                                  .fromARGB(
+                                                                      174,
+                                                                      56,
+                                                                      56,
+                                                                      56),
+                                                              shape:
+                                                                  RoundedRectangleBorder(
+                                                                side: BorderSide(
+                                                                    width: 1,
+                                                                    color: Color(
+                                                                        0xFFC05454)),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            20),
+                                                              ),
+                                                              title: Text(
+                                                                'تنبيه',
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .center,
+                                                                style:
+                                                                    GoogleFonts
+                                                                        .getFont(
+                                                                  "Noto Sans Arabic",
+                                                                  fontSize: 25,
+                                                                  color: Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          192,
+                                                                          84,
+                                                                          84),
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400,
+                                                                ),
+                                                              ),
+                                                              content: Text(
+                                                                  'الرجاء تحديد تاريخ بداية الإدخار',
+                                                                  textAlign:
+                                                                      TextAlign
+                                                                          .center,
+                                                                  style: GoogleFonts
+                                                                      .getFont(
+                                                                    "Noto Sans Arabic",
+                                                                    fontSize:
+                                                                        17,
+                                                                    color: Color
+                                                                        .fromARGB(
+                                                                            255,
+                                                                            201,
+                                                                            138,
+                                                                            138),
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w400,
+                                                                  )),
+                                                              actions: [
+                                                                ElevatedButton(
+                                                                    style: ElevatedButton
+                                                                        .styleFrom(
+                                                                      backgroundColor: Color.fromARGB(
+                                                                          255,
+                                                                          157,
+                                                                          77,
+                                                                          86),
+                                                                    ),
+                                                                    child: Text(
+                                                                        'موافق',
+                                                                        textAlign:
+                                                                            TextAlign
+                                                                                .center,
+                                                                        style: GoogleFonts
+                                                                            .getFont(
+                                                                          "Noto Sans Arabic",
+                                                                          fontSize:
+                                                                              16,
+                                                                          color:
+                                                                              Colors.white,
+                                                                          fontWeight:
+                                                                              FontWeight.w400,
+                                                                        )),
+                                                                    onPressed:
+                                                                        () {
+                                                                      Navigator.of(
+                                                                              context)
+                                                                          .pop();
+                                                                    }),
+                                                              ],
+                                                              actionsAlignment:
+                                                                  MainAxisAlignment
+                                                                      .center);
+                                                        });
+                                                 
+                                                  }  if (goalName == '') {
+                                                    showDialog(
+                                                      context: context,
+                                                      builder: (context) {
+                                                        return AlertDialog(
+                                                            backgroundColor:
+                                                                Color.fromARGB(
+                                                                    174,
+                                                                    56,
+                                                                    56,
+                                                                    56),
+                                                            shape:
+                                                                RoundedRectangleBorder(
+                                                              side: BorderSide(
+                                                                  width: 1,
+                                                                  color: Color(
+                                                                      0xFFC05454)),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          20),
+                                                            ),
+                                                            title: Text(
+                                                              'تنبيه',
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .center,
+                                                              style: GoogleFonts
+                                                                  .getFont(
+                                                                "Noto Sans Arabic",
+                                                                fontSize: 25,
+                                                                color: Color
+                                                                    .fromARGB(
+                                                                        255,
+                                                                        192,
+                                                                        84,
+                                                                        84),
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400,
+                                                              ),
+                                                            ),
+                                                            content: Text(
+                                                                ' الرجاء كتابة عنوان الخطة',
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .center,
+                                                                style:
+                                                                    GoogleFonts
+                                                                        .getFont(
+                                                                  "Noto Sans Arabic",
+                                                                  fontSize: 17,
+                                                                  color: Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          201,
+                                                                          138,
+                                                                          138),
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400,
+                                                                )),
+                                                            actions: [
+                                                              ElevatedButton(
+                                                                style: ElevatedButton
+                                                                    .styleFrom(
+                                                                  backgroundColor:
+                                                                      Color.fromARGB(
+                                                                          255,
+                                                                          157,
+                                                                          77,
+                                                                          86),
+                                                                ),
+                                                                child: Text(
+                                                                    'موافق',
+                                                                    textAlign:
+                                                                        TextAlign
+                                                                            .center,
+                                                                    style: GoogleFonts
+                                                                        .getFont(
+                                                                      "Noto Sans Arabic",
+                                                                      fontSize:
+                                                                          16,
+                                                                      color: Colors
+                                                                          .white,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w400,
+                                                                    )),
+                                                                onPressed: () {
+                                                                  Navigator.of(
+                                                                          context)
+                                                                      .pop();
+                                                                },
+                                                              ),
+                                                            ],
+                                                            actionsAlignment:
+                                                                MainAxisAlignment
+                                                                    .center);
+                                                      },
+                                                    );
+                                                  }
+                                                  if (goal == '') {
+                                                    showDialog(
+                                                      context: context,
+                                                      builder: (context) {
+                                                        return AlertDialog(
+                                                            backgroundColor:
+                                                                Color
+                                                                    .fromARGB(
+                                                                        174,
+                                                                        56,
+                                                                        56,
+                                                                        56),
+                                                            shape:
+                                                                RoundedRectangleBorder(
+                                                              side: BorderSide(
+                                                                  width: 1,
+                                                                  color: Color(
+                                                                      0xFFC05454)),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          20),
+                                                            ),
+                                                            title: Text('تنبيه',
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .center,
+                                                                style:
+                                                                    GoogleFonts
+                                                                        .getFont(
+                                                                  "Noto Sans Arabic",
+                                                                  fontSize: 25,
+                                                                  color: Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          192,
+                                                                          84,
+                                                                          84),
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400,
+                                                                )),
+                                                            content: Text(
+                                                                ' الرجاء تحديد مبلغ الإدخار ',
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .center,
+                                                                style:
+                                                                    GoogleFonts
+                                                                        .getFont(
+                                                                  "Noto Sans Arabic",
+                                                                  fontSize: 17,
+                                                                  color: Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          201,
+                                                                          138,
+                                                                          138),
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400,
+                                                                )),
+                                                            actions: [
+                                                              ElevatedButton(
+                                                                style: ElevatedButton
+                                                                    .styleFrom(
+                                                                  backgroundColor:
+                                                                      Color.fromARGB(
+                                                                          255,
+                                                                          157,
+                                                                          77,
+                                                                          86),
+                                                                ),
+                                                                child: Text(
+                                                                    'موافق',
+                                                                    textAlign:
+                                                                        TextAlign
+                                                                            .center,
+                                                                    style: GoogleFonts
+                                                                        .getFont(
+                                                                      "Noto Sans Arabic",
+                                                                      fontSize:
+                                                                          16,
+                                                                      color: Colors
+                                                                          .white,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w400,
+                                                                    )),
+                                                                onPressed: () {
+                                                                  Navigator.of(
+                                                                          context)
+                                                                      .pop();
+                                                                },
+                                                              ),
+                                                            ],
+                                                            actionsAlignment:
+                                                                MainAxisAlignment
+                                                                    .center);
+                                                      },
+                                                    );
+                                                  }
+                                                  if (date2 == '') {
+                                                    showDialog(
+                                                      context: context,
+                                                      builder: (context) {
+                                                        return AlertDialog(
+                                                            backgroundColor:
+                                                                Color
+                                                                    .fromARGB(
+                                                                        174,
+                                                                        56,
+                                                                        56,
+                                                                        56),
+                                                            shape:
+                                                                RoundedRectangleBorder(
+                                                              side: BorderSide(
+                                                                  width: 1,
+                                                                  color: Color(
+                                                                      0xFFC05454)),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          20),
+                                                            ),
+                                                            title: Text('تنبيه',
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .center,
+                                                                style:
+                                                                    GoogleFonts
+                                                                        .getFont(
+                                                                  "Noto Sans Arabic",
+                                                                  fontSize: 25,
+                                                                  color: Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          192,
+                                                                          84,
+                                                                          84),
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400,
+                                                                )),
+                                                            content: Text(
+                                                                'الرجاء تحديد تاريخ نهاية الإدخار',
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .center,
+                                                                style:
+                                                                    GoogleFonts
+                                                                        .getFont(
+                                                                  "Noto Sans Arabic",
+                                                                  fontSize: 17,
+                                                                  color: Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          201,
+                                                                          138,
+                                                                          138),
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400,
+                                                                )),
+                                                            actions: [
+                                                              ElevatedButton(
+                                                                style: ElevatedButton
+                                                                    .styleFrom(
+                                                                  backgroundColor:
+                                                                      Color.fromARGB(
+                                                                          255,
+                                                                          157,
+                                                                          77,
+                                                                          86),
+                                                                ),
+                                                                child: Text(
+                                                                    'موافق',
+                                                                    textAlign:
+                                                                        TextAlign
+                                                                            .center,
+                                                                    style: GoogleFonts
+                                                                        .getFont(
+                                                                      "Noto Sans Arabic",
+                                                                      fontSize:
+                                                                          16,
+                                                                      color: Colors
+                                                                          .white,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w400,
+                                                                    )),
+                                                                onPressed: () {
+                                                                  Navigator.of(
+                                                                          context)
+                                                                      .pop();
+                                                                },
+                                                              ),
+                                                            ],
+                                                            actionsAlignment:
+                                                                MainAxisAlignment
+                                                                    .center);
+                                                      },
+                                                    );
+                                                  } else {
+                                                    ViewModelAddPlan().addPlan(
+                                                      date,
+                                                      date2,
+                                                      goal,
+                                                      goalName,
+                                                    );
+                                                    Navigator.pop(context);
+                                                  }
                                                 })
                                           ]);
                                     },
