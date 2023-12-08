@@ -270,6 +270,9 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
                               scrollDirection: Axis.horizontal,
                               itemBuilder: (context, categoryIndex) =>
                                   FilterChip(
+                                    shape: RoundedRectangleBorder(
+                                      
+                            borderRadius: BorderRadius.circular(30)),
                                       label: Text(category[categoryIndex]),
                                       labelStyle: GoogleFonts.getFont(
                                           "Noto Sans Arabic",
