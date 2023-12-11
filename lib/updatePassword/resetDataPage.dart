@@ -5,8 +5,8 @@ import 'package:namaagp/Identity Elements/mainHeader.dart';
 import 'package:namaagp/SignIn/ViewSignIn.dart';
 import 'package:namaagp/services/authentication_service.dart';
 import 'package:namaagp/updatePassword/ViewModelupdateSupabasePassword.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:stacked/stacked.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class resetDataPage extends StatefulWidget {
   final String emailAddress;
@@ -74,7 +74,7 @@ class _resetDataPageState extends State<resetDataPage> {
                     height: 20,
                   ),
                   const mainHeader(
-                    title: 'إعادة تعيين كلمة السر',
+                    title: 'إستعادة كلمة السر',
                   ),
                   const SizedBox(
                     height: 20,
