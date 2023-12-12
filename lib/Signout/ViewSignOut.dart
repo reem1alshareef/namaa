@@ -3,12 +3,17 @@ import 'package:namaagp/AddPlan/ViewModelAddPlan.dart';
 import 'package:namaagp/Identity%20Elements/mainHeader.dart';
 import 'package:namaagp/SignIn/ViewSignIn.dart';
 import 'package:namaagp/Signout/ViewModelSignOut.dart';
+import 'package:namaagp/Splash/ViewSplash.dart';
 import 'package:stacked/stacked.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
-class ViewSignOut extends StatelessWidget {
-  const ViewSignOut({super.key});
+class ViewSignOut extends StatefulWidget {
+  @override
+  State<ViewSignOut> createState() => _ViewSignOutState();
+}
 
+class _ViewSignOutState extends State<ViewSignOut> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
@@ -50,25 +55,23 @@ class ViewSignOut extends StatelessWidget {
             },
           ),
           ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Color.fromARGB(195, 255, 255, 255),
-            ),
-            child: Text("خروج",
-                textAlign: TextAlign.center,
-                style: GoogleFonts.getFont(
-                  "Noto Sans Arabic",
-                  fontSize: 16,
-                  fontWeight: FontWeight.w400,
-                )),
-            onPressed: () async {
-            ViewModelSignOut().signOut();
-              
-                 Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) =>  ViewSignIn()),
-  );
-            },
-          )
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color.fromARGB(195, 255, 255, 255),
+              ),
+              child: Text("خروج",
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.getFont(
+                    "Noto Sans Arabic",
+                    fontSize: 16,
+                    fontWeight: FontWeight.w400,
+                  )),
+              onPressed: () {
+                ViewModelSignOut().SignOut();
+                
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => ViewSplash()));
+                
+              })
         ],
         actionsAlignment: MainAxisAlignment.center);
   }
