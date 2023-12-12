@@ -1,9 +1,7 @@
 import 'dart:async';
-
-import 'package:namaagp/services/authentication_service.dart';
+//import 'package:namaagp/services/authentication_service.dart';
 import 'package:stacked/stacked.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-
 
 final supabaseClient = SupabaseClient(
     'https://rpwqxndlhdiqkrejigse.supabase.co',
@@ -16,17 +14,22 @@ final supabaseClient = SupabaseClient(
 
 String? getCurrentUserEmail() {
   final currentUser = supabase.auth.currentUser;
-    return currentUser?.email;
-  
+  return currentUser?.email;
 }
 
 class ViewModelAddExpenses extends BaseViewModel {
-  Future<void> addExpenses(String date, String chosenCurrency, String categoryName, String expense,)
-  async {
-await supabaseClient
-    .from('expenses')
-    .insert({'category': categoryName, 'date': date , 'price' : expense , 'currency' : chosenCurrency ,'emailAddress' : getCurrentUserEmail() });
-    
-  
+  Future<void> addExpenses(
+    String date,
+    String chosenCurrency,
+    String categoryName,
+    String expense,
+  ) async {
+    await supabaseClient.from('expenses').insert({
+      'category': categoryName,
+      'date': date,
+      'price': expense,
+      'currency': chosenCurrency,
+      'emailAddress': getCurrentUserEmail()
+    });
   }
 }
