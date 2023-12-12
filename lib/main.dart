@@ -1,7 +1,7 @@
 //import 'package:postgres/postgres.dart';
 import 'dart:async';
-
 import 'package:flutter/material.dart';
+import 'package:namaagp/AddPlan/ViewAddPlan.dart';
 import 'package:namaagp/NavigationBar/NavigationBar.dart';
 import 'package:namaagp/Splash/ViewSplash.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -89,6 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
             if(session == null)
               return ViewSplash();//NavigationBarApp();//viewChat();//ViewExplorePage();
             else
+ 
               return NavigationBarApp();
           },
         ),

@@ -83,15 +83,15 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0x00071121),
-      body:  FutureBuilder<List<dynamic>>(
+      body: FutureBuilder<List<dynamic>>(
           future: ViewModelAddPlan.fetchData(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return  const Center(child: CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator());
             } else if (snapshot.hasError) {
-                  return Text('Error: ${snapshot.error}');
-                } 
-            late List <dynamic> savingPlan = snapshot.data!;
+              return Text('Error: ${snapshot.error}');
+            }
+            late List<dynamic> savingPlan = snapshot.data!;
 
             return Container(
               padding: const EdgeInsets.only(top: 50.0, left: 10, right: 10),
@@ -144,6 +144,7 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                   ),
                   Expanded(
                     child: ListView.builder(
+                      key: UniqueKey(),
                       padding: const EdgeInsets.all(16),
                       itemCount: savingPlan.length,
                       itemBuilder: (context, index) {
@@ -317,12 +318,17 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                                                           .w400,
                                                                 )),
                                                             onPressed: () {
+                                                              
                                                               ViewModelAddPlan()
                                                                   .deletePlan(
                                                                       goalName);
+                                                                       setState(() {
+                                                                    
+                                                                  });
                                                               Navigator.of(
                                                                       context)
                                                                   .pop();
+                                                                 
                                                             },
                                                           )
                                                         ],
@@ -382,19 +388,19 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                   ),
                   GestureDetector(
                     child: Text(
-                          'إضافة خطة',
-                          textAlign: TextAlign.right,
-                          style: GoogleFonts.getFont(
-                            "Noto Sans Arabic",
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400,
-                            height: 1.5,
-                            textStyle: const TextStyle(
-                              color: Color(0xFF6FA8FF),
-                              decoration: TextDecoration.underline,
-                            ),
-                          ),
+                      'إضافة خطة',
+                      textAlign: TextAlign.right,
+                      style: GoogleFonts.getFont(
+                        "Noto Sans Arabic",
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                        height: 1.5,
+                        textStyle: const TextStyle(
+                          color: Color(0xFF6FA8FF),
+                          decoration: TextDecoration.underline,
                         ),
+                      ),
+                    ),
                     onTap: () => showModalBottomSheet(
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30.0),
@@ -418,8 +424,8 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                       decoration: BoxDecoration(
                                         borderRadius:
                                             BorderRadius.circular(30.0),
-                                        color: Color.fromARGB(
-                                            132, 217, 217, 217),
+                                        color:
+                                            Color.fromARGB(132, 217, 217, 217),
                                       ),
                                     ),
                                     ListTile(
@@ -452,8 +458,7 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                                 decoration: ShapeDecoration(
                                                   color: Color.fromARGB(
                                                       151, 53, 45, 104),
-                                                  shape:
-                                                      RoundedRectangleBorder(
+                                                  shape: RoundedRectangleBorder(
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             10),
@@ -469,18 +474,15 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                                           print("$goalName");
                                                         });
                                                       },
-                                                      textAlign: TextAlign
-                                                          .center,
+                                                      textAlign:
+                                                          TextAlign.center,
                                                       textDirection:
                                                           TextDirection.rtl,
-                                                      cursorColor: Colors
-                                                          .white,
+                                                      cursorColor: Colors.white,
                                                       cursorHeight: 25,
-                                                      decoration:
-                                                          InputDecoration(
-                                                              border:
-                                                                  InputBorder
-                                                                      .none),
+                                                      decoration: InputDecoration(
+                                                          border:
+                                                              InputBorder.none),
                                                       style: GoogleFonts.getFont(
                                                           "Noto Sans Arabic",
                                                           textStyle: TextStyle(
@@ -500,8 +502,8 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                                   fontWeight: FontWeight.w400,
                                                   height: 1.5,
                                                   textStyle: const TextStyle(
-                                                      color: Color(
-                                                          0xFFD0CDEF)))),
+                                                      color:
+                                                          Color(0xFFD0CDEF)))),
                                         ]),
                                     Row(
                                         mainAxisAlignment:
@@ -521,8 +523,7 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                                 decoration: ShapeDecoration(
                                                   color: Color.fromARGB(
                                                       151, 53, 45, 104),
-                                                  shape:
-                                                      RoundedRectangleBorder(
+                                                  shape: RoundedRectangleBorder(
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             10),
@@ -540,12 +541,11 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                                         //value is entered text after ENTER press
                                                         //you can also call any function here or make setState() to assign value to other variable
                                                       },
-                                                      textAlign: TextAlign
-                                                          .center,
+                                                      textAlign:
+                                                          TextAlign.center,
                                                       textDirection:
                                                           TextDirection.rtl,
-                                                      cursorColor: Colors
-                                                          .white,
+                                                      cursorColor: Colors.white,
                                                       cursorHeight: 25,
                                                       decoration:
                                                           InputDecoration(
@@ -553,14 +553,14 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                                                   InputBorder
                                                                       .none),
                                                       //  textAlign: TextAlign.right,
-                  
+
                                                       style: TextStyle(fontFamily: "Noto Sans Arabic", fontSize: 20, fontWeight: FontWeight.w400, color: Colors.white),
                                                       keyboardType: TextInputType.number,
                                                       inputFormatters: <TextInputFormatter>[
                                                         FilteringTextInputFormatter
                                                             .digitsOnly
                                                       ])
-                  
+
                                                   //                                             TextFormField(
                                                   //                                               textAlign: TextAlign.center,
                                                   //                                               textDirection: TextDirection.rtl,
@@ -568,10 +568,10 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                                   //                                               cursorHeight: 25,
                                                   //                                               decoration: InputDecoration(
                                                   // border:InputBorder.none),
-                  
+
                                                   //                                               style:GoogleFonts.getFont(
                                                   //                                                 "Noto Sans Arabic", textStyle: TextStyle(fontSize:25, fontWeight: FontWeight.w400, color: Colors.white))),
-                  
+
                                                   )
                                             ],
                                           ),
@@ -583,8 +583,8 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                                   fontWeight: FontWeight.w400,
                                                   height: 1.5,
                                                   textStyle: const TextStyle(
-                                                      color: Color(
-                                                          0xFFD0CDEF)))),
+                                                      color:
+                                                          Color(0xFFD0CDEF)))),
                                         ]),
                                     Row(
                                         mainAxisAlignment:
@@ -600,28 +600,27 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                                   width: 200,
                                                   height: 50,
                                                   padding:
-                                                      const EdgeInsets.all(
-                                                          10),
+                                                      const EdgeInsets.all(10),
                                                   decoration: ShapeDecoration(
                                                     color: Color.fromARGB(
                                                         151, 53, 45, 104),
                                                     shape:
                                                         RoundedRectangleBorder(
                                                       borderRadius:
-                                                          BorderRadius
-                                                              .circular(10),
+                                                          BorderRadius.circular(
+                                                              10),
                                                     ),
                                                   ),
                                                 ),
-                  
+
                                                 //here
                                                 SizedBox(
                                                   width: 200.0,
                                                   height: 57,
                                                   child: TextButton(
                                                       child: Text('$date',
-                                                          textAlign: TextAlign
-                                                              .center,
+                                                          textAlign:
+                                                              TextAlign.center,
                                                           style: GoogleFonts.getFont(
                                                               "Noto Sans Arabic",
                                                               fontSize: 20,
@@ -658,8 +657,8 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                                   fontWeight: FontWeight.w400,
                                                   height: 1.5,
                                                   textStyle: const TextStyle(
-                                                      color: Color(
-                                                          0xFFD0CDEF)))),
+                                                      color:
+                                                          Color(0xFFD0CDEF)))),
                                         ]),
                                     Row(
                                         mainAxisAlignment:
@@ -679,8 +678,7 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                                 decoration: ShapeDecoration(
                                                   color: Color.fromARGB(
                                                       151, 53, 45, 104),
-                                                  shape:
-                                                      RoundedRectangleBorder(
+                                                  shape: RoundedRectangleBorder(
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             10),
@@ -698,21 +696,19 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                                             "Noto Sans Arabic",
                                                             fontSize: 20,
                                                             fontWeight:
-                                                                FontWeight
-                                                                    .w400,
+                                                                FontWeight.w400,
                                                             height: 1.5,
-                                                            textStyle: const TextStyle(
-                                                                color: Color
-                                                                    .fromARGB(
-                                                                        255,
-                                                                        255,
-                                                                        255,
-                                                                        255)))),
+                                                            textStyle:
+                                                                const TextStyle(
+                                                                    color: Color
+                                                                        .fromARGB(
+                                                                            255,
+                                                                            255,
+                                                                            255,
+                                                                            255)))),
                                                     onPressed: () {
-                                                      showdatepicker2(
-                                                          context)(
-                                                        onDateChanged:
-                                                            (value) {
+                                                      showdatepicker2(context)(
+                                                        onDateChanged: (value) {
                                                           date2 = value;
                                                         },
                                                       );
@@ -728,8 +724,8 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                                   fontWeight: FontWeight.w400,
                                                   height: 1.5,
                                                   textStyle: const TextStyle(
-                                                      color: Color(
-                                                          0xFFD0CDEF)))),
+                                                      color:
+                                                          Color(0xFFD0CDEF)))),
                                         ]),
                                     SizedBox(
                                       height: 20,
@@ -749,17 +745,16 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                                 fontWeight: FontWeight.w400,
                                                 height: 1.5,
                                                 textStyle: const TextStyle(
-                                                    color:
-                                                        Color(0xFFD0CDEF)))),
+                                                    color: Color(0xFFD0CDEF)))),
                                         onPressed: () {
                                           if (date == '') {
                                             showDialog(
                                                 context: context,
                                                 builder: (context) {
                                                   return AlertDialog(
-                                                      backgroundColor: Color
-                                                          .fromARGB(174, 56,
-                                                              56, 56),
+                                                      backgroundColor:
+                                                          Color.fromARGB(
+                                                              174, 56, 56, 56),
                                                       shape:
                                                           RoundedRectangleBorder(
                                                         side: BorderSide(
@@ -774,37 +769,32 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                                         'تنبيه',
                                                         textAlign:
                                                             TextAlign.center,
-                                                        style: GoogleFonts
-                                                            .getFont(
+                                                        style:
+                                                            GoogleFonts.getFont(
                                                           "Noto Sans Arabic",
                                                           fontSize: 25,
-                                                          color:
-                                                              Color.fromARGB(
-                                                                  255,
-                                                                  192,
-                                                                  84,
-                                                                  84),
+                                                          color: Color.fromARGB(
+                                                              255, 192, 84, 84),
                                                           fontWeight:
                                                               FontWeight.w400,
                                                         ),
                                                       ),
                                                       content: Text(
                                                           'الرجاء تحديد تاريخ بداية الإدخار',
-                                                          textAlign: TextAlign
-                                                              .center,
+                                                          textAlign:
+                                                              TextAlign.center,
                                                           style: GoogleFonts
                                                               .getFont(
                                                             "Noto Sans Arabic",
                                                             fontSize: 17,
-                                                            color: Color
-                                                                .fromARGB(
+                                                            color:
+                                                                Color.fromARGB(
                                                                     255,
                                                                     201,
                                                                     138,
                                                                     138),
                                                             fontWeight:
-                                                                FontWeight
-                                                                    .w400,
+                                                                FontWeight.w400,
                                                           )),
                                                       actions: [
                                                         ElevatedButton(
@@ -819,16 +809,15 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                                                           77,
                                                                           86),
                                                             ),
-                                                            child: Text(
-                                                                'موافق',
+                                                            child: Text('موافق',
                                                                 textAlign:
                                                                     TextAlign
                                                                         .center,
-                                                                style: GoogleFonts
-                                                                    .getFont(
+                                                                style:
+                                                                    GoogleFonts
+                                                                        .getFont(
                                                                   "Noto Sans Arabic",
-                                                                  fontSize:
-                                                                      16,
+                                                                  fontSize: 16,
                                                                   color: Colors
                                                                       .white,
                                                                   fontWeight:
@@ -861,8 +850,8 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                                           color: Color(
                                                               0xFFC05454)),
                                                       borderRadius:
-                                                          BorderRadius
-                                                              .circular(20),
+                                                          BorderRadius.circular(
+                                                              20),
                                                     ),
                                                     title: Text(
                                                       'تنبيه',
@@ -882,16 +871,15 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                                         ' الرجاء كتابة عنوان الخطة',
                                                         textAlign:
                                                             TextAlign.center,
-                                                        style: GoogleFonts
-                                                            .getFont(
+                                                        style:
+                                                            GoogleFonts.getFont(
                                                           "Noto Sans Arabic",
                                                           fontSize: 17,
-                                                          color:
-                                                              Color.fromARGB(
-                                                                  255,
-                                                                  201,
-                                                                  138,
-                                                                  138),
+                                                          color: Color.fromARGB(
+                                                              255,
+                                                              201,
+                                                              138,
+                                                              138),
                                                           fontWeight:
                                                               FontWeight.w400,
                                                         )),
@@ -907,22 +895,20 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                                                   86),
                                                         ),
                                                         child: Text('موافق',
-                                                            textAlign:
-                                                                TextAlign
-                                                                    .center,
+                                                            textAlign: TextAlign
+                                                                .center,
                                                             style: GoogleFonts
                                                                 .getFont(
                                                               "Noto Sans Arabic",
                                                               fontSize: 16,
-                                                              color: Colors
-                                                                  .white,
+                                                              color:
+                                                                  Colors.white,
                                                               fontWeight:
                                                                   FontWeight
                                                                       .w400,
                                                             )),
                                                         onPressed: () {
-                                                          Navigator.of(
-                                                                  context)
+                                                          Navigator.of(context)
                                                               .pop();
                                                         },
                                                       ),
@@ -948,22 +934,18 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                                           color: Color(
                                                               0xFFC05454)),
                                                       borderRadius:
-                                                          BorderRadius
-                                                              .circular(20),
+                                                          BorderRadius.circular(
+                                                              20),
                                                     ),
                                                     title: Text('تنبيه',
                                                         textAlign:
                                                             TextAlign.center,
-                                                        style: GoogleFonts
-                                                            .getFont(
+                                                        style:
+                                                            GoogleFonts.getFont(
                                                           "Noto Sans Arabic",
                                                           fontSize: 25,
-                                                          color:
-                                                              Color.fromARGB(
-                                                                  255,
-                                                                  192,
-                                                                  84,
-                                                                  84),
+                                                          color: Color.fromARGB(
+                                                              255, 192, 84, 84),
                                                           fontWeight:
                                                               FontWeight.w400,
                                                         )),
@@ -971,16 +953,15 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                                         ' الرجاء تحديد مبلغ الإدخار ',
                                                         textAlign:
                                                             TextAlign.center,
-                                                        style: GoogleFonts
-                                                            .getFont(
+                                                        style:
+                                                            GoogleFonts.getFont(
                                                           "Noto Sans Arabic",
                                                           fontSize: 17,
-                                                          color:
-                                                              Color.fromARGB(
-                                                                  255,
-                                                                  201,
-                                                                  138,
-                                                                  138),
+                                                          color: Color.fromARGB(
+                                                              255,
+                                                              201,
+                                                              138,
+                                                              138),
                                                           fontWeight:
                                                               FontWeight.w400,
                                                         )),
@@ -996,22 +977,20 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                                                   86),
                                                         ),
                                                         child: Text('موافق',
-                                                            textAlign:
-                                                                TextAlign
-                                                                    .center,
+                                                            textAlign: TextAlign
+                                                                .center,
                                                             style: GoogleFonts
                                                                 .getFont(
                                                               "Noto Sans Arabic",
                                                               fontSize: 16,
-                                                              color: Colors
-                                                                  .white,
+                                                              color:
+                                                                  Colors.white,
                                                               fontWeight:
                                                                   FontWeight
                                                                       .w400,
                                                             )),
                                                         onPressed: () {
-                                                          Navigator.of(
-                                                                  context)
+                                                          Navigator.of(context)
                                                               .pop();
                                                         },
                                                       ),
@@ -1037,22 +1016,18 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                                           color: Color(
                                                               0xFFC05454)),
                                                       borderRadius:
-                                                          BorderRadius
-                                                              .circular(20),
+                                                          BorderRadius.circular(
+                                                              20),
                                                     ),
                                                     title: Text('تنبيه',
                                                         textAlign:
                                                             TextAlign.center,
-                                                        style: GoogleFonts
-                                                            .getFont(
+                                                        style:
+                                                            GoogleFonts.getFont(
                                                           "Noto Sans Arabic",
                                                           fontSize: 25,
-                                                          color:
-                                                              Color.fromARGB(
-                                                                  255,
-                                                                  192,
-                                                                  84,
-                                                                  84),
+                                                          color: Color.fromARGB(
+                                                              255, 192, 84, 84),
                                                           fontWeight:
                                                               FontWeight.w400,
                                                         )),
@@ -1060,16 +1035,15 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                                         'الرجاء تحديد تاريخ نهاية الإدخار',
                                                         textAlign:
                                                             TextAlign.center,
-                                                        style: GoogleFonts
-                                                            .getFont(
+                                                        style:
+                                                            GoogleFonts.getFont(
                                                           "Noto Sans Arabic",
                                                           fontSize: 17,
-                                                          color:
-                                                              Color.fromARGB(
-                                                                  255,
-                                                                  201,
-                                                                  138,
-                                                                  138),
+                                                          color: Color.fromARGB(
+                                                              255,
+                                                              201,
+                                                              138,
+                                                              138),
                                                           fontWeight:
                                                               FontWeight.w400,
                                                         )),
@@ -1085,22 +1059,20 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                                                   86),
                                                         ),
                                                         child: Text('موافق',
-                                                            textAlign:
-                                                                TextAlign
-                                                                    .center,
+                                                            textAlign: TextAlign
+                                                                .center,
                                                             style: GoogleFonts
                                                                 .getFont(
                                                               "Noto Sans Arabic",
                                                               fontSize: 16,
-                                                              color: Colors
-                                                                  .white,
+                                                              color:
+                                                                  Colors.white,
                                                               fontWeight:
                                                                   FontWeight
                                                                       .w400,
                                                             )),
                                                         onPressed: () {
-                                                          Navigator.of(
-                                                                  context)
+                                                          Navigator.of(context)
                                                               .pop();
                                                         },
                                                       ),
@@ -1111,15 +1083,17 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                               },
                                             );
                                           } else {
-                                            ViewModelAddPlan().addPlan(
-                                              date,
-                                              date2,
-                                              goal,
-                                              goalName,
-                                            );
-                  
-                                            const CircularProgressIndicator();
-                  
+                                            
+                                              ViewModelAddPlan().addPlan(
+                                                date,
+                                                date2,
+                                                goal,
+                                                goalName,
+                                              );
+                                              setState(() {
+                                            });
+                                           
+
                                             Navigator.pop(context);
                                           }
                                         })
@@ -1127,7 +1101,6 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                             },
                           );
                         }),
-                   
                   ),
                   SizedBox(
                     height: 90,
