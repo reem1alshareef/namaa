@@ -410,7 +410,7 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                         builder: (context) {
                           return StatefulBuilder(
                             builder: (BuildContext context,
-                                StateSetter setModalState) {
+                                StateSetter setStateChild) {
                               return Column(
                                   mainAxisSize: MainAxisSize.max,
                                   children: <Widget>[
@@ -636,7 +636,7 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                                                           255,
                                                                           255)))),
                                                       onPressed: () {
-                                                        setState(() {
+                                                        setStateChild(() {
                                                           showdatepicker(
                                                             context,
                                                           )(
@@ -707,11 +707,15 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                                                             255,
                                                                             255)))),
                                                     onPressed: () {
+                                                      setStateChild((){
                                                       showdatepicker2(context)(
                                                         onDateChanged: (value) {
                                                           date2 = value;
+                                                         
                                                         },
+                                                        
                                                       );
+                                                         });
                                                     }),
                                               )
                                             ],
