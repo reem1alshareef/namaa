@@ -13,7 +13,7 @@ final supabaseClient = SupabaseClient(
 //     }
 
 String? getCurrentUserEmail() {
-  final currentUser = supabase.auth.currentUser;
+  final currentUser = supabaseClient.auth.currentUser;
   return currentUser?.email;
 }
 
