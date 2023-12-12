@@ -1,9 +1,7 @@
 import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import 'package:namaagp/AddExpenses/speech_header.dart';
 import 'ViewModelAddPlan.dart';
 import 'package:supabase/supabase.dart';
@@ -17,7 +15,6 @@ class ViewAddPlan extends StatefulWidget {
   State<ViewAddPlan> createState() => _ViewAddPlanState();
 }
 
-var intV = Random().nextInt(10);
 
 String goalName = '';
 String goal = '';
