@@ -23,44 +23,7 @@ String date2 = '';
 late Future<DateTime?> selected_startdate;
 late Future<DateTime?> selected_enddate;
 
-showdatepicker(BuildContext context) {
-  selected_startdate = showDatePickerDialog(
-    context: context,
-    initialDate: DateTime.now(),
-    minDate: DateTime(2023, 12, 01),
-    maxDate: DateTime(2050, 12, 31),
-  );
-  selected_startdate.then((value) {
-    if (value == null) return;
-    date = Utils.getFormattedDateSimple(value.millisecondsSinceEpoch);
 
-    sendDate() {
-      return date;
-    }
-
-    ;
-  });
-}
-
-showdatepicker2(BuildContext context) {
-  selected_enddate = showDatePickerDialog(
-    context: context,
-    enabledCellColor: Color(0xFF342D68),
-    initialDate: DateTime.now(),
-    minDate: DateTime(2023, 12, 01),
-    maxDate: DateTime(2050, 12, 31),
-  );
-  selected_enddate.then((value) {
-    if (value == null) return;
-    date2 = Utils.getFormattedDateSimple(value.millisecondsSinceEpoch);
-
-    sendDate() {
-      return date2;
-    }
-
-    ;
-  });
-}
 
 int saved = 900;
 final supabaseClient = SupabaseClient(
@@ -72,6 +35,75 @@ String? getCurrentUserEmail() {
 }
 
 class _ViewAddPlanState extends State<ViewAddPlan> {
+   showdatepicker(BuildContext context) {
+    selected_startdate = showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2023, 12, 01),
+      lastDate: DateTime(2050, 12, 31),
+      builder: (BuildContext context, Widget? child) {
+        return Theme(
+          data: ThemeData.light().copyWith(
+            colorScheme: ColorScheme.light(
+              // primary: MyColors.primary,
+              primary: Color.fromARGB(255, 26, 28, 62),
+              onPrimary: Color.fromARGB(255, 195, 197, 232),
+              surface: Color.fromARGB(255, 195, 197, 232),
+              onSurface: Colors.black,
+            ),
+          ),
+          child: child!,
+        );
+      },
+    );
+    selected_startdate.then((value) {
+      setState(() {
+        if (value == null) return;
+        date = Utils.getFormattedDateSimple(value.millisecondsSinceEpoch);
+        sendDate() {
+          return date;
+        }
+
+        ;
+      });
+    });
+  }
+
+showdatepicker2(BuildContext context) {
+    selected_enddate = showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2023, 12, 01),
+      lastDate: DateTime(2050, 12, 31),
+      builder: (BuildContext context, Widget? child) {
+        return Theme(
+          data: ThemeData.light().copyWith(
+            colorScheme: ColorScheme.light(
+              // primary: MyColors.primary,
+              primary: Color.fromARGB(255, 26, 28, 62),
+              onPrimary: Color.fromARGB(255, 195, 197, 232),
+              surface: Color.fromARGB(255, 195, 197, 232),
+              onSurface: Colors.black,
+            ),
+          ),
+          child: child!,
+        );
+      },
+    );
+    selected_enddate.then((value) {
+      setState(() {
+        if (value == null) return;
+        date2 = Utils.getFormattedDateSimple(value.millisecondsSinceEpoch);
+        sendDate() {
+          return date2;
+        }
+
+        ;
+      });
+    });
+  }
+
+
   String calc(String startDate_, String endDate_) {
     DateTime Date1 = DateTime.parse(startDate_);
     DateTime Date2 = DateTime.parse(endDate_);
@@ -318,17 +350,13 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                                                           .w400,
                                                                 )),
                                                             onPressed: () {
-                                                              
                                                               ViewModelAddPlan()
                                                                   .deletePlan(
                                                                       goalName);
-                                                                       setState(() {
-                                                                    
-                                                                  });
+                                                              setState(() {});
                                                               Navigator.of(
                                                                       context)
                                                                   .pop();
-                                                                 
                                                             },
                                                           )
                                                         ],
@@ -707,15 +735,15 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                                                             255,
                                                                             255)))),
                                                     onPressed: () {
-                                                      setStateChild((){
-                                                      showdatepicker2(context)(
-                                                        onDateChanged: (value) {
-                                                          date2 = value;
-                                                         
-                                                        },
-                                                        
-                                                      );
-                                                         });
+                                                      setStateChild(() {
+                                                        showdatepicker2(
+                                                            context)(
+                                                          onDateChanged:
+                                                              (value) {
+                                                            date2 = value;
+                                                          },
+                                                        );
+                                                      });
                                                     }),
                                               )
                                             ],
@@ -1087,16 +1115,13 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                               },
                                             );
                                           } else {
-                                            
-                                              ViewModelAddPlan().addPlan(
-                                                date,
-                                                date2,
-                                                goal,
-                                                goalName,
-                                              );
-                                              setState(() {
-                                            });
-                                           
+                                            ViewModelAddPlan().addPlan(
+                                              date,
+                                              date2,
+                                              goal,
+                                              goalName,
+                                            );
+                                            setState(() {});
 
                                             Navigator.pop(context);
                                           }
