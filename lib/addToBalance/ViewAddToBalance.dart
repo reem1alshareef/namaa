@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -191,7 +190,7 @@ Align(
       }
       else {
         
-        ViewModelAddToBalance().addToBalance( chosenCurrency!,  money);
+        ViewModelAddToBalance().addToBalance( chosenCurrency!,  double.parse(money));
         showDialog(
           context: context,
           builder: (context) {

@@ -11,12 +11,19 @@ class ViewModelViewExpenses extends BaseViewModel {
       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJwd3F4bmRsaGRpcWtyZWppZ3NlIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTMwNjY4NDQsImV4cCI6MjAwODY0Mjg0NH0.qlIR6KNotfLwl30HsVSUW9M3smblYaYxtk_D7W2L_EU',
     );
     
-    String? currentEmail() {
-      final String? cemail = AuthenticationService.currentUser?.email;
-      return cemail;
-    }
+    // String? currentEmail() {
+    //   final String? cemail = AuthenticationService.currentUser?.email;
+    //   return cemail;
+    // }
+    String? getCurrentUserEmail() {
+  final currentUser = supabase.auth.currentUser;
+    return currentUser?.email;
+  
+}
 
-    final response = await supabaseClient.from('expenses').select().eq('emailAddress', currentEmail()).execute();
+   // print('objecttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt');
+
+    final response = await supabaseClient.from('expenses').select().eq('emailAddress', getCurrentUserEmail()).execute();
     
     
     return (response.data as List<dynamic>);//.map((e) => Todo.fromMap(e)).toList();

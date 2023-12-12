@@ -1,5 +1,6 @@
 //import 'package:namaagp/OTPPage/hi.dart';
 import 'dart:async';
+
 import 'package:namaagp/services/authentication_service.dart';
 import 'package:stacked/stacked.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -17,28 +18,27 @@ class ViewModelIncomeDetails extends BaseViewModel {
   
   switch(currency){
     case 'درهم إماراتي' :
-    await supabaseClient.from('balance').insert([{ 'emailAddress' : getCurrentUserEmail(), 'UAE': salaryAmountAsInt, 'mainCurrency': currency  , 'salary' :salaryAmountAsInt!*1.02 ,'salaryDate': salaryDateAsInt },]);
+    await supabaseClient.from('balance').insert([{ 'emailAddress' : getCurrentUserEmail(), 'UAE': salaryAmountAsInt, 'mainCurrency': currency  , 'salary' :salaryAmountAsInt!*1.02 ,'salary_date': salaryDateAsInt },]);
     break;
     case 'ريال سعودي' :
-    await supabaseClient.from('balance').insert([{ 'emailAddress' : getCurrentUserEmail(), 'SAR': salaryAmountAsInt, 'mainCurrency': currency  , 'salary' :salaryAmountAsInt ,'salaryDate': salaryDateAsInt },]);
+    await supabaseClient.from('balance').insert([{ 'emailAddress' : getCurrentUserEmail(), 'SAR': salaryAmountAsInt, 'mainCurrency': currency  , 'salary' :salaryAmountAsInt ,'salary_date': salaryDateAsInt },]);
     break;
     case 'يورو' :
-    await supabaseClient.from('balance').insert([{ 'emailAddress' : getCurrentUserEmail(), 'EUR': salaryAmountAsInt, 'mainCurrency': currency  , 'salary' :salaryAmountAsInt!*4 ,'salaryDate': salaryDateAsInt },]);
+    await supabaseClient.from('balance').insert([{ 'emailAddress' : getCurrentUserEmail(), 'EUR': salaryAmountAsInt, 'mainCurrency': currency  , 'salary' :salaryAmountAsInt!*4 ,'salary_date': salaryDateAsInt },]);
     break;
     case 'دولار أمريكي' :
-    await supabaseClient.from('balance').insert([{ 'emailAddress' : getCurrentUserEmail(), 'US': salaryAmountAsInt, 'mainCurrency': currency  , 'salary' :salaryAmountAsInt!*3.75 ,'salaryDate': salaryDateAsInt },]);
+    await supabaseClient.from('balance').insert([{ 'emailAddress' : getCurrentUserEmail(), 'US': salaryAmountAsInt, 'mainCurrency': currency  , 'salary' :salaryAmountAsInt!*3.75 ,'salary_date': salaryDateAsInt },]);
     //ViewModelIncomeDetails().startPeriodicUpdate();
     break;
     case 'جنيه إسترليني' :
-    await supabaseClient.from('balance').insert([{ 'emailAddress' : getCurrentUserEmail(), 'GBP': salaryAmountAsInt, 'mainCurrency': currency  , 'salary' :salaryAmountAsInt!*4.59 ,'salaryDate': salaryDateAsInt },]);
+    await supabaseClient.from('balance').insert([{ 'emailAddress' : getCurrentUserEmail(), 'GBP': salaryAmountAsInt, 'mainCurrency': currency  , 'salary' :salaryAmountAsInt!*4.59 ,'salary_date': salaryDateAsInt },]);
     break;
   }
 }
-  getCurrentUserEmail() {
+  String? getCurrentUserEmail() {
   final currentUser = supabase.auth.currentUser;
-  if (currentUser != null) {
-    return currentUser.email;
-  }
+    return currentUser?.email;
+  
 }
 
 }
