@@ -19,12 +19,12 @@ class Speech_header extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         SizedBox(
-          width: 5,
+          width: 3,
         ),
         GestureDetector(
           child: ReturnToPreviousPage(
             title: 'رجوع',
-            tWidth: 69,
+            tWidth: 60,
           ),
           onTap: () {
             Navigator.push(
@@ -54,7 +54,7 @@ class Speech_header extends StatelessWidget {
                 Text('نماء  ',
                     textAlign: TextAlign.right,
                     style: GoogleFonts.getFont("Noto Sans Arabic",
-                        fontSize: 24,
+                        fontSize: 22,
                         fontWeight: FontWeight.w400,
                         height: 1.1,
                         textStyle: const TextStyle(color: Color(0xFFD0CDEF)))),
@@ -65,7 +65,7 @@ class Speech_header extends StatelessWidget {
             Text('امتلك زمام التحكم بمعاملاتك المالية',
                 textAlign: TextAlign.center,
                 style: GoogleFonts.getFont("Noto Sans Arabic",
-                    fontSize: 15,
+                    fontSize: 13,
                     fontWeight: FontWeight.w400,
                     height: 1,
                     textStyle: const TextStyle(color: Color(0xFFC5C5D0)))),
@@ -82,7 +82,7 @@ class Speech_header extends StatelessWidget {
           ),
         ),
         SizedBox(
-          width: 5,
+          width: 3,
         ),
 
         //SizedBox(height: 200,),
