@@ -77,7 +77,7 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
   String calc(String startDate_, String endDate_) {
     DateTime Date1 = DateTime.parse(startDate_);
     DateTime Date2 = DateTime.parse(endDate_);
-    Duration diff = Date2.difference(Date1);
+    Duration diff = Date2.difference(DateTime.now());
     return diff.inDays.toString();
   }
 
@@ -111,9 +111,7 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                   ),
                 ),
                 child: Column(children: [
-                  SizedBox(
-                    height: 20,
-                  ),
+                 
                   Speech_header(),
                   SizedBox(
                     height: 10,
@@ -189,7 +187,7 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                                   color: Color(0xFFC5C5CD)))),
                                     ),
                                     Container(
-                                      width: 130.0,
+                                      width: 115.0,
                                       child: Text(item['goalName'],
                                           textAlign: TextAlign.right,
                                           style: GoogleFonts.getFont(
@@ -201,44 +199,11 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                                   color: Color(0xFFC5C5CD)))),
                                     ),
                                   ]),
-                                  Row(children: [
-                                    Text('    يوم ',
-                                        textAlign: TextAlign.left,
-                                        style: GoogleFonts.getFont(
-                                            "Noto Sans Arabic",
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w400,
-                                            height: 1.5,
-                                            textStyle: const TextStyle(
-                                                color: Color.fromARGB(
-                                                    143, 197, 197, 205)))),
-                                    Container(
-                                        width: 25,
-                                        child: Text(
-                                            calc(item['startDate'],
-                                                item['endDate']),
-                                            textAlign: TextAlign.left,
-                                            style: GoogleFonts.getFont(
-                                                "Noto Sans Arabic",
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w400,
-                                                height: 1.5,
-                                                textStyle: const TextStyle(
-                                                    color: Color.fromARGB(
-                                                        143, 197, 197, 205))))),
-                                    Container(
-                                        width: 174,
-                                        child: Text(' :فترة الإدخار',
-                                            textAlign: TextAlign.left,
-                                            style: GoogleFonts.getFont(
-                                                "Noto Sans Arabic",
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w400,
-                                                height: 1.5,
-                                                textStyle: const TextStyle(
-                                                    color: Color.fromARGB(
-                                                        143, 197, 197, 205))))),
-                                    TextButton(
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+
+  TextButton(
                                         onPressed: () {
                                           showDialog(
                                               context: context,
@@ -347,32 +312,61 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                                             .center);
                                               });
                                         },
-                                        child: Icon(Icons.delete)),
+                                        child: Icon(Icons.delete))
+
+
+
+                                      ,
+                                    Text('            يوم ',
+                                        textAlign: TextAlign.right,
+                                        style: GoogleFonts.getFont(
+                                            "Noto Sans Arabic",
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w400,
+                                            height: 1.5,
+                                            textStyle: const TextStyle(
+                                                color: Color.fromARGB(
+                                                    143, 197, 197, 205)))),
+                                    Container(
+                                        width: 30,
+                                        child: Text(
+                                            calc(item['startDate'],
+                                                item['endDate']),
+                                            textAlign: TextAlign.right,
+                                            style: GoogleFonts.getFont(
+                                                "Noto Sans Arabic",
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w400,
+                                                height: 1.5,
+                                                textStyle: const TextStyle(
+                                                    color: Color.fromARGB(
+                                                        143, 197, 197, 205))))),
+                                    Container(
+                                        width: 120,
+                                        child: Text('  :متبقي لفترة الإدخار',
+                                            textAlign: TextAlign.left,
+                                            style: GoogleFonts.getFont(
+                                                "Noto Sans Arabic",
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w400,
+                                                height: 1.5,
+                                                textStyle: const TextStyle(
+                                                    color: Color.fromARGB(
+                                                        143, 197, 197, 205))))),
+                                  
                                   ]),
                                 ])));
                       },
                     ),
                   ),
-                  Column(
-                    children: [
-                      FloatingActionButton.extended(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(40.0),
-                            ),
-                          ),
-                          backgroundColor: Color(0xFF3A3462),
-
-                          //child: const Icon(Icons.add),
-                          label: Text(' إضافة خطة جديدة',
-                              textAlign: TextAlign.center,
-                              style: GoogleFonts.getFont("Noto Sans Arabic",
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.w400,
-                                  height: 1.5,
-                                  textStyle: const TextStyle(
-                                      color: Color(0xFFD0CDEF)))),
-                          onPressed: () {
+                  Positioned(
+                          bottom: 160,
+                          left: 70,
+                          height: 60,
+                          child: GestureDetector(
+                            onTap: () => 
+                          
+                  
                             showModalBottomSheet(
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(30.0),
@@ -1193,15 +1187,41 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                           ]);
                                     },
                                   );
-                                });
+                                
                           }),
-                      SizedBox(
-                        height: 50,
-                      ),
+                     
+  child: Container(
+                              child: Icon(
+                                Icons.add,
+                                size: 50,
+                                color: Colors.white,
+                              ),
+                              width: 60,
+                              height: 60,
+                              decoration: ShapeDecoration(
+                                color: Color(0xFFC9C2FF),
+                                shape: OvalBorder(),
+                                shadows: [
+                                  BoxShadow(
+                                    color: Color(0xFFB0ACD5),
+                                    blurRadius: 4,
+                                    offset: Offset(0, 0),
+                                    spreadRadius: 0,
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                         SizedBox(
+                        
+                    height: 100,
+                  ),
+
                     ],
                   ),
-                ]),
+        );}),
               );
-            }));
+            }
   }
-}
+
