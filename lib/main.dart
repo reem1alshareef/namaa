@@ -2,6 +2,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:namaagp/NavigationBar/NavigationBar.dart';
 import 'package:namaagp/Splash/ViewSplash.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 //import 'namaagp/lib/SignUp/ViewModelSignUp.dart';
@@ -78,12 +79,17 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future<String> splashNavigate() async {
+    final supabase = await Supabase.instance.client;
+    final Session? session = supabase.auth.currentSession;
     await Future.delayed(const Duration(milliseconds: 5)).then((value) {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
           builder: (BuildContext context) {
-            return ViewSplash();//NavigationBarApp();//viewChat();//ViewExplorePage();
+            if(session == null)
+              return ViewSplash();//NavigationBarApp();//viewChat();//ViewExplorePage();
+            else
+              return NavigationBarApp();
           },
         ),
       );

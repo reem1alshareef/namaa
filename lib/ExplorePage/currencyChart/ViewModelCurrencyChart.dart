@@ -15,6 +15,11 @@ class ViewModelCurrencyChart extends BaseViewModel {
       final String? cemail = AuthenticationService.currentUser?.email;
       return cemail;
     }
+       String? getCurrentUserEmail() {
+  final currentUser = supabase.auth.currentUser;
+    return currentUser?.email;
+  
+}
     final data = response.data as List<dynamic>;
 
     int totalData = 0;
@@ -22,7 +27,7 @@ class ViewModelCurrencyChart extends BaseViewModel {
 
     for (var item in data) {
       final email = item['emailAddress'] as String;
-      if (email == currentEmail()?.toString()) {
+      if (email == getCurrentUserEmail()) {
         final currency = item['currency'] as String;
         final price = item['price'] as double;
         if (currency == currencyName) {

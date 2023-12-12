@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:namaagp/OTPPage/ViewModelOTPPage.dart';
 import 'package:namaagp/SignIn/ViewSignIn.dart';
-import 'package:namaagp/chat/viewChat.dart';
-import 'package:namaagp/updatePassword/ViewupdateSupabasePassword.dart';
 import 'package:namaagp/SignUp/ViewSignUp.dart';
 import 'package:namaagp/services/authentication_service.dart';
+import 'package:namaagp/updatePassword/ViewupdateSupabasePassword.dart';
 
 
 class CostomizedTextButton extends StatelessWidget {
