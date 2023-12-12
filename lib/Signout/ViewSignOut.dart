@@ -1,79 +1,75 @@
 import 'package:flutter/material.dart';
+import 'package:namaagp/AddPlan/ViewModelAddPlan.dart';
 import 'package:namaagp/Identity%20Elements/mainHeader.dart';
+import 'package:namaagp/SignIn/ViewSignIn.dart';
 import 'package:namaagp/Signout/ViewModelSignOut.dart';
 import 'package:stacked/stacked.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ViewSignOut extends StatelessWidget {
   const ViewSignOut({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<ViewModelSignOut>.reactive(
-        viewModelBuilder: () => ViewModelSignOut(),
-        builder: (context, viewmodel, _) {
-          return Scaffold(
-              backgroundColor: const Color(0x00071121),
-              body: Container(
-                  padding:
-                      const EdgeInsets.only(top: 50.0, left: 10, right: 10),
-                  width: 428,
-                  height: 926,
-                  clipBehavior: Clip.antiAlias,
-                  decoration: const BoxDecoration(
-                    //maybe delete const
-                    gradient: LinearGradient(
-                      begin: Alignment(-0.00, -6.00),
-                      end: Alignment(0, 1.5),
-                      colors: [
-                        Color(0xFF342D68),
-                        Color(0xFF352D68),
-                        Color(0x00352D68)
-                      ],
-                    ),
-                  ),
-                  // ignore: prefer_const_constructors
-                  child: Column(
-                    children: const [
-                      SizedBox(
-                        height: 20,
-                      ),
-                      mainHeader(
-                        title: '',
-                      ),
-
-                      //Balance Area
-
-                      //End of Balance Area
-
-                      //Choose Chart Area
-
-                      //End of Choose Chart Area
-
-                      //Expenses Over Time Chart
-
-                      //End of Expenses over Time Chart
-
-                      //Expenses Title
-
-                      //End of Expenses Title
-
-                      //Expenses
-
-                      //End of Expenses
-
-                      //View more expenses
-
-                      //End of View more expenses
-
-                      //Chatbot button
-
-                      //End of Chatbot button
-
-                      //Navbar
-
-                      //End of navbar
-                    ],
-                  )));
-        });
+    return AlertDialog(
+        title: Text('تسجيل الخروج',
+            textAlign: TextAlign.center,
+            style: GoogleFonts.getFont(
+              "Noto Sans Arabic",
+              fontSize: 25,
+              color: Color.fromARGB(255, 192, 84, 84),
+              fontWeight: FontWeight.w400,
+            )),
+        content: Text('هل أنت متأكد من تسجيل الخروج؟',
+            textAlign: TextAlign.center,
+            style: GoogleFonts.getFont(
+              "Noto Sans Arabic",
+              fontSize: 17,
+              color: Color.fromARGB(255, 201, 138, 138),
+              fontWeight: FontWeight.w400,
+            )),
+        backgroundColor: Color.fromARGB(174, 56, 56, 56),
+        shape: RoundedRectangleBorder(
+          side: BorderSide(width: 1, color: Color(0xFFC05454)),
+          borderRadius: BorderRadius.circular(20),
+        ),
+        actions: [
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Color.fromARGB(195, 255, 255, 255),
+            ),
+            child: Text("إلغاء",
+                textAlign: TextAlign.center,
+                style: GoogleFonts.getFont(
+                  "Noto Sans Arabic",
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                )),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Color.fromARGB(195, 255, 255, 255),
+            ),
+            child: Text("خروج",
+                textAlign: TextAlign.center,
+                style: GoogleFonts.getFont(
+                  "Noto Sans Arabic",
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                )),
+            onPressed: () async {
+            ViewModelSignOut().signOut();
+              
+                 Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) =>  ViewSignIn()),
+  );
+            },
+          )
+        ],
+        actionsAlignment: MainAxisAlignment.center);
   }
 }
