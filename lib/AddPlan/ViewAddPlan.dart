@@ -1196,7 +1196,7 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                 });
                           }),
                       SizedBox(
-                        height: 8,
+                        height: 50,
                       ),
                     ],
                   ),
