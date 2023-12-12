@@ -2,7 +2,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:namaagp/NavigationBar/NavigationBar.dart';
+import 'package:namaagp/AppPasscode/ViewAppPasscode.dart';
 import 'package:namaagp/Splash/ViewSplash.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 //import 'namaagp/lib/SignUp/ViewModelSignUp.dart';
@@ -15,6 +15,11 @@ main() async {
     anonKey:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJwd3F4bmRsaGRpcWtyZWppZ3NlIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTMwNjY4NDQsImV4cCI6MjAwODY0Mjg0NH0.qlIR6KNotfLwl30HsVSUW9M3smblYaYxtk_D7W2L_EU',
   authCallbackUrlHostname: 'login-callback',
   );
+
+  
+// final supabase = SupabaseClient('https://rpwqxndlhdiqkrejigse.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJwd3F4bmRsaGRpcWtyZWppZ3NlIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTMwNjY4NDQsImV4cCI6MjAwODY0Mjg0NH0.qlIR6KNotfLwl30HsVSUW9M3smblYaYxtk_D7W2L_EU');
+  
+// final user = supabase.auth.currentUser;
   runApp(const MyApp());
   
   
@@ -79,17 +84,22 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future<String> splashNavigate() async {
-    final supabase = await Supabase.instance.client;
-    final Session? session = supabase.auth.currentSession;
+    final supabase = await SupabaseClient('https://rpwqxndlhdiqkrejigse.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJwd3F4bmRsaGRpcWtyZWppZ3NlIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTMwNjY4NDQsImV4cCI6MjAwODY0Mjg0NH0.qlIR6KNotfLwl30HsVSUW9M3smblYaYxtk_D7W2L_EU');
+            final user = await supabase.auth.currentSession;
     await Future.delayed(const Duration(milliseconds: 5)).then((value) {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
           builder: (BuildContext context) {
-            if(session == null)
-              return ViewSplash();//NavigationBarApp();//viewChat();//ViewExplorePage();
-            else
-              return NavigationBarApp();
+            
+            if(user==null) {
+              return const ViewSplash();//NavigationBarApp();//viewChat();//ViewExplorePage();
+            } else {
+              return const ViewAppPasscode();
+            }
+            
+
+            //if(user==)
           },
         ),
       );

@@ -37,8 +37,8 @@ class AccountButton extends StatelessWidget {
         //this if statement changes the purpose or the destination of the button
         switch (type.toLowerCase()) {
           case 'signup':
-            int completed =await signupObj.signUp(name.text, emailAddress.text, pin.text, validationKey,);
-            if (completed == 0) {
+            String completed =await signupObj.signUp(name.text, emailAddress.text, pin.text, validationKey,);
+            if (completed == '0') {
               Navigator.push(
               context,
               MaterialPageRoute(
@@ -51,8 +51,8 @@ class AccountButton extends StatelessWidget {
               //       builder: (context) => ViewOTPPage(
               //           emailAddress: emailAddress.text, type: 'SignIn')),
               // );
-            } else if (completed == 2) {
-              Signuperror(context);
+            } else {
+              Signuperror(context, completed);
             }
 
             
@@ -233,7 +233,7 @@ Future<void> loginerror(BuildContext context) {
       });
 }
 @override
-Future<void> Signuperror(BuildContext context) {
+Future<void> Signuperror(BuildContext context, String errorMessage) {
   return showDialog(
       context: context,
       barrierDismissible: false, // user must tap button!
