@@ -50,11 +50,8 @@ String? currentEmail() {
         break;
 
         case 'retrievePassword':
-
-        
         Navigator.push(context,MaterialPageRoute(builder: (context) =>  ViewupdateSupabasePassword()),);
-                      print('reached retrieve password in navigator');
-
+                      
                       
         break;
 

@@ -166,30 +166,6 @@ class _resetDataPageState extends State<resetDataPage> {
     );
   }
 
-// String validateResetToken() {
-//   if (resetToken.text.isEmpty) {
-//     return 'يرجى إدخال رمز إعادة التعيين';
-//   }
-//   if (resetToken.text != widget.otp) {
-//     return 'خطأ في رمز إعادة التعيين';
-    
-//   }
-//   print("done");
-//   return' ';
-  
-// }
-
-  //   String  validateResetToken() {
-  // //   if (value.isEmpty) {
-  // //     return false;
-  // //   }
-  // //   if (value != otp) {
-  // //     // Show an error message or take appropriate action
-  // //     print('error otp');
-  // //     return false;
-  // //   }
-  // //   // Add additional validation logic if needed
-  // //   return true;
   }
 
 
