@@ -6,11 +6,10 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 final supabaseClient = SupabaseClient(
     'https://rpwqxndlhdiqkrejigse.supabase.co',
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJwd3F4bmRsaGRpcWtyZWppZ3NlIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTMwNjY4NDQsImV4cCI6MjAwODY0Mjg0NH0.qlIR6KNotfLwl30HsVSUW9M3smblYaYxtk_D7W2L_EU");
-
-String? getCurrentUserEmail() {
-  final currentUser = supabaseClient.auth.currentUser;
-  return currentUser?.email;
-}
+String? currentEmail() {
+      final String? cemail = AuthenticationService.currentUser?.email;
+      return cemail;
+    }
 
 Future<List<Map<String, dynamic>>> fetchData() async {
   final response = await supabaseClient.from('savingPlan').select();
@@ -35,12 +34,12 @@ class ViewModelAddPlan extends BaseViewModel {
       'endDate': enddate,
       'goal': goal,
       'goalName': goalName
-      ,'emailAddress' : getCurrentUserEmail
+       ,'emailAddress' : currentEmail()?.toString() 
     });
   }
 
   Future<void> deletePlan() async {
     await supabaseClient.from('savingPlan').delete()
-    .match({ 'emailAddress': getCurrentUserEmail() });
+    .match({ 'emailAddress' : currentEmail()?.toString()  });
   }
 }
