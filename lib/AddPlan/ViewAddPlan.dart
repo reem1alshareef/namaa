@@ -380,207 +380,283 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                       },
                     ),
                   ),
-                  Positioned(
-                    bottom: 160,
-                    left: 70,
-                    height: 60,
-                    child: GestureDetector(
-                      onTap: () => showModalBottomSheet(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30.0),
-                          ),
-                          backgroundColor: Color(0xFF302A56),
-                          context: context,
-                          builder: (context) {
-                            return StatefulBuilder(
-                              builder: (BuildContext context,
-                                  StateSetter setModalState) {
-                                return Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: <Widget>[
-                                      Container(
-                                        margin: EdgeInsets.only(bottom: 20),
-                                      ),
-                                      Container(
-                                        //margin: EdgeInsets.only(bottom: 20),
-                                        width: 70,
-                                        height: 5.5,
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(30.0),
-                                          color: Color.fromARGB(
-                                              132, 217, 217, 217),
+                  Row(
+                    children: [
+                      SizedBox(
+                        width: 260,
+                      ),
+                      GestureDetector(
+                        onTap: () => showModalBottomSheet(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30.0),
+                            ),
+                            backgroundColor: Color(0xFF302A56),
+                            context: context,
+                            builder: (context) {
+                              return StatefulBuilder(
+                                builder: (BuildContext context,
+                                    StateSetter setModalState) {
+                                  return Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: <Widget>[
+                                        Container(
+                                          margin: EdgeInsets.only(bottom: 20),
                                         ),
-                                      ),
-                                      ListTile(
-                                        //leading: new Icon(Icons.photo),
-                                        title: new Text('خطة إدخار جديدة',
-                                            textAlign: TextAlign.center,
-                                            style: GoogleFonts.getFont(
-                                                "Noto Sans Arabic",
-                                                fontSize: 24,
-                                                fontWeight: FontWeight.w400,
-                                                height: 1.5,
-                                                textStyle: const TextStyle(
-                                                    color: Color(0xFFD0CDEF)))),
-                                      ),
-                                      Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Stack(
-                                              alignment: Alignment.center,
-                                              children: [
-                                                SizedBox(
-                                                  width: 75,
-                                                ),
-                                                Container(
-                                                  width: 200,
-                                                  height: 43,
-                                                  padding:
-                                                      const EdgeInsets.all(10),
-                                                  decoration: ShapeDecoration(
-                                                    color: Color.fromARGB(
-                                                        151, 53, 45, 104),
-                                                    shape:
-                                                        RoundedRectangleBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10),
+                                        Container(
+                                          //margin: EdgeInsets.only(bottom: 20),
+                                          width: 70,
+                                          height: 5.5,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(30.0),
+                                            color: Color.fromARGB(
+                                                132, 217, 217, 217),
+                                          ),
+                                        ),
+                                        ListTile(
+                                          //leading: new Icon(Icons.photo),
+                                          title: new Text('خطة إدخار جديدة',
+                                              textAlign: TextAlign.center,
+                                              style: GoogleFonts.getFont(
+                                                  "Noto Sans Arabic",
+                                                  fontSize: 24,
+                                                  fontWeight: FontWeight.w400,
+                                                  height: 1.5,
+                                                  textStyle: const TextStyle(
+                                                      color: Color(0xFFD0CDEF)))),
+                                        ),
+                                        Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Stack(
+                                                alignment: Alignment.center,
+                                                children: [
+                                                  SizedBox(
+                                                    width: 75,
+                                                  ),
+                                                  Container(
+                                                    width: 200,
+                                                    height: 43,
+                                                    padding:
+                                                        const EdgeInsets.all(10),
+                                                    decoration: ShapeDecoration(
+                                                      color: Color.fromARGB(
+                                                          151, 53, 45, 104),
+                                                      shape:
+                                                          RoundedRectangleBorder(
+                                                        borderRadius:
+                                                            BorderRadius.circular(
+                                                                10),
+                                                      ),
                                                     ),
                                                   ),
-                                                ),
-                                                SizedBox(
-                                                    width: 200.0,
-                                                    child: TextFormField(
-                                                        onChanged: (value) {
-                                                          setState(() {
-                                                            goalName = value;
-                                                            print("$goalName");
-                                                          });
-                                                        },
-                                                        textAlign: TextAlign
-                                                            .center,
-                                                        textDirection:
-                                                            TextDirection.rtl,
-                                                        cursorColor: Colors
-                                                            .white,
-                                                        cursorHeight: 25,
-                                                        decoration:
-                                                            InputDecoration(
-                                                                border:
-                                                                    InputBorder
-                                                                        .none),
-                                                        style: GoogleFonts.getFont(
-                                                            "Noto Sans Arabic",
-                                                            textStyle: TextStyle(
-                                                                fontSize: 20,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w400,
-                                                                color: Colors
-                                                                    .white))))
-                                              ],
-                                            ),
-                                            Text(' :عنوان الخطة',
-                                                textAlign: TextAlign.center,
-                                                style: GoogleFonts.getFont(
-                                                    "Noto Sans Arabic",
-                                                    fontSize: 20,
-                                                    fontWeight: FontWeight.w400,
-                                                    height: 1.5,
-                                                    textStyle: const TextStyle(
-                                                        color: Color(
-                                                            0xFFD0CDEF)))),
-                                          ]),
-                                      Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Stack(
-                                              alignment: Alignment.center,
-                                              children: [
-                                                SizedBox(
-                                                  width: 75,
-                                                ),
-                                                Container(
-                                                  width: 200,
-                                                  height: 45,
-                                                  padding:
-                                                      const EdgeInsets.all(10),
-                                                  decoration: ShapeDecoration(
-                                                    color: Color.fromARGB(
-                                                        151, 53, 45, 104),
-                                                    shape:
-                                                        RoundedRectangleBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10),
+                                                  SizedBox(
+                                                      width: 200.0,
+                                                      child: TextFormField(
+                                                          onChanged: (value) {
+                                                            setState(() {
+                                                              goalName = value;
+                                                              print("$goalName");
+                                                            });
+                                                          },
+                                                          textAlign: TextAlign
+                                                              .center,
+                                                          textDirection:
+                                                              TextDirection.rtl,
+                                                          cursorColor: Colors
+                                                              .white,
+                                                          cursorHeight: 25,
+                                                          decoration:
+                                                              InputDecoration(
+                                                                  border:
+                                                                      InputBorder
+                                                                          .none),
+                                                          style: GoogleFonts.getFont(
+                                                              "Noto Sans Arabic",
+                                                              textStyle: TextStyle(
+                                                                  fontSize: 20,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400,
+                                                                  color: Colors
+                                                                      .white))))
+                                                ],
+                                              ),
+                                              Text(' :عنوان الخطة',
+                                                  textAlign: TextAlign.center,
+                                                  style: GoogleFonts.getFont(
+                                                      "Noto Sans Arabic",
+                                                      fontSize: 20,
+                                                      fontWeight: FontWeight.w400,
+                                                      height: 1.5,
+                                                      textStyle: const TextStyle(
+                                                          color: Color(
+                                                              0xFFD0CDEF)))),
+                                            ]),
+                                        Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Stack(
+                                                alignment: Alignment.center,
+                                                children: [
+                                                  SizedBox(
+                                                    width: 75,
+                                                  ),
+                                                  Container(
+                                                    width: 200,
+                                                    height: 45,
+                                                    padding:
+                                                        const EdgeInsets.all(10),
+                                                    decoration: ShapeDecoration(
+                                                      color: Color.fromARGB(
+                                                          151, 53, 45, 104),
+                                                      shape:
+                                                          RoundedRectangleBorder(
+                                                        borderRadius:
+                                                            BorderRadius.circular(
+                                                                10),
+                                                      ),
                                                     ),
                                                   ),
-                                                ),
-                                                SizedBox(
-                                                    width: 150.0,
-                                                    child: TextField(
-                                                        onChanged: (value) {
-                                                          setState(() {
-                                                            goal = value;
-                                                            print("$goal");
-                                                          });
-                                                          //value is entered text after ENTER press
-                                                          //you can also call any function here or make setState() to assign value to other variable
-                                                        },
-                                                        textAlign: TextAlign
-                                                            .center,
-                                                        textDirection:
-                                                            TextDirection.rtl,
-                                                        cursorColor: Colors
-                                                            .white,
-                                                        cursorHeight: 25,
-                                                        decoration:
-                                                            InputDecoration(
-                                                                border:
-                                                                    InputBorder
-                                                                        .none),
-                                                        //  textAlign: TextAlign.right,
-
-                                                        style: TextStyle(fontFamily: "Noto Sans Arabic", fontSize: 20, fontWeight: FontWeight.w400, color: Colors.white),
-                                                        keyboardType: TextInputType.number,
-                                                        inputFormatters: <TextInputFormatter>[
-                                                          FilteringTextInputFormatter
-                                                              .digitsOnly
-                                                        ])
-
-                                                    //                                             TextFormField(
-                                                    //                                               textAlign: TextAlign.center,
-                                                    //                                               textDirection: TextDirection.rtl,
-                                                    //                                               cursorColor: Colors.white,
-                                                    //                                               cursorHeight: 25,
-                                                    //                                               decoration: InputDecoration(
-                                                    // border:InputBorder.none),
-
-                                                    //                                               style:GoogleFonts.getFont(
-                                                    //                                                 "Noto Sans Arabic", textStyle: TextStyle(fontSize:25, fontWeight: FontWeight.w400, color: Colors.white))),
-
+                                                  SizedBox(
+                                                      width: 150.0,
+                                                      child: TextField(
+                                                          onChanged: (value) {
+                                                            setState(() {
+                                                              goal = value;
+                                                              print("$goal");
+                                                            });
+                                                            //value is entered text after ENTER press
+                                                            //you can also call any function here or make setState() to assign value to other variable
+                                                          },
+                                                          textAlign: TextAlign
+                                                              .center,
+                                                          textDirection:
+                                                              TextDirection.rtl,
+                                                          cursorColor: Colors
+                                                              .white,
+                                                          cursorHeight: 25,
+                                                          decoration:
+                                                              InputDecoration(
+                                                                  border:
+                                                                      InputBorder
+                                                                          .none),
+                                                          //  textAlign: TextAlign.right,
+                      
+                                                          style: TextStyle(fontFamily: "Noto Sans Arabic", fontSize: 20, fontWeight: FontWeight.w400, color: Colors.white),
+                                                          keyboardType: TextInputType.number,
+                                                          inputFormatters: <TextInputFormatter>[
+                                                            FilteringTextInputFormatter
+                                                                .digitsOnly
+                                                          ])
+                      
+                                                      //                                             TextFormField(
+                                                      //                                               textAlign: TextAlign.center,
+                                                      //                                               textDirection: TextDirection.rtl,
+                                                      //                                               cursorColor: Colors.white,
+                                                      //                                               cursorHeight: 25,
+                                                      //                                               decoration: InputDecoration(
+                                                      // border:InputBorder.none),
+                      
+                                                      //                                               style:GoogleFonts.getFont(
+                                                      //                                                 "Noto Sans Arabic", textStyle: TextStyle(fontSize:25, fontWeight: FontWeight.w400, color: Colors.white))),
+                      
+                                                      )
+                                                ],
+                                              ),
+                                              Text(' : مبلغ الإدخار',
+                                                  textAlign: TextAlign.center,
+                                                  style: GoogleFonts.getFont(
+                                                      "Noto Sans Arabic",
+                                                      fontSize: 20,
+                                                      fontWeight: FontWeight.w400,
+                                                      height: 1.5,
+                                                      textStyle: const TextStyle(
+                                                          color: Color(
+                                                              0xFFD0CDEF)))),
+                                            ]),
+                                        Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Stack(
+                                                  alignment: Alignment.center,
+                                                  children: [
+                                                    SizedBox(
+                                                      width: 75,
+                                                    ),
+                                                    Container(
+                                                      width: 200,
+                                                      height: 50,
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              10),
+                                                      decoration: ShapeDecoration(
+                                                        color: Color.fromARGB(
+                                                            151, 53, 45, 104),
+                                                        shape:
+                                                            RoundedRectangleBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(10),
+                                                        ),
+                                                      ),
+                                                    ),
+                      
+                                                    //here
+                                                    SizedBox(
+                                                      width: 200.0,
+                                                      height: 57,
+                                                      child: TextButton(
+                                                          child: Text('$date',
+                                                              textAlign: TextAlign
+                                                                  .center,
+                                                              style: GoogleFonts.getFont(
+                                                                  "Noto Sans Arabic",
+                                                                  fontSize: 20,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400,
+                                                                  height: 1.5,
+                                                                  textStyle: const TextStyle(
+                                                                      color: Color
+                                                                          .fromARGB(
+                                                                              255,
+                                                                              255,
+                                                                              255,
+                                                                              255)))),
+                                                          onPressed: () {
+                                                            setState(() {
+                                                              showdatepicker(
+                                                                context,
+                                                              )(
+                                                                onDateChanged:
+                                                                    (value) {
+                                                                  date = value;
+                                                                },
+                                                              );
+                                                            });
+                                                          }),
                                                     )
-                                              ],
-                                            ),
-                                            Text(' : مبلغ الإدخار',
-                                                textAlign: TextAlign.center,
-                                                style: GoogleFonts.getFont(
-                                                    "Noto Sans Arabic",
-                                                    fontSize: 20,
-                                                    fontWeight: FontWeight.w400,
-                                                    height: 1.5,
-                                                    textStyle: const TextStyle(
-                                                        color: Color(
-                                                            0xFFD0CDEF)))),
-                                          ]),
-                                      Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Stack(
+                                                  ]),
+                                              Text(' :بداية الإدخار ',
+                                                  textAlign: TextAlign.center,
+                                                  style: GoogleFonts.getFont(
+                                                      "Noto Sans Arabic",
+                                                      fontSize: 20,
+                                                      fontWeight: FontWeight.w400,
+                                                      height: 1.5,
+                                                      textStyle: const TextStyle(
+                                                          color: Color(
+                                                              0xFFD0CDEF)))),
+                                            ]),
+                                        Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Stack(
                                                 alignment: Alignment.center,
                                                 children: [
                                                   SizedBox(
@@ -590,28 +666,25 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                                     width: 200,
                                                     height: 50,
                                                     padding:
-                                                        const EdgeInsets.all(
-                                                            10),
+                                                        const EdgeInsets.all(10),
                                                     decoration: ShapeDecoration(
                                                       color: Color.fromARGB(
                                                           151, 53, 45, 104),
                                                       shape:
                                                           RoundedRectangleBorder(
                                                         borderRadius:
-                                                            BorderRadius
-                                                                .circular(10),
+                                                            BorderRadius.circular(
+                                                                10),
                                                       ),
                                                     ),
                                                   ),
-
-                                                  //here
                                                   SizedBox(
                                                     width: 200.0,
-                                                    height: 57,
+                                                    height: 55,
                                                     child: TextButton(
-                                                        child: Text('$date',
-                                                            textAlign: TextAlign
-                                                                .center,
+                                                        child: Text('$date2',
+                                                            textAlign:
+                                                                TextAlign.center,
                                                             style: GoogleFonts.getFont(
                                                                 "Noto Sans Arabic",
                                                                 fontSize: 20,
@@ -627,20 +700,39 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                                                             255,
                                                                             255)))),
                                                         onPressed: () {
-                                                          setState(() {
-                                                            showdatepicker(
-                                                              context,
-                                                            )(
-                                                              onDateChanged:
-                                                                  (value) {
-                                                                date = value;
-                                                              },
-                                                            );
-                                                          });
+                                                          showdatepicker2(
+                                                              context)(
+                                                            onDateChanged:
+                                                                (value) {
+                                                              date2 = value;
+                                                            },
+                                                          );
                                                         }),
                                                   )
-                                                ]),
-                                            Text(' :بداية الإدخار ',
+                                                ],
+                                              ),
+                                              Text(' :نهاية الإدخار',
+                                                  textAlign: TextAlign.center,
+                                                  style: GoogleFonts.getFont(
+                                                      "Noto Sans Arabic",
+                                                      fontSize: 20,
+                                                      fontWeight: FontWeight.w400,
+                                                      height: 1.5,
+                                                      textStyle: const TextStyle(
+                                                          color: Color(
+                                                              0xFFD0CDEF)))),
+                                            ]),
+                                        SizedBox(
+                                          height: 20,
+                                        ),
+                                        FloatingActionButton.extended(
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.all(
+                                                Radius.circular(40.0),
+                                              ),
+                                            ),
+                                            backgroundColor: Color(0xFF3A3462),
+                                            label: Text(' إضافة خطة إدخار',
                                                 textAlign: TextAlign.center,
                                                 style: GoogleFonts.getFont(
                                                     "Noto Sans Arabic",
@@ -648,108 +740,111 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                                     fontWeight: FontWeight.w400,
                                                     height: 1.5,
                                                     textStyle: const TextStyle(
-                                                        color: Color(
-                                                            0xFFD0CDEF)))),
-                                          ]),
-                                      Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Stack(
-                                              alignment: Alignment.center,
-                                              children: [
-                                                SizedBox(
-                                                  width: 75,
-                                                ),
-                                                Container(
-                                                  width: 200,
-                                                  height: 50,
-                                                  padding:
-                                                      const EdgeInsets.all(10),
-                                                  decoration: ShapeDecoration(
-                                                    color: Color.fromARGB(
-                                                        151, 53, 45, 104),
-                                                    shape:
-                                                        RoundedRectangleBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10),
-                                                    ),
-                                                  ),
-                                                ),
-                                                SizedBox(
-                                                  width: 200.0,
-                                                  height: 55,
-                                                  child: TextButton(
-                                                      child: Text('$date2',
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                          style: GoogleFonts.getFont(
+                                                        color:
+                                                            Color(0xFFD0CDEF)))),
+                                            onPressed: () {
+                                              if (date == '') {
+                                                showDialog(
+                                                    context: context,
+                                                    builder: (context) {
+                                                      return AlertDialog(
+                                                          backgroundColor: Color
+                                                              .fromARGB(174, 56,
+                                                                  56, 56),
+                                                          shape:
+                                                              RoundedRectangleBorder(
+                                                            side: BorderSide(
+                                                                width: 1,
+                                                                color: Color(
+                                                                    0xFFC05454)),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(20),
+                                                          ),
+                                                          title: Text(
+                                                            'تنبيه',
+                                                            textAlign:
+                                                                TextAlign.center,
+                                                            style: GoogleFonts
+                                                                .getFont(
                                                               "Noto Sans Arabic",
-                                                              fontSize: 20,
+                                                              fontSize: 25,
+                                                              color:
+                                                                  Color.fromARGB(
+                                                                      255,
+                                                                      192,
+                                                                      84,
+                                                                      84),
                                                               fontWeight:
-                                                                  FontWeight
-                                                                      .w400,
-                                                              height: 1.5,
-                                                              textStyle: const TextStyle(
-                                                                  color: Color
-                                                                      .fromARGB(
-                                                                          255,
-                                                                          255,
-                                                                          255,
-                                                                          255)))),
-                                                      onPressed: () {
-                                                        showdatepicker2(
-                                                            context)(
-                                                          onDateChanged:
-                                                              (value) {
-                                                            date2 = value;
-                                                          },
-                                                        );
-                                                      }),
-                                                )
-                                              ],
-                                            ),
-                                            Text(' :نهاية الإدخار',
-                                                textAlign: TextAlign.center,
-                                                style: GoogleFonts.getFont(
-                                                    "Noto Sans Arabic",
-                                                    fontSize: 20,
-                                                    fontWeight: FontWeight.w400,
-                                                    height: 1.5,
-                                                    textStyle: const TextStyle(
-                                                        color: Color(
-                                                            0xFFD0CDEF)))),
-                                          ]),
-                                      SizedBox(
-                                        height: 20,
-                                      ),
-                                      FloatingActionButton.extended(
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.all(
-                                              Radius.circular(40.0),
-                                            ),
-                                          ),
-                                          backgroundColor: Color(0xFF3A3462),
-                                          label: Text(' إضافة خطة إدخار',
-                                              textAlign: TextAlign.center,
-                                              style: GoogleFonts.getFont(
-                                                  "Noto Sans Arabic",
-                                                  fontSize: 20,
-                                                  fontWeight: FontWeight.w400,
-                                                  height: 1.5,
-                                                  textStyle: const TextStyle(
-                                                      color:
-                                                          Color(0xFFD0CDEF)))),
-                                          onPressed: () {
-                                            if (date == '') {
-                                              showDialog(
+                                                                  FontWeight.w400,
+                                                            ),
+                                                          ),
+                                                          content: Text(
+                                                              'الرجاء تحديد تاريخ بداية الإدخار',
+                                                              textAlign: TextAlign
+                                                                  .center,
+                                                              style: GoogleFonts
+                                                                  .getFont(
+                                                                "Noto Sans Arabic",
+                                                                fontSize: 17,
+                                                                color: Color
+                                                                    .fromARGB(
+                                                                        255,
+                                                                        201,
+                                                                        138,
+                                                                        138),
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400,
+                                                              )),
+                                                          actions: [
+                                                            ElevatedButton(
+                                                                style:
+                                                                    ElevatedButton
+                                                                        .styleFrom(
+                                                                  backgroundColor:
+                                                                      Color
+                                                                          .fromARGB(
+                                                                              255,
+                                                                              157,
+                                                                              77,
+                                                                              86),
+                                                                ),
+                                                                child: Text(
+                                                                    'موافق',
+                                                                    textAlign:
+                                                                        TextAlign
+                                                                            .center,
+                                                                    style: GoogleFonts
+                                                                        .getFont(
+                                                                      "Noto Sans Arabic",
+                                                                      fontSize:
+                                                                          16,
+                                                                      color: Colors
+                                                                          .white,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w400,
+                                                                    )),
+                                                                onPressed: () {
+                                                                  Navigator.of(
+                                                                          context)
+                                                                      .pop();
+                                                                }),
+                                                          ],
+                                                          actionsAlignment:
+                                                              MainAxisAlignment
+                                                                  .center);
+                                                    });
+                                              }
+                                              if (goalName == '') {
+                                                showDialog(
                                                   context: context,
                                                   builder: (context) {
                                                     return AlertDialog(
-                                                        backgroundColor: Color
-                                                            .fromARGB(174, 56,
-                                                                56, 56),
+                                                        backgroundColor:
+                                                            Color.fromARGB(
+                                                                174, 56, 56, 56),
                                                         shape:
                                                             RoundedRectangleBorder(
                                                           side: BorderSide(
@@ -764,384 +859,292 @@ class _ViewAddPlanState extends State<ViewAddPlan> {
                                                           'تنبيه',
                                                           textAlign:
                                                               TextAlign.center,
-                                                          style: GoogleFonts
-                                                              .getFont(
+                                                          style:
+                                                              GoogleFonts.getFont(
                                                             "Noto Sans Arabic",
                                                             fontSize: 25,
-                                                            color:
-                                                                Color.fromARGB(
-                                                                    255,
-                                                                    192,
-                                                                    84,
-                                                                    84),
+                                                            color: Color.fromARGB(
+                                                                255, 192, 84, 84),
                                                             fontWeight:
                                                                 FontWeight.w400,
                                                           ),
                                                         ),
                                                         content: Text(
-                                                            'الرجاء تحديد تاريخ بداية الإدخار',
-                                                            textAlign: TextAlign
-                                                                .center,
+                                                            ' الرجاء كتابة عنوان الخطة',
+                                                            textAlign:
+                                                                TextAlign.center,
                                                             style: GoogleFonts
                                                                 .getFont(
                                                               "Noto Sans Arabic",
                                                               fontSize: 17,
-                                                              color: Color
-                                                                  .fromARGB(
+                                                              color:
+                                                                  Color.fromARGB(
                                                                       255,
                                                                       201,
                                                                       138,
                                                                       138),
                                                               fontWeight:
-                                                                  FontWeight
-                                                                      .w400,
+                                                                  FontWeight.w400,
                                                             )),
                                                         actions: [
                                                           ElevatedButton(
-                                                              style:
-                                                                  ElevatedButton
-                                                                      .styleFrom(
-                                                                backgroundColor:
-                                                                    Color
-                                                                        .fromARGB(
-                                                                            255,
-                                                                            157,
-                                                                            77,
-                                                                            86),
-                                                              ),
-                                                              child: Text(
-                                                                  'موافق',
-                                                                  textAlign:
-                                                                      TextAlign
-                                                                          .center,
-                                                                  style: GoogleFonts
-                                                                      .getFont(
-                                                                    "Noto Sans Arabic",
-                                                                    fontSize:
-                                                                        16,
-                                                                    color: Colors
-                                                                        .white,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400,
-                                                                  )),
-                                                              onPressed: () {
-                                                                Navigator.of(
-                                                                        context)
-                                                                    .pop();
-                                                              }),
+                                                            style: ElevatedButton
+                                                                .styleFrom(
+                                                              backgroundColor:
+                                                                  Color.fromARGB(
+                                                                      255,
+                                                                      157,
+                                                                      77,
+                                                                      86),
+                                                            ),
+                                                            child: Text('موافق',
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .center,
+                                                                style: GoogleFonts
+                                                                    .getFont(
+                                                                  "Noto Sans Arabic",
+                                                                  fontSize: 16,
+                                                                  color: Colors
+                                                                      .white,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400,
+                                                                )),
+                                                            onPressed: () {
+                                                              Navigator.of(
+                                                                      context)
+                                                                  .pop();
+                                                            },
+                                                          ),
                                                         ],
                                                         actionsAlignment:
                                                             MainAxisAlignment
                                                                 .center);
-                                                  });
-                                            }
-                                            if (goalName == '') {
-                                              showDialog(
-                                                context: context,
-                                                builder: (context) {
-                                                  return AlertDialog(
-                                                      backgroundColor:
-                                                          Color.fromARGB(
-                                                              174, 56, 56, 56),
-                                                      shape:
-                                                          RoundedRectangleBorder(
-                                                        side: BorderSide(
-                                                            width: 1,
-                                                            color: Color(
-                                                                0xFFC05454)),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(20),
-                                                      ),
-                                                      title: Text(
-                                                        'تنبيه',
-                                                        textAlign:
-                                                            TextAlign.center,
-                                                        style:
-                                                            GoogleFonts.getFont(
-                                                          "Noto Sans Arabic",
-                                                          fontSize: 25,
-                                                          color: Color.fromARGB(
-                                                              255, 192, 84, 84),
-                                                          fontWeight:
-                                                              FontWeight.w400,
+                                                  },
+                                                );
+                                              }
+                                              if (goal == '') {
+                                                showDialog(
+                                                  context: context,
+                                                  builder: (context) {
+                                                    return AlertDialog(
+                                                        backgroundColor:
+                                                            Color.fromARGB(
+                                                                174, 56, 56, 56),
+                                                        shape:
+                                                            RoundedRectangleBorder(
+                                                          side: BorderSide(
+                                                              width: 1,
+                                                              color: Color(
+                                                                  0xFFC05454)),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(20),
                                                         ),
-                                                      ),
-                                                      content: Text(
-                                                          ' الرجاء كتابة عنوان الخطة',
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                          style: GoogleFonts
-                                                              .getFont(
-                                                            "Noto Sans Arabic",
-                                                            fontSize: 17,
-                                                            color:
-                                                                Color.fromARGB(
-                                                                    255,
-                                                                    201,
-                                                                    138,
-                                                                    138),
-                                                            fontWeight:
-                                                                FontWeight.w400,
-                                                          )),
-                                                      actions: [
-                                                        ElevatedButton(
-                                                          style: ElevatedButton
-                                                              .styleFrom(
-                                                            backgroundColor:
-                                                                Color.fromARGB(
-                                                                    255,
-                                                                    157,
-                                                                    77,
-                                                                    86),
+                                                        title: Text('تنبيه',
+                                                            textAlign:
+                                                                TextAlign.center,
+                                                            style: GoogleFonts
+                                                                .getFont(
+                                                              "Noto Sans Arabic",
+                                                              fontSize: 25,
+                                                              color:
+                                                                  Color.fromARGB(
+                                                                      255,
+                                                                      192,
+                                                                      84,
+                                                                      84),
+                                                              fontWeight:
+                                                                  FontWeight.w400,
+                                                            )),
+                                                        content: Text(
+                                                            ' الرجاء تحديد مبلغ الإدخار ',
+                                                            textAlign:
+                                                                TextAlign.center,
+                                                            style: GoogleFonts
+                                                                .getFont(
+                                                              "Noto Sans Arabic",
+                                                              fontSize: 17,
+                                                              color:
+                                                                  Color.fromARGB(
+                                                                      255,
+                                                                      201,
+                                                                      138,
+                                                                      138),
+                                                              fontWeight:
+                                                                  FontWeight.w400,
+                                                            )),
+                                                        actions: [
+                                                          ElevatedButton(
+                                                            style: ElevatedButton
+                                                                .styleFrom(
+                                                              backgroundColor:
+                                                                  Color.fromARGB(
+                                                                      255,
+                                                                      157,
+                                                                      77,
+                                                                      86),
+                                                            ),
+                                                            child: Text('موافق',
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .center,
+                                                                style: GoogleFonts
+                                                                    .getFont(
+                                                                  "Noto Sans Arabic",
+                                                                  fontSize: 16,
+                                                                  color: Colors
+                                                                      .white,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400,
+                                                                )),
+                                                            onPressed: () {
+                                                              Navigator.of(
+                                                                      context)
+                                                                  .pop();
+                                                            },
                                                           ),
-                                                          child: Text('موافق',
-                                                              textAlign:
-                                                                  TextAlign
-                                                                      .center,
-                                                              style: GoogleFonts
-                                                                  .getFont(
-                                                                "Noto Sans Arabic",
-                                                                fontSize: 16,
-                                                                color: Colors
-                                                                    .white,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w400,
-                                                              )),
-                                                          onPressed: () {
-                                                            Navigator.of(
-                                                                    context)
-                                                                .pop();
-                                                          },
+                                                        ],
+                                                        actionsAlignment:
+                                                            MainAxisAlignment
+                                                                .center);
+                                                  },
+                                                );
+                                              }
+                                              if (date2 == '') {
+                                                showDialog(
+                                                  context: context,
+                                                  builder: (context) {
+                                                    return AlertDialog(
+                                                        backgroundColor:
+                                                            Color.fromARGB(
+                                                                174, 56, 56, 56),
+                                                        shape:
+                                                            RoundedRectangleBorder(
+                                                          side: BorderSide(
+                                                              width: 1,
+                                                              color: Color(
+                                                                  0xFFC05454)),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(20),
                                                         ),
-                                                      ],
-                                                      actionsAlignment:
-                                                          MainAxisAlignment
-                                                              .center);
-                                                },
-                                              );
-                                            }
-                                            if (goal == '') {
-                                              showDialog(
-                                                context: context,
-                                                builder: (context) {
-                                                  return AlertDialog(
-                                                      backgroundColor:
-                                                          Color.fromARGB(
-                                                              174, 56, 56, 56),
-                                                      shape:
-                                                          RoundedRectangleBorder(
-                                                        side: BorderSide(
-                                                            width: 1,
-                                                            color: Color(
-                                                                0xFFC05454)),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(20),
-                                                      ),
-                                                      title: Text('تنبيه',
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                          style: GoogleFonts
-                                                              .getFont(
-                                                            "Noto Sans Arabic",
-                                                            fontSize: 25,
-                                                            color:
-                                                                Color.fromARGB(
-                                                                    255,
-                                                                    192,
-                                                                    84,
-                                                                    84),
-                                                            fontWeight:
-                                                                FontWeight.w400,
-                                                          )),
-                                                      content: Text(
-                                                          ' الرجاء تحديد مبلغ الإدخار ',
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                          style: GoogleFonts
-                                                              .getFont(
-                                                            "Noto Sans Arabic",
-                                                            fontSize: 17,
-                                                            color:
-                                                                Color.fromARGB(
-                                                                    255,
-                                                                    201,
-                                                                    138,
-                                                                    138),
-                                                            fontWeight:
-                                                                FontWeight.w400,
-                                                          )),
-                                                      actions: [
-                                                        ElevatedButton(
-                                                          style: ElevatedButton
-                                                              .styleFrom(
-                                                            backgroundColor:
-                                                                Color.fromARGB(
-                                                                    255,
-                                                                    157,
-                                                                    77,
-                                                                    86),
+                                                        title: Text('تنبيه',
+                                                            textAlign:
+                                                                TextAlign.center,
+                                                            style: GoogleFonts
+                                                                .getFont(
+                                                              "Noto Sans Arabic",
+                                                              fontSize: 25,
+                                                              color:
+                                                                  Color.fromARGB(
+                                                                      255,
+                                                                      192,
+                                                                      84,
+                                                                      84),
+                                                              fontWeight:
+                                                                  FontWeight.w400,
+                                                            )),
+                                                        content: Text(
+                                                            'الرجاء تحديد تاريخ نهاية الإدخار',
+                                                            textAlign:
+                                                                TextAlign.center,
+                                                            style: GoogleFonts
+                                                                .getFont(
+                                                              "Noto Sans Arabic",
+                                                              fontSize: 17,
+                                                              color:
+                                                                  Color.fromARGB(
+                                                                      255,
+                                                                      201,
+                                                                      138,
+                                                                      138),
+                                                              fontWeight:
+                                                                  FontWeight.w400,
+                                                            )),
+                                                        actions: [
+                                                          ElevatedButton(
+                                                            style: ElevatedButton
+                                                                .styleFrom(
+                                                              backgroundColor:
+                                                                  Color.fromARGB(
+                                                                      255,
+                                                                      157,
+                                                                      77,
+                                                                      86),
+                                                            ),
+                                                            child: Text('موافق',
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .center,
+                                                                style: GoogleFonts
+                                                                    .getFont(
+                                                                  "Noto Sans Arabic",
+                                                                  fontSize: 16,
+                                                                  color: Colors
+                                                                      .white,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400,
+                                                                )),
+                                                            onPressed: () {
+                                                              Navigator.of(
+                                                                      context)
+                                                                  .pop();
+                                                            },
                                                           ),
-                                                          child: Text('موافق',
-                                                              textAlign:
-                                                                  TextAlign
-                                                                      .center,
-                                                              style: GoogleFonts
-                                                                  .getFont(
-                                                                "Noto Sans Arabic",
-                                                                fontSize: 16,
-                                                                color: Colors
-                                                                    .white,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w400,
-                                                              )),
-                                                          onPressed: () {
-                                                            Navigator.of(
-                                                                    context)
-                                                                .pop();
-                                                          },
-                                                        ),
-                                                      ],
-                                                      actionsAlignment:
-                                                          MainAxisAlignment
-                                                              .center);
-                                                },
-                                              );
-                                            }
-                                            if (date2 == '') {
-                                              showDialog(
-                                                context: context,
-                                                builder: (context) {
-                                                  return AlertDialog(
-                                                      backgroundColor:
-                                                          Color.fromARGB(
-                                                              174, 56, 56, 56),
-                                                      shape:
-                                                          RoundedRectangleBorder(
-                                                        side: BorderSide(
-                                                            width: 1,
-                                                            color: Color(
-                                                                0xFFC05454)),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(20),
-                                                      ),
-                                                      title: Text('تنبيه',
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                          style: GoogleFonts
-                                                              .getFont(
-                                                            "Noto Sans Arabic",
-                                                            fontSize: 25,
-                                                            color:
-                                                                Color.fromARGB(
-                                                                    255,
-                                                                    192,
-                                                                    84,
-                                                                    84),
-                                                            fontWeight:
-                                                                FontWeight.w400,
-                                                          )),
-                                                      content: Text(
-                                                          'الرجاء تحديد تاريخ نهاية الإدخار',
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                          style: GoogleFonts
-                                                              .getFont(
-                                                            "Noto Sans Arabic",
-                                                            fontSize: 17,
-                                                            color:
-                                                                Color.fromARGB(
-                                                                    255,
-                                                                    201,
-                                                                    138,
-                                                                    138),
-                                                            fontWeight:
-                                                                FontWeight.w400,
-                                                          )),
-                                                      actions: [
-                                                        ElevatedButton(
-                                                          style: ElevatedButton
-                                                              .styleFrom(
-                                                            backgroundColor:
-                                                                Color.fromARGB(
-                                                                    255,
-                                                                    157,
-                                                                    77,
-                                                                    86),
-                                                          ),
-                                                          child: Text('موافق',
-                                                              textAlign:
-                                                                  TextAlign
-                                                                      .center,
-                                                              style: GoogleFonts
-                                                                  .getFont(
-                                                                "Noto Sans Arabic",
-                                                                fontSize: 16,
-                                                                color: Colors
-                                                                    .white,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w400,
-                                                              )),
-                                                          onPressed: () {
-                                                            Navigator.of(
-                                                                    context)
-                                                                .pop();
-                                                          },
-                                                        ),
-                                                      ],
-                                                      actionsAlignment:
-                                                          MainAxisAlignment
-                                                              .center);
-                                                },
-                                              );
-                                            } else {
-                                              ViewModelAddPlan().addPlan(
-                                                date,
-                                                date2,
-                                                goal,
-                                                goalName,
-                                              );
-
-                                              const CircularProgressIndicator();
-
-                                              Navigator.pop(context);
-                                            }
-                                          })
-                                    ]);
-                              },
-                            );
-                          }),
-                      child: Container(
-                        child: Icon(
-                          Icons.add,
-                          size: 50,
-                          color: Colors.white,
-                        ),
-                        width: 60,
-                        height: 60,
-                        decoration: ShapeDecoration(
-                          color: Color(0xFFC9C2FF),
-                          shape: OvalBorder(),
-                          shadows: [
-                            BoxShadow(
-                              color: Color(0xFFB0ACD5),
-                              blurRadius: 4,
-                              offset: Offset(0, 0),
-                              spreadRadius: 0,
-                            )
-                          ],
+                                                        ],
+                                                        actionsAlignment:
+                                                            MainAxisAlignment
+                                                                .center);
+                                                  },
+                                                );
+                                              } else {
+                                                ViewModelAddPlan().addPlan(
+                                                  date,
+                                                  date2,
+                                                  goal,
+                                                  goalName,
+                                                );
+                      
+                                                const CircularProgressIndicator();
+                      
+                                                Navigator.pop(context);
+                                              }
+                                            })
+                                      ]);
+                                },
+                              );
+                            }),
+                        child: Container(
+                          child: Icon(
+                            Icons.add,
+                            size: 50,
+                            color: Colors.white,
+                          ),
+                          width: 60,
+                          height: 60,
+                          decoration: ShapeDecoration(
+                            color: Color(0xFFC9C2FF),
+                            shape: OvalBorder(),
+                            shadows: [
+                              BoxShadow(
+                                color: Color(0xFFB0ACD5),
+                                blurRadius: 4,
+                                offset: Offset(0, 0),
+                                spreadRadius: 0,
+                              )
+                            ],
+                          ),
                         ),
                       ),
-                    ),
+                      
+                    ],
                   ),
                   SizedBox(
-                    height: 100,
+                    height: 60,
                   ),
                 ],
               ),
