@@ -5,6 +5,7 @@ import 'package:namaagp/ExplorePage/ExplorePageComponents/ExplorePageHeader.dart
 import 'package:namaagp/ExplorePage/ViewModelExplorePage.dart';
 import 'package:namaagp/ViewExpenses/ExpenseComponent.dart';
 import 'package:namaagp/ViewExpenses/ViewModelViewExpenses.dart';
+import 'package:namaagp/addToBalance/ViewAddToBalance.dart';
 import 'package:stacked/stacked.dart';
 
 class ViewExplorePage extends StatelessWidget {
@@ -59,14 +60,19 @@ class ViewExplorePage extends StatelessWidget {
                     ),
 
                     //Balance Area
-                    SizedBox(
+                    Row(
+                      //crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                      Column(children: [
+                      SizedBox(
                       width: 175,
                       height: 50,
                       child: Text.rich(
                         TextSpan(
                           children: [
                             TextSpan(
-                              text: userData[1],
+                              text: double.parse(userData[1]).floor().toString(),
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 35,
@@ -101,6 +107,44 @@ class ViewExplorePage extends StatelessWidget {
                               textStyle:
                                   const TextStyle(color: Color(0xFFA5A5B4)))),
                     ),
+                    ],),
+                    Positioned(
+                          bottom: 60,
+                          right: 20,
+                          height: 30,
+                          child: GestureDetector(
+                            onTap: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ViewAddToBalance(),
+                              ),
+                            ),
+                            child: Container(
+                              child: Icon(
+                                Icons.add,
+                                size: 18,
+                                color: Colors.white,
+                              ),
+                              width: 30,
+                              height: 30,
+                              decoration: ShapeDecoration(
+                                color: Color.fromARGB(255, 194, 255, 210),
+                                shape: OvalBorder(),
+                                shadows: [
+                                  BoxShadow(
+                                    color: Color(0xFFB0ACD5),
+                                    blurRadius: 4,
+                                    offset: Offset(0, 0),
+                                    spreadRadius: 0,
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        )
+                    ],
+                    ),
+                    
                     //End of Balance Area
 
                     //Choose Chart Area
@@ -149,7 +193,7 @@ class ViewExplorePage extends StatelessWidget {
                         //ali:,
                         scrollDirection: Axis.vertical,
                              shrinkWrap: true,
-                        itemCount: 3,//snapshot.data!.length,
+                        itemCount: snapshot.data!.length<3?snapshot.data!.length:3,//snapshot.data!.length,
                         itemBuilder: (BuildContext context, int index) {
                           return Container(
                             child: Column(children: [
@@ -169,7 +213,8 @@ class ViewExplorePage extends StatelessWidget {
                         ):SizedBox(),
                               Padding(
                           padding: const EdgeInsets.only(left: 13, right: 13),
-                          child: Expense(
+                          child: 
+                          Expense(
                               category: expenses[snapshot.data!.length-index-1]['category'],
                               date: expenses[snapshot.data!.length-index-1]['date'],
                               price: expenses[snapshot.data!.length-index-1]['price'].toString()),

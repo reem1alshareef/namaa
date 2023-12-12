@@ -58,7 +58,7 @@ class _ViewupdateSupabasePasswordState
                     height: 20,
                   ),
                   const mainHeader(
-                    title: 'إرسال رمز إعادة تعيين كلمة السر',
+                    title: 'إستعادة كلمة السر',
                   ),
                   const SizedBox(
                     height: 20,

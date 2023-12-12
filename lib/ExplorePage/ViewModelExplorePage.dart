@@ -4,11 +4,17 @@ import 'package:stacked/stacked.dart';
 class ViewModelExplorePage extends BaseViewModel {
   Future<String> getCurrency() async {
     String currency='';
-    String? currentEmail() {
-      final String? cemail = AuthenticationService.currentUser?.email;
-      //print(cemail);
-      return cemail;
-    }
+    // String? currentEmail() {
+    //   final String? cemail = AuthenticationService.currentUser?.email;
+    //   //print(cemail);
+    //   return cemail;
+    // }
+
+     String? getCurrentUserEmail() {
+  final currentUser = supabase.auth.currentUser;
+    return currentUser?.email;
+  
+}
 
     
 final response = await supabase
@@ -18,7 +24,7 @@ final response = await supabase
 
   for (var item in data) {
       final email = item['emailAddress'] as String;
-      if (email == currentEmail()?.toString()) {
+      if (email == getCurrentUserEmail()) {
         currency = item['mainCurrency'];
       }
     }
@@ -27,11 +33,11 @@ final response = await supabase
 
   Future<String> getBalance() async {
     String balance='';
-    String? currentEmail() {
-      final String? cemail = AuthenticationService.currentUser?.email;
-      //print(cemail);
-      return cemail;
-    }
+     String? getCurrentUserEmail() {
+  final currentUser = supabase.auth.currentUser;
+    return currentUser?.email;
+  
+}
 
     
 final response = await supabase
@@ -42,9 +48,9 @@ final response = await supabase
   for (var item in data) {
       final email = item['emailAddress'] as String;
 //print(currentEmail());
-print(email == currentEmail()?.toString());
-print(currentEmail()?.toString());
-      if (email == currentEmail()?.toString()) {
+print(email == getCurrentUserEmail());
+print(getCurrentUserEmail());
+      if (email == getCurrentUserEmail()) {
         print('hhii ');
         balance = item['balance'].toString();
       }
