@@ -23,6 +23,7 @@ class ViewSignUp extends StatelessWidget {
         viewModelBuilder: () => ViewModelSignUp(),
         builder: (context, viewmodel, _) {
           return Scaffold(
+            resizeToAvoidBottomInset: false, 
               backgroundColor: const Color(0x00071121),
               body: Container(
                 padding: const EdgeInsets.only(top: 50.0, left: 10, right: 10),
@@ -52,29 +53,29 @@ class ViewSignUp extends StatelessWidget {
                     TextInputField(title: 'الاسم', placeHolder: 'اكتب اسمك', inputController: namee,),
                     TextInputField(title: 'البريد الإلكتروني', placeHolder: 'اكتب عنوان بريدك الإلكتروني', inputController: emailAddress,),
                     TextInputField(title: 'كلمة السر', placeHolder: 'اكتب كلمة السر الخاصة بك', inputController: password,),
-
-
-
+              
+              
+              
                     Column(
-      children: [
-        SizedBox(
-          width: 350,
-          //height: 25,
-          child: Text('تأكيد كلمة السر',
+                    children: [
+                      SizedBox(
+                        width: 350,
+                        //height: 25,
+                        child: Text('تأكيد كلمة السر',
               textAlign: TextAlign.right,
               style: GoogleFonts.getFont("Noto Sans Arabic",
                   fontSize: 17,
                   fontWeight: FontWeight.w400,
                   height: 1.5,
                   textStyle: const TextStyle(color: Color(0xFFC5C5CD)))),
-        ),
-        SizedBox(
-            width: 350,
-            //height: 35,//35
-            child: TextFormField(
+                      ),
+                      SizedBox(
+                          width: 350,
+                          //height: 35,//35
+                          child: TextFormField(
               style: TextStyle(color: Colors.white),
               textAlign: TextAlign.right,
-//keyboardType: title=='الراتب'?TextInputType.number:TextInputType.values,
+              //keyboardType: title=='الراتب'?TextInputType.number:TextInputType.values,
               decoration: InputDecoration(
                 hintText: 'اعد كتابة كلمة السر الخاصة بك',
                 hintStyle: const TextStyle(
@@ -96,17 +97,17 @@ class ViewSignUp extends StatelessWidget {
                 return 'كلمة السر غير متطابقة';
               }
               return null;
-            }
-            )),
-        const SizedBox(
-          height: 10,
-        )
-      ],
-    ),
-
-
-
-
+                          }
+                          )),
+                      const SizedBox(
+                        height: 10,
+                      )
+                    ],
+                  ),
+              
+              
+              
+              
                     //TextInputField(title: 'تأكيد كلمة السر', placeHolder: 'اعد كتابة كلمة السر الخاصة بك', inputController: passwordConfirm,),
                     AccountButton(title: 'أكمل', type: 'SignUp', name: namee, emailAddress: emailAddress, pin: password, validationKey: _formKey,),
                     const SizedBox(height: 5,),
@@ -118,7 +119,7 @@ class ViewSignUp extends StatelessWidget {
                     // TextInputField(title: 'كلمة السر', placeHolder: 'اكتب كلمة السر الخاصة بك'),
                     // TextInputField(title: 'تأكيد كلمة السر', placeHolder: 'اعد كتابة كلمة السر الخاصة بك'),
                     
-
+              
                     // ElevatedButton(
                     //       onPressed: () async {
                     //         AuthenticationService authService = AuthenticationService();
@@ -141,7 +142,7 @@ class ViewSignUp extends StatelessWidget {
                     //         ),
                     //       ),
                     //       ),
-
+              
                     //SizedBox(height: 10,),
                     //AccountButton(title: 'title', placeHolder: 'placeHolder')
                     //header()

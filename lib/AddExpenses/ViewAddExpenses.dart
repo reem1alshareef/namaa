@@ -120,6 +120,7 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
         viewModelBuilder: () => ViewModelAddExpenses(),
         builder: (context, viewmodel, _) {
           return Scaffold(
+             resizeToAvoidBottomInset: false, 
             backgroundColor: const Color(0x00071121),
             body: Container(
               padding: const EdgeInsets.only(top: 50.0, left: 10, right: 10),
@@ -258,7 +259,7 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
                       print("$date");
                     },
                   ),
-
+            
                   SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
@@ -402,7 +403,7 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
                             //     },
                             //   );
                             // },
-
+            
                             // {
                             //                           showDialog(
                             //                               context: context,
@@ -427,7 +428,7 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
                             //                   : "لايمكن الوصول للتعرف الصوتي",
                             //           style: TextStyle(fontSize: 20.0),
                             //         ),
-
+            
                             //                                       ),
                             //                                        Container(
                             //           padding: EdgeInsets.all(16),
@@ -438,10 +439,10 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
                             //               fontWeight: FontWeight.w300,
                             //             ),
                             //           ),
-
+            
                             //       ),
                             //       ElevatedButton( onPressed: _speechToText.isListening ? _stopListening : _startListening,
-
+            
                             //   child: Icon(
                             //     _speechToText.isNotListening ? Icons.mic_off : Icons.mic,
                             //     color: Color(0xFFC5C5CD),
@@ -450,7 +451,7 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
                             //  )
                             //                                     ],
                             //                                   ),
-
+            
                             //                                 );
                             //                               });
                             //                         },
@@ -483,9 +484,9 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
                             builder: (context) {
                               return AlertDialog(
                                                                                 
-   backgroundColor: Color.fromARGB(174, 56, 56, 56),
-       
-        shape: RoundedRectangleBorder(
+               backgroundColor: Color.fromARGB(174, 56, 56, 56),
+                   
+                    shape: RoundedRectangleBorder(
             side: BorderSide(width: 1, color: Color(0xFFC05454)),
             borderRadius: BorderRadius.circular(20),),
                                 title: Text('تنبيه',
@@ -511,7 +512,7 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
                                   ElevatedButton(
                                                         style: ElevatedButton.styleFrom(
             backgroundColor: Color.fromARGB(255, 157, 77, 86),
-          ),
+                      ),
                                                         child: Text('موافق',
                                                             textAlign: TextAlign
                                                                 .center,
@@ -538,7 +539,7 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
                             }
                           );
                         }else if(date==DateTime.now().toString()){
-
+            
                         }else
                         if (chosenCurrency == 'العملة') {
                           showDialog(
@@ -546,9 +547,9 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
                             builder: (context) {
                               return AlertDialog(
                                                                                 
-   backgroundColor: Color.fromARGB(174, 56, 56, 56),
-       
-        shape: RoundedRectangleBorder(
+               backgroundColor: Color.fromARGB(174, 56, 56, 56),
+                   
+                    shape: RoundedRectangleBorder(
             side: BorderSide(width: 1, color: Color(0xFFC05454)),
             borderRadius: BorderRadius.circular(20),),
                                 title: Text('تنبيه',textAlign:
@@ -572,7 +573,7 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
                                    ElevatedButton(
                                                         style: ElevatedButton.styleFrom(
             backgroundColor: Color.fromARGB(255, 157, 77, 86),
-          ),
+                      ),
                                                         child: Text('موافق',
                                                             textAlign: TextAlign
                                                                 .center,
@@ -605,9 +606,9 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
                             builder: (context) {
                               return AlertDialog(
                                                                                 
-   backgroundColor: Color.fromARGB(174, 56, 56, 56),
-       
-        shape: RoundedRectangleBorder(
+               backgroundColor: Color.fromARGB(174, 56, 56, 56),
+                   
+                    shape: RoundedRectangleBorder(
             side: BorderSide(width: 1, color: Color(0xFFC05454)),
             borderRadius: BorderRadius.circular(20),),
                                 title: Text('تنبيه',textAlign:
@@ -631,7 +632,7 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
                                    ElevatedButton(
                                                         style: ElevatedButton.styleFrom(
             backgroundColor: Color.fromARGB(255, 157, 77, 86),
-          ),
+                      ),
                                                         child: Text('موافق',
                                                             textAlign: TextAlign
                                                                 .center,
@@ -665,9 +666,9 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
                             builder: (context) {
                               return AlertDialog(
                                                                                 
-   backgroundColor: Color.fromARGB(174, 56, 56, 56),
-       
-        shape: RoundedRectangleBorder(
+               backgroundColor: Color.fromARGB(174, 56, 56, 56),
+                   
+                    shape: RoundedRectangleBorder(
             side: BorderSide(width: 1, color: Color(0xFFC05454)),
             borderRadius: BorderRadius.circular(20),),
                                 title: Text('تنبيه',textAlign:
@@ -692,7 +693,7 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
                                   ElevatedButton(
                                                         style: ElevatedButton.styleFrom(
             backgroundColor: Color.fromARGB(255, 157, 77, 86),
-          ),
+                      ),
                                                         child: Text('موافق',
                                                             textAlign: TextAlign
                                                                 .center,
@@ -727,12 +728,12 @@ class _ViewAddExpensesState extends State<ViewAddExpenses> {
                               return AlertDialog(
                                 
                                  backgroundColor: Color.fromARGB(174, 56, 56, 56),
-       
-        shape: RoundedRectangleBorder(
-          
+                   
+                    shape: RoundedRectangleBorder(
+                      
             side: BorderSide(width: 1, color: Color.fromARGB(255, 195, 197, 232)),
             borderRadius: BorderRadius.circular(20),
-        ),
+                    ),
                                 content: Text('تم حفظ البيانات بنجاح', textAlign:
                                                             TextAlign.center,
                                                         style:

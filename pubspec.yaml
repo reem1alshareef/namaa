@@ -119,6 +119,8 @@ flutter:
     - assets/chatbot.png
     - assets/chatbot (1).png
     - assets/Icons/signout.png
+    - assets/Icons/down-arrow.png
+    - assets/Icons/microphone-8-48.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
