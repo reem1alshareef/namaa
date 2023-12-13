@@ -1,21 +1,31 @@
 //import 'package:namaagp/OTPPage/hi.dart';
 import 'package:namaagp/services/authentication_service.dart';
 import 'package:stacked/stacked.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 class ViewModelAppPasscode extends BaseViewModel {
-  Future<PostgrestResponse> retrievePasscode()async {
-     PostgrestResponse res = await supabase
-  .from('userAccount')
+   Future<int?> retrievePasscode()async {
+     List<dynamic> res = await supabase.from('userAccount')
   .select('passcode')
-  .eq('Email', currentEmail())
-  .execute();
-
-return res;
+  .eq('Email', getCurrentUserEmail());
+  int hi;
+try {
+   hi=res[0]['passcode'];
+  //hi = double.parse(res[0]['passcode']);
+} catch (e) {
+  print('Error parsing passcode: $e');
+  // Handle the error, provide a default value, or take appropriate action
+  return null;
+}
+return hi;
   }
-String? currentEmail() {
-  final String? cemail = AuthenticationService.currentUser?.email;
-  return cemail;
+
+  void setPasscode(int passcode)async {
+     await supabase.from('userAccount').update({'passcode':passcode}).eq('Email', getCurrentUserEmail());
+  }
+ String? getCurrentUserEmail() {
+  final currentUser = supabase.auth.currentUser;
+    return currentUser?.email;
+  
 }
 
  ViewModelAppPasscode(){}
