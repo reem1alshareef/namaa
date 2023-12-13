@@ -21,9 +21,95 @@ class _SpeechState extends State<Speech> {
   String category = '';
   String currency = '';
   String date = '';
-  int amount = 0;
+  String amount = '';
   String day = '';
   String dateM = '';
+
+  isFirstofMonth() {
+    if (_wordsSpoken.contains(('واحد'))) {
+      date = '1';
+      return true;
+    } else
+      return false;
+  }
+
+  isSecondofMonth() {
+    if (_wordsSpoken.contains(('اثنان')) ||
+        (_wordsSpoken.contains(('اثنين'))) ||
+        (_wordsSpoken.contains(('ثنين')))) {
+      date = '2';
+      return true;
+    } else
+      return false;
+  }
+
+  isThirdofMonth() {
+    if (_wordsSpoken.contains(('ثلاثه')) ||
+        (_wordsSpoken.contains(('ثلاثة')))) {
+      date = '3';
+      return true;
+    } else
+      return false;
+  }
+
+  isFourthofMonth() {
+    if (_wordsSpoken.contains(('أربعه')) ||
+        (_wordsSpoken.contains(('اربعه'))) ||
+        (_wordsSpoken.contains(('أربعة'))) ||
+        (_wordsSpoken.contains(('اربعة')))) {
+      date = '4';
+      return true;
+    } else
+      return false;
+  }
+
+  isFifthofMonth() {
+    if (_wordsSpoken.contains(('خمسة')) || (_wordsSpoken.contains(('خمسه')))) {
+      date = '5';
+      return true;
+    } else
+      return false;
+  }
+
+  isSixthofMonth() {
+    if (_wordsSpoken.contains(('ست')) ||
+        (_wordsSpoken.contains(('سته'))) ||
+        (_wordsSpoken.contains(('ستة')))) {
+      date = '6';
+      return true;
+    } else
+      return false;
+  }
+
+  isSiventhhofMonth() {
+    if (_wordsSpoken.contains(('سبعه')) ||
+        (_wordsSpoken.contains(('سبعة'))) ||
+        (_wordsSpoken.contains(('سبع')))) {
+      date = '7';
+      return true;
+    } else
+      return false;
+  }
+
+  isEighthhofMonth() {
+    if (_wordsSpoken.contains(('ثمانيه')) ||
+        (_wordsSpoken.contains(('ثماني'))) ||
+        (_wordsSpoken.contains(('ثمانية')))) {
+      date = '8';
+      return true;
+    } else
+      return false;
+  }
+
+  isNinthhofMonth() {
+    if (_wordsSpoken.contains(('تسعه')) ||
+        (_wordsSpoken.contains(('تسع'))) ||
+        (_wordsSpoken.contains(('تسعة')))) {
+      date = '9';
+      return true;
+    } else
+      return false;
+  }
 
   isDay() {
     if (_wordsSpoken.contains(RegExp(r'[0-9]'))) {
@@ -46,14 +132,15 @@ class _SpeechState extends State<Speech> {
     if (_wordsSpoken.contains(RegExp(r'[0-9]'))) {
       String str = _wordsSpoken;
       const start = "صرفت";
-      String end = currency;
+      //String end = 'ريال';
 
       final startIndex = str.indexOf(start);
-      final endIndex = str.indexOf(end, startIndex + start.length);
+      final endIndex = str.indexOf(currency, startIndex + start.length);
 
       String t = str.substring(startIndex + start.length, endIndex);
-      amount = int.parse(t);
       print(t);
+      amount = t;
+
       return true;
     } else {
       return false;
@@ -418,7 +505,7 @@ class _SpeechState extends State<Speech> {
                         ))
                   ],
                 ),
-                
+
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -440,7 +527,7 @@ class _SpeechState extends State<Speech> {
                         ))
                   ],
                 ),
-               
+
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -469,7 +556,7 @@ class _SpeechState extends State<Speech> {
                         ))
                   ],
                 ),
-                
+
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -518,56 +605,49 @@ class _SpeechState extends State<Speech> {
                           context: context,
                           builder: (context) {
                             return AlertDialog(
-                               backgroundColor: Color.fromARGB(174, 56, 56, 56),
-       
-        shape: RoundedRectangleBorder(
-            side: BorderSide(width: 1, color: Color(0xFFC05454)),
-            borderRadius: BorderRadius.circular(20),),
-                              title: Text('تنبيه',textAlign:
-                                                            TextAlign.center,style:
-                                                            GoogleFonts.getFont(
-                                                          "Noto Sans Arabic",
-                                                          fontSize: 25,
-                                                          color: Color.fromARGB(255, 192, 84, 84),
-                                                          fontWeight:
-                                                              FontWeight.w400,)),
-                              content: Text('الرجاء تحديد التاريخ',textAlign:
-                                                            TextAlign.center,
-                                                        style:
-                                                            GoogleFonts.getFont(
-                                                          "Noto Sans Arabic",
-                                                          fontSize: 17,
-                                                          color: Color.fromARGB(255, 201, 138, 138),
-                                                          fontWeight:
-                                                              FontWeight.w400,)),
-                              actions: [
-                                 ElevatedButton(
-                                                        style: ElevatedButton.styleFrom(
-            backgroundColor: Color.fromARGB(255, 157, 77, 86),
-          ),
-                                                        child: Text('موافق',
-                                                            textAlign: TextAlign
-                                                                .center,
-                                                            style: GoogleFonts
-                                                                .getFont(
-                                                              "Noto Sans Arabic",
-                                                              fontSize: 16,
-                                                              color: Colors.white,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w400,
-                                                            )),
+                                backgroundColor:
+                                    Color.fromARGB(174, 56, 56, 56),
+                                shape: RoundedRectangleBorder(
+                                  side: BorderSide(
+                                      width: 1, color: Color(0xFFC05454)),
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                title: Text('تنبيه',
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.getFont(
+                                      "Noto Sans Arabic",
+                                      fontSize: 25,
+                                      color: Color.fromARGB(255, 192, 84, 84),
+                                      fontWeight: FontWeight.w400,
+                                    )),
+                                content: Text('الرجاء تحديد التاريخ',
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.getFont(
+                                      "Noto Sans Arabic",
+                                      fontSize: 17,
+                                      color: Color.fromARGB(255, 201, 138, 138),
+                                      fontWeight: FontWeight.w400,
+                                    )),
+                                actions: [
+                                  ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor:
+                                          Color.fromARGB(255, 157, 77, 86),
+                                    ),
+                                    child: Text('موافق',
+                                        textAlign: TextAlign.center,
+                                        style: GoogleFonts.getFont(
+                                          "Noto Sans Arabic",
+                                          fontSize: 16,
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w400,
+                                        )),
                                     onPressed: () {
                                       Navigator.of(context).pop();
                                     },
-                                    
-                                    
                                   ),
-                              ],
-                               actionsAlignment:
-                                                        MainAxisAlignment
-                                                            .center
-                            );
+                                ],
+                                actionsAlignment: MainAxisAlignment.center);
                           },
                         );
                       }
@@ -576,56 +656,49 @@ class _SpeechState extends State<Speech> {
                           context: context,
                           builder: (context) {
                             return AlertDialog(
-                               backgroundColor: Color.fromARGB(174, 56, 56, 56),
-       
-        shape: RoundedRectangleBorder(
-            side: BorderSide(width: 1, color: Color(0xFFC05454)),
-            borderRadius: BorderRadius.circular(20),),
-                              title: Text('تنبيه',textAlign:
-                                                            TextAlign.center,style:
-                                                            GoogleFonts.getFont(
-                                                          "Noto Sans Arabic",
-                                                          fontSize: 25,
-                                                          color: Color.fromARGB(255, 192, 84, 84),
-                                                          fontWeight:
-                                                              FontWeight.w400,)),
-                              content: Text(' الرجاء اختيار العملة',textAlign:
-                                                            TextAlign.center,
-                                                        style:
-                                                            GoogleFonts.getFont(
-                                                          "Noto Sans Arabic",
-                                                          fontSize: 17,
-                                                          color: Color.fromARGB(255, 201, 138, 138),
-                                                          fontWeight:
-                                                              FontWeight.w400,)),
-                              actions: [
-                                ElevatedButton(
-                                                        style: ElevatedButton.styleFrom(
-            backgroundColor: Color.fromARGB(255, 157, 77, 86),
-          ),
-                                                        child: Text('موافق',
-                                                            textAlign: TextAlign
-                                                                .center,
-                                                            style: GoogleFonts
-                                                                .getFont(
-                                                              "Noto Sans Arabic",
-                                                              fontSize: 16,
-                                                              color: Colors.white,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w400,
-                                                            )),
+                                backgroundColor:
+                                    Color.fromARGB(174, 56, 56, 56),
+                                shape: RoundedRectangleBorder(
+                                  side: BorderSide(
+                                      width: 1, color: Color(0xFFC05454)),
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                title: Text('تنبيه',
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.getFont(
+                                      "Noto Sans Arabic",
+                                      fontSize: 25,
+                                      color: Color.fromARGB(255, 192, 84, 84),
+                                      fontWeight: FontWeight.w400,
+                                    )),
+                                content: Text(' الرجاء اختيار العملة',
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.getFont(
+                                      "Noto Sans Arabic",
+                                      fontSize: 17,
+                                      color: Color.fromARGB(255, 201, 138, 138),
+                                      fontWeight: FontWeight.w400,
+                                    )),
+                                actions: [
+                                  ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor:
+                                          Color.fromARGB(255, 157, 77, 86),
+                                    ),
+                                    child: Text('موافق',
+                                        textAlign: TextAlign.center,
+                                        style: GoogleFonts.getFont(
+                                          "Noto Sans Arabic",
+                                          fontSize: 16,
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w400,
+                                        )),
                                     onPressed: () {
                                       Navigator.of(context).pop();
                                     },
-                                    
-                                    
                                   ),
-                              ],
-                               actionsAlignment:
-                                                        MainAxisAlignment
-                                                            .center
-                            );
+                                ],
+                                actionsAlignment: MainAxisAlignment.center);
                           },
                         );
                       }
@@ -634,56 +707,49 @@ class _SpeechState extends State<Speech> {
                           context: context,
                           builder: (context) {
                             return AlertDialog(
-                               backgroundColor: Color.fromARGB(174, 56, 56, 56),
-       
-        shape: RoundedRectangleBorder(
-            side: BorderSide(width: 1, color: Color(0xFFC05454)),
-            borderRadius: BorderRadius.circular(20),),
-                              title: Text('تنبيه',textAlign:
-                                                            TextAlign.center,style:
-                                                            GoogleFonts.getFont(
-                                                          "Noto Sans Arabic",
-                                                          fontSize: 25,
-                                                          color: Color.fromARGB(255, 192, 84, 84),
-                                                          fontWeight:
-                                                              FontWeight.w400,)),
-                              content: Text(' الرجاء تحديد فئة الصرف',textAlign:
-                                                            TextAlign.center,
-                                                        style:
-                                                            GoogleFonts.getFont(
-                                                          "Noto Sans Arabic",
-                                                          fontSize: 17,
-                                                          color: Color.fromARGB(255, 201, 138, 138),
-                                                          fontWeight:
-                                                              FontWeight.w400,)),
-                              actions: [
-                                ElevatedButton(
-                                                        style: ElevatedButton.styleFrom(
-            backgroundColor: Color.fromARGB(255, 157, 77, 86),
-          ),
-                                                        child: Text('موافق',
-                                                            textAlign: TextAlign
-                                                                .center,
-                                                            style: GoogleFonts
-                                                                .getFont(
-                                                              "Noto Sans Arabic",
-                                                              fontSize: 16,
-                                                              color: Colors.white,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w400,
-                                                            )),
+                                backgroundColor:
+                                    Color.fromARGB(174, 56, 56, 56),
+                                shape: RoundedRectangleBorder(
+                                  side: BorderSide(
+                                      width: 1, color: Color(0xFFC05454)),
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                title: Text('تنبيه',
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.getFont(
+                                      "Noto Sans Arabic",
+                                      fontSize: 25,
+                                      color: Color.fromARGB(255, 192, 84, 84),
+                                      fontWeight: FontWeight.w400,
+                                    )),
+                                content: Text(' الرجاء تحديد فئة الصرف',
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.getFont(
+                                      "Noto Sans Arabic",
+                                      fontSize: 17,
+                                      color: Color.fromARGB(255, 201, 138, 138),
+                                      fontWeight: FontWeight.w400,
+                                    )),
+                                actions: [
+                                  ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor:
+                                          Color.fromARGB(255, 157, 77, 86),
+                                    ),
+                                    child: Text('موافق',
+                                        textAlign: TextAlign.center,
+                                        style: GoogleFonts.getFont(
+                                          "Noto Sans Arabic",
+                                          fontSize: 16,
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w400,
+                                        )),
                                     onPressed: () {
                                       Navigator.of(context).pop();
                                     },
-                                    
-                                    
                                   ),
-                              ],
-                               actionsAlignment:
-                                                        MainAxisAlignment
-                                                            .center
-                            );
+                                ],
+                                actionsAlignment: MainAxisAlignment.center);
                           },
                         );
                       }
@@ -692,84 +758,76 @@ class _SpeechState extends State<Speech> {
                           context: context,
                           builder: (context) {
                             return AlertDialog(
-                               backgroundColor: Color.fromARGB(174, 56, 56, 56),
-       
-        shape: RoundedRectangleBorder(
-            side: BorderSide(width: 1, color: Color(0xFFC05454)),
-            borderRadius: BorderRadius.circular(20),),
-                              title: Text('تنبيه',textAlign:
-                                                            TextAlign.center,style:
-                                                            GoogleFonts.getFont(
-                                                          "Noto Sans Arabic",
-                                                          fontSize: 25,
-                                                          color: Color.fromARGB(255, 192, 84, 84),
-                                                          fontWeight:
-                                                              FontWeight.w400,)),
-                              content: Text('الرجاء تحديد مبلغ الصرف', textAlign:
-                                                            TextAlign.center,
-                                                        style:
-                                                            GoogleFonts.getFont(
-                                                          "Noto Sans Arabic",
-                                                          fontSize: 17,
-                                                          color: Color.fromARGB(255, 201, 138, 138),
-                                                          fontWeight:
-                                                              FontWeight.w400,)),
-                              actions: [
-                                ElevatedButton(
-                                                        style: ElevatedButton.styleFrom(
-            backgroundColor: Color.fromARGB(255, 157, 77, 86),
-          ),
-                                                        child: Text('موافق',
-                                                            textAlign: TextAlign
-                                                                .center,
-                                                            style: GoogleFonts
-                                                                .getFont(
-                                                              "Noto Sans Arabic",
-                                                              fontSize: 16,
-                                                              color: Colors.white,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w400,
-                                                            )),
+                                backgroundColor:
+                                    Color.fromARGB(174, 56, 56, 56),
+                                shape: RoundedRectangleBorder(
+                                  side: BorderSide(
+                                      width: 1, color: Color(0xFFC05454)),
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                title: Text('تنبيه',
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.getFont(
+                                      "Noto Sans Arabic",
+                                      fontSize: 25,
+                                      color: Color.fromARGB(255, 192, 84, 84),
+                                      fontWeight: FontWeight.w400,
+                                    )),
+                                content: Text('الرجاء تحديد مبلغ الصرف',
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.getFont(
+                                      "Noto Sans Arabic",
+                                      fontSize: 17,
+                                      color: Color.fromARGB(255, 201, 138, 138),
+                                      fontWeight: FontWeight.w400,
+                                    )),
+                                actions: [
+                                  ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor:
+                                          Color.fromARGB(255, 157, 77, 86),
+                                    ),
+                                    child: Text('موافق',
+                                        textAlign: TextAlign.center,
+                                        style: GoogleFonts.getFont(
+                                          "Noto Sans Arabic",
+                                          fontSize: 16,
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w400,
+                                        )),
                                     onPressed: () {
                                       Navigator.of(context).pop();
                                     },
-                                    
-                                    
                                   ),
-                              ],
-                               actionsAlignment:
-                                                        MainAxisAlignment
-                                                            .center
-                            );
+                                ],
+                                actionsAlignment: MainAxisAlignment.center);
                           },
                         );
                       } else {
-                        ViewModelAddExpenses().addExpenses('2023-$date-$day',
-                            currency, category, amount.toString());
+                        ViewModelAddExpenses().addExpenses(
+                            '2023-$date-$day', currency, category, amount);
                         showDialog(
                           context: context,
                           builder: (context) {
                             return AlertDialog(
-                                 backgroundColor: Color.fromARGB(174, 56, 56, 56),
-                               shape: RoundedRectangleBorder(
-          
-            side: BorderSide(width: 1, color: Color.fromARGB(255, 195, 197, 232)),
-            borderRadius: BorderRadius.circular(20),
-        ),
-                              content:Text('تم حفظ البيانات بنجاح', textAlign:
-                                                            TextAlign.center,
-                                                        style:
-                                                            GoogleFonts.getFont(
-                                                          "Noto Sans Arabic",
-                                                          fontSize: 20,
-                                                          color: Color.fromARGB(255, 195, 197, 232),
-                                                          fontWeight:
-                                                              FontWeight.w400,)),
-                                                               actionsAlignment:
-                                                        MainAxisAlignment
-                                                            .center
-                              );
+                                backgroundColor:
+                                    Color.fromARGB(174, 56, 56, 56),
+                                shape: RoundedRectangleBorder(
+                                  side: BorderSide(
+                                      width: 1,
+                                      color:
+                                          Color.fromARGB(255, 195, 197, 232)),
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                content: Text('تم حفظ البيانات بنجاح',
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.getFont(
+                                      "Noto Sans Arabic",
+                                      fontSize: 20,
+                                      color: Color.fromARGB(255, 195, 197, 232),
+                                      fontWeight: FontWeight.w400,
+                                    )),
+                                actionsAlignment: MainAxisAlignment.center);
                           },
                         ).then((value) {
                           setState(() {
@@ -778,7 +836,7 @@ class _SpeechState extends State<Speech> {
                             currency = '';
 
                             category = '';
-                            amount = 0;
+                            amount = '';
                           });
                         });
                       }
@@ -789,7 +847,6 @@ class _SpeechState extends State<Speech> {
           ],
         ),
       ),
-      
     );
   }
 }
