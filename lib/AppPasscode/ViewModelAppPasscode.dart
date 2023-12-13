@@ -3,11 +3,16 @@ import 'package:namaagp/services/authentication_service.dart';
 import 'package:stacked/stacked.dart';
 
 class ViewModelAppPasscode extends BaseViewModel {
-   Future<int?> retrievePasscode()async {
-     List<dynamic> res = await supabase.from('userAccount')
+  Future<int?> retrievePasscode()async {
+     List<dynamic> res = await supabase
+  .from('userAccount')
   .select('passcode')
   .eq('Email', getCurrentUserEmail());
-  int hi;
+  print('SOS');
+print(res[0]['passcode']);
+print('crying in silence');
+//double hi= res[0]['passcode'];
+int hi;
 try {
    hi=res[0]['passcode'];
   //hi = double.parse(res[0]['passcode']);
@@ -19,10 +24,11 @@ try {
 return hi;
   }
 
-  void setPasscode(int passcode)async {
+    void setPasscode(int passcode)async {
      await supabase.from('userAccount').update({'passcode':passcode}).eq('Email', getCurrentUserEmail());
   }
- String? getCurrentUserEmail() {
+
+   String? getCurrentUserEmail() {
   final currentUser = supabase.auth.currentUser;
     return currentUser?.email;
   

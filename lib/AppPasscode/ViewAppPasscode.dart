@@ -50,7 +50,7 @@ class ViewAppPasscode extends StatelessWidget {
                       ),
                       OtpTextField(
                         margin: const EdgeInsets.all(5),
-                        numberOfFields: 6,
+                        numberOfFields: 4,
                         borderColor: const Color(0x0C16325F),
                         //set to true to show as box or false to show as dash
                         showFieldAsBox: true,
@@ -70,28 +70,16 @@ class ViewAppPasscode extends StatelessWidget {
                         onSubmit: (
                           String passcode
                         ) async {
-                          // //var emailAddress=e;
-                          // await viewmodel.returnOTP(
-                          //     verificationCode, emailAddress);
-                          if (viewmodel.retrievePasscode().toString() == passcode.toString()) {
+                          int? passcodeValue = await viewmodel.retrievePasscode();
+                          if (passcodeValue== int.parse(passcode)) {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) => NavigationBarApp()),
                             );
-                          } 
-                          // else {
-                          //   Navigator.push(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //         builder: (context) => const NavigationBarApp()),
-                          //   );
-                          // }
-
-                          //Navigator.pop(context, (route) =>ViewIncomeDetails());
-
-                          //Navigator.pop(context, verificationCode);
-                          //returnCode(verificationCode);
+                          }else{
+                            passcodeWrong(context);
+                          }
                         }, // end onSubmit
                       ),
                       CostomizedTextButton(
@@ -105,22 +93,101 @@ class ViewAppPasscode extends StatelessWidget {
   }
 }
 
-// String returnCode(String verificationCode) {
-//   Navigator.pop(context as BuildContext);
-//    //return verificationCode;
-// }
-
-// ElevatedButton(onPressed: () async {
-
-//                       await Navigator.push(
-//     context,
-//     MaterialPageRoute(builder: (context) => const ViewOTPPage()),
-//   );
-//   print(hhh);}
-//                     , child: null,),
-//                     Text('hhh', style: TextStyle(fontSize: 20, color: Colors.white),),
-//                     Column(children: [if(hhh!='')...[
-// Text(hhh, style: TextStyle(fontSize: 20, color: Colors.white),)
-//                     ]else...[
-// Text(hhh, style: TextStyle(fontSize: 20, color: Colors.white),)
-//                     ]],)
+Future<void> passcodeWrong(BuildContext context) {
+  return showDialog(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return Dialog(
+            backgroundColor: Colors.transparent,
+            child: Container(
+              width: 327,
+              height: 200,
+              decoration: ShapeDecoration(
+                color: Color(0xE5383838),
+                shape: RoundedRectangleBorder(
+                  side: BorderSide(width: 1, color: Color(0xFFC05454)),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+              ),
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 5,
+                  ),
+                  SizedBox(
+                    width: 316,
+                    height: 45,
+                    child: Text(
+                      'فشلت عملية الدخول',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Color(0xFFC05454),
+                        fontSize: 24,
+                        fontFamily: 'Trade Winds',
+                        fontWeight: FontWeight.w400,
+                        height: 0,
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 316,
+                    height: 70,
+                    child: Text(
+                      'الرمز المدخل غير صحيح، أعد كتابته أو أعد تسجيل الدخول.',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Color(0xFFC88A8A),
+                        fontSize: 20,
+                        fontFamily: 'Trade Winds',
+                        fontWeight: FontWeight.w400,
+                        height: 0,
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: Container(
+                      width: 200,
+                      height: 50,
+                      decoration: ShapeDecoration(
+                        color: Color(0xBF9D4C56),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(28),
+                        ),
+                        shadows: [
+                          BoxShadow(
+                            color: Color(0x3F000000),
+                            blurRadius: 4,
+                            offset: Offset(0, 4),
+                            spreadRadius: 0,
+                          )
+                        ],
+                      ),
+                      child: SizedBox(
+                        width: 166,
+                        height: 45,
+                        child: Text(
+                          'موافق',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Color(0xFFF8F8FF),
+                            fontSize: 24,
+                            fontFamily: 'Trade Winds',
+                            fontWeight: FontWeight.w400,
+                            height: 0,
+                          ),
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ));
+      });
+}

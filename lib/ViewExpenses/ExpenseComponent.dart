@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:intl/intl.dart';
 
 // ignore: must_be_immutable
 class Expense extends StatelessWidget {
   final String category;
-  final DateTime date;
+  final String date;
   final String price;
   //final String dateString=parse(date.day);
   
@@ -19,7 +18,7 @@ class Expense extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-final String formattedDate = DateFormat('yyyy-MM-dd – kk:mm').format(date);
+//final String formattedDate = DateFormat('yyyy-MM-dd – kk:mm').format(date);
     return // Generated code for this Row Widget...
         Row(
       mainAxisSize: MainAxisSize.max,
@@ -51,7 +50,7 @@ final String formattedDate = DateFormat('yyyy-MM-dd – kk:mm').format(date);
                           height: 1.5,
                           textStyle:
                               const TextStyle(color: Color.fromARGB(255, 219, 219, 231)))),
-                  Text(formattedDate,
+                  Text(date,
                       textAlign: TextAlign.right,
                       style: GoogleFonts.getFont("Noto Sans Arabic",
                           fontSize: 11,
@@ -99,22 +98,22 @@ final String formattedDate = DateFormat('yyyy-MM-dd – kk:mm').format(date);
 
   String getIconPath(String category) {
     switch (category) {
-      case 'house':
+      case 'المنزل':
         return 'assets/CategoryICons/house.png';
 
-      case 'foodAndDrinks':
+      case 'غذاء':
         return 'assets/CategoryICons/foodAndDrinks.png';
 
-      case 'entertaiment':
+      case 'ترفيه':
         return 'assets/CategoryICons/entertaiment.png';
 
-      case 'health':
+      case 'صحة':
         return 'assets/CategoryICons/health.png';
 
       case 'شخصي':
         return 'assets/CategoryICons/personal.png';
 
-      case 'transportation':
+      case 'مواصلات':
         return 'assets/CategoryICons/transportation.png';
 
       default:

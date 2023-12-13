@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:namaagp/AppPasscode/ViewAppPasscodeSetting.dart';
 import 'package:namaagp/IncomeDetails/ViewModelIncomeDetails.dart';
-import 'package:namaagp/NavigationBar/NavigationBar.dart';
 import 'package:namaagp/OTPPage/ViewOTPPage.dart';
 import 'package:namaagp/SignIn/ViewModelSignIn.dart';
 import 'package:namaagp/SignUp/ViewModelSignUp.dart';
@@ -86,7 +86,7 @@ class AccountButton extends StatelessWidget {
                 Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const NavigationBarApp()),
+                                  builder: (context) => const ViewAppPasscodeSetting()),//NavigationBarApp()),
                             );
             print('reached continue!!!!');
             break;
