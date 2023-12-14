@@ -29,7 +29,6 @@
 // class _NavigationExampleState extends State<NavigationExample> {
 //   int currentPageIndex = 0;
 //   double navbarWidth=200;
-  
 
 //   double returnImageIconSize(){
 //     return navbarWidth*35/221;
@@ -38,7 +37,6 @@
 //   double returnImageContainerSize(){
 //     return navbarWidth*51/221;
 //   }
-  
 
 //   @override
 //   Widget build(BuildContext context) {
@@ -79,7 +77,7 @@
 //         child: Stack(
 //           fit: StackFit.loose,
 //           children: [
-            
+
 //             Positioned(
 //               right: -7,
 //               //alignment:Alignment.center,
@@ -228,7 +226,7 @@
 //                     fontWeight: FontWeight.w400,
 //                     height: 1.5,
 //                     textStyle: const TextStyle(color: Color(0xFF6FA8FF), decoration: TextDecoration.underline)),
-                    
+
 //                           ),
 //               )):SizedBox(width: 0,height: 0,)
 //           ],
@@ -300,16 +298,12 @@
 //   }
 // }
 
-
-
-
-
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:namaagp/AddExpenses/ViewAddExpenses.dart';
 import 'package:namaagp/ExplorePage/ViewExplorePage.dart';
 import 'package:namaagp/ViewExpenses/ViewViewExpenses.dart';
+import 'package:namaagp/AddPlan/ViewAddPlan.dart';
 import 'package:namaagp/chat/viewChat.dart';
 
 class NavigationBarApp extends StatelessWidget {
@@ -345,7 +339,8 @@ class _NavigationExampleState extends State<NavigationExample> {
     return Scaffold(
       extendBody: true,
       backgroundColor: Color(0x00071121),
-      bottomNavigationBar: currentPageIndex != 2 // 2 corresponds to the index of viewChat() in the list
+      bottomNavigationBar: currentPageIndex !=
+              2 // 2 corresponds to the index of viewChat() in the list
           ? Container(
               color: Colors.transparent,
               height: currentPageIndex == 0 ? 130 : 100,
@@ -364,7 +359,8 @@ class _NavigationExampleState extends State<NavigationExample> {
                         shape: RoundedRectangleBorder(
                           side: BorderSide(
                             width: 1,
-                            color: Colors.white.withOpacity(0.15000000596046448),
+                            color:
+                                Colors.white.withOpacity(0.15000000596046448),
                           ),
                           borderRadius: BorderRadius.circular(60),
                         ),
@@ -527,8 +523,7 @@ class _NavigationExampleState extends State<NavigationExample> {
                             onTap: () => Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) =>
-                                    const ViewViewExpenses(),
+                                builder: (context) => const ViewViewExpenses(),
                               ),
                             ),
                             child: Text(
@@ -590,7 +585,7 @@ class _NavigationExampleState extends State<NavigationExample> {
               ],
             ),
           ),
-          child: ViewExplorePage(),
+          child: ViewAddPlan(),
         ),
         Container(
           padding: EdgeInsets.only(top: 50.0, left: 10, right: 10),

@@ -75,7 +75,7 @@ class _ViewAddToBalanceState extends State<ViewAddToBalance> {
                             ),
                             focusColor: Color.fromARGB(255, 195, 197, 232),
                             dropdownColor: Color.fromARGB(255, 26, 28, 62),
-
+              
                             //elevation: 5,
                             style: TextStyle(
                                 color:
@@ -143,18 +143,18 @@ class _ViewAddToBalanceState extends State<ViewAddToBalance> {
                                 ])),
                       ],
                     ),
-
-SizedBox(height: 200),
-Align(
-  alignment: Alignment.bottomCenter,
-  child: CustomButton(
-    title: 'تأكيد الإضافة',
-    onPressed: () {
-      if ( chosenCurrency == 'العملة' ) {
-        showDialog(
-          context: context,
-          builder: (context) {
-            return AlertDialog(
+              
+              SizedBox(height: 200),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: CustomButton(
+                  title: 'تأكيد الإضافة',
+                  onPressed: () {
+                    if ( chosenCurrency == 'العملة' ) {
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
               title: Text('تنبيه'),
               content: Text(' الرجاء اختيار العملة'),
               actions: [
@@ -165,16 +165,16 @@ Align(
                   child: Text('موافق'),
                 ),
               ],
-            );
-          },
-        );
-      }
-      
-      if (money.isEmpty) {
-        showDialog(
-          context: context,
-          builder: (context) {
-            return AlertDialog(
+                          );
+                        },
+                      );
+                    }
+                    
+                    if (money.isEmpty) {
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
               title: Text('تنبيه'),
               content: Text('الرجاء إدحال المبلغ المراد إضافته '),
               actions: [
@@ -185,35 +185,35 @@ Align(
                   child: Text('موافق'),
                 ),
               ],
-            );
-          },
-        );
-      }
-      else {
-        
-        ViewModelAddToBalance().addToBalance( chosenCurrency!,  double.parse(money));
-        showDialog(
-          context: context,
-          builder: (context) {
-            return AlertDialog(
+                          );
+                        },
+                      );
+                    }
+                    else {
+                      
+                      ViewModelAddToBalance().addToBalance( chosenCurrency!,  double.parse(money));
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
               content: Text('تم حفظ البيانات بنجاح'),
-            );
-          },
-        ).then((value) {
-          setState(() {
-            // Reset the widget values to their initial values
-            chosenCurrency = 'العملة';
-            moneyController.clear();
-          });
-          
-        });
-      }
-    },
-  ),
-),
-],
-    ),
-        ),
+                          );
+                        },
+                      ).then((value) {
+                        setState(() {
+                          // Reset the widget values to their initial values
+                          chosenCurrency = 'العملة';
+                          moneyController.clear();
+                        });
+                        
+                      });
+                    }
+                  },
+                ),
+              ),
+              ],
+                  ),
+                      ),
           );
   });
   }

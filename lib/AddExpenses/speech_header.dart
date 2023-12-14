@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:namaagp/Signout/ViewSignOut.dart';
+import 'package:namaagp/AddExpenses/ViewAddExpenses.dart';
+import 'package:namaagp/Components/ReturnToPreviousPage.dart';
 
-class ExplorePageHeader extends StatelessWidget {
+class Speech_header extends StatelessWidget {
   //final String title;
   //final String subTitle;
 
-  const ExplorePageHeader({
+  const Speech_header({
     Key? key,
     //required this.title,
     //required this.subTitle,
@@ -17,56 +18,62 @@ class ExplorePageHeader extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        SizedBox(width: 5,),
+        SizedBox(
+          width: 3,
+        ),
         GestureDetector(
-          child: Image.asset(
-                    'assets/Icons/signout.png',
-                    width: 25,
-          height: 25, //228.33,
-                    fit: BoxFit.cover,
-                  ),
+          child: ReturnToPreviousPage(
+            title: 'رجوع',
+            tWidth: 60,
+          ),
           onTap: () {
-                      Navigator.push(context,MaterialPageRoute(builder: (context) =>  ViewSignOut()),);
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ViewAddExpenses()),
+            );
           },
         ),
         //const ReturnToPreviousPage(title: 'البداية', tWidth: 69,),
-        SizedBox(width: 35,),
+        SizedBox(
+          width: 30,
+        ),
         Column(
           children: [
             //Expanded(
-              //child: 
-             // SizedBox(
-                //height: 40,
-                //width: 50,
-                //child: 
-                
-                Row(
-                  children: [
-                    SizedBox(width: 155,),
-                    Text('نماء',
-                              textAlign: TextAlign.right,
-                              style: GoogleFonts.getFont("Noto Sans Arabic",
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w400,
-                                  height: 1.1,
-                                  textStyle: const TextStyle(color: Color(0xFFD0CDEF)))
-                                  ),
-                  ],
+            //child:
+            // SizedBox(
+            //height: 40,
+            //width: 50,
+            //child:
+
+            Row(
+              children: [
+                SizedBox(
+                  width: 120,
                 ),
-              //),
+                Text('نماء  ',
+                    textAlign: TextAlign.right,
+                    style: GoogleFonts.getFont("Noto Sans Arabic",
+                        fontSize: 22,
+                        fontWeight: FontWeight.w400,
+                        height: 1.1,
+                        textStyle: const TextStyle(color: Color(0xFFD0CDEF)))),
+              ],
+            ),
+            //),
             //),
             Text('امتلك زمام التحكم بمعاملاتك المالية',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.getFont("Noto Sans Arabic",
-                          fontSize: 13,
-                          fontWeight: FontWeight.w400,
-                          height: 1,
-                          textStyle: const TextStyle(color: Color(0xFFC5C5D0)))),
+                textAlign: TextAlign.center,
+                style: GoogleFonts.getFont("Noto Sans Arabic",
+                    fontSize: 13,
+                    fontWeight: FontWeight.w400,
+                    height: 1,
+                    textStyle: const TextStyle(color: Color(0xFFC5C5D0)))),
           ],
         ),
         Container(
-          width: 40,
-          height: 29,
+          width: 50,
+          height: 36.31,
           decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage('assets/NamaaLogo.png'),
@@ -74,9 +81,9 @@ class ExplorePageHeader extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(width: 5,),
-
-        
+        SizedBox(
+          width: 3,
+        ),
 
         //SizedBox(height: 200,),
 //         SizedBox(
