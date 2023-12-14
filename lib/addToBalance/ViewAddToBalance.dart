@@ -29,6 +29,7 @@ class _ViewAddToBalanceState extends State<ViewAddToBalance> {
         viewModelBuilder: () => ViewModelAddExpenses(),
         builder: (context, viewmodel, _) {
           return Scaffold(
+             resizeToAvoidBottomInset: false, 
               backgroundColor: const Color(0x00071121),
               body: Container(
                   padding:
