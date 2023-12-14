@@ -69,7 +69,7 @@ class _ViewSignOutState extends State<ViewSignOut> {
                 ViewModelSignOut().SignOut();
                 
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => ViewSplash()));
+                      MaterialPageRoute(builder: (context) => ViewSignIn()));
                 
               })
         ],
