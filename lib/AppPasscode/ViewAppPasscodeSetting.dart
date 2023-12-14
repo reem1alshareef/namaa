@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:namaagp/AppPasscode/ViewModelAppPasscode.dart';
-import 'package:namaagp/Components/CostomizedTextButton.dart';
 import 'package:namaagp/Identity%20Elements/introPagesHeader.dart';
 import 'package:namaagp/NavigationBar/NavigationBar.dart';
 import 'package:stacked/stacked.dart';
@@ -46,7 +45,7 @@ class ViewAppPasscodeSetting extends StatelessWidget {
                       // ),
                       const introPagesHeader(
                         subTitle: '',
-                        title: 'أدخل رمز الدخول',
+                        title: 'اختار رمز الدخول',
                       ),
                       OtpTextField(
                         margin: const EdgeInsets.all(5),
@@ -79,11 +78,6 @@ class ViewAppPasscodeSetting extends StatelessWidget {
                           
                         }, // end onSubmit
                       ),
-                      CostomizedTextButton(
-                        question: 'نسيت رمز الدخول؟  ',
-                        actionTitle: 'سجل دخول محددًا',
-                        purpose: 'ResendOTP',
-                      )
                     ],
                   )));
         });
