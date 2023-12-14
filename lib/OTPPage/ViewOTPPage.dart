@@ -23,6 +23,7 @@ class ViewOTPPage extends StatelessWidget {
         viewModelBuilder: () => ViewModelOTPPage(),
         builder: (context, viewmodel, _) {
           return Scaffold(
+             resizeToAvoidBottomInset: false, 
               backgroundColor: const Color(0x00071121),
               body: Container(
                   padding:
