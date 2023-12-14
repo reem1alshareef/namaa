@@ -10,17 +10,18 @@ class ViewModelMoneyTimeChart extends BaseViewModel {
     );
 
     final response = await supabaseClient.from('expenses').select().execute();
-    String? currentEmail() {
-      final String? cemail = AuthenticationService.currentUser?.email;
-      return cemail;
-    }
+    String? getCurrentUserEmail() {
+  final currentUser = supabase.auth.currentUser;
+    return currentUser?.email;
+  
+}
 
     final data = response.data as List<dynamic>;
     final pricesByDay = <int, List<int>>{}; // Map to store prices by day of the week
 
     for (var item in data) {
       final email = item['emailAddress'] as String;
-      if (email == currentEmail()?.toString()) {
+      if (email == getCurrentUserEmail()) {
         final itemDate = DateTime.parse(item['date']);
       final itemDayOfWeek = itemDate.weekday;
         final adjustedDayOfWeek = (itemDayOfWeek == 7) ? 0 : itemDayOfWeek;

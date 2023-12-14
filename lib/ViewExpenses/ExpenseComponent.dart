@@ -50,7 +50,7 @@ class Expense extends StatelessWidget {
                           height: 1.5,
                           textStyle:
                               const TextStyle(color: Color.fromARGB(255, 219, 219, 231)))),
-                  Text(date,
+                  Text(date.substring(0, 9),
                       textAlign: TextAlign.right,
                       style: GoogleFonts.getFont("Noto Sans Arabic",
                           fontSize: 11,

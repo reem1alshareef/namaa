@@ -68,10 +68,14 @@ String? currentEmail() {
         break;
 
         case "SignInAgain":
-        final supabaseClient = SupabaseClient('https://rpwqxndlhdiqkrejigse.supabase.co', "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJwd3F4bmRsaGRpcWtyZWppZ3NlIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTMwNjY4NDQsImV4cCI6MjAwODY0Mjg0NH0.qlIR6KNotfLwl30HsVSUW9M3smblYaYxtk_D7W2L_EU");
-
+        //final supabaseClient = SupabaseClient('https://rpwqxndlhdiqkrejigse.supabase.co', "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJwd3F4bmRsaGRpcWtyZWppZ3NlIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTMwNjY4NDQsImV4cCI6MjAwODY0Mjg0NH0.qlIR6KNotfLwl30HsVSUW9M3smblYaYxtk_D7W2L_EU");
+        final supabaseClient =await SupabaseClient(
+    'https://rpwqxndlhdiqkrejigse.supabase.co',
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJwd3F4bmRsaGRpcWtyZWppZ3NlIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTMwNjY4NDQsImV4cCI6MjAwODY0Mjg0NH0.qlIR6KNotfLwl30HsVSUW9M3smblYaYxtk_D7W2L_EU',
+  );
+await supabaseClient.auth.signOut();
         //final supabase = supabaseClient.auth.admin
-        await supabaseClient.auth.admin.signOut('EeBqpOvC2qlnd7yz5pZwLQxwqpqbjFI/EagzGi6x91QuQ+A+a3XZf77vbAMrUyaDXaWrNGCzVHyVbqEmdGk6tw==');
+        //await supabaseClient.auth.admin.signOut('EeBqpOvC2qlnd7yz5pZwLQxwqpqbjFI/EagzGi6x91QuQ+A+a3XZf77vbAMrUyaDXaWrNGCzVHyVbqEmdGk6tw==');
         Navigator.push(context,MaterialPageRoute(builder: (context) =>  ViewSignIn()),);
         break;
 
