@@ -30,6 +30,7 @@ class ViewIncomeDetails extends StatefulWidget {
         viewModelBuilder: () => ViewModelIncomeDetails(),
         builder: (context, viewmodel, _) {
           return Scaffold(
+             resizeToAvoidBottomInset: false, 
               backgroundColor: const Color(0x00071121),
               body: Container(
                 padding: const EdgeInsets.only(top: 50.0, left: 10, right: 10),
