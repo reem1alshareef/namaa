@@ -420,7 +420,7 @@ showdatepicker2(BuildContext context) {
                       textAlign: TextAlign.right,
                       style: GoogleFonts.getFont(
                         "Noto Sans Arabic",
-                        fontSize: 16,
+                        fontSize: 20,
                         fontWeight: FontWeight.w400,
                         height: 1.5,
                         textStyle: const TextStyle(

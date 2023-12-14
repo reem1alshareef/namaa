@@ -100,7 +100,8 @@ class ViewViewExpensesState extends State<ViewViewExpenses> {
                           builder: (context, snapshot) {
                             if (snapshot.connectionState == ConnectionState.waiting) {
                               return CircularProgressIndicator();
-                            } else if (snapshot.hasError) {
+                            } else 
+                            if (snapshot.hasError) {
                               return Text('Error: ${snapshot.error}');
                             }
 
