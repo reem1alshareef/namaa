@@ -18,6 +18,19 @@ class ViewViewExpenses extends StatefulWidget {
 }
 
 class ViewViewExpensesState extends State<ViewViewExpenses> {
+   // ... (your existing code)
+  final List <String> categories = [
+    "شخصي",
+    "مواصلات",
+    "المنزل",
+    "غذاء",
+    "صحة",
+    "ترفيه",
+    "أخرى",
+  ]; 
+  List <String> selectedCategories = [
+    
+  ];
   //const ViewViewExpenses({super.key});
 
   @override
@@ -62,59 +75,133 @@ class ViewViewExpensesState extends State<ViewViewExpenses> {
                             ),
                           ),
                         ),
-
-                                            FutureBuilder<List<dynamic>>(future: ViewModelViewExpenses.getExpenses(), builder: (context, snapshot) {
-                      if (snapshot.connectionState == ConnectionState.waiting) {
-                        return CircularProgressIndicator();
-                      }
-         else if (snapshot.hasError) {
-                  return Text('Error: ${snapshot.error}');
-                } 
-
-                    List<dynamic> expenses = snapshot.data!;
-
-                   
-                    //height: 50,
-                     
-                       return ListView.builder(
-                        padding: EdgeInsets.all(0),
-                        //ali:,
-                        scrollDirection: Axis.vertical,
-                             shrinkWrap: true,
-                        itemCount: snapshot.data!.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          return Container(
-                            child: Column(children: [
-                              index!=0?
-                              Container(
-                          margin: const EdgeInsets.all(10),
-                          width: 310,
-                          decoration: ShapeDecoration(
-                            shape: RoundedRectangleBorder(
-                              side: BorderSide(
-                                width: 0.5,
-                                strokeAlign: BorderSide.strokeAlignCenter,
-                                color: Color(0xFF9D9AC2),
-                              ),
-                            ),
-                          ),
-                        ):SizedBox(),
-                              Padding(
-                          padding: const EdgeInsets.only(left: 13, right: 13),
-                          child: Expense(
-                              category: expenses[snapshot.data!.length-index-1]['category'],
-                              date: expenses[snapshot.data!.length-index-1]['date'],
-                              price: expenses[snapshot.data!.length-index-1]['price'].toString()),
-                        ),
-                        
-                            ]),
+                        Wrap(
+                        spacing: 8.0,
+                        runSpacing: 8.0,
+                        children: categories.map((category) {
+                          return FilterChip(
+                            label: Text(category),
+                            selected: selectedCategories.contains(category),
+                            onSelected: (bool selected) {
+                              setState(() {
+                                if (selected) {
+                                  selectedCategories.add(category);
+                                } else {
+                                  selectedCategories.remove(category);
+                                }
+                              });
+                            },
                           );
-                       },);
+                        }).toList(),
+                      ),
+                      Expanded(
+                        child: FutureBuilder<List<dynamic>>(
+                          future: ViewModelViewExpenses.getExpenses(),
+                          builder: (context, snapshot) {
+                            if (snapshot.connectionState == ConnectionState.waiting) {
+                              return CircularProgressIndicator();
+                            } else 
+                            if (snapshot.hasError) {
+                              return Text('Error: ${snapshot.error}');
+                            }
+
+                            List<dynamic> expenses = snapshot.data!;
+
+                            // Filter expenses based on selected categories
+                            List<dynamic> filteredExpenses = expenses
+                                .where((expense) =>
+                                    selectedCategories.isEmpty ||
+                                    selectedCategories.contains(expense['category']))
+                                .toList();
+
+                            return ListView.builder(
+                              padding: EdgeInsets.all(0),
+                              scrollDirection: Axis.vertical,
+                              shrinkWrap: true,
+                              itemCount: filteredExpenses.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                return Container(
+                                  child: Column(children: [
+                                    index != 0
+                                        ? Container(
+                                            margin: const EdgeInsets.all(10),
+                                            width: 310,
+                                            decoration: ShapeDecoration(
+                                              shape: RoundedRectangleBorder(
+                                                side: BorderSide(
+                                                  width: 0.5,
+                                                  strokeAlign: BorderSide.strokeAlignCenter,
+                                                  color: Color(0xFF9D9AC2),
+                                                ),
+                                              ),
+                                            ),
+                                          )
+                                        : SizedBox(),
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 13, right: 13),
+                                      child: Expense(
+                                          category: filteredExpenses[index]['category'],
+                                          date: filteredExpenses[index]['date'],
+                                          price: filteredExpenses[index]['price'].toString()),
+                                    ),
+                                  ]),
+                                );
+                              },
+                            );
+                          },
+
+        //                                     FutureBuilder<List<dynamic>>(future: ViewModelViewExpenses.getExpenses(), builder: (context, snapshot) {
+        //               if (snapshot.connectionState == ConnectionState.waiting) {
+        //                 return CircularProgressIndicator();
+        //               }
+        //  else if (snapshot.hasError) {
+        //           return Text('Error: ${snapshot.error}');
+        //         } 
+
+        //             List<dynamic> expenses = snapshot.data!;
+
+                   
+        //             //height: 50,
+                     
+        //                return ListView.builder(
+        //                 padding: EdgeInsets.all(0),
+        //                 //ali:,
+        //                 scrollDirection: Axis.vertical,
+        //                      shrinkWrap: true,
+        //                 itemCount: snapshot.data!.length,
+        //                 itemBuilder: (BuildContext context, int index) {
+        //                   return Container(
+        //                     child: Column(children: [
+        //                       index!=0?
+        //                       Container(
+        //                   margin: const EdgeInsets.all(10),
+        //                   width: 310,
+        //                   decoration: ShapeDecoration(
+        //                     shape: RoundedRectangleBorder(
+        //                       side: BorderSide(
+        //                         width: 0.5,
+        //                         strokeAlign: BorderSide.strokeAlignCenter,
+        //                         color: Color(0xFF9D9AC2),
+        //                       ),
+        //                     ),
+        //                   ),
+        //                 ):SizedBox(),
+        //                       Padding(
+        //                   padding: const EdgeInsets.only(left: 13, right: 13),
+        //                   child: Expense(
+        //                       category: expenses[snapshot.data!.length-index-1]['category'],
+        //                       date: expenses[snapshot.data!.length-index-1]['date'],
+        //                       price: expenses[snapshot.data!.length-index-1]['price'].toString()),
+        //                 ),
+                        
+        //                     ]),
+        //                   );
+        //                },);
                    
 
 
 
-                })
+        //         })
 
 
 
@@ -177,7 +264,7 @@ class ViewViewExpensesState extends State<ViewViewExpenses> {
                     //End of navbar
 
                     
-                  ],
+                ))],
                 )
               ));
         });

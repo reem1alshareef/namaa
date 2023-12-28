@@ -3,7 +3,7 @@
 
 class Utils {
   static String getFormattedDateSimple(int time) {
-    DateFormat newFormat = DateFormat("dd / MMMM, yyyy");
+    DateFormat newFormat = DateFormat("yyyy-MM-dd");
     return newFormat.format(DateTime.fromMillisecondsSinceEpoch(time));
   }
 }

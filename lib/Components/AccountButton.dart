@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:namaagp/AppPasscode/ViewAppPasscodeSetting.dart';
 import 'package:namaagp/IncomeDetails/ViewModelIncomeDetails.dart';
-import 'package:namaagp/NavigationBar/NavigationBar.dart';
 import 'package:namaagp/OTPPage/ViewOTPPage.dart';
 import 'package:namaagp/SignIn/ViewModelSignIn.dart';
 import 'package:namaagp/SignUp/ViewModelSignUp.dart';
@@ -37,8 +37,8 @@ class AccountButton extends StatelessWidget {
         //this if statement changes the purpose or the destination of the button
         switch (type.toLowerCase()) {
           case 'signup':
-            int completed =await signupObj.signUp(name.text, emailAddress.text, pin.text, validationKey,);
-            if (completed == 0) {
+            String completed =await signupObj.signUp(name.text, emailAddress.text, pin.text, validationKey,);
+            if (completed == '0') {
               Navigator.push(
               context,
               MaterialPageRoute(
@@ -51,8 +51,8 @@ class AccountButton extends StatelessWidget {
               //       builder: (context) => ViewOTPPage(
               //           emailAddress: emailAddress.text, type: 'SignIn')),
               // );
-            } else if (completed == 2) {
-              Signuperror(context);
+            } else {
+              Signuperror(context, completed);
             }
 
             
@@ -86,7 +86,7 @@ class AccountButton extends StatelessWidget {
                 Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const NavigationBarApp()),
+                                  builder: (context) => const ViewAppPasscodeSetting()),//NavigationBarApp()),
                             );
             print('reached continue!!!!');
             break;
@@ -233,7 +233,7 @@ Future<void> loginerror(BuildContext context) {
       });
 }
 @override
-Future<void> Signuperror(BuildContext context) {
+Future<void> Signuperror(BuildContext context, String errorMessage) {
   return showDialog(
       context: context,
       barrierDismissible: false, // user must tap button!

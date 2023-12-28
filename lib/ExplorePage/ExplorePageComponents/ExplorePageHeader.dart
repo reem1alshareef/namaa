@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:namaagp/Settings/ViewSettings.dart';
+import 'package:namaagp/Signout/ViewSignOut.dart';
 
 class ExplorePageHeader extends StatelessWidget {
   //final String title;
@@ -20,13 +20,13 @@ class ExplorePageHeader extends StatelessWidget {
         SizedBox(width: 5,),
         GestureDetector(
           child: Image.asset(
-                    'assets/Icons/settingsIcon.png',
-                    width: 40,
-          height: 29, //228.33,
+                    'assets/Icons/signout.png',
+                    width: 25,
+          height: 25, //228.33,
                     fit: BoxFit.cover,
                   ),
           onTap: () {
-                      Navigator.push(context,MaterialPageRoute(builder: (context) =>  ViewSettings()),);
+                      Navigator.push(context,MaterialPageRoute(builder: (context) =>  ViewSignOut()),);
           },
         ),
         //const ReturnToPreviousPage(title: 'البداية', tWidth: 69,),

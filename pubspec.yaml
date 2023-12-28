@@ -32,6 +32,11 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.2
   intl: ^0.17.0
+  speech_to_text: ^6.4.1
+  avatar_glow: ^2.0.2
+  highlight_text: ^1.7.0
+  date_picker_plus: ^1.1.3
+  
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -65,8 +70,12 @@ dependencies:
   chat_gpt_sdk: ^2.2.5
   
 
+ 
+
+  
+ 
 dev_dependencies:
-  test: 1.24.3
+  test: 1.24.9
   flutter_test:
     sdk: flutter
     
@@ -91,24 +100,27 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets\NamaaLogo.png
+    - assets/NamaaLogo.png
     - assets/Icons/WhiteArrow.png
     - assets/Icons/LightPurpleArrow.png
-    - assets\Icons\settingsIcon.png
-    - assets\NavBarIcons\SavingPlan.png
+    - assets/Icons/settingsIcon.png
+    - assets/NavBarIcons/SavingPlan.png
     - assets/NavBarIcons/Explore.png
-    - assets\NavBarIcons\Chatbot.png
-    - assets\CategoryICons\entertaiment.png
-    - assets\CategoryICons\foodAndDrinks.png
-    - assets\CategoryICons\house.png
-    - assets\CategoryICons\health.png
-    - assets\CategoryICons\other.png
-    - assets\CategoryICons\personal.png
-    - assets\CategoryICons\transportation.png
-    - assets\Icons\filter.png
-    - assets\chaticon.png
-    - assets\chatbot.png
-    - assets\chatbot (1).png
+    - assets/NavBarIcons/Chatbot.png
+    - assets/CategoryICons/entertaiment.png
+    - assets/CategoryICons/foodAndDrinks.png
+    - assets/CategoryICons/house.png
+    - assets/CategoryICons/health.png
+    - assets/CategoryICons/other.png
+    - assets/CategoryICons/personal.png
+    - assets/CategoryICons/transportation.png
+    - assets/Icons/filter.png
+    - assets/chaticon.png
+    - assets/chatbot.png
+    - assets/chatbot (1).png
+    - assets/Icons/signout.png
+    - assets/Icons/down-arrow.png
+    - assets/Icons/microphone-8-48.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
