@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:namaagp/Components/ReturnToPreviousPage.dart';
 
 
-class ViewMoreExpensesHeader extends StatelessWidget {
+class ExplorePageHeader extends StatelessWidget {
   //final String title;
   //final String subTitle;
 
-  const ViewMoreExpensesHeader({
+  const ExplorePageHeader({
     Key? key,
     //required this.title,
     //required this.subTitle,
@@ -20,7 +19,12 @@ class ViewMoreExpensesHeader extends StatelessWidget {
       children: [
         SizedBox(width: 5,),
         GestureDetector(
-          child:  ReturnToPreviousPage(title: 'رحوع', tWidth: 69,),
+          child: Image.asset(
+                    'assets/Icons/settingsIcon.png',
+                    width: 50,
+          height: 36.31, //228.33,
+                    fit: BoxFit.cover,
+                  ),
           // onTap: () {
           //             Navigator.push(context,MaterialPageRoute(builder: (context) =>  ViewSettings()),);
           // },

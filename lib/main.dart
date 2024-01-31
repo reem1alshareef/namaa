@@ -1,8 +1,9 @@
 //import 'package:postgres/postgres.dart';
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:namaagp/AppPasscode/ViewAppPasscode.dart';
+import 'package:namaagp/AddPlan/ViewAddPlan.dart';
+import 'package:namaagp/NavigationBar/NavigationBar.dart';
 import 'package:namaagp/Splash/ViewSplash.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 //import 'namaagp/lib/SignUp/ViewModelSignUp.dart';
